@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alumni</title>
+    <%= stylesheet_link_tag    'application'%>
+    <%= csrf_meta_tags %>
+  </head>
+    <body>
+      <%= render 'layouts/navigation' %>
+      <% if user_signed_in? %>
+        <% if !current_user.is_graduate %>
+            <%= render 'layouts/sidebar' %>
+        <% else %>
+          <%= render 'layouts/graduate_sidebar' %>
+        <%end%>
+      <%end%>
+      <%= yield %>
+      <%= javascript_include_tag 'application'%>
+    </body>
+</html>

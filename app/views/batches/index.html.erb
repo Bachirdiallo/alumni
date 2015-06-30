@@ -1,0 +1,45 @@
+<div class="container col-sm-8">
+    <strong><%= notice %></strong>
+
+  <h1>Listing Batches</h1>
+
+  <%#= render 'graduate'%>
+
+
+  <div id="file_uploader">
+    <%= render partial: 'import/file_uploader',  locals: {:klass => Faculty}%>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Year</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @batches.each do |batch| %>
+        <tr>
+          <td>
+            <% if !batch.month.nil? %>
+              <%= batch.month.strftime("%B") %>
+            <% end %>
+          </td>
+          <td>
+            <% if !batch.year.nil? %>
+                <%= batch.year.strftime("%Y") %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Edit', edit_batch_path(batch) %></td>
+          <td><%= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Batch', new_batch_path, :class => 'btn btn-primary btn-flat' %>
+</div>

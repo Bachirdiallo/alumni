@@ -1,0 +1,6 @@
+<%= form_for @user, url: user_profile_path(@user) do |f| %>
+<p>
+  <%= f.file_field :avatar%>
+  <%= f.submit "Upload", :action => "upload_profile_picture", :class => 'btn btn-primary btn-flat' %>
+</p>
+<% end %>

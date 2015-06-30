@@ -1,0 +1,47 @@
+<div class="container col-sm-8">
+  <p id="notice"><%= notice %></p>
+
+  <%= render 'locate_user'%>
+  <%= render 'form'%>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th ></th>
+        <th ></th>
+        <th ></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @search_results.each do |search_result| %>
+        <tr>
+          <td>
+              <%if !search_result.user.nil?%>
+              <%= search_result.user.name %>
+            <% else %>
+                N/A
+            <% end %>
+          </td>
+
+          <td>
+            <%if !search_result.batch.nil? %>
+              <%= search_result.batch.month.strftime("%B") %>
+              <%= search_result.batch.year.strftime("%Y") %>
+            <% else %>
+                N/A
+            <% end %>
+          </td>
+
+          <td>
+            <%if !search_result.programme.nil?%>
+              <%= search_result.programme.name %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

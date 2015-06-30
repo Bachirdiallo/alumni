@@ -1,0 +1,23 @@
+<%= form_for(@campu) do |f| %>
+  <% if @campu.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@campu.errors.count, "error") %> prohibited this campu from being saved:</h2>
+
+      <ul>
+      <% @campu.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-control-wrapper" >
+    <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+    <div class="floating-label">Campus Name</div>
+      <span class="material-input"></span>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Campus", :class => 'btn btn-primary btn-flat'%>
+  </div>
+<% end %>

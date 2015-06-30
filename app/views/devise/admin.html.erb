@@ -1,0 +1,35 @@
+<div class="container center">
+  <div class="create_admin">
+    <%= form_for(resource, as: resource_name) do |f| %>
+      <div class="form-control-wrapper" >
+        <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+        <div class="floating-label">name </div>
+          <span class="material-input"></span>
+      </div>
+
+      <div class="form-control-wrapper" >
+        <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+        <div class="floating-label">id </div>
+          <span class="material-input"></span>
+      </div>
+
+      <div class="form-control-wrapper" >
+        <%= f.password_field :password, autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
+        <div class="floating-label">password </div>
+          <span class="material-input"></span>
+      </div>
+
+
+
+      <div class="form-control-wrapper" >
+        <%= f.email_field :email, autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
+        <div class="floating-label">email </div>
+          <span class="material-input"></span>
+      </div>
+
+
+      <div class="actions">
+        <%= f.submit "Save", :class => 'btn btn-primary btn-flat' %>
+      </div>
+  </div>
+</div>

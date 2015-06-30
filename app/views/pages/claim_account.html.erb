@@ -1,0 +1,20 @@
+
+<p class="warning"><%=notice%></p>
+<div class="container col-sm-8">
+  <%= search_form_for @q , url:claim_action_result_path do |f| %>
+    <div class="form-control-wrapper">
+      <%= f.search_field :id_number_eq, :class => 'form-control empty', :autocomplete => "off" %>
+      <div class="floating-label">Id Number </div>
+        <span class="material-input"></span>
+    </div>
+    <br />
+
+    <div class="form-control-wrapper">
+      <%= f.search_field :student_id_eq, :class => 'form-control empty', :autocomplete => "off" %>
+      <div class="floating-label">Student Id </div>
+        <span class="material-input"></span>
+    </div>
+
+    <%= f.submit "Claim", :class => 'btn btn-primary btn-flat' %>
+ <% end %>
+</div>

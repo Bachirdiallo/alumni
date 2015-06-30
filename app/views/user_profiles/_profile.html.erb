@@ -1,0 +1,35 @@
+  <div>
+    <strong>City:</strong>
+    <strong><% if !@user.city.nil? %></strong>
+  <strong> <%= @user.city%></strong>
+    <% else %>
+      N/A
+    <% end %>
+  </div>
+
+  <div>
+    <strong>Country: </strong>
+    <% if !@user.country.nil?%>
+    <strong><%= @user.country%></strong>
+    <% else %>
+      N/A
+    <% end %>
+  </div>
+
+  <div>
+    <strong>Phone: </strong>
+    <% if !@user.phone.nil?%>
+      <strong><%= @user.phone%></strong>
+    <% else %>
+        N/A
+    <% end %>
+  </div>
+
+  <div>
+    <strong>Email: </strong>
+    <% if !@user.email.nil?%>
+      <strong><%= @user.email%></strong>
+    <% else %>
+        N/A
+    <% end %>
+  </div>

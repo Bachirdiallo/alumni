@@ -1,0 +1,86 @@
+<div class="container col-sm-8">
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Jobs</h1>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Job Title</th>
+      <th>Company</th>
+      <th>City</th>
+      <th>Country</th>
+
+      <th>
+        From
+      </th>
+      <th>
+        To
+      </th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <% if job.user_id == current_user.id %>
+        <tr>
+          <td>
+            <% if !job.title.nil?%>
+              <%= job.title %>
+            <% else %>
+              N/A
+            <% end %>
+          </td>
+          <td>
+            <% if !job.company.nil? %>
+                <%= job.company %>
+              <% else %>
+                N/A
+            <% end %>
+          </td>
+          <td>
+            <% if !job.city.nil? %>
+              <%= job.city %>
+              <% else %>
+                N/A
+            <% end %>
+          </td>
+          <td>
+            <% if !job.country.nil? %>
+              <%= job.country %>
+            <% else %>
+                N/A
+            <% end %>
+          </td>
+
+          <td>
+            <% if !job.from.nil? %>
+              <%= job.from.strftime("%B") <<" "<< job.from.strftime("%Y") %>
+              <% else %>
+                N/A
+            <% end %>
+          </td>
+          <td>
+            <% if !job.to.nil? %>
+              <%= job.to.strftime("%B") <<" "<< job.to.strftime("%Y") %>
+              <% else %>
+                N/A
+            <% end %>
+          </td>
+
+          <td><%= link_to edit_job_path(job) do %><span class="glyphicon glyphicon-edit"></span> <% end %> </td>
+          <td><%= link_to job, method: :delete, data: { confirm: 'Are you sure?' } do %> <span class="glyphicon glyphicon-remove"></span><% end %> </td>
+        </tr>
+        <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job', new_job_path, :class => 'btn btn-primary btn-flat' %>
+</div>

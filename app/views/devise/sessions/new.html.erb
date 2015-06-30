@@ -1,0 +1,32 @@
+<div class="container col-sm-8">
+
+    <h2>Log in</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-control-wrapper" >
+      <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">id </div>
+        <span class="material-input"></span>
+    </div>
+
+    <div class="form-control-wrapper" >
+      <%= f.password_field :password, autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">password </div>
+        <span class="material-input"></span>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="checkbox">
+        <spn class="checkbox-material"
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+
+    <div class="">
+      <%= f.submit "Log in", :class => 'btn btn-primary btn-flat' %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+</div>

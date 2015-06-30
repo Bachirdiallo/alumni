@@ -1,0 +1,28 @@
+<%= form_for(@programme) do |f| %>
+  <% if @programme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@programme.errors.count, "error") %> prohibited this programme from being saved:</h2>
+
+      <ul>
+      <% @programme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-control-wrapper" >
+    <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+    <div class="floating-label">Name</div>
+      <span class="material-input"></span>
+  </div>
+
+  <div class="dropdown" >
+    <%= f.select :faculty_id, options_for_select(  Faculty.all.collect {|p| [p.name,p.id] }) %>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", :class => 'btn btn-primary btn-flat'%>
+  </div>
+<% end %>

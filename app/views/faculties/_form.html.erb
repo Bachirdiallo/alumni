@@ -1,0 +1,28 @@
+<%= form_for(@faculty) do |f| %>
+  <% if @faculty.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@faculty.errors.count, "error") %> prohibited this faculty from being saved:</h2>
+
+      <ul>
+      <% @faculty.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="dropdown" >
+    <%= f.select :campu_id, options_for_select(  Campu.all.collect {|p| [p.name,p.id] }) %>
+
+  </div>
+
+  <div class="form-control-wrapper" >
+    <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+    <div class="floating-label">Name </div>
+      <span class="material-input"></span>
+  </div>
+  <div >
+    <%= f.submit "Create Faculty", :class => 'btn btn-primary btn-flat' %>
+
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="container center well" style="width: 65%">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <% if !@batch.month.nil? %>
+    <%= @batch.month.strftime("%B") %>
+  <% end %>
+
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <% if !@batch.year.nil? %>
+  <%= @batch.year.strftime("%Y") %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_batch_path(@batch), :class => 'btn btn-primary btn-flat' %>
+<%= link_to 'Back', batches_path, :class => 'btn btn-primary btn-flat' %>
+</div>

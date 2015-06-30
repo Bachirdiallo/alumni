@@ -1,0 +1,13 @@
+
+<div class="container center well" style="width: 65%">
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @programme.name %>
+</p>
+
+<%= link_to 'Edit', edit_programme_path(@programme), :class => 'btn btn-primary btn-flat' %> 
+<%= link_to 'Back', programmes_path, :class => 'btn btn-primary btn-flat' %>
+</div>

@@ -1,0 +1,19 @@
+<div>
+  <%= search_form_for rl: user_profile_path(@user) @q do |f| %>
+    <div class="form-control-wrapper">
+      <%= f.search_field :user_name_cont, :class => 'form-control empty', :autocomplete => "off" %>
+      <div class="floating-label">Name </div>
+        <span class="material-input"></span>
+    </div>
+    <br />
+
+    <div class="dropdown" >
+      Class:
+      <%= f.select :batch_id_eq, options_for_select([""]+Batch.all.map{|p| [ p.month.strftime("%B") << " " << p.year.strftime("%Y"), p.id ]}, {:include_blank => true}) %>
+          Programme: <%= f.select :programme_id_eq, options_for_select([""]+Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
+    </div>
+    <br />
+      <%= f.submit "Search", :action => "find_users", :class => 'btn btn-primary btn-flat' %>
+    <br />
+  <% end %>
+</div>

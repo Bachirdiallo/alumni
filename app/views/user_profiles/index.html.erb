@@ -1,0 +1,48 @@
+<div class="container col-sm-8" >
+  <p id="notice"><%= notice %></p>
+    <div class="contianer col-sm-5">
+      <%#= render 'profile'%>
+
+        <h4>Job History</h4>
+        <hr>
+        <% @jobs.each do |job|%>
+          <% if job.user_id == current_user.id %>
+            <% if job.current == "1"%>
+              <p>
+                <%= job.city %>
+                <%= job.country %>
+                <strong>[current]</strong>
+              </p>
+              <% else %>
+              <%= job.city %>
+              <%= job.country %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <hr>
+        <h3>Set Privacy Options</h3>
+        <%= render 'privacy_options'%>
+    </div>
+
+    <div class="container col-sm-7">
+        <p><%= link_to edit_user_profile_path(@user.id), :class => 'btn btn-primary btn btn-md' do %> <span class="glyphicon glyphicon-edit"> </span> <% end %> </p>
+        <h3>Basic profile info</h3>
+
+
+        <div style="width: 200px; height: 200px">
+
+          <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded') if @user.avatar? %>
+        </div>
+
+        <%= render 'profile_photo'%>
+        <%= render 'profile'%>
+        <br/>
+
+        <div style="height: 300px">
+            <%#= render 'static_map'%>
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=13&markers=#{@user.city}%2C#{@user.country}" %>
+        </div>
+    </div>
+    <%#= link_to 'Edit Profile',  new_user_profile_path %>
+</div>

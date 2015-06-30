@@ -1,0 +1,22 @@
+.pad{
+  padding: 5px;
+}
+
+.login{
+  width: 30%;
+  height: 20%;
+  background: #fff
+}
+
+.create_admin{
+  width: 50%;
+  height: 30%;
+}
+
+.main {
+  width: 30%;
+  height: auto;
+  background: #ccc
+}
+
+#map-canvas { height: 300px; margin: 0; padding: 0; background: #CCC}

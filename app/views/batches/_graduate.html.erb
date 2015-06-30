@@ -1,0 +1,13 @@
+<%= form_tag url:action_import_batches_path, multipart: true do %>
+    <table>
+      <tr>
+        <th>
+          <%= file_field_tag :file%>
+        </th>
+        <th>
+          <%= submit_tag "Import", :class => 'btn btn-primary btn-flat' %>
+        </th>
+      </tr>
+    </table>
+<% end %>
+<br>

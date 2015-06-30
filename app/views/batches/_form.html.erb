@@ -1,0 +1,28 @@
+<%= semantic_form_for @batch do |f| %>
+  <% if @batch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
+
+      <ul>
+      <% @batch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+      <%= f.input :month, :as => :date_select, :discard_year => true,  :order => [:month, :year], :discard_day => true %>
+
+  </div>
+
+  <div class="form-control-wrapper">
+    <%= f.input :year, :as => :date_select, :start_year => 1995,  :end_year => Date.current.year, :discard_month => true, :discard_day => true %>
+    <div class="floating-label">Year</div>
+      <span class="material-input"></span>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary btn-flat' %>
+  </div>
+<% end %>

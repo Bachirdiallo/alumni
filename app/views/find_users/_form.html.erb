@@ -1,0 +1,13 @@
+<%= search_form_for @users, url:find_users_path do |f| %>
+  <div class="row">
+    Campus: <%= f.select :campu_id_eq, options_for_select([""]+Campu.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
+    Faculty: <%= f.select :faculty_id_eq, options_for_select([""]+Faculty.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
+  </div>
+  <br>
+  <div class="row">
+    Programme: <%= f.select :programme_id_eq, options_for_select([""]+Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
+    Batch:<%= f.select :batch_id_eq, options_for_select([""]+Batch.all.map{|p| [ p.month.strftime("%B") << " " << p.year.strftime("%Y"), p.id ]}, {:include_blank => true}) %>
+
+    <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
+  </div>
+<% end %>
