@@ -15,6 +15,4 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   PRIVACY_OPTIONS = Array["Everyone", "Only Me", "My Batch", "My Programme"]
-
-#  geocoded_by :current_sign_in_ip, :latitude => :lat, :longitude => :lon
 end

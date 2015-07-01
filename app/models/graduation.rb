@@ -4,6 +4,4 @@ class Graduation < ActiveRecord::Base
   belongs_to :programme
   belongs_to :faculty
   belongs_to :campus
-
-
 end

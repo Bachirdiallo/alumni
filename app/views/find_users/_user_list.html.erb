@@ -1,0 +1,51 @@
+
+<div id="result">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th >Name</th>
+        <th ></th>
+        <th ></th>
+        <th >Position</th>
+        <th >Company</th>
+        <th >Batch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |search_result| %>
+        <tr>
+          <% if search_result.is_graduate %>
+              <td><%= search_result.name%></td>
+              <td><%= search_result.city%></td>
+              <td><%= search_result.country%></td>
+              <%if search_result.job_privacy_otpion == "Everyone"%>
+                  <% search_result.jobs.each do |job|%>
+                      <% if job.current == "1" %>
+                        <td><%= job.title %></td>
+                        <td><%= job.company %></td>
+                      <% end %>
+                  <% end %>
+              <%elsif  search_result.job_privacy_otpion == "My Batch"%>
+                  <% search_result.jobs.each do |job|%>
+                    <% if current_user.batch.name == job.batch.name %>
+                      <td><%= job.title %></td>
+                      <td><%= job.company %></td>
+                    <% end %>
+                  <% end %>
+              <%elsif  search_result.job_privacy_otpion == "My Programme"%>
+                  <% search_result.jobs.each do |job|%>
+                    <% if current_user.programme.name == job.programme.name %>
+                      <td><%= job.title %></td>
+                      <td><%= job.company %></td>
+                    <% end %>
+                  <% end %>
+              <%elsif  search_result.job_privacy_otpion == "Only Me"%>
+                  <td>N/A</td>
+                  <td>N/A</td>
+            <%end%>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

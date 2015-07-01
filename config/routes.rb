@@ -25,7 +25,7 @@ root to: 'pages#index'
 
   resources :find_users do
     collection do
-      get  :locate_users
+      get :file_content
     end
   end
 

@@ -1,25 +1,15 @@
 class FindUsersController < ApplicationController
-  before_action :set_find_user, only: [:show, :edit, :update, :destroy, :locate_users]
+  before_action :set_find_user, only: [:show, :edit, :update, :destroy]
 
   # GET /find_users
   # GET /find_users.json
   def index
-    @users = Graduation.search(params[:q])
-    @search_results = @users.result
-
-    if params[:search].present?
-      @locations = User.near(current_user.current_sign_in_ip, 50, :order => :distance)
-    else
-      @locations = User.all
-    end
+    @search_results = User.search(params[:q])
+    @users = @search_results.result
   end
 
-  def locate_users
-    if params[:search].present?
-      @locations = User.near(current_user.current_sign_in_ip, 50, :order => :distance)
-    else
-      @locations = User.all
-    end
+  def file_content
+    @users = User.where(city: params[:city])
   end
 
   private

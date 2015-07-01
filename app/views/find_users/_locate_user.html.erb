@@ -2,20 +2,14 @@
 <html>
 
   <head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
   </head>
   <body>
-    <button onclick="getLocation()">Try It</button>
+    <button onclick="getLocation()">Find nearby users</button>
 
-    <p id="demo"></p>
-    <div style="width: 400px; height: 400px" id="m">
-
-    </div>
-
-
+    <p id="find"></p>
     <script>
-        var x = document.getElementById("demo");
+        var x = document.getElementById("find");
         var locality = "";
         var country = "";
 
@@ -53,33 +47,27 @@
         }
 
         function printAddress(lat, lng){
-
           var geocoder = new google.maps.Geocoder();
           var location = new google.maps.LatLng(lat, lng);
 
-            // find out info about the location
-
-            geocoder.geocode({location }, function (results, status) {
-
-            if(status == google.maps.GeocoderStatus.OK) {
-
-              if(results[0]) {
-                for (i = 0; i< results[0]["address_components"].length; i++){
-                  //console.log(results[0]["address_components"][i]);
-                  if (results[0]["address_components"][i]["types"].indexOf("locality") > -1){
-                    locality = results[0]["address_components"][i]["long_name"]
-                  }
-                  if (results[0]["address_components"][i]["types"].indexOf("country") > -1){
-                    country = results[0]["address_components"][i]["long_name"]
-                  }
+          geocoder.geocode({location }, function (results, status) {
+          if(status == google.maps.GeocoderStatus.OK) {
+            if(results[0]) {
+              for (i = 0; i< results[0]["address_components"].length; i++){
+                //console.log(results[0]["address_components"][i]);
+                if (results[0]["address_components"][i]["types"].indexOf("locality") > -1){
+                  locality = results[0]["address_components"][i]["long_name"]
                 }
-                //address = results[1].formatted_address;
-                //window.alert(address);
+                if (results[0]["address_components"][i]["types"].indexOf("country") > -1){
+                  country = results[0]["address_components"][i]["long_name"]
+                }
+              }
+              var address = {'city': locality, 'country': country}
+              $.ajax({
+                url: "<%= file_content_find_users_path %>",
+                data: {'city': locality, 'country': country}
+              });
 
-                $.ajax({
-                  url: "<%= user_profiles_path %>",
-                  data: {city: locality, country: country}
-                });
               } else {
                 error('Google did not return any results.');
               }
@@ -88,30 +76,6 @@
             }
           });
         }
-
-      /*  function convert_LatLng_To_Address(lat, lng, callback){
-          var url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat +","+ lng + "&sensor=true";
-          jQuery.getJSON(url, function(json){
-            create_Address(json, callback);
-          });
-        }
-
-        function create_Address(json, callback){
-          if(!check_status(json))
-            return 0;
-          address['country'] = google_getCountry(json);
-          address['province'] = google_getProvince(json);
-          address['city'] = google_getCity(json);
-          callback();
-        }
-
-        function check_status(json){
-          if(json["status"]=="OK") return true;
-          return false;
-        }*/
     </script>
-
-
-
   </body>
 </html>
