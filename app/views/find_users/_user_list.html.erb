@@ -27,7 +27,7 @@
                   <% end %>
               <%elsif  search_result.job_privacy_otpion == "My Batch"%>
                   <% search_result.jobs.each do |job|%>
-                    <% if current_user.batch.name == job.batch.name %>
+                    <% if current_user.graduations.batch.name == job.graduations.batch.name %>
                       <td><%= job.title %></td>
                       <td><%= job.company %></td>
                     <% end %>

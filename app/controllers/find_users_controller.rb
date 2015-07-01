@@ -4,18 +4,19 @@ class FindUsersController < ApplicationController
   # GET /find_users
   # GET /find_users.json
   def index
-    @search_results = User.search(params[:q])
-    @users = @search_results.result
+      @search_results = User.ransack(params[:q])
+      @users = @search_results.result.includes(:graduations)
   end
 
   def file_content
-    @users = User.where(city: params[:city])
+    @users = User.where(city: params[:city], country: params[:country]).includes(:graduations)
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_find_user
-      @user = Graduation.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

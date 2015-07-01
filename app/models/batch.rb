@@ -1,5 +1,5 @@
 class Batch < ActiveRecord::Base
-  has_many :graduations, dependent: :destroy
+has_many :graduations, dependent: :destroy
 
   include ::Importable
    IMPORT_ENABLED = {
