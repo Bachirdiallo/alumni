@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629054859) do
+ActiveRecord::Schema.define(version: 20150624042300) do
 
   create_table "batches", force: :cascade do |t|
     t.datetime "month"
@@ -104,9 +104,6 @@ ActiveRecord::Schema.define(version: 20150629054859) do
     t.string   "job_privacy_option"
     t.string   "social_privacy_option"
     t.string   "phone"
-    t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

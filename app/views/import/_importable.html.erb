@@ -1,1 +1,44 @@
-sdfisdof sdfjsd lf
+<%= semantic_form_for @klass.name.to_sym, :url =>  importing_import_index_path, :id => "attributes" do |f| %>
+<%= hidden_field_tag :file_path, @file_path%>
+<div class="modal-body">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="50%">Attribute</th>
+        <th width="50%"><center>File Attributes</center></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @klass::IMPORT_ENABLED.each do |key, value| %>
+        <tr>
+          <td><%= value[:exact] %></td>
+          <% if !@attributes_dropdown.nil? %>
+            <td><%= f.input key.to_sym, as: :select, :label => false, collection: @attributes_dropdown.each_with_index.map{|(k, v), i | [k, v = i]} %></td>
+            <% if !params[:klass].present? %>
+              <%= hidden_field_tag :klass, klass %>
+            <% else %>
+              <%= hidden_field_tag :klass, @klass %>
+            <% end %>
+          <% else %>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="modal-footer">
+  <%= f.actions do %>
+    <div class="btn-group">
+      <%=  f.submit "Import", :class => 'btn btn-primary' %>
+      <button type="button" class="btn btn-white" id="cancel_import">Cancel</button>
+    </div>
+  <% end %>
+</div>
+<% end %>
+
+<%= content_for :javascript do %>
+<script type="text/javascript">
+
+</script>
+<% end %>

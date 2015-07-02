@@ -18,8 +18,7 @@
   </div>
 
   <div class="dropdown" >
-    <%= f.select :faculty_id, options_for_select(  Faculty.all.collect {|p| [p.name,p.id] }) %>
-
+    <%= f.select :faculty_id, options_for_select(Faculty.all.collect {|p| [p.name,p.id] }) %>
   </div>
 
   <div class="actions">

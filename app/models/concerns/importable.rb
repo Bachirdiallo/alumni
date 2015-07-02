@@ -29,9 +29,10 @@ module Importable
           attr_hash.each do |k, v|
             if !mapping[k].nil? and !mapping[k].blank?
               if !data.row(entry)[mapping[k].to_i].nil? && !data.row(entry)[mapping[k].to_i].blank?
-                if k == "campuse_id".to_sym
-                  sow = Campus.find_or_create_by(:name => data.row(entry)[mapping[k].to_i].upcase)
-                  import_data[k] = sow.id
+                if k == "batch_id".to_sym
+                  the_date = data.row(entry)[mapping[k].to_i]
+                  batch = Batch.find_or_create_by(:year => Date.strptime(the_date, "%Y-%m").year, :month => Date.strptime(the_date, "%Y-%m").month)
+                  import_data[k] = batch.id
                 else
                   import_data[k] = data.row(entry)[mapping[k].to_i]
                 end

@@ -1,11 +1,11 @@
 <%= search_form_for @search_results, url: find_users_path do |f| %>
-<div class="row">
-  Campus: <%= f.select :graduations_campu_id_eq, [""]+Campu.all.map{|p| [p.name, p.id]}%>
-  Faculty: <%= f.select :graduations_faculty_id_eq, [""]+Faculty.all.map{|p| [p.name, p.id]}%>
-</div>
-<br>
-<div class="row">
-  Programme: <%= f.select :graduations_programme_id_eq,[""]+Programme.all.map{|p| [p.name, p.id]} %>
-  Batch:<%= f.select :graduations_batch_id_eq, [""]+Batch.all.map{|p| [ p.month.strftime("%B") << " " << p.year.strftime("%Y"), p.id ]} %>
-  <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
+  <div class="row">
+    Campus: <%= f.select :graduations_campu_id_eq, [""]+Campu.all.map{|p| [p.name, p.id]}%>
+    Faculty: <%= f.select :graduations_faculty_id_eq, [""]+Faculty.all.map{|p| [p.name, p.id]}%>
+  </div>
+  <br>
+  <div class="row">
+    Programme: <%= f.select :graduations_programme_id_eq,[""]+Programme.all.map{|p| [p.name, p.id]} %>
+    Batch:<%= f.select :graduations_batch_id_eq, [""]+Batch.all.map{|p| [ p.month.strftime("%B") << " " << p.year.strftime("%Y"), p.id ]} %>
+    <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
 <% end %>
