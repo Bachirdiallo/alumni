@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   #validates :student_id, :name, presence: true, allow_blank: false
   #validates_uniqueness_of :student_id
-  validates :id_number, presence: true, allow_blank: true
+  #validates :id_number, presence: true, allow_blank: true
 
   has_many :graduations, dependent: :destroy
   has_many :jobs, dependent: :destroy

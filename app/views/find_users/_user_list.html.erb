@@ -15,6 +15,7 @@
       <% @users.each do |search_result| %>
         <tr>
           <% if search_result.is_graduate %>
+            <% if search_result.id != current_user.id %>
               <td><%= search_result.name%></td>
               <td><%= search_result.city%></td>
               <td><%= search_result.country%></td>
@@ -43,6 +44,7 @@
                   <td>N/A</td>
                   <td>N/A</td>
             <%end%>
+          <% end %>
           </tr>
         <% end %>
       <% end %>

@@ -24,12 +24,12 @@
         <tr>
           <td>
             <% if !batch.month.nil? %>
-              <%= batch.month.strftime("%B") %>
+              <%= batch.month%>
             <% end %>
           </td>
           <td>
             <% if !batch.year.nil? %>
-                <%= batch.year.strftime("%Y") %>
+                <%= batch.year %>
             <% end %>
           </td>
           <td><%= link_to 'Edit', edit_batch_path(batch) %></td>

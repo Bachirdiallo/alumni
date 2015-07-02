@@ -31,8 +31,28 @@ module Importable
               if !data.row(entry)[mapping[k].to_i].nil? && !data.row(entry)[mapping[k].to_i].blank?
                 if k == "batch_id".to_sym
                   the_date = data.row(entry)[mapping[k].to_i]
-                  batch = Batch.find_or_create_by(:year => Date.strptime(the_date, "%Y-%m").year, :month => Date.strptime(the_date, "%Y-%m").month)
+                  the_month =  Date.strptime(the_date, '%Y-%m').month
+                  the_year = Date.strptime(the_date, '%Y-%m').year
+                  batch = Batch.find_or_create_by(:month => the_month, :year => the_year)
                   import_data[k] = batch.id
+                else
+                  import_data[k] = data.row(entry)[mapping[k].to_i]
+                end
+                if k == "programme_id".to_sym
+                  programme = Programme.find_or_create_by(:name => data.row(entry)[mapping[k].to_i])
+                  import_data[k] = programme.id
+                else
+                  import_data[k] = data.row(entry)[mapping[k].to_i]
+                end
+                if k == "campu_id".to_sym
+                  campus = Campu.find_or_create_by(:name => data.row(entry)[mapping[k].to_i])
+                  import_data[k] = campus.id
+                else
+                  import_data[k] = data.row(entry)[mapping[k].to_i]
+                end
+                if k == "faculty_id".to_sym
+                  faculty = Faculty.find_or_create_by(:name => data.row(entry)[mapping[k].to_i])
+                  import_data[k] = faculty.id
                 else
                   import_data[k] = data.row(entry)[mapping[k].to_i]
                 end

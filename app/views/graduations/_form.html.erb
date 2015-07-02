@@ -6,13 +6,12 @@
         <span class="material-input"></span>
     </div>
     <br />
-
     <div class="dropdown" >
       Class:
-      <%= f.select :batch_id_eq, options_for_select([""]+Batch.all.map{|p| [ p.month.strftime("%B") << " " << p.year.strftime("%Y"), p.id ]}, {:include_blank => true}) %>
-          Programme: <%= f.select :programme_id_eq, options_for_select([""]+Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
-          <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
-      </div>
+      <%= f.select :batch_id_eq, options_for_select(["--Select Class--"]+Batch.all.map{|p| [ p.month, p.year, p.id ]}, {:include_blank => true}) %>
+          Programme: <%= f.select :programme_id_eq, options_for_select(["--Select Programme--"]+Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
+      <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
+    </div>
       <br>
   <% end %>
 </div>

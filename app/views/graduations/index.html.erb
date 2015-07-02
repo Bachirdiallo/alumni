@@ -23,11 +23,10 @@
                 N/A
             <% end %>
           </td>
-
           <td>
             <%if !graduation.batch.nil? %>
-              <%= graduation.batch.month.strftime("%B") %>
-              <%= graduation.batch.year.strftime("%Y") %>
+              <%= graduation.batch.month %>
+              <%= graduation.batch.year %>
             <% else %>
                 N/A
             <% end %>

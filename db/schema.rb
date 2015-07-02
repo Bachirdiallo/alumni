@@ -14,100 +14,100 @@
 ActiveRecord::Schema.define(version: 20150624042300) do
 
   create_table "batches", force: :cascade do |t|
-    t.datetime "month"
-    t.datetime "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "month",      limit: 4
+    t.integer  "year",       limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "campus", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "faculties", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "campu_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.integer  "campu_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "faculties", ["campu_id"], name: "index_faculties_on_campu_id"
+  add_index "faculties", ["campu_id"], name: "index_faculties_on_campu_id", using: :btree
 
   create_table "graduations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "batch_id"
-    t.integer  "programme_id"
-    t.integer  "campu_id"
-    t.integer  "faculty_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "user_id",      limit: 4
+    t.integer  "batch_id",     limit: 4
+    t.integer  "programme_id", limit: 4
+    t.integer  "campu_id",     limit: 4
+    t.integer  "faculty_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "graduations", ["batch_id"], name: "index_graduations_on_batch_id"
-  add_index "graduations", ["campu_id"], name: "index_graduations_on_campu_id"
-  add_index "graduations", ["faculty_id"], name: "index_graduations_on_faculty_id"
-  add_index "graduations", ["programme_id"], name: "index_graduations_on_programme_id"
-  add_index "graduations", ["user_id"], name: "index_graduations_on_user_id"
+  add_index "graduations", ["batch_id"], name: "index_graduations_on_batch_id", using: :btree
+  add_index "graduations", ["campu_id"], name: "index_graduations_on_campu_id", using: :btree
+  add_index "graduations", ["faculty_id"], name: "index_graduations_on_faculty_id", using: :btree
+  add_index "graduations", ["programme_id"], name: "index_graduations_on_programme_id", using: :btree
+  add_index "graduations", ["user_id"], name: "index_graduations_on_user_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
-    t.string   "title"
-    t.string   "company"
-    t.string   "city"
-    t.string   "country"
-    t.string   "current"
+    t.string   "title",      limit: 255
+    t.string   "company",    limit: 255
+    t.string   "city",       limit: 255
+    t.string   "country",    limit: 255
+    t.string   "current",    limit: 255
     t.datetime "from"
     t.datetime "to"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "programmes", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "faculty_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",       limit: 255
+    t.integer  "faculty_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "programmes", ["faculty_id"], name: "index_programmes_on_faculty_id"
+  add_index "programmes", ["faculty_id"], name: "index_programmes_on_faculty_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                   default: "",   null: false
-    t.string   "encrypted_password",      default: "",   null: false
-    t.string   "reset_password_token"
+    t.string   "email",                   limit: 255, default: "",   null: false
+    t.string   "encrypted_password",      limit: 255, default: "",   null: false
+    t.string   "reset_password_token",    limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",           default: 0,    null: false
+    t.integer  "sign_in_count",           limit: 4,   default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "name"
-    t.string   "student_id"
-    t.string   "city"
-    t.string   "country"
-    t.boolean  "is_graduate",             default: true
-    t.string   "id_number"
-    t.string   "avatar"
-    t.string   "location_privacy_otpion"
-    t.string   "content_privacy_otpion"
-    t.string   "job_privacy_otpion"
-    t.string   "social_privacy_otpion"
-    t.string   "location_privacy_option"
-    t.string   "content_privacy_option"
-    t.string   "job_privacy_option"
-    t.string   "social_privacy_option"
-    t.string   "phone"
+    t.string   "current_sign_in_ip",      limit: 255
+    t.string   "last_sign_in_ip",         limit: 255
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.string   "name",                    limit: 255
+    t.string   "student_id",              limit: 255
+    t.string   "city",                    limit: 255
+    t.string   "country",                 limit: 255
+    t.boolean  "is_graduate",             limit: 1,   default: true
+    t.string   "id_number",               limit: 255
+    t.string   "avatar",                  limit: 255
+    t.string   "location_privacy_otpion", limit: 255
+    t.string   "content_privacy_otpion",  limit: 255
+    t.string   "job_privacy_otpion",      limit: 255
+    t.string   "social_privacy_otpion",   limit: 255
+    t.string   "location_privacy_option", limit: 255
+    t.string   "content_privacy_option",  limit: 255
+    t.string   "job_privacy_option",      limit: 255
+    t.string   "social_privacy_option",   limit: 255
+    t.string   "phone",                   limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["id_number"], name: "index_users_on_id_number", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["id_number"], name: "index_users_on_id_number", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

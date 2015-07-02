@@ -12,8 +12,7 @@
   <% end %>
 
   <div>
-      <%= f.input :month, :as => :date_select, :discard_year => true,  :order => [:month, :year], :discard_day => true %>
-
+      <%= f.input :month, as: :select, :collection => Batch::MONTHS.first(Batch::MONTHS.size()), :class => 'form-control' %>
   </div>
 
   <div class="form-control-wrapper">
