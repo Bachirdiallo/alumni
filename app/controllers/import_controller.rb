@@ -26,7 +26,7 @@ class ImportController < ApplicationController
 
     header_attributes = @file_uploaded.row(1)
     @attributes_dropdown = Hash[[header_attributes].transpose].to_hash
-    puts  @attributes_dropdown
+    puts "==========#{header_attributes}"
 
     respond_to do |format|
       format.html { redirect_to :back}
