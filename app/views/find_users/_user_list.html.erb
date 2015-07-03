@@ -1,4 +1,3 @@
-
 <div id="result">
   <table class="table table-striped table-hover table-bordered">
     <thead>
@@ -16,34 +15,95 @@
         <tr>
           <% if search_result.is_graduate %>
             <% if search_result.id != current_user.id %>
-              <td><%= search_result.name%></td>
-              <td><%= search_result.city%></td>
-              <td><%= search_result.country%></td>
-              <%if search_result.job_privacy_otpion == "Everyone"%>
-                  <% search_result.jobs.each do |job|%>
-                      <% if job.current == "1" %>
-                        <td><%= job.title %></td>
-                        <td><%= job.company %></td>
+                <% if search_result.location_privacy_option != "Only Me" %>
+                  <% if search_result.location_privacy_option == "My Batch" %>
+                    <% if (current_user.graduations.map{|x| x.batch} & search_result.graduations.map{|s| s.batch})%>
+                        <td><%= search_result.name%></td>
+                        <td><%= search_result.city%></td>
+                        <td><%= search_result.country%></td>
+                        <% if search_result.job_privacy_otpion != "Only Me" %>
+                            <%if search_result.job_privacy_otpion == "Everyone"%>
+                                <% search_result.jobs.each do |job|%>
+                                  <% if job.current == "1" %>
+                                    <td><%= job.title %></td>
+                                    <td><%= job.company %></td>
+                                  <% end %>
+                                <% end %>
+                            <%elsif  search_result.job_privacy_otpion == "My Batch"%>
+                                <% search_result.jobs.each do |job|%>
+                                  <% if (current_user.graduations.map { |b| b.batch}&job.graduations.map { |s| s.batch })%>
+                                    <td><%= job.title %></td>
+                                    <td><%= job.company %></td>
+                                  <% end %>
+                                <% end %>
+                            <%elsif  search_result.job_privacy_otpion == "My Programme"%>
+                                  <% search_result.jobs.each do |job|%>
+                                    <% if current_user.programme.name == job.programme.name %>
+                                      <td><%= job.title %></td>
+                                      <td><%= job.company %></td>
+                                    <% end %>
+                                  <% end %>
+                            <%end%>
+                        <% end %>
+                <% elsif search_result.location_privacy_option == "My Programme"%>
+                    <% if (current_user.graduations.programme.name == job.graduations.programme.name)%>
+                        <td><%= search_result.name%></td>
+                        <td><%= search_result.city%></td>
+                        <td><%= search_result.country%></td>
+                        <% if !search_result.job_privacy_otpion != "Only Me"%>
+                          <%if search_result.job_privacy_otpion == "Everyone"%>
+                              <% search_result.jobs.each do |job|%>
+                                <% if job.current == "1" %>
+                                  <td><%= job.title %></td>
+                                  <td><%= job.company %></td>
+                                <% end %>
+                              <% end %>
+                              <%elsif  search_result.job_privacy_otpion == "My Batch"%>
+                                  <% search_result.jobs.each do |job|%>
+                                    <% if current_user.graduations.batch.name == job.graduations.batch.name %>
+                                      <td><%= job.title %></td>
+                                      <td><%= job.company %></td>
+                                    <% end %>
+                                  <% end %>
+                              <%elsif  search_result.job_privacy_otpion == "My Programme"%>
+                                  <% search_result.jobs.each do |job|%>
+                                    <% if current_user.programme.name == job.programme.name %>
+                                      <td><%= job.title %></td>
+                                      <td><%= job.company %></td>
+                                    <% end %>
+                                  <% end %>
+                              <%end%>
+                          <% end %>
+                    <% end %>
+                  <% else %>
+                  <td><%= search_result.name%></td>
+                  <td><%= search_result.city%></td>
+                  <td><%= search_result.country%></td>
+                  <%if search_result.job_privacy_otpion == "Everyone"%>
+                      <% search_result.jobs.each do |job|%>
+                        <% if job.current == "1" %>
+                          <td><%= job.title %></td>
+                          <td><%= job.company %></td>
+                        <% end %>
                       <% end %>
+                  <%elsif  search_result.job_privacy_otpion == "My Batch"%>
+                      <% search_result.jobs.each do |job|%>
+                        <% if current_user.graduations.batch.name == job.graduations.batch.name %>
+                          <td><%= job.title %></td>
+                          <td><%= job.company %></td>
+                        <% end %>
+                      <% end %>
+                  <%elsif  search_result.job_privacy_otpion == "My Programme"%>
+                      <% search_result.jobs.each do |job|%>
+                        <% if current_user.programme.name == job.programme.name %>
+                          <td><%= job.title %></td>
+                          <td><%= job.company %></td>
+                        <% end %>
+                      <% end %>
+                <%end%>
                   <% end %>
-              <%elsif  search_result.job_privacy_otpion == "My Batch"%>
-                  <% search_result.jobs.each do |job|%>
-                    <% if current_user.graduations.batch.name == job.graduations.batch.name %>
-                      <td><%= job.title %></td>
-                      <td><%= job.company %></td>
-                    <% end %>
-                  <% end %>
-              <%elsif  search_result.job_privacy_otpion == "My Programme"%>
-                  <% search_result.jobs.each do |job|%>
-                    <% if current_user.programme.name == job.programme.name %>
-                      <td><%= job.title %></td>
-                      <td><%= job.company %></td>
-                    <% end %>
-                  <% end %>
-              <%elsif  search_result.job_privacy_otpion == "Only Me"%>
-                  <td>N/A</td>
-                  <td>N/A</td>
-            <%end%>
+               <% end %>
+             <% end %>
           <% end %>
           </tr>
         <% end %>
