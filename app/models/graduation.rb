@@ -7,7 +7,7 @@ class Graduation < ActiveRecord::Base
 
   include ::Importable
    IMPORT_ENABLED = {
-     :user_id => {exact: "student Id", is_identifier: false},
+     :user_id => {exact: "Student Id", is_identifier: true},
      :batch_id => {exact: "Batch", is_identifier: false},
      :programme_id => {exact: "Programme", is_identifier: false},
      :campu_id => {exact: "Campus", is_identifier: false},

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624042300) do
+ActiveRecord::Schema.define(version: 20150706054730) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "month",      limit: 4
@@ -95,10 +95,6 @@ ActiveRecord::Schema.define(version: 20150624042300) do
     t.boolean  "is_graduate",             limit: 1,   default: true
     t.string   "id_number",               limit: 255
     t.string   "avatar",                  limit: 255
-    t.string   "location_privacy_otpion", limit: 255
-    t.string   "content_privacy_otpion",  limit: 255
-    t.string   "job_privacy_otpion",      limit: 255
-    t.string   "social_privacy_otpion",   limit: 255
     t.string   "location_privacy_option", limit: 255
     t.string   "content_privacy_option",  limit: 255
     t.string   "job_privacy_option",      limit: 255

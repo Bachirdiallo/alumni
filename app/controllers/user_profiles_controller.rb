@@ -1,5 +1,5 @@
 class UserProfilesController < ApplicationController
-  before_action :set_user_profile, only: [:show, :edit, :update, :destroy, :upload_profile_picture, :find_users]
+  before_action :set_user_profile, only: [:show, :edit, :update, :destroy, :upload_profile_picture]
 
   # GET /user_profiles
   # GET /user_profiles.json
@@ -19,7 +19,7 @@ class UserProfilesController < ApplicationController
   end
 
   #find users
-  def find_users
+  def view_profile
    @serch = User.search(params[:q])
   #  @result = @serch.result
   end
