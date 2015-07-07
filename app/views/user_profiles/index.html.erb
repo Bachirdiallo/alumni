@@ -2,11 +2,25 @@
   <p id="notice"><%= notice %></p>
     <div class="contianer col-sm-5">
 
-      <%= @user.name%>
+     <h3><%= @user.name%></h3>
+      <h4>Job History</h4>
+      <hr>
+      <% @jobs.each do |job|%>
+        <% if job.user_id == current_user.id %>
+          <% if job.current == "1"%>
+            <p>
+              <%= job.city %>
+              <%= job.country %>
+              <strong>[current]</strong>
+            </p>
+            <% else %>
+            <%= job.city %>
+            <%= job.country %>
+          <% end %>
+        <% end %>
+      <% end %>
 
-      <%#= render 'profile'%>
-
-      <%= render 'work_history'%>
+      <hr>
         <h3>Set Privacy Options</h3>
         <%= render 'privacy_options'%>
     </div>
