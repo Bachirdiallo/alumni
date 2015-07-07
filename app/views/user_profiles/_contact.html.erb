@@ -1,0 +1,118 @@
+<h3>Conact</h3>
+<% if @user.contact_privacy_option != "Only Me" %>
+  <%if @user.contact_privacy_option == "My Batch"%>
+      <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
+          <div>
+            <strong>City:</strong>
+            <strong><% if !@user.city.nil? %></strong>
+          <strong> <%= @user.city%></strong>
+            <% else %>
+              N/A
+            <% end %>
+          </div>
+
+          <div>
+            <strong>Country: </strong>
+            <% if !@user.country.nil?%>
+            <strong><%= @user.country%></strong>
+            <% else %>
+              N/A
+            <% end %>
+          </div>
+
+          <div>
+            <strong>Phone: </strong>
+            <% if !@user.phone.nil?%>
+              <strong><%= @user.phone%></strong>
+            <% else %>
+                N/A
+            <% end %>
+          </div>
+
+          <div>
+            <strong>Email: </strong>
+            <% if !@user.email.nil?%>
+              <strong><%= @user.email%></strong>
+            <% else %>
+                N/A
+            <% end %>
+          </div>
+
+      <% end %>
+  <%elsif @user.contact_privacy_option == "My Programme"%>
+    <% if @user.graduations.map { |p| p.programme  }& search_result.graduations.map { |p| p.programme  } %>
+        <div>
+          <strong>City:</strong>
+          <strong><% if !@user.city.nil? %></strong>
+        <strong> <%= @user.city%></strong>
+          <% else %>
+            N/A
+          <% end %>
+        </div>
+
+        <div>
+          <strong>Country: </strong>
+          <% if !@user.country.nil?%>
+          <strong><%= @user.country%></strong>
+          <% else %>
+            N/A
+          <% end %>
+        </div>
+
+        <div>
+          <strong>Phone: </strong>
+          <% if !@user.phone.nil?%>
+            <strong><%= @user.phone%></strong>
+          <% else %>
+              N/A
+          <% end %>
+        </div>
+
+        <div>
+          <strong>Email: </strong>
+          <% if !@user.email.nil?%>
+            <strong><%= @user.email%></strong>
+          <% else %>
+              N/A
+          <% end %>
+        </div>
+
+        <% end %>
+      <%else%>
+          <div>
+            <strong>City:</strong>
+            <strong><% if !@user.city.nil? %></strong>
+          <strong> <%= @user.city%></strong>
+            <% else %>
+              N/A
+            <% end %>
+          </div>
+
+          <div>
+            <strong>Country: </strong>
+            <% if !@user.country.nil?%>
+            <strong><%= @user.country%></strong>
+            <% else %>
+              N/A
+            <% end %>
+          </div>
+
+          <div>
+            <strong>Phone: </strong>
+            <% if !@user.phone.nil?%>
+              <strong><%= @user.phone%></strong>
+            <% else %>
+                N/A
+            <% end %>
+          </div>
+
+          <div>
+            <strong>Email: </strong>
+            <% if !@user.email.nil?%>
+              <strong><%= @user.email%></strong>
+            <% else %>
+                N/A
+            <% end %>
+          </div>
+  <% end %> <!--if contact_privacy_otpion == My Batch -->
+<% end %><!--if social != Only Me -->
