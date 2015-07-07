@@ -4,10 +4,12 @@
 
   <h1>Programmes</h1>
 
-  <table class="table table-striped table-hover">
+  <table  class="table table-striped table-hover table-bordered">
     <thead>
       <tr>
-        <th colspan="3">Programme Name</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
 
@@ -15,9 +17,8 @@
       <% @programmes.each do |programme| %>
         <tr>
           <td><%= programme.name %></td>
-
-          <td><%= link_to 'Edit', edit_programme_path(programme) %></td>
-          <td><%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to edit_programme_path(programme) do %><span class="glyphicon glyphicon-edit"></span> <% end %></td>
+          <td><%= link_to programme, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-remove"></span> <% end %></td>
         </tr>
       <% end %>
     </tbody>
