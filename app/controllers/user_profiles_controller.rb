@@ -6,6 +6,7 @@ class UserProfilesController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @jobs = Job.all
+    @user1 = User.find_by_id(params[:user_profile_id])
   end
 
   # GET /user_profiles/1
@@ -20,8 +21,7 @@ class UserProfilesController < ApplicationController
 
   #find users
   def view_profile
-   @serch = User.search(params[:q])
-  #  @result = @serch.result
+   @user = User.find_by_id(params[:user_profile_id])
   end
 
   # GET /user_profiles/1/edit

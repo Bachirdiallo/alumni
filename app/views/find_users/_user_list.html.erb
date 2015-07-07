@@ -106,7 +106,7 @@
                                   <% if u.current == "1" %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", view_profile_user_profiles_path%></td>
+                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)  %></td>
                                   <% end %>
                                 <% end %>
                               <% end %>

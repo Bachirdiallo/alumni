@@ -18,9 +18,10 @@ root to: 'pages#index'
   resources :users
 
   resources :user_profiles do
+    get :view_profile
     collection do
       post :upload_profile_picture
-      get :view_profile
+
     end
   end
 
@@ -40,12 +41,6 @@ root to: 'pages#index'
   #pages
   get '/claim_account', to: 'pages#claim_account'
   get '/claim_action_result', to: 'pages#claim_action_result'
-  get '/view_profile', to: 'user_profiles#view_profile'
-
-
-
-  #user profile routes
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
