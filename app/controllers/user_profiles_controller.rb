@@ -22,6 +22,7 @@ class UserProfilesController < ApplicationController
   #find users
   def view_profile
    @user = User.find_by_id(params[:user_profile_id])
+   @jobs = Job.find_by_user_id(params[:user_profile_id])
   end
 
   # GET /user_profiles/1/edit

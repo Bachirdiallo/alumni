@@ -1,0 +1,18 @@
+<h4>Job History</h4>
+<hr>
+<% @jobs.each do |job|%>
+  <% if job.user_id == current_user.id %>
+    <% if job.current == "1"%>
+      <p>
+        <%= job.city %>
+        <%= job.country %>
+        <strong>[current]</strong>
+      </p>
+      <% else %>
+      <%= job.city %>
+      <%= job.country %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<hr>
