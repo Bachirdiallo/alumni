@@ -3,27 +3,27 @@
   <%if @user.social_privacy_option == "My Batch"%>
       <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
            <p>
-             <b>Facebook:</b><%= @user.facebook %>
-             <b>Twitter:</b> <%= @user.twitter %>
-             <b>LinkedIn:</b><%= @user.linkedin %>
-             <b>Instagram:</b><%= @user.instagram %>
+             <a href="<%= @user.facebook %>">Facebook</a> <br>
+             <a href="<%= @user.twitter %>">Twitter</a> <br>
+             <a href="<%= @user.linkedin %>">LinkedIn</a> <br>
+             <a href="<%= @user.instagram %>">Instagram</a> <br>
            </p>
       <% end %>
   <%elsif @user.social_privacy_option == "My Programme"%>
         <% if @user.graduations.map { |p| p.programme  }& search_result.graduations.map { |p| p.programme  } %>
-          <p>
-            <b>Facebook:</b><%= @user.facebook %>
-            <b>Twitter:</b> <%= @user.twitter %>
-            <b>LinkedIn:</b><%= @user.linkedin %>
-            <b>Instagram:</b><%= @user.instagram %>
-          </p>
+            <p>
+              <a href="<%= @user.facebook %>">Facebook</a> <br>
+              <a href="<%= @user.twitter %>">Twitter</a> <br>
+              <a href="<%= @user.linkedin %>">LinkedIn</a> <br>
+              <a href="<%= @user.instagram %>">Instagram</a> <br>
+            </p>
         <% end %>
   <%else%>
-    <p>
-      <b>Facebook:</b><%= @user.facebook %>
-      <b>Twitter:</b> <%= @user.twitter %>
-      <b>LinkedIn:</b><%= @user.linkedin %>
-      <b>Instagram:</b><%= @user.instagram %>
-    </p>
+      <p>
+        <a href="<%= @user.facebook %>">Facebook</a> <br>
+        <a href="<%= @user.twitter %>">Twitter</a> <br>
+        <a href="<%= @user.linkedin %>">LinkedIn</a> <br>
+        <a href="<%= @user.instagram %>">Instagram</a> <br>
+      </p>
   <% end %> <!--if social_privacy_otpion == My Batch -->
 <% end %><!--if social != Only Me -->

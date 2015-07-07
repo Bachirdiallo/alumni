@@ -5,7 +5,7 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles.json
   def index
     @user = User.find(current_user.id)
-    @jobs = Job.all
+    @jobs = Job.all.paginate(:page => 1, :per_page => 30)
   end
 
   # GET /user_profiles/1
@@ -20,9 +20,9 @@ class UserProfilesController < ApplicationController
 
   #find users
   def view_profile
-   @user = User.find_by_id(params[:user_profile_id])
-   #@jobs = Job.find_by_user_id(params[:user_profile_id])
-   @jobs = Job.where(:user_id => params[:user_profile_id])
+   id = params[:user_profile_id]
+   @user = User.find_by_id(id)
+   @jobs = Job.where(:user_id => id)
   end
 
   # GET /user_profiles/1/edit

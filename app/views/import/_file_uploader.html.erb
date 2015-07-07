@@ -15,7 +15,7 @@
        <div id="import">
          <%= form_tag import_import_index_path(format: :js), remote: true, multipart: true, :id => "importing" do %>
            <div class="modal-body">
-             <%= file_field_tag :file, :class => "btn  icon-upload"  %>
+             <%= file_field_tag :file, :class => "btn icon-upload"  %>
              <% if !params[:klass].present? %>
                <%= hidden_field_tag :klass, klass %>
              <% else %>
@@ -25,7 +25,8 @@
            </div>
            <div class="modal-footer">
              <div class="btn-group">
-               <%= submit_tag "Import", :class=> "btn  btn-primary icon-upload" %>
+               <%#= submit_tag "Import", :class=> "btn  btn-primary icon-upload" %>
+               <button type="button1" class="btn  btn-primary icon-upload" onclick=" hideContent()" >Import</button>
                <button type="button" class="btn btn-white" id="cancel_upload" data-dismiss="modal">Cancel</button>
              </div>
            </div>
@@ -36,3 +37,13 @@
    </div><!-- /.modal-dialog -->
  </div><!-- /.modal -->
 </div>
+
+<script type="text/javascript">
+    function hideContent()
+    {
+      $(" .modal-title").hide();
+      $(" .modal-body").hide();
+      $(" .modal-footer").hide();
+      $("#attribute_table").show();
+    }
+</script>
