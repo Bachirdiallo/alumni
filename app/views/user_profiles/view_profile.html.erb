@@ -6,6 +6,8 @@
     <div class="contianer col-sm-5">
     <h3><%= @user.name%></h3>
       <%= render 'work_history'%>
+      <hr>
+      <%= render 'socials'%>
     </div>
 
     <div class="container col-sm-7">
@@ -13,7 +15,7 @@
           <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded') if @user.avatar? %>
           <br>
       </div>
-      <%= render 'profile'%>
+      <%= render 'contact'%>
         <br/>
         <div style="height: 300px">
           <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=13&markers=#{@user.city}%2C#{@user.country}" %>

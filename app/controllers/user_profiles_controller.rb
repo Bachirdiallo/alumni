@@ -6,7 +6,6 @@ class UserProfilesController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @jobs = Job.all
-    @user1 = User.find_by_id(params[:user_profile_id])
   end
 
   # GET /user_profiles/1
@@ -22,7 +21,8 @@ class UserProfilesController < ApplicationController
   #find users
   def view_profile
    @user = User.find_by_id(params[:user_profile_id])
-   @jobs = Job.find_by_user_id(params[:user_profile_id])
+   #@jobs = Job.find_by_user_id(params[:user_profile_id])
+   @jobs = Job.where(:user_id => params[:user_profile_id])
   end
 
   # GET /user_profiles/1/edit
@@ -91,6 +91,6 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user).permit(:name, :id_number, :phone, :avatar, :email, :city, :country, :location_privacy_option, :content_privacy_option, :job_privacy_option, :social_privacy_option,:facebook,:twitter,:linkedin,:instagram)
+      params.require(:user).permit(:name, :id_number, :phone, :avatar, :email, :city, :country, :location_privacy_option, :contact_privacy_option, :job_privacy_option, :social_privacy_option,:facebook,:twitter,:linkedin,:instagram)
     end
 end

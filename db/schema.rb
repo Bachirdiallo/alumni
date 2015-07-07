@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707031044) do
+ActiveRecord::Schema.define(version: 20150707044500) do
 
   create_table "batches", force: :cascade do |t|
     t.integer  "month",      limit: 4
@@ -96,7 +96,6 @@ ActiveRecord::Schema.define(version: 20150707031044) do
     t.string   "id_number",               limit: 255
     t.string   "avatar",                  limit: 255
     t.string   "location_privacy_option", limit: 255
-    t.string   "content_privacy_option",  limit: 255
     t.string   "job_privacy_option",      limit: 255
     t.string   "social_privacy_option",   limit: 255
     t.string   "phone",                   limit: 255
@@ -104,6 +103,7 @@ ActiveRecord::Schema.define(version: 20150707031044) do
     t.string   "twitter",                 limit: 255
     t.string   "linkedin",                limit: 255
     t.string   "instagram",               limit: 255
+    t.string   "contact_privacy_option",  limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

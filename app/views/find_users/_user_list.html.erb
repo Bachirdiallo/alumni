@@ -29,7 +29,7 @@
                                  <% if u.current == "1" %>
                                      <td><%= u.title %></td>
                                      <td><%= u.company %></td>
-                                     <td> <%= link_to "View Profile", view_profile_path(search_result.id)%></td>
+                                     <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                    <% end %>
                                <% end %>
                             <% end %>
@@ -39,7 +39,7 @@
                                 <% if u.current == "1" %>
                                   <td><%= u.title %></td>
                                   <td><%= u.company %></td>
-                                  <td> <%= link_to "View Profile", view_profile_user_profiles(search_result.id)%></td>
+                                  <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
                               <% end %>
                             <% end %><!--loop -->
@@ -48,7 +48,7 @@
                               <% if job.current == "1" %>
                                 <td><%= u.title %></td>
                                 <td><%= u.company %></td>
-                                <td> <%= link_to "View Profile", view_profile_user_profiles(search_result.id)%></td>
+                                <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                               <% end %>
                             <% end %>
                         <% end %> <!--if job_privacy_otpion == My Batch -->
@@ -63,7 +63,7 @@
                                     <% if u.current == "1" %>
                                       <td><%= u.title %></td>
                                       <td><%= u.company %></td>
-                                      <td> <%= link_to "View Profile", view_profile_user_profiles(search_result.id)%></td>
+                                      <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                     <% end %>
                                   <% end %>
                                 <% end %>
@@ -72,7 +72,7 @@
                                   <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", view_profile_user_profiles(search_result.id)%></td>
+                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
                                 <% end %>
                             <% else %>
@@ -80,7 +80,7 @@
                                   <% if u.current == "1" %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", view_profile_user_profiles(search_result.id)%></td>
+                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
                                 <% end %>
                             <% end %> <!--if job_privacy_option == Everyone -->
@@ -91,12 +91,12 @@
                       <td><%= search_result.name%></td>
                       <% if search_result.job_privacy_option != "Only Me" %>
                           <%if search_result.job_privacy_option == "My Batch"%>
-                              <% search_result.jobs.each do |job|%>
-                                <% if current_user.graduations.map { |b| b.batch}&job.graduations.map { |s| s.batch }%>
+                              <% search_result.jobs.each do |u|%>
+                                <% if current_user.graduations.map{|x| x.batch} & search_result.graduations.map { |s| s.batch }%>
                                   <% if u.current == "1" %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", view_profile_user_profiles(search_result.id)%></td>
+                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
                                 <% end %>
                               <% end %>
@@ -115,7 +115,7 @@
                                 <% if u.current == "1" %>
                                   <td><%= u.title %></td>
                                   <td><%= u.company %></td>
-                                  <td> <%= link_to "View Profile",  view_profile_user_profiles(search_result.id)%></td>
+                                  <td> <%= link_to "View Profile",  user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
                               <% end %>
                           <% end %> <!--if job_privacy_option == Everyone -->
