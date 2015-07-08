@@ -1,0 +1,11 @@
+<%= form_for @user do |f|%>
+<div class="form-control-wrapper">
+  <%= f.text_field :email, :class => 'form-control empty', :autocomplete => "off" %>
+  <div class="floating-label"> Email</div>
+    <span class="material-input"></span>
+</div>
+
+<div class="actions">
+  <%= f.submit "Add Email", :class => 'btn btn-primary btn-flat' %>
+</div>
+<% end %>

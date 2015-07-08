@@ -17,6 +17,14 @@ root to: 'pages#index'
   devise_for :users
   resources :users
 
+  resources :claim do
+    collection do
+      get :update_email
+      get :claim_account
+      get :claim_action_result
+    end
+  end
+
   resources :user_profiles do
     get :view_profile
     collection do
@@ -41,12 +49,12 @@ root to: 'pages#index'
   #pages
   #get '/claim_account', to: 'pages#claim_account'
   #get '/claim_action_result', to: 'pages#claim_action_result'
-  post '/add_email', to: 'pages#add_email'
 
   resources :pages do
+
     collection do
-      get :claim_account
-      get :claim_action_result
+      post :update_email
+
     end
   end
 

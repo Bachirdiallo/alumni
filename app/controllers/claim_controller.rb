@@ -1,12 +1,18 @@
-class PagesController < ApplicationController
+class ClaimController < ApplicationController
 
   def index
+    @user = update_email
   end
 
   def claim_account
     @q = User.ransack(params[:q])
     @results = @q.result
     return @results
+  end
+
+  def update_email
+    email = User.where(student_id: params[:q])
+    return email.update(:email: claim_account_params)
   end
 
   def claim_action_result
@@ -23,29 +29,9 @@ class PagesController < ApplicationController
   end
 
 
-
-  def update_email
-    respond_to do |format|
-      if @email.update(calim_account_params)
-        format.html { redirect_to pages_path, notice: 'Email was successfully added.' }
-        format.json { render :show, status: :created, location: @email }
-      else
-        format.html { render :new }
-        format.json { render json: @email.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_email
-      @email = User.find(params[:id])
-    end
-
   # Never trust parameters from the scary internet, only allow the white list through.
-  def calim_account_params
+  def claim_account_params
     params[:claim]
   end
+
 end

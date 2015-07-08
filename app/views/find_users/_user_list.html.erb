@@ -45,6 +45,7 @@
                               <% if job.current == "1" %>
                                 <td><%= u.title %></td>
                                 <td><%= u.company %></td>
+
                                 <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                               <% end %>
                             <% end %>
@@ -112,6 +113,9 @@
                                 <% if u.current == "1" %>
                                   <td><%= u.title %></td>
                                   <td><%= u.company %></td>
+                                  <td>
+                                    <%= search_result.graduations.first.batch unless search_result.graduations.first.nil?%>
+                                  </td>
                                   <td><%= search_result.graduations.map{|x| x.batch.year}%></td>
                                   <td> <%= link_to "View Profile",  user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
