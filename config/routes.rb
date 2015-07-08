@@ -39,8 +39,16 @@ root to: 'pages#index'
   end
 
   #pages
-  get '/claim_account', to: 'pages#claim_account'
-  get '/claim_action_result', to: 'pages#claim_action_result'
+  #get '/claim_account', to: 'pages#claim_account'
+  #get '/claim_action_result', to: 'pages#claim_action_result'
+  post '/add_email', to: 'pages#add_email'
+
+  resources :pages do
+    collection do
+      get :claim_account
+      get :claim_action_result
+    end
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
