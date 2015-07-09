@@ -42,7 +42,7 @@
                             <% end %><!--loop -->
                         <%else%>
                             <% search_result.jobs.each do |u|%>
-                              <% if job.current == "1" %>
+                              <% if u.current == "1" %>
                                 <td><%= u.title %></td>
                                 <td><%= u.company %></td>
 
@@ -113,12 +113,17 @@
                                 <% if u.current == "1" %>
                                   <td><%= u.title %></td>
                                   <td><%= u.company %></td>
-                                  <td>
-                                    <%= search_result.graduations.first.batch unless search_result.graduations.first.nil?%>
-                                  </td>
-                                  <td><%= search_result.graduations.map{|x| x.batch.year}%></td>
-                                  <td> <%= link_to "View Profile",  user_profile_view_profile_path(search_result.id)%></td>
+
                                 <% end %>
+                                <td>
+                                  <ul>
+                                    <% search_result.graduations.each do |x|%>
+                                      <li><%= x.batch.month%> / <%= x.batch.year%></li>
+                                      <%end%>
+                                  </ul>
+                                </td>
+
+                                <td> <%= link_to "View Profile",  user_profile_view_profile_path(search_result.id)%></td>
                               <% end %>
                           <% end %> <!--if job_privacy_option == Everyone -->
                         <% end %><!--if job_privacy_option != Only Me -->
@@ -131,4 +136,5 @@
       <% end %><!--search_result -->
     </tbody>
   </table>
+  <%#= will_paginate @usrs %>
 </div>

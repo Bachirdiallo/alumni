@@ -40,7 +40,7 @@
 
       <% end %>
   <%elsif @user.contact_privacy_option == "My Programme"%>
-    <% if @user.graduations.map { |p| p.programme  }& search_result.graduations.map { |p| p.programme  } %>
+    <% if @user.graduations.map { |p| p.programme  }& current_user.graduations.map { |p| p.programme  } %>
         <div>
           <strong>City:</strong>
           <strong><% if !@user.city.nil? %></strong>
