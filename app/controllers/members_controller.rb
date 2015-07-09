@@ -27,10 +27,12 @@ class MembersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
 
+        @user.is_graduate = false
+        @user.save
+        puts 'check id', @user.is_graduate
         format.html { redirect_to members_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

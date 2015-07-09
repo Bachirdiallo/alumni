@@ -8,9 +8,9 @@
     <br />
     <div class="dropdown" >
       Class:
-      <%= f.select :batch_id_eq, options_for_select(["--Month--"]+Batch.all.map{|p| [ p.month.to_s, p.id ]}, {:include_blank => true}) %>
-      <%= f.select :batch_id_eq, options_for_select(["--Year--"]+Batch.all.map{|p| [ p.year.to_s, p.id ]}, {:include_blank => true}) %>
-          Programme: <%= f.select :programme_id_eq, options_for_select(["--Select Programme--"]+Programme.all.map{|p| [p.name, p.id]}, {:include_blank => true}) %>
+      <%= f.select :batch_id_eq, options_for_select([""]+Batch.all.map{|p| [ p.month.to_s, p.id ]}) %>
+      <%= f.select :batch_id_eq, options_for_select([""]+Batch.all.map{|p| [ p.year.to_s, p.id ]}) %>
+          Programme: <%= f.select :programme_id_eq, options_for_select([""]+Programme.all.map{|p| [p.name, p.id]}) %>
       <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
     </div>
       <br>
