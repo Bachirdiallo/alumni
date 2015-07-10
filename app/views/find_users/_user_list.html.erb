@@ -3,6 +3,9 @@
     <thead>
       <tr>
         <th >Name</th>
+        <th >Job Title</th>
+        <th >Company</th>
+        <th >Class</th>
         <th >View</th>
       </tr>
     </thead>
@@ -20,14 +23,15 @@
                             <% search_result.jobs.each do |u|%>
                                <% if current_user.graduations.map { |b| b.batch}&job.graduations.map { |s| s.batch }%>
                                  <% if u.current == "1" %>
-                                   <td><%= u.title %></td>
-                                   <td><%= u.company %></td>
-                                 <% end %>
-                                 <% if u.current == "1" %>
                                      <td><%= u.title %></td>
                                      <td><%= u.company %></td>
-                                     <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                    <% end %>
+                                   <td>
+                                       <% search_result.graduations.each do |x|%>
+                                         <%= x.batch.month%> / <%= x.batch.year%>
+                                       <%end%>
+                                   </td>
+                                   <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                <% end %>
                             <% end %>
                         <%elsif search_result.job_privacy_option == "My Programme"%>
@@ -36,8 +40,13 @@
                                 <% if u.current == "1" %>
                                   <td><%= u.title %></td>
                                   <td><%= u.company %></td>
-                                  <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
+                                <td>
+                                    <% search_result.graduations.each do |x|%>
+                                      <%= x.batch.month%> / <%= x.batch.year%>
+                                    <%end%>
+                                </td>
+                                <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                               <% end %>
                             <% end %><!--loop -->
                         <%else%>
@@ -45,9 +54,13 @@
                               <% if u.current == "1" %>
                                 <td><%= u.title %></td>
                                 <td><%= u.company %></td>
-
-                                <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                               <% end %>
+                              <td>
+                                  <% search_result.graduations.each do |x|%>
+                                    <%= x.batch.month%> / <%= x.batch.year%>
+                                  <%end%>
+                              </td>
+                              <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                             <% end %>
                         <% end %> <!--if job_privacy_otpion == My Batch -->
                       <% end %><!--if job_privacy_otpion != Only Me -->
@@ -61,8 +74,13 @@
                                     <% if u.current == "1" %>
                                       <td><%= u.title %></td>
                                       <td><%= u.company %></td>
-                                      <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                     <% end %>
+                                    <td>
+                                        <% search_result.graduations.each do |x|%>
+                                          <%= x.batch.month%> / <%= x.batch.year%>
+                                        <%end%>
+                                    </td>
+                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
                                 <% end %>
                             <%elsif search_result.job_privacy_option == "My Programme"%>
@@ -70,16 +88,26 @@
                                   <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
+                                  <td>
+                                      <% search_result.graduations.each do |x|%>
+                                        <%= x.batch.month%> / <%= x.batch.year%>
+                                      <%end%>
+                                  </td>
+                                  <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
                             <% else %>
                                 <% search_result.jobs.each do |u|%>
                                   <% if u.current == "1" %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
+                                  <td>
+                                      <% search_result.graduations.each do |x|%>
+                                        <%= x.batch.month%> / <%= x.batch.year%>
+                                      <%end%>
+                                  </td>
+                                  <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
                             <% end %> <!--if job_privacy_option == Everyone -->
                           <% end %><!--if job_privacy_option != Only Me -->
@@ -94,18 +122,28 @@
                                   <% if u.current == "1" %>
                                     <td><%= u.title %></td>
                                     <td><%= u.company %></td>
-                                    <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                   <% end %>
+                                  <td>
+                                      <% search_result.graduations.each do |x|%>
+                                        <%= x.batch.month%> / <%= x.batch.year%>
+                                      <%end%>
+                                  </td>
+                                  <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)%></td>
                                 <% end %>
                               <% end %>
                           <%elsif search_result.job_privacy_option == "My Programme"%>
                               <% search_result.jobs.each do |u|%>
                                 <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
-                                  <% if u.current == "1" %>
-                                    <td><%= u.title %></td>
-                                    <td><%= u.company %></td>
+                                    <% if u.current == "1" %>
+                                      <td><%= u.title %></td>
+                                      <td><%= u.company %></td>
+                                    <% end %>
+                                    <td>
+                                        <% search_result.graduations.each do |x|%>
+                                          <%= x.batch.month%> / <%= x.batch.year%>
+                                        <%end%>
+                                    </td>
                                     <td> <%= link_to "View Profile", user_profile_view_profile_path(search_result.id)  %></td>
-                                  <% end %>
                                 <% end %>
                               <% end %>
                           <% else %>
@@ -113,16 +151,12 @@
                                 <% if u.current == "1" %>
                                   <td><%= u.title %></td>
                                   <td><%= u.company %></td>
-
                                 <% end %>
                                 <td>
-                                  <ul>
                                     <% search_result.graduations.each do |x|%>
-                                      <li><%= x.batch.month%> / <%= x.batch.year%></li>
-                                      <%end%>
-                                  </ul>
+                                      <%= x.batch.month%> / <%= x.batch.year%>
+                                    <%end%>
                                 </td>
-
                                 <td> <%= link_to "View Profile",  user_profile_view_profile_path(search_result.id)%></td>
                               <% end %>
                           <% end %> <!--if job_privacy_option == Everyone -->
@@ -136,5 +170,5 @@
       <% end %><!--search_result -->
     </tbody>
   </table>
-  <%#= will_paginate @usrs %>
+  <%= will_paginate @users %>
 </div>

@@ -4,7 +4,7 @@ class BatchesController < ApplicationController
   # GET /batches
   # GET /batches.json
   def index
-    @batches = Batch.all
+    @batches = Batch.all.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /batches/1
@@ -31,8 +31,9 @@ class BatchesController < ApplicationController
   # POST /batches
   # POST /batches.json
   def create
-    @batch = Batch.new(batch_params)
 
+    @batch = Batch.new(batch_params)
+    
     respond_to do |format|
       if @batch.save
         format.html { redirect_to @batch, notice: 'Batch was successfully created.' }
