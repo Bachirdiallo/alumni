@@ -31,9 +31,7 @@ class BatchesController < ApplicationController
   # POST /batches
   # POST /batches.json
   def create
-
     @batch = Batch.new(batch_params)
-    
     respond_to do |format|
       if @batch.save
         format.html { redirect_to @batch, notice: 'Batch was successfully created.' }

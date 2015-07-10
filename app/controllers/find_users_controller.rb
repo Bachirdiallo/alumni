@@ -5,7 +5,7 @@ class FindUsersController < ApplicationController
   # GET /find_users.json
   def index
       @search_results = User.ransack(params[:q])
-      @users = @search_results.result.includes(:graduations).paginate(:page => params[:page], :per_page => 15)
+      @users = @search_results.result.includes(:graduations)
   end
 
   def file_content

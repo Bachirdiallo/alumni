@@ -5,7 +5,7 @@ class GraduationsController < ApplicationController
   # GET /graduations.json
   def index
     @users = Graduation.search(params[:q])
-    @graduations = @users.result.includes(:user).paginate(:page => params[:page], :per_page => 5)
+    @graduations = @users.result(:distinct => true).includes(:user).paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /graduations/1
