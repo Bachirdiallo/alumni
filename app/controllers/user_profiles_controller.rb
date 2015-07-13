@@ -11,7 +11,6 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
-
   end
 
   # GET /user_profiles/new
@@ -48,10 +47,25 @@ class UserProfilesController < ApplicationController
   #Upload profile picture
   def upload_profile_picture
     @user = User.find(current_user.id)
-      @user.avatar = params[:file]
+    @user.avatar = params[:file]
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_profiles_url }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+#profile settings
+  def settings
+    @user = User.new(user_profile_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'Your photo was successfully added.' }
+        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -86,6 +100,7 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
+      #@user = current_user
       @user = User.find(params[:id])
     end
 

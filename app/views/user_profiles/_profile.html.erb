@@ -1,35 +1,37 @@
+<h4><%= @user.name%></h4>
+   <p>Residing in <%= @user.city%> <%= @user.country%></p>
+    <p>Graduated on <%= @user.graduations.map{|x| x.batch.month} %>
+                /<%= @user.graduations.map{|x| x.batch.year} %>.</p>
+  <hr>
   <div>
-    <strong>City:</strong>
-    <strong><% if !@user.city.nil? %></strong>
-  <strong> <%= @user.city%></strong>
-    <% else %>
-      N/A
-    <% end %>
-  </div>
-
-  <div>
-    <strong>Country: </strong>
-    <% if !@user.country.nil?%>
-    <strong><%= @user.country%></strong>
-    <% else %>
-      N/A
-    <% end %>
-  </div>
-
-  <div>
-    <strong>Phone: </strong>
-    <% if !@user.phone.nil?%>
-      <strong><%= @user.phone%></strong>
+    <% if !@user.phone.nil? %>
+      <i class="fa fa-phone"></i>
+      <%= @user.phone %>
     <% else %>
         N/A
     <% end %>
   </div>
 
   <div>
-    <strong>Email: </strong>
+    <i class="fa fa-envelope-o"></i>
     <% if !@user.email.nil?%>
-      <strong><%= @user.email%></strong>
+      <%= @user.email%>
     <% else %>
         N/A
     <% end %>
   </div>
+
+  <p>
+    <% if !@user.facebook.blank?%>
+      <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a> <br>
+    <% end %>
+    <% if !@user.linkedin.blank?%>
+      <a href="<%= @user.linkedin %>"><i class="icon-large icon-search"></i>dd</a> <br>
+    <% end %>
+    <% if !@user.twitter.blank?%>
+      <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>d</a> <br>
+    <% end %>
+    <% if !@user.instagram.blank?%>
+      <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>ddd</a> <br>
+    <% end %>
+  </p>

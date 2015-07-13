@@ -29,7 +29,7 @@ root to: 'pages#index'
     get :view_profile
     collection do
       post :upload_profile_picture
-
+      post :settings
     end
   end
 

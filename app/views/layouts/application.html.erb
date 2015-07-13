@@ -15,13 +15,16 @@
               <% if user_signed_in? %>
                 <% if !current_user.is_graduate %>
                     <%= render 'layouts/sidebar' %>
-                <% else %>
-
                 <%end%>
               <%end%>
+            </div>
+          <div class="container" style="margin-left :10%">
+            <div class="col-lg-10">
               <%= yield %>
-              <%= javascript_include_tag 'application'%></div>
-        </div>
+            </div>
+          </div>
+
+        <%= javascript_include_tag 'application'%></div>
       </div>
     </body>
 </html>
