@@ -40,6 +40,7 @@ gem "less-rails"
 gem 'remotipart'
 gem 'geocoder'
 gem 'will_paginate', '~> 3.0.6'
+gem "font-awesome-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

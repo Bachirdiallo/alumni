@@ -1,19 +1,26 @@
 class ClaimController < ApplicationController
 
+  student_id = User.new
+
   def index
-    @user = update_email
+    #@users =  User.find(student_id)
+  end
+
+  def update_email(id)
+    @users = User.find(id)
   end
 
   def claim_account
     @q = User.ransack(params[:q])
     @results = @q.result
+
+    student_id = @results.map{|x| x.id}
+    puts "the id", student_id
+    update_email(@student_id)
+    puts "the id", @id
     return @results
   end
 
-  def update_email
-    email = User.where(student_id: params[:q])
-    return email.update(:email: claim_account_params)
-  end
 
   def claim_action_result
     @user = claim_account
@@ -22,7 +29,7 @@ class ClaimController < ApplicationController
     else
       #display message and redirect_to claim account page
       respond_to do |format|
-        format.html { redirect_to   claim_account_pages_path , notice: 'Account Not Found!' }
+        format.html { redirect_to   :back , notice: 'Account Not Found!' }
         format.json { render :show, status: :created, location: @user }
       end
     end

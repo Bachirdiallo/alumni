@@ -1,31 +1,32 @@
-<div class="container col-sm-8" >
+<div class="container " >
   <p id="notice"><%= notice %></p>
-    <div class="contianer col-sm-5">
 
-     <h3><%= @user.name%></h3>
-      <h4>Job History</h4>
-      <hr>
-      <% @jobs.each do |job|%>
-        <% if job.user_id == current_user.id %>
-          <% if job.current == "1"%>
-            <p>
-              <%= job.city %>
-              <%= job.country %>
-              <strong>[current]</strong>
-            </p>
-            <% else %>
-            <%= job.city %>
-            <%= job.country %>
+
+      <div class=" col-lg-6">
+         <h3><%= @user.name%></h3>
+          <h4>Job History</h4>
+          <hr>
+          <% @jobs.each do |job|%>
+            <% if job.user_id == current_user.id %>
+              <% if job.current == "1"%>
+                <p>
+                  <%= job.city %>
+                  <%= job.country %>
+                  <strong>[current]</strong>
+                </p>
+                <% else %>
+                <%= job.city %>
+                <%= job.country %>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>
-      <% end %>
-
-      <hr>
+        <hr>
         <h3>Set Privacy Options</h3>
         <%= render 'privacy_options'%>
-    </div>
+      </div>
 
-    <div class="container col-sm-7">
+      <div class="col-lg-6">
+
         <p><%= link_to edit_user_profile_path(@user.id), :class => 'btn btn-primary btn btn-md' do %> <span class="glyphicon glyphicon-edit"> </span> <% end %> </p>
         <h3>Basic profile info</h3>
 
@@ -42,6 +43,5 @@
         <div style="height: 300px">
           <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=13&markers=#{@user.city}%2C#{@user.country}" %>
         </div>
-    </div>
-    <%#= link_to 'Edit Profile',  new_user_profile_path %>
+      </div>
 </div>
