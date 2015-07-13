@@ -1,5 +1,6 @@
 class FindUsersController < ApplicationController
   before_action :set_find_user, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /find_users
   # GET /find_users.json

@@ -1,4 +1,5 @@
 class ClaimController < ApplicationController
+  before_filter :authenticate_user!
 
   student_id = User.new
 

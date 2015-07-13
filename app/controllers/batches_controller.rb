@@ -1,5 +1,6 @@
 class BatchesController < ApplicationController
   before_action :set_batch, only: [:show, :edit, :update, :destroy, :action_import]
+  before_filter :authenticate_user!
 
   # GET /batches
   # GET /batches.json

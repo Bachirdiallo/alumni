@@ -24,8 +24,10 @@
                         <%= link_to  settings_user_profiles_path do %> <span class="fa fa-cog fa-fw"></span><% end %>
                     </li>
                     <li>
+                      <% if current_user %>
                         <%= link_to destroy_user_session_path, :class => 'pull-left', :method => :delete do %> <span class="glyphicon glyphicon-log-out"></span> <% end %>
-                    </li>
+                        <% end %>
+                  </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
