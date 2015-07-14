@@ -1,0 +1,12 @@
+<%= semantic_form_for @user, url:settings_user_profiles_path(id: current_user.id) do |f|%>
+  <div>
+    <p><%= f.input :location_privacy_option, as: :select, :collection => User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'form-control' %></p>
+    <hr>
+    <p><%= f.input :contact_privacy_option, as: :select, :collection => User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'form-control' %></p>
+    <hr>
+    <p><%= f.input :job_privacy_option, as: :select, :collection => User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'form-control' %></p>
+    <hr>
+    <p><%= f.input :social_privacy_option, as: :select, :collection => User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'form-control' %></p>
+    <p><%= f.submit "Save", :class => "btn btn-primary btn-flat"%></p>
+  </div>
+<% end %>
