@@ -1,18 +1,18 @@
+<p>
   <% if !@user.phone.nil? %>
-    <i class="fa fa-phone"></i>
-    <%= @user.phone %>
-  <% else %>
-      N/A
-  <% end %>
-|
-
-  <i class="fa fa-envelope-o"></i>
-  <% if !@user.email.nil?%>
-    <%= @user.email%>
-  <% else %>
-      N/A
-  <% end %>
-
+      <i class="fa fa-phone"></i>
+      <%= @user.phone %>
+    <% else %>
+        N/A
+    <% end %>
+    |
+    <i class="fa fa-envelope-o"></i>
+    <% if !@user.email.nil?%>
+      <%= @user.email%>
+    <% else %>
+        N/A
+    <% end %>
+</p>
 
 <!--  <p>
     <% if !@user.facebook.blank?%>

@@ -6,18 +6,18 @@
             <%= render 'profile_photo'%>
           </div>
         </div>
-        <div class="col-sm-7" style="padding-left :0px">
+        <div class="col-sm-7" style="padding-left :15px">
           <font size="6"> <b><%= @user.name%></b></font>
           <font size="4"> <p>Residing in <%= @user.city%> <%= @user.country%></p>
-              <p>Graduated on <%= @user.graduations.map{|x| x.batch.month} %>
-                          /<%= @user.graduations.map{|x| x.batch.year} %>.</p> </font>
+          <p>
+            Graduated on <% @user.graduations.each do |x|%>
+              <%= x.batch.month%> / <%= x.batch.year%>
+            <%end%>
+          </p>
         </div>
-        <br>
-<hr>
-
-         <%= render 'profile'%>
-          <hr>
-
+        <hr>
+        <%= render 'profile'%>
+        <hr>
           <font size="4"
           <% @jobs.each do |job|%>
             <% if job.user_id == current_user.id %>

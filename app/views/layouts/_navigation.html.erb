@@ -28,7 +28,9 @@
                     <li>
                       <% if current_user %>
                         <%= link_to destroy_user_session_path, :class => 'pull-left', :method => :delete do %> <span class="glyphicon glyphicon-log-out"></span> <% end %>
-                        <% end %>
+                      <% else %>
+                      <%= link_to user_session_path do %> <span class="glyphicon glyphicon-log-in"></span> <% end %>
+                      <% end %>
                     </li>
                 </ul>
             </div>
