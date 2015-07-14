@@ -1,27 +1,20 @@
-<h4><%= @user.name%></h4>
-   <p>Residing in <%= @user.city%> <%= @user.country%></p>
-    <p>Graduated on <%= @user.graduations.map{|x| x.batch.month} %>
-                /<%= @user.graduations.map{|x| x.batch.year} %>.</p>
-  <hr>
-  <div>
-    <% if !@user.phone.nil? %>
-      <i class="fa fa-phone"></i>
-      <%= @user.phone %>
-    <% else %>
-        N/A
-    <% end %>
-  </div>
+  <% if !@user.phone.nil? %>
+    <i class="fa fa-phone"></i>
+    <%= @user.phone %>
+  <% else %>
+      N/A
+  <% end %>
+|
 
-  <div>
-    <i class="fa fa-envelope-o"></i>
-    <% if !@user.email.nil?%>
-      <%= @user.email%>
-    <% else %>
-        N/A
-    <% end %>
-  </div>
+  <i class="fa fa-envelope-o"></i>
+  <% if !@user.email.nil?%>
+    <%= @user.email%>
+  <% else %>
+      N/A
+  <% end %>
 
-  <p>
+
+<!--  <p>
     <% if !@user.facebook.blank?%>
       <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a> <br>
     <% end %>
@@ -35,3 +28,4 @@
       <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>ddd</a> <br>
     <% end %>
   </p>
+!-->

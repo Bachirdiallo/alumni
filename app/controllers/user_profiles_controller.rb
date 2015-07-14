@@ -1,5 +1,5 @@
 class UserProfilesController < ApplicationController
-  before_action :set_user_profile, only: [:show, :edit, :update, :destroy, :upload_profile_picture]
+  before_action :set_user_profile, only: [:show, :edit, :update, :destroy, :upload_profile_picture, :privacy, :settings]
   before_filter :authenticate_user!
   # GET /user_profiles
   # GET /user_profiles.json
@@ -26,6 +26,10 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1/edit
   def edit
+  end
+
+  def privacy
+    @user = User.new
   end
 
   # POST /user_profiles
@@ -60,18 +64,17 @@ class UserProfilesController < ApplicationController
 
 #profile settings
   def settings
-    @user = User.new(user_profile_params)
-
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'Your photo was successfully added.' }
-        format.json { render :show, status: :created, location: @user }
+      if @user.update(user_profile_params)
+        format.html { redirect_to user_profiles_url, notice: 'privacy options were successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
+
 
   # PATCH/PUT /user_profiles/1
   # PATCH/PUT /user_profiles/1.json
@@ -86,7 +89,6 @@ class UserProfilesController < ApplicationController
       end
     end
   end
-
   # DELETE /user_profiles/1
   # DELETE /user_profiles/1.json
   def destroy
@@ -100,7 +102,6 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
-      #@user = current_user
       @user = User.find(params[:id])
     end
 

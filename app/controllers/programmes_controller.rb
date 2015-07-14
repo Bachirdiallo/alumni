@@ -25,9 +25,7 @@ class ProgrammesController < ApplicationController
   # POST /programmes
   # POST /programmes.json
   def create
-     @programme = Programme.new(programme_params)
-  #  @programme = @faculty.programmes.create(programme_params)
-
+    @programme = Programme.new(programme_params)
     respond_to do |format|
       if @programme.save
         format.html { redirect_to @programme, notice: 'Programme was successfully created.' }

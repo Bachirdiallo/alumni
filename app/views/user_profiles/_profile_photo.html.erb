@@ -1,6 +1,32 @@
 <%= form_for @user, url: user_profile_path(@user) do |f| %>
-<p>
-  <%= f.file_field :avatar%>
-  <%= f.submit "Upload", :action => "upload_profile_picture", :class => 'btn btn-primary btn-flat' %>
-</p>
+  <button type="button" class="bton btn btn-primary btn-flat" data-toggle="modal" data-target="#myModal" id="btn">
+     <span class="fa fa-camera"> Update Profile Picture</span>
+  </button>
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Upoad Your Profile Picture</h4>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-6">
+            <%= f.file_field :avatar, :class => 'btn btn-primary btn-flat'%>
+          </div>
+          <div class="col-sm-6">
+            <%= f.submit "Upload", :action => "upload_profile_picture", :class => 'btn btn-primary btn-flat' %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn flat" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
+
+<style>
+  .bton {position:absolute;bottom:0;right:0;}
+</style>

@@ -29,6 +29,7 @@ root to: 'pages#index'
     get :view_profile
     collection do
       post :upload_profile_picture
+      get :privacy
       post :settings
     end
   end
