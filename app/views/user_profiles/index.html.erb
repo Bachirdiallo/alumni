@@ -6,58 +6,96 @@
             <%= render 'profile_photo'%>
           </div>
         </div>
-        <div class="col-sm-7" style="padding-left :15px">
-          <font size="6"> <b><%= @user.name%></b></font>
-          <font size="4"> <p>Residing in <%= @user.city%> <%= @user.country%></p>
-          <p>
-            Graduated on <% @user.graduations.each do |x|%>
-              <%= x.batch.month%> / <%= x.batch.year%>
-            <%end%>
-          </p>
-        </div>
-        <hr>
-        <%= render 'profile'%>
-        <hr>
-          <font size="4"
-          <% @jobs.each do |job|%>
-            <% if job.user_id == current_user.id %>
-              <% if job.current == "1"%>
-                <p>
-                  <%= job.title %> at <%= job.company %> <%= job.city %>
-                  <%= job.country %>
-                  <strong>[current]</strong>
-                        <!--<%= link_to edit_job_path(job) do %><span class="glyphicon glyphicon-edit"></span> <% end %>!-->
-                </p>
-                <% else %>
-                  Worked as
-                  <%= job.title %> at <%= job.company %> <%= job.city %>
-                  <%= job.country %>
-                   <% if !job.from.nil? && !job.to.nil? %>
-                      from <%= job.from.strftime("%B %Y") %> to <%= job.to.strftime("%B %Y")  %>
-                  <% end %>
+        <div class="col-sm-7" style="padding-left :10px">
+            <font size="6"> <b><%= @user.name%></b></font>
+            <font size="3"> <p>Residing in <%= @user.city%> <%= @user.country%></p>
+              <hr>
+              <%= render 'profile'%>
+            <p>
+              <i class="fa fa-graduation-cap"></i>
+               <% @user.graduations.each do |x|%>
+                <%= x.batch.month%> / <%= x.batch.year%>
+              <%end%>
+            </p>
+
+              <hr>
+                <% @jobs.each do |job|%>
+                  <% if job.user_id == current_user.id %>
+                    <% if job.current == "1"%>
+                      <p>
+                        <%= job.title %> at <%= job.company %> <%= job.city %>
+                        <%= job.country %>
+                        <strong>[current]</strong>
+                              <!--<%= link_to edit_job_path(job) do %><span class="glyphicon glyphicon-edit"></span> <% end %>!-->
+                      </p>
+            </div>
+                  <% else %>
+
+                    <%= job.title %> at <%= job.company %> <%= job.city %>
+                    <%= job.country %>
+                     <% if !job.from.nil? && !job.to.nil? %>
+                        from <%= job.from.strftime("%B %Y") %> to <%= job.to.strftime("%B %Y")  %>
+                    <% end %>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </font>
-          <!--<p><%= link_to new_user_profile_path(@user.id), :class => 'btn btn-primary btn btn-md' do %> <span class="glyphicon glyphicon-edit"> </span> <% end %> </p> !-->
-          <hr>
-          <%= @user.location_privacy_option %>
-          <%= @user.social_privacy_option %>
-          <%= @user.contact_privacy_option %> <br>
-          Show my work history to <b> <%= @user.job_privacy_option %></b>
+            <hr>
+
+            <div class="col-sm-3 pad">
+              <% if !@user.facebook.blank?%>
+                <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official">facebook</i></a>
+              <% end %>
+            </div>
+            <div class="col-sm-3">
+              <% if !@user.linkedin.blank?%>
+                <a href="<%= @user.linkedin %>"><i class="icon-large icon-search"></i>linkedin</a>
+              <% end %>
+            </div>
+            <div class="col-sm-3">
+              <% if !@user.twitter.blank?%>
+                <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+              <% end %>
+            </div>
+            <div class="col-sm-3">
+              <% if !@user.instagram.blank?%>
+                <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+              <% end %>
+            </div>
+
+
+            <div class="col-sm-3 pad">
+              <hr>
+              Location privacy:<br>
+              <b><%= @user.location_privacy_option %></b>
+            </div>
+            <div class="col-sm-3">
+              <hr>
+              Social privacy: <br>
+            <b>  <%= @user.social_privacy_option %></b>
+            </div>
+            <div class="col-sm-3">
+              <hr>
+              Contact privacy: <br>
+              <b><%= @user.contact_privacy_option %></b>
+            </div>
+            <div class="col-sm-3">
+              <hr>
+              Job privacy: <br>
+                <b><%= @user.job_privacy_option %></b>
+            </div>
+          </font>
       </div>
 
       <div class="col-lg-4" style="background :White">
-        <!--<p><%= link_to edit_user_profile_path(@user.id), :class => 'btn btn-primary btn btn-md' do %> <span class="glyphicon glyphicon-edit"> </span> <% end %> </p>!-->
-        <div style="height: 300px">
-          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=375x300&maptype=roadmap&zoom=13&markers=#{@user.city}%2C#{@user.country}" %>
-        </div>
+        <!--<p><%= link_to edit_user_profile_path(@user.id), :class => 'btn btn-primary btn btn-md' do %> <span class="glyphicon glyphicon-edit"> </span> <% end %> </p> !-->
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=375x420 &maptype=roadmap&zoom=13&markers=#{@user.city}%2C#{@user.country}" %>
       </div>
 
       <style>
          span{color:white}
          .position{position:relative;}
          #image_container{width:300px; height:auto }
+         .pad{padding: 0px}
       </style>
 
       <script type="text/javascript">

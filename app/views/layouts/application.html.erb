@@ -11,20 +11,35 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 backgrnd">
-              <%= render 'layouts/navigation' %>
-              <% if user_signed_in? %>
+
+                <%= render 'layouts/navigation' %>
+
+              <% if user_signed_in?%>
                 <% if !current_user.is_graduate %>
                     <%= render 'layouts/sidebar' %>
                 <%end%>
               <%end%>
               <%= yield %>
             </div>
+            <div class="col-lg-12 pad">
+              <nav class="navbar navbar-default navbar-bottom" role="navigation">
+                <div class="navbar navbar-default">
+                  <div class="col-sm-4">
+
+                  </div>
+                  <div class="col-sm-4">
+                    <br>
+                    <strong>&copy; 2015  My Institution </strong>
+                  </div>
+                </div>
+              </nav>
+            </div>
           </div>
         </div>
         <%= javascript_include_tag 'application'%>
     </body>
-
     <style >
       .backgrnd{background: white; padding: 0px}
+      .pad{padding: 0px;}
     </style>
 </html>

@@ -1,4 +1,4 @@
-<h4>Job History</h4>
+
 <% if @user.social_privacy_option != "Only Me" %>
   <%if @user.social_privacy_option == "My Batch"%>
       <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
