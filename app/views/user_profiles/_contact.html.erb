@@ -1,118 +1,78 @@
-<h3>Conact</h3>
 <% if @user.contact_privacy_option != "Only Me" %>
   <%if @user.contact_privacy_option == "My Batch"%>
       <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
-          <div>
-            <strong>City:</strong>
-            <strong><% if !@user.city.nil? %></strong>
-          <strong> <%= @user.city%></strong>
-            <% else %>
-              N/A
-            <% end %>
-          </div>
+          <p><%= @user.city%>, <%= @user.country%></p>
+          <% if !@user.phone.nil? %>
 
-          <div>
-            <strong>Country: </strong>
-            <% if !@user.country.nil?%>
-            <strong><%= @user.country%></strong>
-            <% else %>
-              N/A
-            <% end %>
-          </div>
-
-          <div>
-            <strong>Phone: </strong>
-            <% if !@user.phone.nil?%>
-              <strong><%= @user.phone%></strong>
+            <div class="col-sm-1 pad">
+              <i class="fa fa-phone"></i>
+            </div>
+            <div class="col-sm-11 pad">
+              <%= @user.phone %>
+            </div>
             <% else %>
                 N/A
             <% end %>
-          </div>
 
-          <div>
-            <strong>Email: </strong>
             <% if !@user.email.nil?%>
-              <strong><%= @user.email%></strong>
+              <div class="col-sm-1 pad">
+                <i class="fa fa-envelope-o"></i>
+              </div>
+              <div class="col-sm-11 pad">
+                <%= @user.email%>
+              </div>
             <% else %>
                 N/A
             <% end %>
-          </div>
-
       <% end %>
   <%elsif @user.contact_privacy_option == "My Programme"%>
     <% if @user.graduations.map { |p| p.programme  }& current_user.graduations.map { |p| p.programme  } %>
-        <div>
-          <strong>City:</strong>
-          <strong><% if !@user.city.nil? %></strong>
-        <strong> <%= @user.city%></strong>
-          <% else %>
-            N/A
-          <% end %>
-        </div>
+    <p><%= @user.city%>, <%= @user.country%></p>
+    <% if !@user.phone.nil? %>
+      <div class="col-sm-1 pad">
+        <i class="fa fa-phone"></i>
+      </div>
+      <div class="col-sm-11 pad">
+        <%= @user.phone %>
+      </div>
+      <% else %>
+          N/A
+      <% end %>
 
-        <div>
-          <strong>Country: </strong>
-          <% if !@user.country.nil?%>
-          <strong><%= @user.country%></strong>
-          <% else %>
-            N/A
-          <% end %>
+      <% if !@user.email.nil?%>
+        <div class="col-sm-1 pad">
+          <i class="fa fa-envelope-o"></i>
         </div>
-
-        <div>
-          <strong>Phone: </strong>
-          <% if !@user.phone.nil?%>
-            <strong><%= @user.phone%></strong>
-          <% else %>
-              N/A
-          <% end %>
+        <div class="col-sm-11 pad">
+          <%= @user.email%>
         </div>
-
-        <div>
-          <strong>Email: </strong>
-          <% if !@user.email.nil?%>
-            <strong><%= @user.email%></strong>
-          <% else %>
-              N/A
-          <% end %>
-        </div>
-
+      <% else %>
+          N/A
+      <% end %>
         <% end %>
       <%else%>
-          <div>
-            <strong>City:</strong>
-            <strong><% if !@user.city.nil? %></strong>
-          <strong> <%= @user.city%></strong>
-            <% else %>
-              N/A
-            <% end %>
-          </div>
+      <p><%= @user.city%>, <%= @user.country%></p>
+      <% if !@user.phone.nil? %>
 
-          <div>
-            <strong>Country: </strong>
-            <% if !@user.country.nil?%>
-            <strong><%= @user.country%></strong>
-            <% else %>
-              N/A
-            <% end %>
-          </div>
+        <div class="col-sm-1 pad">
+          <i class="fa fa-phone"></i>
+        </div>
+        <div class="col-sm-11 pad">
+          <%= @user.phone %>
+        </div>
+        <% else %>
+            N/A
+        <% end %>
 
-          <div>
-            <strong>Phone: </strong>
-            <% if !@user.phone.nil?%>
-              <strong><%= @user.phone%></strong>
-            <% else %>
-                N/A
-            <% end %>
+        <% if !@user.email.nil?%>
+          <div class="col-sm-1 pad">
+            <i class="fa fa-envelope-o"></i>
           </div>
-
-          <div>
-            <strong>Email: </strong>
-            <% if !@user.email.nil?%>
-              <strong><%= @user.email%></strong>
-            <% else %>
-                N/A
-            <% end %>
+          <div class="col-sm-11 pad">
+            <%= @user.email%>
           </div>
+        <% else %>
+            N/A
+        <% end %>
   <% end %> <!--if contact_privacy_otpion == My Batch -->
 <% end %><!--if social != Only Me -->

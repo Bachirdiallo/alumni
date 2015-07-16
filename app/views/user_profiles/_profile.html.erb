@@ -1,15 +1,23 @@
-<p>
   <% if !@user.phone.nil? %>
+
+    <div class="col-sm-1 pad">
       <i class="fa fa-phone"></i>
+    </div>
+    <div class="col-sm-11 pad">
       <%= @user.phone %>
+    </div>
     <% else %>
         N/A
     <% end %>
-    |
-    <i class="fa fa-envelope-o"></i>
+
+
     <% if !@user.email.nil?%>
-      <%= @user.email%>
+      <div class="col-sm-1 pad">
+        <i class="fa fa-envelope-o"></i>
+      </div>
+      <div class="col-sm-11 pad">
+        <%= @user.email%>
+      </div>
     <% else %>
         N/A
     <% end %>
-</p>

@@ -1,29 +1,76 @@
-
 <% if @user.social_privacy_option != "Only Me" %>
   <%if @user.social_privacy_option == "My Batch"%>
       <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
-           <p>
-             <a href="<%= @user.facebook %>">Facebook</a> <br>
-             <a href="<%= @user.twitter %>">Twitter</a> <br>
-             <a href="<%= @user.linkedin %>">LinkedIn</a> <br>
-             <a href="<%= @user.instagram %>">Instagram</a> <br>
-           </p>
+          <div class="row">
+            <div class="col-sm-3 pad">
+              <% if !@user.facebook.blank?%>
+                <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+              <% end %>
+            </div>
+            <div class="col-sm-3 pad">
+              <% if !@user.linkedin.blank?%>
+                <a href="<%= @user.linkedin %>"><i class="icon-large icon-search"></i>linkedin</a>
+              <% end %>
+            </div>
+            <div class="col-sm-3 pad">
+              <% if !@user.twitter.blank?%>
+                <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+              <% end %>
+            </div>
+            <div class="col-sm-3 pad">
+              <% if !@user.instagram.blank?%>
+                <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+              <% end %>
+            </div>
+          </div>
       <% end %>
   <%elsif @user.social_privacy_option == "My Programme"%>
         <% if @user.graduations.map { |p| p.programme  }& current_user.graduations.map { |p| p.programme  } %>
-            <p>
-              <a href="<%= @user.facebook %>">Facebook</a> <br>
-              <a href="<%= @user.twitter %>">Twitter</a> <br>
-              <a href="<%= @user.linkedin %>">LinkedIn</a> <br>
-              <a href="<%= @user.instagram %>">Instagram</a> <br>
-            </p>
+            <div class="row">
+              <div class="col-sm-3 pad">
+                <% if !@user.facebook.blank?%>
+                  <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+                <% end %>
+              </div>
+              <div class="col-sm-3 pad">
+                <% if !@user.linkedin.blank?%>
+                  <a href="<%= @user.linkedin %>"><i class="icon-large icon-search"></i>linkedin</a>
+                <% end %>
+              </div>
+              <div class="col-sm-3 pad">
+                <% if !@user.twitter.blank?%>
+                  <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+                <% end %>
+              </div>
+              <div class="col-sm-3 pad">
+                <% if !@user.instagram.blank?%>
+                  <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+                <% end %>
+              </div>
+            </div>
         <% end %>
   <%else%>
-      <p>
-        <a href="<%= @user.facebook %>">Facebook</a> <br>
-        <a href="<%= @user.twitter %>">Twitter</a> <br>
-        <a href="<%= @user.linkedin %>">LinkedIn</a> <br>
-        <a href="<%= @user.instagram %>">Instagram</a> <br>
-      </p>
+      <div class="row">
+        <div class="col-sm-3 pad">
+          <% if !@user.facebook.blank?%>
+            <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+          <% end %>
+        </div>
+        <div class="col-sm-3 pad">
+          <% if !@user.linkedin.blank?%>
+            <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin-square"></i>linkedin</a>
+          <% end %>
+        </div>
+        <div class="col-sm-3 pad">
+          <% if !@user.twitter.blank?%>
+            <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+          <% end %>
+        </div>
+        <div class="col-sm-3 pad">
+          <% if !@user.instagram.blank?%>
+            <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+          <% end %>
+        </div>
+      </div>
   <% end %> <!--if social_privacy_otpion == My Batch -->
 <% end %><!--if social != Only Me -->

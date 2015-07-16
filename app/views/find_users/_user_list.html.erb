@@ -12,12 +12,13 @@
     <tbody>
       <% @users.each do |search_result| %>
         <tr>
+
           <% if search_result.is_graduate %>
             <% if search_result.id != current_user.id %>
                 <% if search_result.location_privacy_option != "Only Me" %>
                   <% if search_result.location_privacy_option == "My Batch" %>
                     <% if current_user.graduations.map{|x| x.batch} & search_result.graduations.map{|s| s.batch}%>
-                      <td><%= search_result.name%></td>
+                     <td><%= search_result.name%></td>
                       <% if search_result.job_privacy_option != "Only Me" %>
                         <%if search_result.job_privacy_option == "My Batch"%>
                             <% search_result.jobs.each do |u|%>

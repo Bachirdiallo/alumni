@@ -1,24 +1,76 @@
-<%#= render 'profile'%>
-<%#= render 'work_history'%>
-
-<div class="container col-sm-8" >
-  <p id="notice"><%= notice %></p>
-    <div class="contianer col-sm-5">
-    <h3><%= @user.name%></h3>
-      <%= render 'work_history'%>
-      <hr>
-      <%= render 'socials'%>
-    </div>
-
-    <div class="container col-sm-7">
-        <div style="width: 200px; height: 200px">
-          <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded') if @user.avatar? %>
-          <br>
+<p id="notice"><%= notice %></p>
+  <div class=" col-sm-12" style="padding-top :5px">
+    <div class="col-sm-3" style="padding-left :0px; padding-right 25px">
+      <div id="image_container">
+        <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
       </div>
-      <%= render 'contact'%>
-        <br/>
-        <div style="height: 300px">
-          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&maptype=roadmap&zoom=13&markers=#{@user.city}%2C#{@user.country}" %>
-        </div>
     </div>
-</div>
+
+    <div class="col-sm-8">
+        <font size="6"> <b><%= @user.name%></b></font>
+        <font size="3">
+          <%= render 'contact'%>
+          <div class="col-sm-1 pad">
+            <i class="fa fa-graduation-cap"></i>
+          </div>
+          <div class="col-sm-11 pad">
+            <% @user.graduations.each do |x|%>
+             <%= x.batch.month%> / <%= x.batch.year%>
+             <%end%>
+             <br>
+             <% @user.graduations.each do |x|%>
+              <%= x.programme.name%>
+              <%end%>
+              <br>
+              <% @user.graduations.each do |x|%>
+              <%= x.faculty.name%>
+              <%end%>
+              <br>
+              <% @user.graduations.each do |x|%>
+              <%= x.campu.name%>
+              <%end%>
+          </div>
+      </div>
+    </div>
+
+  <div class="col-sm-12">
+      <div class="col-sm-8 pad-left">
+
+        <div class="row pad">
+          <%= render 'work_history' %>
+        </div>
+
+        <div class="row pad-left">
+          <%= render 'socials' %>
+        </div>
+
+      </div>
+
+
+    </font>
+    <div class="col-sm-4 pad">
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=380x300 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
+      <%= @user.city %>, <%= @user.country %><br>
+      <%= render 'work_history' %>
+  </div>
+  </div>
+
+  <style>
+     span{color:white}
+     .position{position:relative;}
+     #image_container{width:300px; height:auto }
+     .pad{padding: 0px}
+     .pad-left{padding-left :15px}
+     .pad-bottom{padding-bottom: 0px;}
+  </style>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(this).find("#btn").hide();
+      $(document).on('mouseenter', '#image_container', function () {
+          $(this).find("#btn").show();
+      }).on('mouseleave', '#image_container', function () {
+          $(this).find("#btn").hide();
+      });
+    });
+  </script>
