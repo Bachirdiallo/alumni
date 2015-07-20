@@ -6,7 +6,7 @@
             <%= render 'profile_photo'%>
           </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-4">
             <font size="6"> <b><%= @user.name%></b></font>
             <font size="3">
             <p><%= @user.city%>, <%= @user.country%></p>
@@ -14,7 +14,7 @@
               <div class="col-sm-1 pad">
                 <i class="fa fa-graduation-cap"></i>
               </div>
-              <div class="col-sm-11 pad">
+              <div class="col-sm-9 pad">
                 <% @user.graduations.each do |x|%>
                  <%= x.batch.month%> / <%= x.batch.year%>
                  <%end%>
@@ -32,32 +32,65 @@
                   <%end%>
               </div>
           </div>
-          <div class="col-sm-1">
-            <%= link_to edit_user_profile_path(@user), :class=>'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
-          </div>
-        </div>
-      <div class="col-sm-12">
-          <div class="col-sm-8 pad-left">
-            <div class="row pad">
 
+          <div class="col-sm-4">
+            <div class="row pad">
+              <%= image_tag "http://maps.google.com/maps/api/staticmap?size=425x300 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
+              <%= @user.city %>,  <%= @user.country %>.<br>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="row pad">
+          <br>
+          <div class="col-sm-2">
+            <% if !@user.facebook.blank?%>
+              <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+            <% end %>
+          </div>
+          <div class="col-sm-2 pad">
+            <% if !@user.linkedin.blank?%>
+              <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin"></i>linkedin</a>
+            <% end %>
+          </div>
+          <div class="col-sm-2 pad">
+            <% if !@user.twitter.blank?%>
+              <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+            <% end %>
+          </div>
+          <div class="col-sm-2 pad">
+            <% if !@user.instagram.blank?%>
+              <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+            <% end %>
+          </div>
+
+        </div>
+
+          <div class="col-sm-12 pad">
+            <div class="row pad">
                 <% @jobs.each do |job|%>
                   <% if job.user_id == current_user.id %>
                     <% if job.current == "1"%>
-                    <div class="col-sm-4 pad">
+                    <div class="col-sm-4">
                       <p>
                         <b><%= job.title %></b>[current]</p>
                         <p>  <%= job.company %> <%= job.city %>
-                        <%= job.country %>
-                          <!--<%= link_to edit_job_path(job) do %><span class="glyphicon glyphicon-edit"></span> <% end %>!-->
+                          <%= job.country %>
                         <p>
                          <% if !job.from.nil? && !job.to.nil? %>
                              From <%= job.from.strftime("%B %Y") %>
                          <% end %>
                        </p>
                     </div>
-                    <div class="col-sm-2 pad">
+                    <div class="col-sm-1 pad">
                       <p>
                         <%= link_to edit_job_path(job), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
+                      </p>
+                    </div>
+                    <div class="col-sm-1 pad">
+                      <p>
+                        <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
                       </p>
                     </div>
                   <% else %>
@@ -73,81 +106,63 @@
                        <% end %>
                      </p>
                   </div>
-                  <div class="col-sm-2 pad">
+                  <div class="col-sm-1 pad">
                     <p>
                       <%= link_to edit_job_path(job), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
+                    </p>
+
+                  </div>
+                  <div class="col-sm-1 pad">
+                    <p>
+                      <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
                     </p>
                   </div>
                   <% end %>
                 <% end %>
               <% end %>
             </div>
-
-            <div class="row">
-              <br>
-              <div class="col-sm-3 pad">
-                <% if !@user.facebook.blank?%>
-                  <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
-                <% end %>
-              </div>
-              <div class="col-sm-3 pad">
-                <% if !@user.linkedin.blank?%>
-                  <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin"></i>linkedin</a>
-                <% end %>
-              </div>
-              <div class="col-sm-3 pad">
-                <% if !@user.twitter.blank?%>
-                  <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
-                <% end %>
-              </div>
-              <div class="col-sm-3 pad">
-                <% if !@user.instagram.blank?%>
-                  <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
-                <% end %>
-              </div>
-            </div>
           </font>
-            <br>
-            <div class="row">
-                <div class="col-sm-2 pad">
-                  <hr>
+
+            <div class="row pad">
+                <div class="col-sm-2">
+
                   Location privacy:<br>
                   <b><%= @user.location_privacy_option %></b>
                 </div>
                 <div class="col-sm-3 pad">
-                  <hr>
+
                   Social privacy: <br>
                 <b>  <%= @user.social_privacy_option %></b>
                 </div>
                 <div class="col-sm-3 pad">
-                  <hr>
+
                   Contact privacy: <br>
                   <b><%= @user.contact_privacy_option %></b>
                 </div>
                 <div class="col-sm-3 pad">
-                  <hr>
+
                   Job privacy: <br>
                     <b><%= @user.job_privacy_option %></b>
                 </div>
                 <div class="col-sm-1 pad">
-                  <hr>
+
                   <%= link_to  privacy_user_profiles_path(id: current_user.id), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
                 </div>
             </div>
           </div>
 
-        <div class="col-sm-4">
-          <div class="row pad">
-            <br><br>
-            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=380x300 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
-            <%= @user.city %>,  <%= @user.country %><br>
-            <% @jobs.each do |job|%>
-              <% if job.user_id == current_user.id %>
-                <% if job.current == "1"%>
-                  <p><%= job.title %>,<%= job.company %>  <%= job.country %></p>
-              <% end %>
-            <% end %>
-          <% end %>
+      </div>
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-4">
+
+          </div>
+          <div class="col-sm-2">
+            <%= link_to   new_job_path, :class => 'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit">Add Job</span> <% end %>
+          </div>
+          <div class="col-sm-2">
+            <%= link_to   edit_user_profile_path(current_user.id), :class => 'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit">Edit Profile</span> <% end %>
+
           </div>
         </div>
       </div>
