@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
-
   <head>
 
   </head>
   <body>
-    <button onclick="getLocation()">Find nearby users</button>
-
     <p id="find"></p>
     <script>
         var x = document.getElementById("find");
@@ -15,15 +12,13 @@
 
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
+                 navigator.geolocation.getCurrentPosition(showPosition, showError);
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
         }
 
         function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
             printAddress(lat, lng);
@@ -54,9 +49,9 @@
           if(status == google.maps.GeocoderStatus.OK) {
             if(results[0]) {
               for (i = 0; i< results[0]["address_components"].length; i++){
-                //console.log(results[0]["address_components"][i]);
                 if (results[0]["address_components"][i]["types"].indexOf("locality") > -1){
                   locality = results[0]["address_components"][i]["long_name"]
+                  window.name = locality;
                 }
                 if (results[0]["address_components"][i]["types"].indexOf("country") > -1){
                   country = results[0]["address_components"][i]["long_name"]
@@ -67,12 +62,11 @@
                 url: "<%= file_content_find_users_path %>",
                 data: {'city': locality, 'country': country}
               });
-
               } else {
                 error('Google did not return any results.');
               }
             } else {
-              error("Reverse Geocoding failed due to: " + status);
+                error("Reverse Geocoding failed due to: " + status);
             }
           });
         }

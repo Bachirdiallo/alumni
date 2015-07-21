@@ -1,188 +1,209 @@
-    <p id="notice"><%= notice %></p>
-      <div class=" col-sm-12" style="padding-top :5px">
-        <div class="col-sm-3" style="padding-left :0px; padding-right 25px">
-          <div id="image_container">
-            <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
-            <%= render 'profile_photo'%>
-          </div>
+<div class="container pad" style="background: #EEEEEE" id="bar">
+  <%= render 'find_users/locate_user'%>
+  Seems like you have changed your location, would you like to see the alumni in your current city?
+
+  <a href="http://localhost:3000/find_users" class="btn btn-primary btn-sm">Find</a>
+
+  <button type="button" name="button" class="btn btn-primary btn-sm" id= "button">Hide</button>
+</div>
+
+  <script>
+    $("#bar").hide();
+    var old_city = "<%= @user.city%>";
+    var current_city = window.name;
+    if(current_city != old_city){
+      $("#bar").show();
+    }
+    else{
+      $("#bar").hide();
+    }
+    $("#button").click(function(){
+      $("#bar").hide();
+    });
+  </script>
+
+<div class=" col-sm-12" style="padding-top :5px">
+  <div class="col-sm-3" style="padding-left :0px; padding-right 25px">
+    <div id="image_container">
+      <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
+      <%= render 'profile_photo'%>
+    </div>
+  </div>
+  <div class="col-sm-4">
+      <font size="6"> <b><%= @user.name%></b></font>
+      <font size="3">
+      <p><%= @user.city%>, <%= @user.country%></p>
+        <%= render 'profile'%>
+        <div class="col-sm-1 pad">
+          <i class="fa fa-graduation-cap"></i>
         </div>
-        <div class="col-sm-4">
-            <font size="6"> <b><%= @user.name%></b></font>
-            <font size="3">
-            <p><%= @user.city%>, <%= @user.country%></p>
-              <%= render 'profile'%>
+        <div class="col-sm-9 pad">
+          <% @user.graduations.each do |x|%>
+           <%= x.batch.month%> / <%= x.batch.year%>
+           <%end%>
+           <br>
+           <% @user.graduations.each do |x|%>
+            <%= x.programme.name%>
+            <%end%>
+            <br>
+            <% @user.graduations.each do |x|%>
+            <%= x.faculty.name%>
+            <%end%>
+            <br>
+            <% @user.graduations.each do |x|%>
+            <%= x.campu.name%>
+            <%end%>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="row pad">
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=425x300 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
+        <%= @user.city %>,  <%= @user.country %>.<br>
+      </div>
+    </div>
+</div>
+
+<div class="col-sm-12">
+  <div class="row pad">
+    <br>
+    <div class="col-sm-2">
+      <% if !@user.facebook.blank?%>
+        <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+      <% end %>
+    </div>
+    <div class="col-sm-2 pad">
+      <% if !@user.linkedin.blank?%>
+        <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin"></i>linkedin</a>
+      <% end %>
+    </div>
+    <div class="col-sm-2 pad">
+      <% if !@user.twitter.blank?%>
+        <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+      <% end %>
+    </div>
+    <div class="col-sm-2 pad">
+      <% if !@user.instagram.blank?%>
+        <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+      <% end %>
+    </div>
+</div>
+
+<div class="col-sm-12 pad">
+  <div class="row pad">
+          <% @jobs.each do |job|%>
+            <% if job.user_id == current_user.id %>
+              <% if job.current == "1"%>
+              <div class="col-sm-4">
+                <p>
+                  <b><%= job.title %></b>[current]</p>
+                  <p>  <%= job.company %> <%= job.city %>
+                    <%= job.country %>
+                  <p>
+                   <% if !job.from.nil? && !job.to.nil? %>
+                       From <%= job.from.strftime("%B %Y") %>
+                   <% end %>
+                 </p>
+              </div>
               <div class="col-sm-1 pad">
-                <i class="fa fa-graduation-cap"></i>
+                <p>
+                  <%= link_to edit_job_path(job), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
+                </p>
               </div>
-              <div class="col-sm-9 pad">
-                <% @user.graduations.each do |x|%>
-                 <%= x.batch.month%> / <%= x.batch.year%>
-                 <%end%>
-                 <br>
-                 <% @user.graduations.each do |x|%>
-                  <%= x.programme.name%>
-                  <%end%>
-                  <br>
-                  <% @user.graduations.each do |x|%>
-                  <%= x.faculty.name%>
-                  <%end%>
-                  <br>
-                  <% @user.graduations.each do |x|%>
-                  <%= x.campu.name%>
-                  <%end%>
+              <div class="col-sm-1 pad">
+                <p>
+                  <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
+                </p>
               </div>
-          </div>
+            <% else %>
+            <div class="col-sm-4 pad">
+              <p>
+                <b><%= job.title %></b></p>
+                <p>  <%= job.company %> <%= job.city %>
+                <%= job.country %>
 
-          <div class="col-sm-4">
-            <div class="row pad">
-              <%= image_tag "http://maps.google.com/maps/api/staticmap?size=425x300 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
-              <%= @user.city %>,  <%= @user.country %>.<br>
+                <p>
+                 <% if !job.from.nil? && !job.to.nil? %>
+                     From <%= job.from.strftime("%B %Y") %> to <%= job.to.strftime("%B %Y")  %>
+                 <% end %>
+               </p>
             </div>
+            <div class="col-sm-1 pad">
+              <p>
+                <%= link_to edit_job_path(job), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
+              </p>
+
+            </div>
+            <div class="col-sm-1 pad">
+              <p>
+                <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
+              </p>
+            </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </font>
+
+      <div class="row pad">
+          <div class="col-sm-2">
+            Location privacy:<br>
+            <b><%= @user.location_privacy_option %></b>
+          </div>
+          <div class="col-sm-3 pad">
+
+            Social privacy: <br>
+          <b>  <%= @user.social_privacy_option %></b>
+          </div>
+          <div class="col-sm-3 pad">
+
+            Contact privacy: <br>
+            <b><%= @user.contact_privacy_option %></b>
+          </div>
+          <div class="col-sm-3 pad">
+
+            Job privacy: <br>
+              <b><%= @user.job_privacy_option %></b>
+          </div>
+          <div class="col-sm-1 pad">
+
+            <%= link_to  privacy_user_profiles_path(id: current_user.id), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
           </div>
       </div>
+    </div>
 
-      <div class="col-sm-12">
-        <div class="row pad">
-          <br>
-          <div class="col-sm-2">
-            <% if !@user.facebook.blank?%>
-              <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
-            <% end %>
-          </div>
-          <div class="col-sm-2 pad">
-            <% if !@user.linkedin.blank?%>
-              <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin"></i>linkedin</a>
-            <% end %>
-          </div>
-          <div class="col-sm-2 pad">
-            <% if !@user.twitter.blank?%>
-              <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
-            <% end %>
-          </div>
-          <div class="col-sm-2 pad">
-            <% if !@user.instagram.blank?%>
-              <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
-            <% end %>
-          </div>
+</div>
+<div class="col-sm-12">
+  <div class="row">
+    <div class="col-sm-4">
 
-        </div>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to   new_job_path, :class => 'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit">Add Job</span> <% end %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to   edit_user_profile_path(current_user.id), :class => 'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit">Edit Profile</span> <% end %>
 
-          <div class="col-sm-12 pad">
-            <div class="row pad">
-                <% @jobs.each do |job|%>
-                  <% if job.user_id == current_user.id %>
-                    <% if job.current == "1"%>
-                    <div class="col-sm-4">
-                      <p>
-                        <b><%= job.title %></b>[current]</p>
-                        <p>  <%= job.company %> <%= job.city %>
-                          <%= job.country %>
-                        <p>
-                         <% if !job.from.nil? && !job.to.nil? %>
-                             From <%= job.from.strftime("%B %Y") %>
-                         <% end %>
-                       </p>
-                    </div>
-                    <div class="col-sm-1 pad">
-                      <p>
-                        <%= link_to edit_job_path(job), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
-                      </p>
-                    </div>
-                    <div class="col-sm-1 pad">
-                      <p>
-                        <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
-                      </p>
-                    </div>
-                  <% else %>
-                  <div class="col-sm-4 pad">
-                    <p>
-                      <b><%= job.title %></b></p>
-                      <p>  <%= job.company %> <%= job.city %>
-                      <%= job.country %>
+    </div>
+  </div>
+</div>
 
-                      <p>
-                       <% if !job.from.nil? && !job.to.nil? %>
-                           From <%= job.from.strftime("%B %Y") %> to <%= job.to.strftime("%B %Y")  %>
-                       <% end %>
-                     </p>
-                  </div>
-                  <div class="col-sm-1 pad">
-                    <p>
-                      <%= link_to edit_job_path(job), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
-                    </p>
+<style>
+   span{color:white}
+   .position{position:relative;}
+   #image_container{width:300px; height:auto }
+   .pad{padding: 0px}
+   .pad-left{padding-left :15px}
+   .pad-bottom{padding-bottom: 0px;}
+</style>
 
-                  </div>
-                  <div class="col-sm-1 pad">
-                    <p>
-                      <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
-                    </p>
-                  </div>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          </font>
-
-            <div class="row pad">
-                <div class="col-sm-2">
-
-                  Location privacy:<br>
-                  <b><%= @user.location_privacy_option %></b>
-                </div>
-                <div class="col-sm-3 pad">
-
-                  Social privacy: <br>
-                <b>  <%= @user.social_privacy_option %></b>
-                </div>
-                <div class="col-sm-3 pad">
-
-                  Contact privacy: <br>
-                  <b><%= @user.contact_privacy_option %></b>
-                </div>
-                <div class="col-sm-3 pad">
-
-                  Job privacy: <br>
-                    <b><%= @user.job_privacy_option %></b>
-                </div>
-                <div class="col-sm-1 pad">
-
-                  <%= link_to  privacy_user_profiles_path(id: current_user.id), :class => 'btn btn-primary btn-sm' do %><span class="glyphicon glyphicon-edit"></span> <% end %>
-                </div>
-            </div>
-          </div>
-
-      </div>
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-sm-4">
-
-          </div>
-          <div class="col-sm-2">
-            <%= link_to   new_job_path, :class => 'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit">Add Job</span> <% end %>
-          </div>
-          <div class="col-sm-2">
-            <%= link_to   edit_user_profile_path(current_user.id), :class => 'btn btn-primary btn-lg' do %><span class="glyphicon glyphicon-edit">Edit Profile</span> <% end %>
-
-          </div>
-        </div>
-      </div>
-
-      <style>
-         span{color:white}
-         .position{position:relative;}
-         #image_container{width:300px; height:auto }
-         .pad{padding: 0px}
-         .pad-left{padding-left :15px}
-         .pad-bottom{padding-bottom: 0px;}
-      </style>
-
-      <script type="text/javascript">
-        $(document).ready(function () {
-          $(this).find("#btn").hide();
-          $(document).on('mouseenter', '#image_container', function () {
-              $(this).find("#btn").show();
-          }).on('mouseleave', '#image_container', function () {
-              $(this).find("#btn").hide();
-          });
-        });
-      </script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(this).find("#btn").hide();
+    $(document).on('mouseenter', '#image_container', function () {
+        $(this).find("#btn").show();
+    }).on('mouseleave', '#image_container', function () {
+        $(this).find("#btn").hide();
+    });
+  });
+</script>

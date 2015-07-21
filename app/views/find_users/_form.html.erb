@@ -1,16 +1,25 @@
+<div class="row panel radius" >
 <%= search_form_for @search_results, url: find_users_path do |f| %>
-  <div class="row panel radius center">
-      Campus: <%= f.select :graduations_campu_id_eq, [""]+Campu.all.map{|p| [p.name, p.id]}%>
+ <div class="col-sm-4">
+    Campus: <%= f.select :graduations_campu_id_eq, [""]+Campu.all.map{|p| [p.name, p.id]}, :class => 'control'%>
+  </div>
+  <div class="col-sm-8">
     Faculty: <%= f.select :graduations_faculty_id_eq, [""]+Faculty.all.map{|p| [p.name, p.id]}%>
-
-  <br>
-
+  </div>
+    <br><br>
+    <div class="col-sm-4">
     Programme: <%= f.select :graduations_programme_id_eq,[""]+Programme.select("distinct name, id").map{|p| [p.name, p.id]} %>
+  </div>
+  <div class="col-sm-8">
+
     Class:
-          <%= f.select :graduations_batch_id_eq, [""]+Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }%>
-          <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
+        <%= f.select :graduations_batch_id_eq, [""]+Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }%>
+        <%= f.submit "Search", :class => 'btn btn-primary btn-flat' %>
+
+          </div>
 <% end %>
 </div>
 <style>
   .radius{border-radius: 15px; padding: 15px}
+  .control{width: 300px}
 </style>

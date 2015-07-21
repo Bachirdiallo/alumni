@@ -4,20 +4,14 @@ class FindUsersController < ApplicationController
 
   # GET /find_users
   # GET /find_users.json
-  @new_place = 0
+
   def index
-      @search_results = User.ransack(params[:q])
-      @users = @search_results.result.includes(:graduations)
+    @search_results = User.ransack(params[:q])
+    @users = @search_results.result.includes(:graduations)
   end
 
   def file_content
     @users = User.where(city: params[:city], country: params[:country]).includes(:graduations)
-
-    if current_user.city != params[:city]
-      @new_place = 1
-      flash.now[:notice] = 'Message sent!'
-      redirect_to user_profiles_path
-    end
   end
 
   private

@@ -1,12 +1,15 @@
-<div class="container col-sm-8">
-  <p id="notice"><%= notice %></p>alert("jkds");
-<% if @new_place == 1 %>
-  <script type="text/javascript">
-    alert("jkds");
-  </script>
-<% end %>
+<div class="col-sm-12">
   <%= render 'locate_user'%>
-  <%= render 'form'%>
-
+  <div class="col-sm-2">
+  </div>
+  <div class="col-sm-8" id="form">
+    <%= render 'form'%>
+  </div>
   <%= render partial: "user_list"%>
 </div>
+
+<script>
+
+  onload =getLocation();
+
+</script>

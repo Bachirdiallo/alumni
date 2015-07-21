@@ -3,6 +3,7 @@ class UserProfilesController < ApplicationController
   before_filter :authenticate_user!
   # GET /user_profiles
   # GET /user_profiles.json
+
   def index
     @user = User.find(current_user.id)
     @jobs = Job.all.paginate(:page => 1, :per_page => 30)
