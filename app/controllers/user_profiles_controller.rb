@@ -27,6 +27,7 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1/edit
   def edit
+    @jobs = Job.all.paginate(:page => 1, :per_page => 30)
   end
 
   def privacy

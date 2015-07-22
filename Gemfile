@@ -7,7 +7,7 @@ gem 'rails', '4.2.1'
 #gem 'sqlite3'
 gem 'mysql2'
 # Use SCSS for stylesheets
-#gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '>= 3.2'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -26,7 +26,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 gem 'devise'
-gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'bootstrap-material-design'
 gem 'formtastic-bootstrap'
 gem 'ransack', '~> 1.6.6'
@@ -38,9 +37,11 @@ gem "iconv", "~> 1.0.3"
 gem "therubyracer"
 gem "less-rails"
 gem 'remotipart'
-gem 'geocoder'
 gem 'will_paginate', '~> 3.0.6'
 gem "font-awesome-rails"
+gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
+gem 'autoprefixer-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
