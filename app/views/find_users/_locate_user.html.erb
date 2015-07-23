@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
 
-  </head>
-  <body>
     <p id="find"></p>
     <script>
         var x = document.getElementById("find");
@@ -12,7 +7,7 @@
 
         function getLocation() {
             if (navigator.geolocation) {
-                 navigator.geolocation.getCurrentPosition(showPosition, showError);
+                 navigator.geolocation.getCurrentPosition(showPosition,showError);
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
             }
@@ -57,10 +52,12 @@
                   country = results[0]["address_components"][i]["long_name"]
                 }
               }
-              var address = {'city': locality, 'country': country}
+              var address = {'city': locality, 'country': country, 'f': params}
+              var params =  <%= params[:q].to_json.html_safe%>;
+              console.log(params)
               $.ajax({
                 url: "<%= file_content_find_users_path %>",
-                data: {'city': locality, 'country': country}
+                data: {'city': locality, 'country': country, 'q': params}
               });
               } else {
                 error('Google did not return any results.');
@@ -71,5 +68,3 @@
           });
         }
     </script>
-  </body>
-</html>

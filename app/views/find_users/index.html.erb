@@ -1,5 +1,4 @@
 <div class="col-sm-12">
-  <%= render 'locate_user'%>
   <div class="col-sm-1">
   </div>
   <div class="col-sm-9" id="form">
@@ -8,6 +7,9 @@
   <%= render partial: "user_list"%>
 </div>
 
+<%= render partial: 'locate_user'%>
+
 <script>
-  onload =getLocation();
+  var params =  <%= params[:q].to_json.html_safe%>;
+  onload=getLocation();
 </script>

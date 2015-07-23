@@ -11,7 +11,11 @@ class FindUsersController < ApplicationController
   end
 
   def file_content
-    @users = User.where(city: params[:city], country: params[:country]).includes(:graduations)
+    @search_results = User.ransack(params[:q])
+    @users = @search_results.result.includes(:graduations)
+    if params[:q][:is_current_city]
+      @users = @users.where(city: params[:city], country: params[:country]).includes(:graduations)
+    end
   end
 
   private

@@ -1,25 +1,27 @@
-<div class="row panel radius back" >
+<div class="row panel radius back" id="form">
 <%= search_form_for @search_results, url: find_users_path do |f| %>
- <div class="col-sm-4">
-    Campus: <br><%= f.select :graduations_campu_id_eq, [""]+Campu.all.map{|p| [p.name, p.id]}, :class => 'control'%>
+  <div class="col-sm-4">
+    Campus: <br><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'control'%>
   </div>
   <div class="col-sm-8">
-    Faculty: <br><%= f.select :graduations_faculty_id_eq, [""]+Faculty.all.map{|p| [p.name, p.id]}%>
+    Faculty: <br><%= f.select :graduations_faculty_id_eq, Faculty.all.map{|p| [p.name, p.id]}, :include_blank => true%>
   </div>
-
   <div class="col-sm-4">
-    Programme: <br><%= f.select :graduations_programme_id_eq,[""]+Programme.select("distinct name, id").map{|p| [p.name, p.id]} %>
+    Programme: <br><%= f.select :graduations_programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
   </div>
   <div class="col-sm-2">
-    Class:<br><%= f.select :graduations_batch_id_eq, [""]+Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }%>
-
+    Class:<br><%= f.select :graduations_batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-2">
+    Current City<br> <%= f.check_box :is_current_city, checked: true %>
+  </div>
+  <div class="col-sm-3">
     <%= f.submit :class => 'btn btn-primary' do %>
       <div class="ripple-wrapper">Search</div>
     <% end %>
   </div>
 <% end %>
+  <div id="form"></div>
 </div>
 <style>
   .radius{border-radius: 15px; padding: 15px}

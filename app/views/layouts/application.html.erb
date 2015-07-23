@@ -47,8 +47,10 @@
 
     <script>
       $("#bar").hide();
+    "  <% if user_signed_in?%>"
       var old_city = "<%= current_user.city%>";
       var current_city = window.name;
+
       if(current_city != old_city){
         $("#bar").show();
       }
@@ -58,5 +60,6 @@
       $("#button").click(function(){
         $("#bar").hide();
       });
+      "<%end%>"
     </script>
 </html>
