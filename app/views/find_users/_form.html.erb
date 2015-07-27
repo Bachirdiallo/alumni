@@ -1,5 +1,5 @@
-<div class="row panel radius back" id="form">
-<%= search_form_for @search_results, url: find_users_path do |f| %>
+<div class="row radius " id="form" onload="getLocation();">
+<%= search_form_for @search_results, url:  file_content_find_users_path, remote: true do |f| %>
   <div class="col-sm-4">
     Campus: <br><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'control'%>
   </div>
@@ -17,14 +17,14 @@
   </div>
   <div class="col-sm-3">
     <%= f.submit :class => 'btn btn-primary' do %>
-      <div class="ripple-wrapper">Search</div>
+      <i class="fa fa-search">Search</i>
     <% end %>
   </div>
 <% end %>
-  <div id="form"></div>
 </div>
 <style>
   .radius{border-radius: 15px; padding: 15px}
   .control{width: 300px}
   .back{background: #eeeeee}
+  #form:hover{background-color: #eeeeee;}
 </style>

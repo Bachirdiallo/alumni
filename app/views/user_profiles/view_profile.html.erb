@@ -14,19 +14,19 @@
         </div>
         <div class="col-sm-9 pad">
           <% @user.graduations.each do |x|%>
-           <%= x.batch.month%> / <%= x.batch.year%>
+           <%= x.batch.month%> / <%= x.batch.year%>,
            <%end%>
-           <br>
+
            <% @user.graduations.each do |x|%>
-            <%= x.programme.name%>
+            <%= x.programme.name%>,
             <%end%>
-            <br>
+
             <% @user.graduations.each do |x|%>
-            <%= x.faculty.name%>
+            <%= x.faculty.name%>,
             <%end%>
-            <br>
+
             <% @user.graduations.each do |x|%>
-            <%= x.campu.name%>
+            <%= x.campu.name%>.
             <%end%>
         </div>
     </div>
@@ -46,7 +46,6 @@
       <div class="row pad">
         <%= render 'work_history' %>
       </div>
-
   </font>
 </div>
 

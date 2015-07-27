@@ -4,22 +4,22 @@
           <div class="row">
             <div class="col-sm-3 pad">
               <% if !@user.facebook.blank?%>
-                <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+                <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-square"></i></a>
               <% end %>
             </div>
             <div class="col-sm-3 pad">
               <% if !@user.linkedin.blank?%>
-                <a href="<%= @user.linkedin %>"><i class="icon-large icon-search"></i>linkedin</a>
+                <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin-square"></i></a>
               <% end %>
             </div>
             <div class="col-sm-3 pad">
               <% if !@user.twitter.blank?%>
-                <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+                <a href="<%= @user.twitter %>"><i class="fa fa-twitter-square"></i></a>
               <% end %>
             </div>
             <div class="col-sm-3 pad">
               <% if !@user.instagram.blank?%>
-                <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+                <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i></a>
               <% end %>
             </div>
           </div>

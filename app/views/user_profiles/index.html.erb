@@ -1,5 +1,5 @@
 <div class=" col-sm-12" style="padding-top :5px">
-  <div class="col-sm-3" style="padding-left :0px; padding-right 25px">
+  <div class="col-sm-2" style="padding-left :0px; padding-right 25px">
     <div id="image_container">
       <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
       <%= render 'profile_photo'%>
@@ -16,7 +16,7 @@
         <div class="col-sm-9 pad">
           <font size="2">
           <% @user.graduations.each do |x|%>
-           <%= x.batch.month%> / <%= x.batch.year%>,
+           <%= x.batch.month%> / <%= x.batch.year%>
            <%end%>
            <% @user.graduations.each do |x|%>
             <%= x.programme.name%>,
@@ -41,22 +41,22 @@
     <br>
     <div class="col-sm-2">
       <% if !@user.facebook.blank?%>
-        <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-official"></i></a>
+        <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-square"></i></a>
       <% end %>
     </div>
     <div class="col-sm-2">
       <% if !@user.linkedin.blank?%>
-        <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin"></i>linkedin</a>
+        <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin-square"></i></a>
       <% end %>
     </div>
     <div class="col-sm-2">
       <% if !@user.twitter.blank?%>
-        <a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i>twitter</a>
+        <a href="<%= @user.twitter %>"><i class="fa fa-twitter-square"></i></a>
       <% end %>
     </div>
     <div class="col-sm-2">
       <% if !@user.instagram.blank?%>
-        <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i>instagram</a>
+        <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i></a>
       <% end %>
     </div>
 </div>

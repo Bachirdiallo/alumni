@@ -59,6 +59,7 @@
         </div>
 
         <div class="col-sm-4">
+          <%= link_to   new_job_path, :class => 'btn btn-primary btn-sm' do %><span class="fa fa-plus-square">Add Job</span> <% end %>
             <%= image_tag "http://maps.google.com/maps/api/staticmap?size=400x150 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
             <%= @user.city %>,  <%= @user.country %>.<br>
         </div>

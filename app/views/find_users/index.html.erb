@@ -1,15 +1,16 @@
 <div class="col-sm-12">
   <div class="col-sm-1">
   </div>
-  <div class="col-sm-9" id="form">
-    <%= render 'form'%>
+  <div class="col-sm-9">
+    <%= render 'form', :id=>"f"%>
   </div>
   <%= render partial: "user_list"%>
 </div>
 
 <%= render partial: 'locate_user'%>
 
-<script>
-  var params =  <%= params[:q].to_json.html_safe%>;
-  onload=getLocation();
-</script>
+<style media="screen">
+#f:hover {
+  background-color: yellow;
+}
+</style>
