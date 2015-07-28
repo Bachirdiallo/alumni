@@ -18,10 +18,12 @@ root to: 'pages#index'
   resources :users
 
   resources :claim do
+    post :add
     collection do
-      get :update_email
       get :claim_account
       get :claim_action_result
+      get :change
+
     end
   end
 

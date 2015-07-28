@@ -1,33 +1,18 @@
 class ClaimController < ApplicationController
-
-
-  student_id = User.new
+  before_action :set_claim, only: [:show, :edit, :update, :destroy, :change, :add]
 
   def index
-    #@users =  User.find(student_id)
-  end
-
-  def update_email(id)
-    @users = User.find(id)
   end
 
   def claim_account
     @q = User.ransack(params[:q])
     @results = @q.result
-
-    student_id = @results.map{|x| x.id}
-    puts "the id", student_id
-    update_email(@student_id)
-    puts "the id", @id
-    return @results
   end
 
+  def change
+    @user = User.where(student_id: params[:q][:student_id_eq]).first
 
-  def claim_action_result
-    @user = claim_account
-    if @user.count == 1
-      redirect_to claim_index_path
-    else
+    if @user.nil?
       #display message and redirect_to claim account page
       respond_to do |format|
         format.html { redirect_to   :back , notice: 'Account Not Found!' }
@@ -36,10 +21,37 @@ class ClaimController < ApplicationController
     end
   end
 
+def edit
+end
+
+def add
+end
+
+  def update
+    respond_to do |format|
+      @user = User.find(params[:id])
+      puts '@user = ', params[:id]
+      if @user.update(claim_account_params)
+        format.html { redirect_to claim_account_claim_index_url, notice: 'Email was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def show
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_claim
+      @user = User.where(id: params[:id]).first
+    end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def claim_account_params
-    params[:claim]
+    params.require(:user).permit(:email)
   end
-
 end

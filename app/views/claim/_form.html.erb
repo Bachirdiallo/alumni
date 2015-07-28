@@ -1,11 +1,10 @@
-<%= form_for(@users) do |f|%>
+<%= form_for @user, url: claim_path(id: @user.id) do |f|%>
 <div class="form-control-wrapper">
   <%= f.text_field :email, :class => 'form-control empty', :autocomplete => "off" %>
   <div class="floating-label"> Email</div>
     <span class="material-input"></span>
 </div>
-
 <div class="actions">
-  <%= f.submit "Add Email", :class => 'btn btn-primary btn-flat' %>
+  <%= f.submit "Update Email", :action=>"update", :class => 'btn btn-primary btn-flat' %>
 </div>
 <% end %>
