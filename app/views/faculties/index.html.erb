@@ -1,17 +1,9 @@
 <div class="container col-sm-8">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Faculties</h1>
+<h2>Listing Faculties</h2>
 
-<table class="table table-striped table-hover table-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Edit</th>
-      <th>Remove</th>
-    </tr>
-  </thead>
-
+<table class="table table-striped table-hover ">
   <tbody>
     <% @faculties.each do |faculty| %>
       <tr>
@@ -25,5 +17,9 @@
 
 <br>
 
-<%= link_to 'New Faculty', new_faculty_path, :class => 'btn btn-primary btn-flat' %>
+<%= link_to 'New Faculty', new_faculty_path, :class => 'btn btn-primary btn-md' %>
 </div>
+
+<style media="screen">
+  h2{color: #009688}
+</style>

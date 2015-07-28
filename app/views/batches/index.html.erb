@@ -1,20 +1,14 @@
 <div class="container col-sm-8">
     <strong><%= notice %></strong>
 
-  <h1>Listing Batches</h1>
+  <h2>Listing Batches</h2>
 
   <div id="file_uploader">
     <%= render partial: 'import/file_uploader',  locals: {:klass => Graduation}%>
   </div>
 
-  <table class="table table-striped table-hover table-bordered">
+  <table class="table table-striped table-hover ">
     <thead>
-      <tr>
-        <th>Class</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
     <tbody>
       <% @batches.each do |batch| %>
         <tr>
@@ -31,5 +25,9 @@
   </table>
   <%= will_paginate @batches %>
   <br>
-  <%= link_to 'New Batch', new_batch_path, :class => 'btn btn-primary btn-flat' %>
+  <%= link_to 'New Batch', new_batch_path, :class => 'btn btn-primary btn-md' %>
 </div>
+
+<style media="screen">
+  h2{color: #009688}
+</style>

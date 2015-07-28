@@ -10,14 +10,15 @@
       </ul>
     </div>
   <% end %>
-
-<div style="width: 200px">
-  <div>
-      <%= f.input :month, as: :select, :collection => Batch::MONTHS.first(Batch::MONTHS.size()), :class => 'form-control' %>
-      <%= f.input :year, :as => :date_select, :start_year => 1995,  :end_year => Date.current.year, :discard_month => true, :discard_day => true, :class => 'form-control' %>
-</div>
-
-  <div class="actions">
-    <%= f.submit :class => 'btn btn-primary btn-flat' %>
+  <div class="col-sm-4">
+    <%= f.input :month, as: :select, :collection => Batch::MONTHS.first(Batch::MONTHS.size()), :class => 'form-control' %>
+  </div>
+  <div class="col-sm-4">
+    <%= f.input :year, :as => :date_select, :start_year => 1995,  :end_year => Date.current.year, :discard_month => true, :discard_day => true, :class => 'form-control' %>
+  </div>
+  <br>
+  <div class="col-sm-6">
+    <%= f.submit :class => 'btn btn-primary btn-md' %>
+    <%= link_to 'Back', batches_path, :class => 'btn btn-primary btn-md' %>
   </div>
 <% end %>

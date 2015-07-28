@@ -1,15 +1,8 @@
 <p><strong><%= notice %></strong></p>
-<div class="container col-sm-8">
-  <div>
+<div class="container">
+  <div class="col-sm-8">
     <h1>Admin list</h1>
-    <table class="table table-striped table-hover table-bordered">
-      <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-        </tr>
-      </thead>
+    <table class="table table-striped table-hover ">
       <tbody>
         <% @users.each do |user| %>
           <tr >
@@ -25,8 +18,13 @@
         <% end %>
       </tbody>
     </table>
+    <div>
+      <%= link_to 'New User', new_member_path, :class => 'btn btn-primary btn-md' %>
+    </div>
   </div>
-  <div>
-    <%= link_to 'New User', new_member_path, :class => 'btn btn-primary btn-flat' %>
-  </div>
+
 </div>
+
+<style media="screen">
+  h1{color: #009688;}
+</style>

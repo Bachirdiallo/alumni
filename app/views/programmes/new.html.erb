@@ -1,8 +1,11 @@
-<div class="container center well" style="width: 65%">
+<div class="container">
 
-  <h1>New Programme</h1>
-
-  <%= render 'form' %>
-
-  <%= link_to 'Back', programmes_path, :class => 'btn btn-primary btn-flat' %>
+  <div class="col-sm-8">
+    <h2>New Programme</h2>
+    <%= render 'form' %>
+  </div>
 </div>
+
+<style media="screen">
+  h2{color: #009688}
+</style>
