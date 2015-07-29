@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @event.title %></h1>
+<p><%= @event.description %></p>
+<p><%= @event.date.strftime("%B") %> <%= @event.date.strftime("%Y") %></p>
+
+<%= link_to 'Edit', edit_event_path(@event), :class => 'btn btn-primary btn-md' %>
+<%= link_to 'Back', events_path, :class => 'btn btn-primary btn-md' %>
+
+<style media="screen">
+  h1{color: #009688}
+</style>

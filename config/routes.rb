@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :announcements
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  resources :events
   resources :jobs
 root to: 'pages#index'
   get 'pages/index'

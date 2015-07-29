@@ -1,0 +1,35 @@
+<div class="col-sm-9">
+  <%= form_for(@event) do |f| %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+        <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+
+    <div class="form-control-wrapper" >
+      <%= f.text_field :title, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">Title</div>
+        <span class="material-input"></span>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.datetime_select :date %>
+    </div>
+<br>
+    <div class="form-control-wrapper" >
+      <%= f.bootsy_area :description, editor_options: { link: true, color: true, font_styles: true, emphasis: true, lists: true, html: true }, :class => 'form-control empty' %>
+    </div>
+
+      <%= f.submit "Publish", :class => 'btn btn-primary btn-md' %>
+      <%= link_to 'Back', events_path, :class => 'btn btn-primary btn-md' %>
+  <% end %>
+
+</div>

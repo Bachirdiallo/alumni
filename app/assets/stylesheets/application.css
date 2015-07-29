@@ -12,5 +12,6 @@
  *= require bootstrap.min
  *= require bootstrap-material-design
  *= require_self
+ *= require bootsy
  *= require font-awesome
  */

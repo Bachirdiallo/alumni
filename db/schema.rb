@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707044500) do
+ActiveRecord::Schema.define(version: 20150729044124) do
+
+  create_table "announcements", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "batches", force: :cascade do |t|
     t.integer  "month",      limit: 4
@@ -20,10 +27,32 @@ ActiveRecord::Schema.define(version: 20150707044500) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "bootsy_image_galleries", force: :cascade do |t|
+    t.integer  "bootsy_resource_id",   limit: 4
+    t.string   "bootsy_resource_type", limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: :cascade do |t|
+    t.string   "image_file",       limit: 255
+    t.integer  "image_gallery_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "campus", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.datetime "date"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "faculties", force: :cascade do |t|

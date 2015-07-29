@@ -43,6 +43,8 @@ gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem "bullet"
+gem 'bootsy'
+gem "mini_magick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
