@@ -52,6 +52,6 @@ end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def claim_account_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:user_id, :email)
   end
 end

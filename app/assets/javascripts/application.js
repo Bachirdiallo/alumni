@@ -19,4 +19,5 @@
 //= require twitter/bootstrap/modal
 //= require twitter/bootstrap/button
 //= require twitter/bootstrap/collapse
+//= require twitter/bootstrap/carousel
 //= require_tree .

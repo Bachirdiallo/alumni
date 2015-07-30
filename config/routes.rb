@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+
+
   resources :announcements
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :events
   resources :jobs
-root to: 'pages#index'
-  get 'pages/index'
+root to: 'home#index'
+  get 'home/index'
+  resources :home
 
 
   resources :graduations
@@ -21,12 +24,9 @@ root to: 'pages#index'
   resources :users
 
   resources :claim do
-    post :add
     collection do
       get :claim_account
-      get :claim_action_result
       get :change
-
     end
   end
 
@@ -55,15 +55,6 @@ root to: 'pages#index'
   #pages
   #get '/claim_account', to: 'pages#claim_account'
   #get '/claim_action_result', to: 'pages#claim_action_result'
-
-  resources :pages do
-
-    collection do
-      post :update_email
-
-    end
-  end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
