@@ -41,43 +41,33 @@
       </a>
     </div>
   </div>
-  
-  <div class="col-sm-4 carousel-c no-pad" >
-    <br>
-    <div class="form-control-wrapper">
-      <%= link_to 'Claim your Account',  claim_account_claim_index_path, :class => 'btn btn-primary btn-lg' %>
 
-      <div class="floating-label">Id Number </div>
-        <span class="material-input"></span>
-    </div>
-
+  <div class="col-sm-4 carousel-c" >
+    <%= link_to 'Claim your Account',  claim_account_claim_index_path, :class => 'btn btn-primary btn-flat' %>
     <div id="info-section">
-      <h3>Latest News</h3>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
-          <div class="carousel-caption">
-            <h1> Amsterdam From TDEx</a></h1>
-          </div>
-        </div>
-      </div>
+      <h4>Latest News</h4>
       <% count = 0%>
       <% @announcements.each do |announcement| %>
         <div  id="news">
           <% if count < 3 %>
-            <b> <%= link_to  announcement.title,   announcement_path(id: announcement.id) %></b><br>
-                <%= truncate announcement.content, length: 70 %>
+            <div class="news-li">
+               <p><%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%></p>
+            </div>
             <% count = count + 1%>
           <% end %>
         </div>
       <% end %>
-      <h3>Events & Reunions</h3>
+      <h4>Events & Reunions</h4>
       <% event_count = 0%>
       <% @events.each do |event| %>
           <div>
             <% if event_count < 2 %>
-            <hr>
-              <b> <%= link_to  event.title, event_path(id: event.id) %></b>
-              <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %>
+            <div class="news-li">
+              <p>
+                  <%= link_to  event.title, event_path(id: event.id) %><br>
+                  <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %>
+              </p>
+            </div>
               <% event_count = event_count + 1%>
             <% end %>
           </div>
@@ -86,38 +76,41 @@
   </div>
 </div>
 
-
-
-<div class="col-sm-12 no-pad"><h3>Latest News</h3></div>
+<div class="col-sm-12 "><h4><strong>Latest News</strong></h4></div>
 <% count = 0%>
 <% @announcements.each do |announcement| %>
-  <div class="col-sm-4 no-pad" id="news">
+  <div class="col-sm-4" id="news">
     <% if count < 3 %>
       <h4> <%= link_to  announcement.title,   announcement_path(id: announcement.id) %></h4>
+      <%= truncate announcement.content.html_safe, length: 90 %>
       <% count = count + 1%>
     <% end %>
   </div>
 <% end %>
 <br>
-<div class="col-sm-12 no-pad"><h3>EVENTS & REUNIONS</h3></div>
+<div class="col-sm-12"> <h4><strong>Events & Reunions</strong></h4></div>
 <% event_count = 0%>
 <% @events.each do |event| %>
-    <div class="col-sm-4 no-pad" id="events">
+    <div class="col-sm-4" id="events">
       <% if event_count < 2 %>
         <h4> <%= link_to  event.title, event_path(id: event.id) %></h4>
-        <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %>
+        <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %><br>
+        <%= truncate event.description.html_safe, length: 50 %><br><br>
         <% event_count = event_count + 1%>
       <% end %>
     </div>
 <% end %>
 
 <style media="screen">
-
   .no-pad{padding: 0px}
-  #events:hover{background-color:  #eeeeee}
-  .carousel-c{background: #555;
-  color: #ccc}
+  #events:hover{background-color:  #fff}
+  .carousel-c{background: #fff;
+  color: #000}
 
-  #info-section{background-color: #181818;}
-
+  #info-section{background-color: #fff;}
+  .news-li{height: auto;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px; padding: 5px}
 </style>
