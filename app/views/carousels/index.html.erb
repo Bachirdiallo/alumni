@@ -1,0 +1,56 @@
+<div class="col-sm-9">
+  <p id="notice"><%= notice %></p>
+
+  <br>
+  <div class="col-sm-12">
+    <ul class="nav nav-tabs" style="background-color: #ccc;">
+      <li class="active a"><%= link_to 'New Announcement', announcements_path%></li>
+      <li><%= link_to 'Carousel', carousels_path%></li>
+    </ul>
+    <div class="col-sm-10"></div>
+    <div class="col-sm-2">
+      <button type="button" class="bton btn btn-primary btn-flat" data-toggle="modal" data-target="#myModal" id="btn">
+          <span class="fa fa-camera"> Upload</span>
+      </button>
+       <!-- Modal -->
+       <div id="myModal" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+           <!-- Modal content-->
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Upoad Picture</h4>
+             </div>
+             <div class="modal-body">
+                 <%= render  'form'%>
+             </div>
+             <div class="modal-footer"></div>
+           </div>
+         </div>
+       </div>
+    </div>
+  </div>
+  <%= form_for :publish, url: publish_carousels_path do |f| %>
+
+
+  <% @carousels.each do |carousel| %>
+        <div class="col-lg-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="pull-right">
+                <%= check_box_tag "is_published[]", carousel.id, :checked => 'true' %>
+              </div>
+              <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body panel-primary">
+              <%= image_tag(carousel.image_url(:img), :class => 'img-responsive img-rounded position') if carousel.image?%>
+            </div>
+          </div>
+            <%#= link_to 'Destroy', carousel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
+            <%#= link_to 'Publish', carousel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
+        </div>
+      <% end %>
+      <%= f.submit%>
+  <%end%>
+
+</div>

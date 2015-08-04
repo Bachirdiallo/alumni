@@ -8,6 +8,25 @@ class AnnouncementsController < ApplicationController
     @announcements = Announcement.all
   end
 
+  def carousel
+    @announcements = Announcement.all
+  #  @announcement = Announcement.new
+  end
+
+  #Upload profile picture
+  def upload_carousel
+    @announcement = Announcement.find(current_user.id)
+    @announcement.carousel = params[:id]
+    respond_to do |format|
+      if @announcement.save
+        format.html { redirect_to user_profiles_url }
+      else
+        format.html { render :new }
+        format.json { render json: @announcement.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /announcements/1
   # GET /announcements/1.json
   def show

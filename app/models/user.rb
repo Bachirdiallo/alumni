@@ -16,8 +16,4 @@ class User < ActiveRecord::Base
 
   PRIVACY_OPTIONS = Array["Everyone", "Only Me", "My Batch", "My Programme"]
 
-  def create_with_password(attr ={})
-    generated_password = attr[:name] + "123"
-    self.create(attr.merge(password: generated_password, password_confirmation: generated_password))
-  end
 end

@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
-
-
-  resources :announcements
+  resources :carousels do
+    collection do
+      post :publish
+      post :unpublish
+    end
+  end
+  resources :announcements do
+    collection do
+      get :carousel
+    end
+  end
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :events
   resources :jobs

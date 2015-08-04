@@ -1,0 +1,18 @@
+<%= form_for @carousel do |f| %>
+  <div class="col-lg-4">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <div class="pull-right">
+          <%= f.check_box :is_published, checked: false, :class => 'btn btn-primary btn-flat btn-sm' %>
+        </div>
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body panel-primary">
+        <%#= image_tag(carousel.image_url(:img), :class => 'img-responsive img-rounded position') if carousel.image?%>
+      </div>
+    </div>
+      <%= link_to 'Destroy', carousel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
+      <%= link_to 'Publish', carousel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
+  </div>
+<%end%>
