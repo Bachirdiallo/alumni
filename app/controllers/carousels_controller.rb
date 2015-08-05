@@ -14,16 +14,39 @@ class CarouselsController < ApplicationController
   end
 
   def publish
-    @carousel = Carousel.find(params[:is_published])
-    puts 'sdafafdsaf', params[:is_published]
-    @carousel.each do |carousel|
-      carousel.update_attributes!(:is_published => params[:is_published].reject { |k,v| v.blank? })
+    if params[:is_published].nil?
+        redirect_to carousels_path
+    else
+        @carousel = Carousel.find(params[:is_published])
+        if params[:publish]
+          @carousel.each do |carousel|
+            carousel.update_attributes!(:is_published => true)
+          end
+          redirect_to carousels_path
+        elsif params[:unpublish]
+          unpublish
+        else
+          destroy
+        end
     end
   end
 
   def unpublish
-
+    @carousel = Carousel.find(params[:is_published])
+    @carousel.each do |carousel|
+      carousel.update_attributes!(:is_published => false)
+    end
+    redirect_to carousels_path
   end
+
+  def destroy
+    Carousel.destroy(params[:is_published])
+    respond_to do |format|
+      format.html { redirect_to carousels_url, notice: 'Carousel was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   # GET /carousels/new
   def new
     @carousel = Carousel.new
@@ -65,13 +88,7 @@ class CarouselsController < ApplicationController
 
   # DELETE /carousels/1
   # DELETE /carousels/1.json
-  def destroy
-    @carousel.destroy
-    respond_to do |format|
-      format.html { redirect_to carousels_url, notice: 'Carousel was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

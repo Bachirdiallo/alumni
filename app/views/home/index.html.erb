@@ -38,15 +38,15 @@
       <% count = 0%>
       <% @announcements.each do |announcement| %>
         <div  id="news">
-          <% if count < 3 %>
+          <% if count < 4 %>
             <div class="news-li">
-               <p><%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%></p>
+               <p><%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%> <br>
+                  <%= announcement.created_at.strftime("%B")%> <%=announcement.created_at.strftime("%Y")%></p>
             </div>
             <% count = count + 1%>
           <% end %>
         </div>
       <% end %>
-
     </div>
   </div>
 </div>
@@ -59,7 +59,7 @@
         <% if event_count < 3 %>
           <h4> <%= link_to  event.title, event_path(id: event.id) %></h4>
           <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %><br>
-          <%= truncate event.description.html_safe, length: 50 %><br><br>
+          <%= event.description.truncate(50).html_safe %><br><br>
           <% event_count = event_count + 1%>
         <% end %>
       </div>

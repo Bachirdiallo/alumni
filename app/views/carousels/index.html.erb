@@ -30,27 +30,38 @@
        </div>
     </div>
   </div>
-  <%= form_for :publish, url: publish_carousels_path do |f| %>
 
-
-  <% @carousels.each do |carousel| %>
+  <%= form_for :publish,  url: publish_carousels_path do |f| %>
+    <div class="col-sm-12" id="button">
+      <div class="row pull-right">
+        <%= f.submit "Publish", :name => 'publish', :id=>"button", :class => 'btn btn-primary btn-flat btn-sm'%>
+        <%= f.submit "Unpublish", :name => 'unpublish', :class => 'btn btn-primary btn-flat btn-sm'%>
+        <%= f.submit "Delete", :name => 'delete',  data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
+      </div>
+    </div>
+    <br>
+    <% @carousels.each do |carousel| %>
         <div class="col-lg-4">
           <div class="panel panel-primary">
             <div class="panel-heading">
               <div class="pull-right">
-                <%= check_box_tag "is_published[]", carousel.id, :checked => 'true' %>
+                <%= check_box_tag "is_published[]", carousel.id, false%>
               </div>
-              <h3 class="panel-title">Panel title</h3>
+              <% if carousel.is_published? %>
+                <h3 class="panel-title"> Published</h3>
+              <%else%>
+                <h3 class="panel-title"> Unpublished</h3>
+              <%end%>
             </div>
             <div class="panel-body panel-primary">
               <%= image_tag(carousel.image_url(:img), :class => 'img-responsive img-rounded position') if carousel.image?%>
             </div>
           </div>
-            <%#= link_to 'Destroy', carousel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
-            <%#= link_to 'Publish', carousel, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-flat btn-sm' %>
-        </div>
-      <% end %>
-      <%= f.submit%>
+          </div>
+    <% end %>
   <%end%>
-
 </div>
+
+<script>
+
+</script>

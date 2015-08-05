@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       post :publish
       post :unpublish
+      delete :destroy
     end
   end
   resources :announcements do
