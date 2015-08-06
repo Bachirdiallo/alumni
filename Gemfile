@@ -45,6 +45,7 @@ gem 'autoprefixer-rails'
 gem "bullet"
 gem 'bootsy'
 gem "mini_magick"
+gem 'pg'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
