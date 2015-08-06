@@ -9,14 +9,23 @@
         <li data-target="#carousel-example-generic" data-slide-to="3"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <% @carousels.each_with_index do |carousel,index| %>
-        <!-- Wrapper for slides  -->
-          <div class="item  <%=index==0 ? 'active' : "" %>">
-            <%= image_tag(carousel.image_url(:img), :class => 'img-responsive img-rounded position') if carousel.image?%>
+        <% if @carousels.count == 0 %>
+          <div class="item active">
+            <img src="../images/1.jpg">
             <div class="carousel-caption">
-              <h1><%= carousel.name %></h1>
+              <h1> Default Image </h1>
             </div>
           </div>
+        <%else%>
+          <% @carousels.each_with_index do |carousel,index| %>
+          <!-- Wrapper for slides  -->
+            <div class="item  <%=index==0 ? 'active' : "" %>">
+              <%= image_tag(carousel.image_url(:img), :class => 'img-responsive img-rounded position') if carousel.image?%>
+              <div class="carousel-caption">
+                <h1><%= carousel.name %></h1>
+              </div>
+            </div>
+          <%end%>
         <%end%>
       </div>
       <!-- Controls -->
@@ -30,7 +39,6 @@
       </a>
     </div>
   </div>
-
   <div class="col-sm-4 carousel-c" >
     <%= link_to 'Claim your Account',  claim_account_claim_index_path, :class => 'btn btn-primary btn-flat' %>
     <div id="info-section">
@@ -50,7 +58,6 @@
     </div>
   </div>
 </div>
-
 <div class="col-sm-12">
   <div class="col-sm-12"> <h4><strong>Events & Reunions</strong></h4></div>
   <% event_count = 0%>
@@ -65,6 +72,7 @@
       </div>
   <% end %>
 </div>
+
 <style media="screen">
   #events:hover{background-color:  #fff}
   .carousel-c{background: #fff; color: #000}

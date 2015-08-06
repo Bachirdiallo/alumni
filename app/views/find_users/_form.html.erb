@@ -1,5 +1,7 @@
-<div class="row radius " id="form" onload="getLocation();">
-<%= search_form_for @search_results, url:  file_content_find_users_path, remote: true do |f| %>
+<%= render partial: 'locate_user'%>
+<div class="row radius" id="form">
+
+<%= search_form_for @search_results, url:  file_content_find_users_path, remote: true,  onload: "getLocation();" do |f| %>
   <div class="col-sm-4">
     Campus: <br><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'control'%>
   </div>
@@ -16,11 +18,12 @@
     Current City<br> <%= f.check_box :is_current_city, checked: true %>
   </div>
   <div class="col-sm-3">
-    <%= f.submit :class => 'btn btn-primary' do %>
+    <%= f.submit :class => 'btn btn-primary', onclick: "getLocation();"  do %>
       <i class="fa fa-search">Search</i>
     <% end %>
   </div>
 <% end %>
+
 </div>
 <style>
   .radius{border-radius: 15px; padding: 15px}
