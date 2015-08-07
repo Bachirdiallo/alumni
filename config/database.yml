@@ -6,13 +6,13 @@
 #
 
 development:
- adapter: mysql2
+ adapter: postgresql
  encoding: utf8
  reconnect: false
- database: alumni_dev
+ database: alumni_development
  pool: 5
- username: root
- password: root@123
+ username: bachir
+ password: root
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
