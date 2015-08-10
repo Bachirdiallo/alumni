@@ -46,6 +46,7 @@ gem "bullet"
 gem 'bootsy'
 gem "mini_magick"
 gem 'pg'
+gem 'puma'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
