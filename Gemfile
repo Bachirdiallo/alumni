@@ -31,7 +31,7 @@ gem 'formtastic-bootstrap'
 gem 'ransack', '~> 1.6.6'
 gem 'carrierwave'
 gem 'imagemagick-binaries', '~> 6.8.7.5.1'
-gem 'rmagick'
+gem 'rmagick', '~> 2.15.3'
 gem 'roo'
 gem "iconv", "~> 1.0.3"
 gem "therubyracer"

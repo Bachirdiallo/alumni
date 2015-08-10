@@ -241,7 +241,7 @@ DEPENDENCIES
   rails (= 4.2.1)
   ransack (~> 1.6.6)
   remotipart
-  rmagick
+  rmagick (~> 2.15.3)
   roo
   sass-rails (>= 3.2)
   sdoc (~> 0.4.0)
