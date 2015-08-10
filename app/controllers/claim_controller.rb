@@ -21,11 +21,11 @@ class ClaimController < ApplicationController
     end
   end
 
-def edit
-end
+  def edit
+  end
 
-def add
-end
+  def add
+  end
 
   def update
     respond_to do |format|

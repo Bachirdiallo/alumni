@@ -1,8 +1,8 @@
 <div class="col-sm-9">
   <div class="container">
     <p id="notice"><%= notice %></p>
-    <h1><%= @event.title %></h1>
-    <p><%= @event.description %></p>
+    <h1><%= @event.title.html_safe %></h1>
+    <p><%= @event.description.html_safe %></p>
     <p><%= @event.date.strftime("%B") %> <%= @event.date.strftime("%Y") %></p>
 
     <% if user_signed_in?%>
