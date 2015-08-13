@@ -59,7 +59,7 @@ config.action_mailer.smtp_settings = {
   domain: "morning-ocean-1974.herokuapp.com/",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: ENV["moubachir03@gmail.com"],
-  password: ENV["#@pP1B@c#1r03"]
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
 }
 end
