@@ -52,6 +52,6 @@ class ClaimController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def claim_account_params
-    params.require(:user).permit(:user_id, :email)
+    params.require(:user).permit(:user_id, :email, :password)
   end
 end

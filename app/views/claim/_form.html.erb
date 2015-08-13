@@ -4,6 +4,12 @@
   <div class="floating-label"> Email</div>
     <span class="material-input"></span>
 </div>
+
+<div class="form-control-wrapper">
+  <%= f.password_field :password, :class => 'form-control empty', :autocomplete => "off" %>
+  <div class="floating-label"> Password</div>
+    <span class="material-input"></span>
+</div>
 <div class="actions">
   <%= f.submit "Update Email", :action=>"update", :class => 'btn btn-primary btn-flat' %>
 </div>
