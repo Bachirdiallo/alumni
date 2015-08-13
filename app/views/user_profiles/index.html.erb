@@ -1,7 +1,7 @@
 <div class=" col-sm-12" style="padding-top :5px">
   <div class="col-sm-2" style="padding-left :0px; padding-right 25px">
     <div id="image_container">
-      <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
+      <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') %>
       <%= render 'profile_photo'%>
     </div>
   </div>
