@@ -1,13 +1,16 @@
 <div id="result">
       <% @users.each do |search_result| %>
       <br>
-        <div class="col-sm-10 h pad">
-          <div class="col-sm-2 pad">
-            <%= image_tag(search_result.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if search_result.avatar?%>
-          </div>
-          <div class="col-sm-8 pad">
+
+
+          <div class="col-sm-10 h pad">
               <% if search_result.is_graduate %>
                 <% if search_result.id != current_user.id %>
+                <div class="col-sm-2">
+                  <%= image_tag(search_result.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if search_result.avatar?%>
+                </div>
+                <div class="col-sm-8">
+
                 <font size="4" class="a"><%= search_result.name %><br></font>
                  <%= search_result.country %><br>
                     <% if search_result.location_privacy_option != "Only Me" %>
