@@ -15,10 +15,15 @@
 
             </div>
             <div class="col-md-10">
-              <%= render 'find_users/locate_user'%>
-              Your locaiton has changed, would you like to see the alumni in your current city?
-              <%= link_to "Find", find_users_path, :class => 'btn btn-primary btn-sm' %>
-              <button type="button" name="button" class="btn btn-primary btn-sm .no-padding" id= "button">Hide</button>
+              <% if user_signed_in?%>
+                <% if current_user.is_graduate %>
+                    <%= render 'find_users/locate_user'%>
+                    Your locaiton has changed, would you like to see the alumni in your current city?
+                    <%= link_to "Find", find_users_path, :class => 'btn btn-primary btn-sm' %>
+                    <button type="button" name="button" class="btn btn-primary btn-sm .no-padding" id= "button">Hide</button>
+                <%end%>
+              <%end%>
+
             </div>
           </div>
         </div>
