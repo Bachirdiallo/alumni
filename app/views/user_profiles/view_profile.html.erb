@@ -2,7 +2,7 @@
   <div class="col-sm-3" style="padding-left :0px; padding-right 25px">
     <div id="image_container">
       <% if @user.avatar.blank? %>
-      <img src="../images/default.jpg" alt="Image Unavailable" style="width: 100px; height: 100px" />
+      <%= image_tag 'default.jpg', :class => 'img-responsive img-rounded position', :style => "width: 200px"%>
       <%else%>
         <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
       <%end%>
@@ -11,7 +11,7 @@
   <div class="col-sm-4">
       <font size="6"> <b><%= @user.name%></b></font>
       <font size="3">
-      <p><%= @user.city%>, <%= @user.country%></p>
+      <p><%= @user.city%> <%= @user.country%></p>
         <%= render 'profile'%>
         <div class="col-sm-1 pad">
           <i class="fa fa-graduation-cap"></i>
