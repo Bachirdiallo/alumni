@@ -1,7 +1,11 @@
 <div class=" col-sm-12" style="padding-top :5px">
   <div class="col-sm-3" style="padding-left :0px; padding-right 25px">
     <div id="image_container">
-      <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
+      <% if @user.avatar.blank? %>
+      <img src="../images/default.jpg" alt="Image Unavailable" style="width: 100px; height: 100px" />
+      <%else%>
+        <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if @user.avatar?%>
+      <%end%>
     </div>
   </div>
   <div class="col-sm-4">
