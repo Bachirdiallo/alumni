@@ -1,5 +1,7 @@
-<p class="warning"><%=notice%></p>
+
 <div class="container col-sm-8">
+<div class="container">
+  <p class="warning"><%=notice%></p>
   <%= search_form_for @q , url:change_claim_index_path(student_id: params[:q]) do |f| %>
     <div class="form-control-wrapper">
       <%= f.search_field :id_number_eq, :class => 'form-control empty', :autocomplete => "off" %>
@@ -14,4 +16,5 @@
     </div>
     <%= f.submit "Claim", :class => 'btn btn-primary btn-flat' %>
  <% end %>
+</div>
 </div>

@@ -17,14 +17,25 @@
             <div class="navbar navbar-default  pull-right" id="menu-items" >
                 <ul class="nav navbar-nav">
                     <li>
-                        <%= link_to user_profiles_path do %> <span class="fa fa-user"> </span> <% end %>
+                      <% if user_signed_in?%>
+                        <% if current_user.is_graduate%>
+                          <%= link_to user_profiles_path do %> <span class="fa fa-user"> </span> <% end %>
+                      <%end%>
+
+                      <%end%>
                     </li>
                     <li>
-                        <%= link_to find_users_path do %> <span class="fa fa-search"></span> <% end %>
-                    </li>
+                      <% if user_signed_in?%>
+                        <% if current_user.is_graduate %>
+                          <%= link_to find_users_path do %> <span class="fa fa-search"></span> <% end %>
+                        <%end%>
+                      <%end%>
+                  </li>
                     <li>
-                      <% if current_user %>
-                        <%= link_to privacy_user_profiles_path(id: current_user.id) do %> <span class="fa fa-cog fa-fw"></span><% end %>
+                      <% if user_signed_in?%>
+                        <% if current_user.is_graduate %>
+                          <%= link_to privacy_user_profiles_path(id: current_user.id) do %> <span class="fa fa-cog fa-fw"></span><% end %>
+                         <% end %>
                       <% end %>
                     </li>
                     <li>
