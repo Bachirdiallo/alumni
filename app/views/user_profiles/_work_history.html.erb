@@ -2,7 +2,7 @@
   <% if @user.job_privacy_option != "Only Me" %>
       <%if @user.job_privacy_option == "My Batch"%>
           <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
-             <% if job.current == "1"%>
+             <% if job.current == true%>
                  <br>
                  <div class="col-sm-6 pad">
                    <p>
@@ -33,7 +33,7 @@
       <%elsif @user.job_privacy_option == "My Programme"%>
             <% if current_user.graduations.map { |p| p.programme  }& @user.graduations.map { |p| p.programme  } %>
               <% if job.current == "1"%>
-          
+
                 <div class="col-sm-6 pad">
                   <p>
                     <b><%= job.title %></b>[current]</p>
@@ -61,7 +61,7 @@
               <% end %>
             <% end %>
       <%else%>
-        <% if job.current == "1"%>
+        <% if job.current == true%>
             <br>
             <div class="col-sm-6 pad">
               <p>
