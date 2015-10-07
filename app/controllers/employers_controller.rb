@@ -1,5 +1,6 @@
 class EmployersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index]
 
   # GET /employers
   # GET /employers.json
