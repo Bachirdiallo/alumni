@@ -1,17 +1,45 @@
-<%= form_for(@employer) do |f| %>
-  <% if @employer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@employer.errors.count, "error") %> prohibited this employer from being saved:</h2>
-
+<%= form_for(@user, url: employers_path) do |f| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-dismissable alert-danger">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
       <ul>
-      <% @employer.errors.full_messages.each do |message| %>
+      <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="col-md-6">
+    <div class="form-control-wrapper" >
+      <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">Name</div>
+        <span class="material-input"></span>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="form-control-wrapper">
+      <%= f.email_field :email, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">Email </div>
+        <span class="material-input"></span>
+    </div>
+
+    <div class="form-control-wrapper">
+      <%= f.password_field :password, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">Password </div>
+      <span class="material-input"></span>
+    </div>
+
+    <div class="form-control-wrapper">
+      <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">Confirm password </div>
+        <span class="material-input"></span>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-3">
+          <%= f.submit "Create", :class => 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

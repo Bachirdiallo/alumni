@@ -33,7 +33,6 @@ class MembersController < ApplicationController
 
         @user.is_graduate = false
         @user.save
-        puts 'check id', @user.is_graduate
         format.html { redirect_to members_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

@@ -1,0 +1,30 @@
+<%= search_form_for @search, url:  search_employers_path do |f| %>
+  <div class="col-sm-4">
+    Programme: <br><%= f.select :programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
+  </div>
+
+  <div class="col-sm-2">
+    Class:<br><%= f.select :batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
+  </div>
+
+  <div class="col-sm-3">
+    <%= f.submit :class => 'btn btn-primary' do %>
+      <i class="fa fa-search">Search</i>
+    <% end %>
+  </div>
+<% end %>
+
+</div>
+
+<div class="container">
+  <%= @users.count %>
+  <% @users.each do |user| %>
+    <%= user.user.name %>
+<%end%>
+</div>
+<style>
+  .radius{border-radius: 15px; padding: 15px}
+  .control{width: 300px}
+  .back{background: #eeeeee}
+  #form:hover{background-color: #eeeeee;}
+</style>

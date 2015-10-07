@@ -61,6 +61,13 @@ root to: 'home#index'
     end
   end
 
+  resources :members
+  resources :employers do
+    collection do
+      post :search
+      get  :search
+    end
+  end
   #pages
   #get '/claim_account', to: 'pages#claim_account'
   #get '/claim_action_result', to: 'pages#claim_action_result'
@@ -78,8 +85,7 @@ root to: 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  resources :members
-  resources :employers
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
