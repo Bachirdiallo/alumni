@@ -1,3 +1,28 @@
-<p id="notice" class="success"><%= notice %></p>
-
 <%= render partial: 'form' %>
+
+<div class="col-sm-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Log in
+    </div>
+    <div class="panel-body">
+      <%= form_for(:user, as: :user, url: session_path(@user)) do |f| %>
+        <div class="form-control-wrapper" >
+          <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+          <div class="floating-label">username </div>
+            <span class="material-input"></span>
+        </div>
+
+        <div class="form-control-wrapper" >
+          <%= f.password_field :password, autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
+          <div class="floating-label">password </div>
+            <span class="material-input"></span>
+        </div>
+
+        <div>
+          <%= f.submit "Log in", :class => 'btn btn-primary btn-md' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

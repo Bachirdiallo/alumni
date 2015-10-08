@@ -35,7 +35,7 @@
                 <%= render 'layouts/navigation' %>
 
               <% if user_signed_in?%>
-                <% if !current_user.is_graduate %>
+                <% if !current_user.is_graduate && !current_user.is_employer %>
                     <%= render 'layouts/sidebar' %>
                 <%end%>
               <%end%>

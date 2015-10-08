@@ -1,20 +1,23 @@
 <%= search_form_for @search, url:  search_employers_path do |f| %>
+  <div class="col-sm-3">
+
+  </div>
   <div class="col-sm-4">
-    Programme: <br><%= f.select :programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
+    Programme: <%= f.select :programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
   </div>
 
   <div class="col-sm-2">
-    Class:<br><%= f.select :batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
+    Class: <%= f.select :batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
   </div>
 
   <div class="col-sm-3">
-    <%= f.submit :class => 'btn btn-primary' do %>
+    <%= f.submit :class => 'btn btn-primary btn-md' do %>
       <i class="fa fa-search">Search</i>
     <% end %>
   </div>
 <% end %>
 
-</div>
+<br>
 
 <div class="container">
   <%= @users.count %>

@@ -6,7 +6,7 @@
       <tbody>
         <% @users.each do |user| %>
           <tr >
-            <% if !user.is_graduate %>
+            <% if !user.is_graduate && !user.is_employer%>
                 <% if !user.nil? %>
                   <td><%= user.student_id %></td>
                   <td><%= user.name %> </td>

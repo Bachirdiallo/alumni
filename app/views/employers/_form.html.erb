@@ -15,6 +15,11 @@
       <div class="floating-label">Name</div>
         <span class="material-input"></span>
     </div>
+    <div class="form-control-wrapper" >
+      <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+      <div class="floating-label">username</div>
+        <span class="material-input"></span>
+    </div>
 
     <div class="form-control-wrapper">
       <%= f.email_field :email, autocomplete: "off", :class => 'form-control empty' %>

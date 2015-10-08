@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:student_id, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:student_id, :email, :password, :password_confirmation) }
   end
 
   def set_global_search_variable
@@ -17,8 +18,10 @@ class ApplicationController < ActionController::Base
     if current_user.is_graduate
       #graduate path
       user_profiles_path
-    else
+    elsif current_user.is_employer
       #admin path
+      search_employers_path
+    else
       members_path
     end
   end
