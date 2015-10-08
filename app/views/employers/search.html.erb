@@ -1,29 +1,48 @@
-<%= search_form_for @search, url:  search_employers_path do |f| %>
-  <div class="col-sm-3">
+<div class="container">
+  <%= search_form_for @search, url:  search_employers_path do |f| %>
+    <div class="col-sm-3">
 
-  </div>
-  <div class="col-sm-4">
-    Programme: <%= f.select :programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
-  </div>
+    </div>
+    <div class="col-sm-4" style="padding-top: 20px">
+      Programme: <%= f.select :programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
+    </div>
 
-  <div class="col-sm-2">
-    Class: <%= f.select :batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
-  </div>
+    <div class="col-sm-2"style="padding-top: 20px">
+      Class: <%= f.select :batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
+    </div>
 
-  <div class="col-sm-3">
-    <%= f.submit :class => 'btn btn-primary btn-md' do %>
-      <i class="fa fa-search">Search</i>
-    <% end %>
-  </div>
-<% end %>
-
-<br>
+    <div class="col-sm-3">
+      <%= f.submit :class => 'btn btn-primary btn-md' do %>
+        <i class="fa fa-search">Search</i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <div class="container">
-  <%= @users.count %>
   <% @users.each do |user| %>
-    <%= user.user.name %>
-<%end%>
+    <%@jobs = Job.where(user_id: user.user.id) %>
+    <div class="col-md-10">
+      <div class="col-md-2">
+        <% if user.user.avatar.blank? %>
+          <%= link_to image_tag("default.jpg", style: 'width: 70px; hight: 50px'), user_profile_view_profile_path(user.user.id) %>
+        <%else%>
+          <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position'), user_profile_view_profile_path(user.user.id)%>
+        <%end%>
+      </div>
+      <div class="col-md-3">
+        <span style="color: green; font-size: 20px"><%= user.user.name %></span><br>
+        <%@jobs.each do |job| %>
+          <%= job.title%> <br>
+        <%end%>
+        <%# = user.user.phone %>
+        <%= user.user.email %><br>
+        <%= user.programme.name %>
+        <br>
+
+      </div>
+    </div>
+  <%end%>
 </div>
 <style>
   .radius{border-radius: 15px; padding: 15px}

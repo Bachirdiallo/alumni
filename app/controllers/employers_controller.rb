@@ -10,7 +10,7 @@ class EmployersController < ApplicationController
 
   def search
     @search = Graduation.ransack(params[:q])
-    @users = @search.result(:distinct => true).includes(:user).where("users.is_job_seeker is  false").references(:users)#.paginate(:page => params[:page], :per_page => 5)
+    @users = @search.result(:distinct => true).includes(:user).where("users.is_job_seeker is  true").references(:users).paginate(:page => params[:page], :per_page => 5)
   end
   # GET /employers/1
   # GET /employers/1.json
@@ -76,6 +76,6 @@ class EmployersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :student_id, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :student_id, :email, :password, :password_confirmation, :avatar)
     end
 end

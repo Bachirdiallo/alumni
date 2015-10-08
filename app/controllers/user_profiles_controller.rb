@@ -109,6 +109,6 @@ class UserProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_profile_params
-      params.require(:user).permit(:name, :id_number, :phone, :avatar, :email, :city, :country, :location_privacy_option, :contact_privacy_option, :job_privacy_option, :social_privacy_option,:facebook,:twitter,:linkedin,:instagram)
+      params.require(:user).permit(:name, :id_number, :phone, :avatar, :email, :city, :country, :location_privacy_option, :contact_privacy_option, :job_privacy_option, :social_privacy_option,:facebook,:twitter,:linkedin,:instagram, :is_job_seeker)
     end
 end
