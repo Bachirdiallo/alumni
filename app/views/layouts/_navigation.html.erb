@@ -44,6 +44,11 @@
                         <%= link_to user_session_path do %> <span class="glyphicon glyphicon-log-in"></span> <% end %>
                       <% end %>
                     </li>
+                    <li>
+                      <% if !user_signed_in?%>
+                        <%= link_to "Employers", employers_path, class: 'btn btn-info btn-sm', style: 'color: white' %>
+                      <%end%>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
