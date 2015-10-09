@@ -18,35 +18,42 @@
     </div>
   <% end %>
 </div>
-
+<div class="col-md-12" ><br> <br><br></div>
 <div class="container">
-  <% @users.each do |user| %>
-    <%@jobs = Job.where(user_id: user.user.id) %>
-    <div class="col-md-10">
-      <div class="col-md-2">
-        <% if user.user.avatar.blank? %>
-          <%= link_to image_tag("default.jpg", style: 'width: 70px; hight: 50px'), user_profile_view_profile_path(user.user.id) %>
-        <%else%>
-          <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position'), user_profile_view_profile_path(user.user.id)%>
-        <%end%>
+  <% if @users.any? %>
+    <% @users.each do |user| %>
+      <%@jobs = Job.where(user_id: user.user.id) %>
+      <div class="col-md-10 radius"  id="list">
+        <div class="col-md-2">
+          <% if user.user.avatar.blank? %>
+            <%= link_to image_tag("default.jpg", style: 'width: 70px; hight: 50px'), user_profile_view_profile_path(user.user.id) %>
+          <%else%>
+            <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position'), user_profile_view_profile_path(user.user.id)%>
+          <%end%>
+        </div>
+        <div class="col-md-3">
+          <span style="color: green; font-size: 20px">
+            <%= user.user.name %>
+          </span><br>
+          <%@jobs.each do |job| %>
+            <%= job.title%> <br>
+          <%end%>
+          <%= user.user.phone %> <br>
+          <%= user.user.email %><br>
+          <%= user.programme.name %>
+          <br>
+        </div>
       </div>
-      <div class="col-md-3">
-        <span style="color: green; font-size: 20px"><%= user.user.name %></span><br>
-        <%@jobs.each do |job| %>
-          <%= job.title%> <br>
-        <%end%>
-        <%# = user.user.phone %>
-        <%= user.user.email %><br>
-        <%= user.programme.name %>
-        <br>
-
-      </div>
-    </div>
+    <%end%>
+  <%else%>
+  <br>
+    <div class="col-md-3"></div>
+    <em>No Matching record</em>
   <%end%>
 </div>
 <style>
   .radius{border-radius: 15px; padding: 15px}
   .control{width: 300px}
   .back{background: #eeeeee}
-  #form:hover{background-color: #eeeeee;}
+  #list:hover{background-color: #eeeeee;}
 </style>

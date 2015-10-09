@@ -52,23 +52,26 @@
       </div>
   </font>
 </div>
+<%if current_user.is_employer %>
+  <%= link_to "Back",   search_employers_path, class: 'btn btn-primary btn-md' %>
+<%end%>
 
-  <style>
-     span{color:white}
-     .position{position:relative;}
-     #image_container{width:300px; height:auto }
-     .pad{padding: 0px}
-     .pad-left{padding-left :15px}
-     .pad-bottom{padding-bottom: 0px;}
-  </style>
+<style>
+   span{color:white}
+   .position{position:relative;}
+   #image_container{width:300px; height:auto }
+   .pad{padding: 0px}
+   .pad-left{padding-left :15px}
+   .pad-bottom{padding-bottom: 0px;}
+</style>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $(this).find("#btn").hide();
-      $(document).on('mouseenter', '#image_container', function () {
-          $(this).find("#btn").show();
-      }).on('mouseleave', '#image_container', function () {
-          $(this).find("#btn").hide();
-      });
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(this).find("#btn").hide();
+    $(document).on('mouseenter', '#image_container', function () {
+        $(this).find("#btn").show();
+    }).on('mouseleave', '#image_container', function () {
+        $(this).find("#btn").hide();
     });
-  </script>
+  });
+</script>

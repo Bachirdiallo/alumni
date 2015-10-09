@@ -19,9 +19,8 @@
                     <li>
                       <% if user_signed_in?%>
                         <% if current_user.is_graduate%>
-                          <%= link_to user_profiles_path do %> <span class="fa fa-user"> </span> <% end %>
-                      <%end%>
-
+                            <%= link_to user_profiles_path do %> <span class="fa fa-user"> </span> <% end %>
+                        <%end%>
                       <%end%>
                     </li>
                     <li>
