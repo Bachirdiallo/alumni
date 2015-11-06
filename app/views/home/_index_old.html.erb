@@ -1,0 +1,87 @@
+
+<div class="col-sm-12">
+  <div class=" col-sm-8" style="padding-right: 0px">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <% if @carousels.count == 0 %>
+          <div class="item active">
+            <img src="../images/1.jpg">
+            <div class="carousel-caption">
+              <h1> Default Image </h1>
+            </div>
+          </div>
+        <%else%>
+          <% @carousels.each_with_index do |carousel,index| %>
+          <!-- Wrapper for slides  -->
+            <div class="item  <%=index==0 ? 'active' : "" %>">
+              <%= image_tag(carousel.image_url(:img), :class => 'img-responsive img-rounded position') if carousel.image?%>
+              <div class="carousel-caption">
+                <h1><%= carousel.name %></h1>
+              </div>
+            </div>
+          <%end%>
+        <%end%>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-4 carousel-c" >
+    <%= link_to 'Claim your Account',  claim_account_claim_index_path, :class => 'btn btn-primary btn-flat' %>
+    <div id="info-section">
+      <h4>Latest News</h4>
+      <% count = 0%>
+      <% @announcements.each do |announcement| %>
+        <div  id="news">
+          <% if count < 4 %>
+            <div class="news-li">
+               <p><%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%> <br>
+                  <%= announcement.created_at.strftime("%B")%> <%=announcement.created_at.strftime("%Y")%></p>
+            </div>
+            <% count = count + 1%>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-sm-12">
+  <div class="col-sm-12"> <h4><strong>Events & Reunions</strong></h4></div>
+  <% event_count = 0%>
+  <% @events.each do |event| %>
+      <div class="col-sm-4" id="events">
+        <% if event_count < 3 %>
+          <h4> <%= link_to  event.title, event_path(id: event.id) %></h4>
+          <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %><br>
+          <%= event.description.truncate(50).html_safe %><br><br>
+          <% event_count = event_count + 1%>
+        <% end %>
+      </div>
+  <% end %>
+</div>
+
+<style media="screen">
+  #events:hover{background-color:  #fff}
+  .carousel-c{background: #fff; color: #000}
+
+  #info-section{background-color: #fff;}
+  .news-li{height: auto;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px; padding: 5px}
+</style>
