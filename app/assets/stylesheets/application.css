@@ -24,6 +24,8 @@
  *= require plugins/animate.css
  *= require css/theme-colors/default.css
  *= require css/pages/profile.css
+ *= require css/pages/page_log_reg_v1.css
+ *= require css/pages/page_job_inner.css
  *= require plugins/scrollbar/css/jquery.mCustomScrollbar.css
  *= require plugins/sky-forms-pro/skyforms/css/sky-forms.css
  *= require plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css

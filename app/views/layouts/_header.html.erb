@@ -11,14 +11,31 @@
     <div class="topbar">
         <ul class="loginbar pull-right">
           <% if user_signed_in?%>
-          <li> </li>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+            </li>
+            <li class="topbar-devider"></li>
+            <li>
+              Welcome <%= current_user.name %>
+            </li>
 
-          <%end%>
+          <%else%>
           <li>
-            <%= link_to "Login", user_session_path %>
+            <% if controller.controller_name == "employers" %>
+              <a href="#" data-toggle="modal" data-target="#myModal">Login</a>
+            <%else%>
+              <%= link_to "Login", user_session_path %>
+            <%end%>
           </li>
           <li class="topbar-devider"></li>
-          <li><a href="#">Claim Account</a></li>
+          <li>
+            <% if controller.controller_name == "employers" %>
+              <a href="#" data-toggle="modal" data-target="#sign_up">Sign Up</a>
+            <%else%>
+              <%= link_to "Sign Up",  claim_account_claim_index_path %>
+            <%end%>
+          </li>
+          <%end%>
         </ul>
     </div>
     <!--  End Topbar -->
@@ -32,20 +49,15 @@
       <div class="container">
         <ul class="nav navbar-nav">
           <li class="active">
-            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                Home
-            </a>
+              <%= link_to find_users_path do %>
+              <span class="glyphicon glyphicon-home"></span>
+            <%end%>
           </li>
           <% if user_signed_in?%>
             <li>
-
-
-            <%= link_to user_profiles_path(current_user) do %>
-            <span class="icon-user"></span>
-            <%end%>
-            <!--  <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                  For Employers
-              </a> !-->
+              <%= link_to user_profiles_path(current_user) do %>
+                <span class="icon-user"></span>
+              <%end%>
             </li>
             <li>
               <%= link_to find_users_path do %>
@@ -54,8 +66,12 @@
             </li>
             <li>
             <%= link_to privacy_user_profiles_path(id: current_user.id) do %>
-            <span class="icon-settings"></span>
+            <span class="icon-custom icon-lg icon-color-u fa fa-cog"></span>
             <%end%>
+          </li>
+          <%else%>
+            <li>
+                <%= link_to "For employers", employers_path %>
             </li>
           <%end%>
         </ul>

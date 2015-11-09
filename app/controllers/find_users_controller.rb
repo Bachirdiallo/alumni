@@ -11,7 +11,6 @@ class FindUsersController < ApplicationController
   end
 
   def file_content
-    puts 'kd'
     @search_results = User.ransack(params[:q])
     @users = @search_results.result.includes(:graduations)
     if params[:q][:is_current_city]

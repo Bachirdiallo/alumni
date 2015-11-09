@@ -1,31 +1,38 @@
-<div class="col-sm-4"></div>
-<div class="col-sm-4">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      Log in
-    </div>
-    <div class="panel-body">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-control-wrapper" >
-          <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">id </div>
-            <span class="material-input"></span>
-        </div>
+<div class="container content">
+  <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+            <div class="reg-page">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="reg-header">
+                    <h2>Login to your account</h2>
+                </div>
 
-        <div class="form-control-wrapper" >
-          <%= f.password_field :password, autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">password </div>
-            <span class="material-input"></span>
-        </div>
+                <div class="input-group margin-bottom-20">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <%= f.text_field :student_id, autofocus: true, placeholder: 'Student Id', autocomplete: "off", :class => 'form-control empty' %>
+                </div>
+                <div class="input-group margin-bottom-20">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <%= f.password_field :password, placeholder: 'Password', autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
+                </div>
 
-        <% if devise_mapping.rememberable? -%>
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        <% end -%>
-        <div>
-          <%= f.submit "Log in", :class => 'btn btn-primary btn-md' %>
+                <div class="row">
+                    <div class="col-md-6 checkbox">
+                        <label>
+                          <% if devise_mapping.rememberable? -%>
+                            <%= f.check_box :remember_me %>
+                          <% end -%> Stay signed in
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.submit "Login", :class => 'btn-u pull-right' %>
+                    </div>
+                </div>
+                <hr>
+                <h4>Forget your Password ?</h4>
+                <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
+              <%end%>
+          </div>
         </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+    </div><!--/row-->
+</div><!--/container-->
