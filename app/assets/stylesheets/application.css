@@ -23,6 +23,10 @@
  *= require plugins/line-icons/line-icons.css
  *= require plugins/animate.css
  *= require css/theme-colors/default.css
+ *= require css/pages/profile.css
+ *= require plugins/scrollbar/css/jquery.mCustomScrollbar.css
+ *= require plugins/sky-forms-pro/skyforms/css/sky-forms.css
+ *= require plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css
  *= require bootsy
  *= require font-awesome
  */

@@ -1,146 +1,67 @@
-<div class=" col-sm-12" style="padding-top :5px">
-  <div class="col-sm-2" style="padding-left :0px; padding-right 25px">
-    <div id="image_container">
-      <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') %>
-      <%= render 'profile_photo'%>
+<div class="container content profile">
+  <div class="row">
+    <div class="col-md-3 md-margin-bottom-40">
+      <%= render partial: 'bio' %>
+      <hr>
+      <div class="panel panel-profile">
+          <div class="panel-heading overflow-h">
+              <h2 class="panel-title heading-sm pull-left"><i class="fa fa-pencil"></i> Social Contacts <small></small></h2>
+              <a href="#"><i class="fa fa-cog pull-right"></i></a>
+          </div>
+          <div class="panel-body">
+               <ul class="list-unstyled social-contacts-v2">
+
+                  <li><%= render partial:'socials' %></li>
+              </ul>
+          </div>
+      </div>
+
+      <%#= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded position') %>
+      <%#= render 'profile_photo'%>
+    <!--  <img class="img-responsive profile-img margin-bottom-20" src="assets/img/team/img32-md.jpg" alt=""> !-->
+    </div>
+    <div class="col-md-9">
+      <div class="profile-body">
+        <div class="profile-bio">
+          <div class="row">
+            <div class="col-md-5">
+              <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+
+              <a type="button" class="btn-u btn-u-sm" data-toggle="modal" data-target="#myModal" id="btn">
+                 <span class="fa fa-camera"> Update Picture</span>
+              </a>
+              <%= render 'profile_photo'%>
+            </div>
+            <div class="col-md-7">
+                <h2><%= @user.name %></h2>
+                <span>
+                  <% if @user.jobs.each.map { |x| x.current } %>
+                    <h5><strong><%= @user.jobs.each.map { |x| x.title  }.join%>, <%= @user.city%></strong></h5>
+                  <%end%>
+                </span>
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
+                <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="panel panel-profile">
+            <div class="panel-heading overflow-h">
+                <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Experience</h2>
+                <a href="#"><i class="fa fa-cog pull-right"></i></a>
+            </div>
+            <div class="panel-body margin-bottom-40">
+                <ul class="timeline-v2 timeline-me">
+                  <%=render partial: 'work_history' %>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="map margin-bottom-50">
+          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=1000x200 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-sm-4">
-      <font size="6"> <b><%= @user.name%></b></font>
-      <font size="3">
-      <p><%= @user.city%>, <%= @user.country%></p>
-        <%= render 'profile'%>
-        <div class="col-sm-1 pad">
-          <i class="fa fa-graduation-cap"></i>
-        </div>
-        <div class="col-sm-9 pad">
-          <font size="2">
-          <% @user.graduations.each do |x|%>
-           <%= x.batch.month%> / <%= x.batch.year%>
-           <%end%>
-           <% @user.graduations.each do |x|%>
-            <%= x.programme.name%>,
-            <%end%>
-            <% @user.graduations.each do |x|%>
-            <%= x.faculty.name%>,
-            <%end%>
-            <% @user.graduations.each do |x|%>
-            <%= x.campu.name%>.
-            <%end%>
-          </font>
-        </div>
-    </div>
-    <div class="col-sm-4">
-      <%= link_to   edit_user_profile_path(current_user.id), :class => 'btn btn-primary btn-sm pad' do %><span class="glyphicon glyphicon-edit">Edit Profile</span> <% end %>
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=400x150 &maptype=roadmap&zoom=14&markers=#{@user.city}%2C#{@user.country}" %>
-        <%= @user.city %>,  <%= @user.country %>.<br>
-    </div>
 </div>
-<div class="col-sm-12">
-  <div class="row pad">
-    <br>
-    <div class="col-sm-2">
-      <% if !@user.facebook.blank?%>
-        <a href="<%= @user.facebook %>"> <i class="fa fa-facebook-square"></i></a>
-      <% end %>
-    </div>
-    <div class="col-sm-2">
-      <% if !@user.linkedin.blank?%>
-        <a href="<%= @user.linkedin %>"><i class="fa fa-linkedin-square"></i></a>
-      <% end %>
-    </div>
-    <div class="col-sm-2">
-      <% if !@user.twitter.blank?%>
-        <a href="<%= @user.twitter %>"><i class="fa fa-twitter-square"></i></a>
-      <% end %>
-    </div>
-    <div class="col-sm-2">
-      <% if !@user.instagram.blank?%>
-        <a href="<%= @user.instagram%>"><i class="fa fa-instagram"></i></a>
-      <% end %>
-    </div>
-</div>
-<div class="col-sm-12 pad">
-  <div class="row">
-          <% @jobs.each do |job|%>
-            <% if job.user_id == current_user.id %>
-              <% if job.current == true%>
-              <div class="col-sm-4">
-                <p>
-                  <b><%= job.title %></b>[current]</p>
-                  <p>  <%= job.company %> <%= job.city %>
-                    <%= job.country %>
-                  <p>
-                   <% if !job.from.nil? && !job.to.nil? %>
-                       From <%= job.from.strftime("%B %Y") %>
-                   <% end %>
-                 </p>
-              </div>
-              <div class="col-sm-1">
-                <p>
-                  <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
-                </p>
-              </div>
-            <% else %>
-            <div class="col-sm-4">
-              <p>
-                <b><%= job.title %></b></p>
-                <p>  <%= job.company %> <%= job.city %>
-                <%= job.country %>
-                <p>
-                 <% if !job.from.nil? && !job.to.nil? %>
-                     From <%= job.from.strftime("%B %Y") %> to <%= job.to.strftime("%B %Y")  %>
-                 <% end %>
-               </p>
-            </div>
-            <div class="col-sm-1">
-              <p>
-                <%= link_to job, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-sm' do %> <span class="glyphicon glyphicon-remove"></span><% end %>
-              </p>
-            </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    </font>
-
-      <div class="row">
-        <div class="col-sm-2">
-          Location privacy:<br>
-          <b><%= @user.location_privacy_option %></b>
-        </div>
-        <div class="col-sm-3">
-          Social privacy: <br>
-        <b>  <%= @user.social_privacy_option %></b>
-        </div>
-        <div class="col-sm-3">
-          Contact privacy: <br>
-          <b><%= @user.contact_privacy_option %></b>
-        </div>
-        <div class="col-sm-3">
-          Job privacy: <br>
-          <b><%= @user.job_privacy_option %></b>
-        </div>
-      </div>
-    </div>
-</div>
-
-<style>
-   span{color:white}
-   .position{position:relative;}
-   #image_container{width:300px; height:auto }
-   .pad{padding: 0px}
-   .pad-left{padding-left :15px}
-   .pad-bottom{padding-bottom: 0px;}
-</style>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    $(this).find("#btn").hide();
-    $(document).on('mouseenter', '#image_container', function () {
-        $(this).find("#btn").show();
-    }).on('mouseleave', '#image_container', function () {
-        $(this).find("#btn").hide();
-    });
-  });
-</script>

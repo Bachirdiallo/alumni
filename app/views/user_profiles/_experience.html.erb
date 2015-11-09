@@ -1,0 +1,11 @@
+<li>
+    <time datetime="" class="cbp_tmtime"><span><%= job.title %></b>[current]</p></span> <span>  <% if !job.from.nil? && !job.to.nil? %>
+          From <%= job.from.strftime("%B %Y") %>
+      <% end %></span></time>
+    <i class="cbp_tmicon rounded-x hidden-xs"></i>
+    <div class="cbp_tmlabel">
+        <h2><%= job.company %></h2>
+        <h3><%= job.city %> <%= job.country %></h3>
+        <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
+    </div>
+</li>

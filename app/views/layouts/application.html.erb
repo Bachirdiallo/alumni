@@ -38,7 +38,7 @@
           <%end%>
         <%end%>
         <%= yield %>
-        <%= render partial: 'layouts/footer' %>
+        <%#= render partial: 'layouts/footer' %>
       </div>
         <%= javascript_include_tag 'application'%>
     </body>
@@ -70,6 +70,9 @@
         App.init();
         OwlCarousel.initOwlCarousel();
         ParallaxSlider.initParallaxSlider();
+        App.initScrollBar();
+        Datepicker.initDatepicker();
+        CirclesMaster.initCirclesMaster1();
     });
     </script>
 </html>

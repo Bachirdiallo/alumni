@@ -1,11 +1,14 @@
 <div id="result">
       <% @users.each do |search_result| %>
+      <div class="panel panel-profile">
+          <div class="panel-body margin-bottom-40">
           <div class="col-sm-10 h pad">
               <% if search_result.is_graduate %>
                 <% if search_result.id != current_user.id %>
                 <div class="col-sm-2">
                   <% if search_result.avatar.blank? %>
-                    <img src="../images/default.jpg" alt="" style="width: 50px" />
+                    <img src="assets/img/team/img32-md.jpg" class="img-responsive profile-img margin-bottom-20" alt="" />
+
                   <%else%>
                     <%= image_tag(search_result.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if search_result.avatar?%>
                   <%end%>
@@ -172,6 +175,8 @@
             <%end%>
           <%end%>
         </div>
+      </div>
+    </div>
       <% end %><!--search_result -->
   <%#= will_paginate @users %>
 </div>
@@ -183,7 +188,7 @@
   .company{width: 200px}
   .font{color: #999}
   .a{color: #009688}
-  .h:hover{ background-color: #eeeeee;}
+
   .pad{padding: 0px}
 </style>
 <script type="text/javascript">

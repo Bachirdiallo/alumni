@@ -1,23 +1,19 @@
-<%= form_for @user, url:settings_user_profiles_path(id: current_user.id) do |f|%>
-  <div>
+<%= semantic_form_for @user, url:settings_user_profiles_path(id: current_user.id) do |f|%>
+  <div class="container content">
     <div class="col-sm-2 ">
-      Location privacy:<br>
-      <%= f.select :location_privacy_option, [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
+      <%= f.input :location_privacy_option, as: :select, collection: [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
     </div>
     <div class="col-sm-2 ">
-      Social privacy: <br>
-      <%= f.select :social_privacy_option, [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
+      <%= f.input :social_privacy_option,as: :select, collection: [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
     </div>
     <div class="col-sm-2">
-      Contact privacy: <br>
-      <%= f.select :contact_privacy_option, [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
+      <%= f.input :contact_privacy_option, as: :select, collection: [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
     </div>
     <div class="col-sm-2">
-      Job privacy: <br>
-      <%= f.select :job_privacy_option, [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
+      <%= f.input :job_privacy_option, as: :select, colelction: [""]+User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()), :class => 'control'%>
     </div>
     <div class="col-sm-2" style="padding-top: 15px">
-      Help me find a job:
+      Looking for a job
       <%= f.check_box :is_job_seeker%>
     </div>
     <div class="col-sm-2">
