@@ -1,49 +1,36 @@
-
-
-<!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
-
-    <!-- Modal content-->
+  <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Employer Login</h4>
+        <h4>Sign In</h4>
       </div>
       <div class="modal-body">
-          <div class="row">
+        <div class="row">
+            <%= form_for(:user, as: :user, url: session_path(@user)) do |f| %>
+            <div class="reg-page">
 
-                    <div class="reg-page">
-                      <%= form_for(:user, as: :user, url: session_path(@user)) do |f| %>
-                        <div class="reg-header">
-                            <h2>Login to your account</h2>
-                        </div>
+              <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <%= f.text_field :student_id, autofocus: true, placeholder: 'username', autocomplete: "off", :class => 'form-control empty' %>
+              </div>
+              <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <%= f.password_field :password, autofocus: false, placeholder: 'Password', autocomplete: "off", :class => 'form-control empty' %>
+              </div>
 
-                        <div class="input-group margin-bottom-20">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <%= f.text_field :student_id, autofocus: true, placeholder: 'Student Id', autocomplete: "off", :class => 'form-control empty' %>
-                        </div>
-                        <div class="input-group margin-bottom-20">
-                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-
-                            <%= f.password_field :password, autofocus: false, placeholder: 'Password', autocomplete: "off", :class => 'form-control empty' %>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <%= f.submit "Login ", :class => 'btn-u pull-right' %>
-                            </div>
-                        </div>
-                        <hr>
-                        <h4>Forget your Password ?</h4>
-                        <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
-                      <%end%>
-                  </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.submit "Login ", :class => 'btn-u pull-right' %>
                 </div>
+              </div>
+
+              <h4>Forget your Password ?</h4>
+              <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
+            </div>
+            <%end%>
+        </div>
       </div>
-
     </div>
-
   </div>
 </div>

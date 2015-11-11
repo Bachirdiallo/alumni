@@ -29,5 +29,9 @@
 //= require plugins/owl-carousel/owl-carousel/owl.carousel.js
 //= require js/app.js
 //= require js/plugins/owl-carousel.js
-//= require js/plugins/parallax-slider.js 
+//= require js/plugins/parallax-slider.js
+//= require js/forms/reg.js
+//= require js/forms/login.js
+//= require plugins/image-hover/js/touch.js
+//= require plugins/image-hover/js/modernizr.js
 //= require_tree .

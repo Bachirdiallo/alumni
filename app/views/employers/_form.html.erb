@@ -9,42 +9,37 @@
       </ul>
     </div>
   <% end %>
-  <div class="col-md-6">
-    <div class="form-control-wrapper" >
-      <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-      <div class="floating-label">Name</div>
-        <span class="material-input"></span>
-    </div>
-    <div class="form-control-wrapper" >
-      <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-      <div class="floating-label">username</div>
-        <span class="material-input"></span>
+  <div class="reg-page">
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.text_field :name, autofocus: true, placeholder: 'Name', autocomplete: "off", :class => 'form-control empty' %>
     </div>
 
-    <div class="form-control-wrapper">
-      <%= f.email_field :email, autocomplete: "off", :class => 'form-control empty' %>
-      <div class="floating-label">Email </div>
-        <span class="material-input"></span>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.text_field :student_id, placeholder: 'Username', autocomplete: "off", :class => 'form-control empty' %>
     </div>
 
-    <div class="form-control-wrapper">
-      <%= f.password_field :password, autocomplete: "off", :class => 'form-control empty' %>
-      <div class="floating-label">Password </div>
-      <span class="material-input"></span>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+      <%= f.email_field :email, placeholder: 'Email', autocomplete: "off", :class => 'form-control empty' %>
     </div>
 
-    <div class="form-control-wrapper">
-      <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control empty' %>
-      <div class="floating-label">Confirm password </div>
-        <span class="material-input"></span>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password, autofocus: false, placeholder: 'Password', autocomplete: "off", :class => 'form-control empty' %>
     </div>
 
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="col-sm-3">
-          <%= f.submit "Create", :class => 'btn btn-primary btn-sm' %>
-        </div>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password, autofocus: false, placeholder: 'Confirm Password', autocomplete: "off", :class => 'form-control empty' %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.submit "Create", :class => 'btn btn-primary btn-sm' %>
       </div>
+      <a class="color-green" href="#">Sign in</a>
     </div>
   </div>
 <% end %>

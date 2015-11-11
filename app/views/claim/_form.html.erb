@@ -1,16 +1,19 @@
-<%= form_for @user, url: claim_path(id: @user.id) do |f|%>
-<div class="form-control-wrapper">
-  <%= f.text_field :email, :class => 'form-control empty', :autocomplete => "off" %>
-  <div class="floating-label"> Email</div>
-    <span class="material-input"></span>
-</div>
+<div class="panel panel-blue margin-bottom-40">
+  <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-tasks"></i> Update Your Email And Password</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for @user, url: claim_path(id: @user.id) , class: 'sky-form' do |f|%>
+      <div class="form-group">
+        <%= f.text_field :email, :class => 'form-control', placeholder: 'Email', :autocomplete => "off" %>
+      </div>
 
-<div class="form-control-wrapper">
-  <%= f.password_field :password, :class => 'form-control empty', :autocomplete => "off" %>
-  <div class="floating-label"> Password</div>
-    <span class="material-input"></span>
+      <div class="form-group ">
+        <%= f.password_field :password, :class => 'form-control empty', placeholder: 'Password', :autocomplete => "off" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update", :action=>"update", :class => 'btn btn-primary btn-flat' %>
+      </div>
+    <% end %>
+  </div>
 </div>
-<div class="actions">
-  <%= f.submit "Update", :action=>"update", :class => 'btn btn-primary btn-flat' %>
-</div>
-<% end %>

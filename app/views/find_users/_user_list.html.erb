@@ -1,14 +1,13 @@
 <div id="result">
       <% @users.each do |search_result| %>
       <div class="panel panel-profile">
-          <div class="panel-body margin-bottom-40">
-          <div class="col-sm-10 h pad">
+          <div class="panel-body margin-bottom-5">
+            <div class="col-sm-10">
               <% if search_result.is_graduate %>
                 <% if search_result.id != current_user.id %>
                 <div class="col-sm-2">
                   <% if search_result.avatar.blank? %>
-                    <img src="assets/img/team/img32-md.jpg" class="img-responsive profile-img margin-bottom-20" alt="" />
-
+                    <img src="assets/img/team/img32-md.jpg" class="img-responsive profile-img margin-bottom-20" alt="Profile" />
                   <%else%>
                     <%= image_tag(search_result.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if search_result.avatar?%>
                   <%end%>
@@ -23,7 +22,7 @@
                             <%if search_result.job_privacy_option == "My Batch"%>
                                 <% search_result.jobs.each do |u|%>
                                    <% if current_user.graduations.map { |b| b.batch}&job.graduations.map { |s| s.batch }%>
-                                     <% if u.current == "1" %>
+                                     <% if u.current == true %>
                                         Current <%= u.title %> at <%= u.company %><br>
                                        <% else %>
                                         Past <%= u.title %> at <%= u.company %><br>
