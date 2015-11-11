@@ -17,7 +17,7 @@
                  <%= search_result.country %><br>
                     <% if search_result.location_privacy_option != "Only Me" %>
                       <% if search_result.location_privacy_option == "My Batch" %>
-                        <% if current_user.graduations.map{|x| x.batch} & search_result.graduations.map{|s| s.batch}%>
+                        <% if current_user.graduations.include(:batch, :programme).map{|x| x.batch} & search_result.graduations.map{|s| s.batch}%>
                           <% if search_result.job_privacy_option != "Only Me" %>
                             <%if search_result.job_privacy_option == "My Batch"%>
                                 <% search_result.jobs.each do |u|%>
@@ -113,7 +113,7 @@
                               <% end %><!--if job_privacy_option != Only Me -->
                           <% end %><!--programme intersection checking -->
                       <%else %>
-                        <% if current_user.graduations.map{|x| x.batch} & search_result.graduations.map{|s| s.batch}%>
+                        <% if current_user.graduations.includes(:batch).map{|x| x.batch} & search_result.graduations.includes(:batch).map{|s| s.batch}%>
                           <% if search_result.job_privacy_option != "Only Me" %>
                               <%if search_result.job_privacy_option == "My Batch"%>
                                   <% search_result.jobs.each do |u|%>
@@ -141,7 +141,7 @@
                                     <% end %>
                                   <% end %>
                                   <span class="fa fa-graduation-cap"></span>
-                                      <% search_result.graduations.each do |x|%>
+                                      <% search_result.graduations.includes(:batch, :programme).each do |x|%>
                                         <%= x.batch.month%> / <%= x.batch.year%>,
                                           <%= x.programme.name%><br>
                                       <%end%>
@@ -154,7 +154,7 @@
                                     <% end %>
                                   <% end %>
                                   <span class="fa fa-graduation-cap"></span>
-                                      <% search_result.graduations.each do |x|%>
+                                      <% search_result.graduations.includes(:programme).each do |x|%>
                                         <%= x.batch.month%> / <%= x.batch.year%>,
                                           <%= x.programme.name%><br>
                                       <%end%>

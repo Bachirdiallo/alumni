@@ -34,7 +34,7 @@
         <%= render 'layouts/header' %>
         <% if user_signed_in?%>
           <% if !current_user.is_graduate && !current_user.is_employer %>
-              <%= render 'layouts/sidebar' %>
+            <%= render 'layouts/sidebar' %>
           <%end%>
         <%end%>
         <%= yield %>
@@ -70,9 +70,11 @@
         App.init();
         OwlCarousel.initOwlCarousel();
         ParallaxSlider.initParallaxSlider();
+        App.initParallaxBg();
         App.initScrollBar();
         Datepicker.initDatepicker();
         CirclesMaster.initCirclesMaster1();
+        App.initSidebarMenuDropdown();
     });
     </script>
 </html>

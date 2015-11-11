@@ -1,12 +1,18 @@
-<div class="col-sm-3 col-md-2 sidebar">
-  <ul class="nav nav-sidebar">
-    <li><%= link_to 'Campuses', campus_path %></li>
-    <li><%= link_to 'Faculties', faculties_path %></li>
-    <li><%= link_to 'Programmes',  programmes_path%></li>
-    <li><%= link_to 'Batches',  batches_path%></li>
-    <li><%= link_to 'Graduates',  graduations_path%></li>
-    <li><%= link_to 'Members',  members_path%></li>
-    <li><%= link_to 'Events',  events_path%></li>
-    <li><%= link_to 'Announcements',  announcements_path%></li>
-  </ul>
+<div class="col-sm-2">
+  <nav class="navbar navbar-default" role="navigation" data-mcs-theme="minimal-dark">
+    <div class="collapse navbar-collapse navbar-responsive-collapse">
+      <div class="menu-container">
+        <ul class="nav navbar-nav">
+          <li class="dropdown active"><%= link_to 'Campuses', campus_path %></li>
+          <li> <%= link_to 'Faculties', faculties_path %></li>
+          <li><%= link_to 'Programmes',  programmes_path%></li>
+          <li><%= link_to 'Batches',  batches_path%></li>
+          <li><%= link_to 'Graduates',  graduations_path%></li>
+          <li><%= link_to 'Members',  members_path%></li>
+          <li><%= link_to 'Events',  events_path%></li>
+          <li><%= link_to 'Announcements',  announcements_path%></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>

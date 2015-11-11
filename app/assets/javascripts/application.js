@@ -34,4 +34,5 @@
 //= require js/forms/login.js
 //= require plugins/image-hover/js/touch.js
 //= require plugins/image-hover/js/modernizr.js
+//= require js/plugins/fancy-box.js 
 //= require_tree .

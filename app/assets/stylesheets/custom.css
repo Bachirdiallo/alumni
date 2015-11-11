@@ -1,22 +1,13 @@
-.pad{
-  padding: 5px;
+.lv-item{
+  padding: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px none #7c8082;
+}
+.item:hover{
+  background-color: rgba(194,255,7,0.13);
 }
 
-.login{
-  width: 30%;
-  height: 20%;
-  background: #fff
+.link{
+  color: gray
 }
-
-.create_admin{
-  width: 50%;
-  height: 30%;
-}
-
-.main {
-  width: 30%;
-  height: auto;
-  background: #ccc
-}
-
 #map-canvas { height: 300px; margin: 0; padding: 0; background: #CCC}

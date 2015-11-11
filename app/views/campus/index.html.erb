@@ -1,27 +1,36 @@
-<div class="container col-sm-8">
-<p id="notice"><%= notice %></p>
+<div class="content-side-right">
+  <div class="container content">
 
-<h2>Listing Campus</h2>
+    <div class="col-md-9">
+      <div class=" col-md-12 margin-bottom-40">
+        <p id="notice"><%= notice %></p>
+        <div class="pull-left">
+          <h2>Campuses</h2>
+        </div>
+        <div class="col-md-2 pull-right">
+          <%= link_to 'New Batch', new_batch_path,  :class => 'btn btn-primary btn-sm pull-right' %>
+        </div>
+      </div>
+    </div>
 
-<table class="table table-striped table-hover">
-
-  <tbody>
-    <% @campus.each do |campu| %>
-      <tr>
-        <td><%= campu.name %></td>
-        <td><%= link_to edit_campu_path(campu) do %><span class="glyphicon glyphicon-edit"></span> <% end %></td>
-        <td><%= link_to campu, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-remove"></span> <% end %></td>
-      </tr>
+    <div class="col-md-9">
+      <strong><%= notice %></strong>
+      <% if @campus.any? %>
+        <% @campus.each do |campu| %>
+            <div class="lv-item item">
+              <div class="col-md-4" style="padding-left: 0px">
+                <%= campu.name%>
+              </div>
+              <div class="col-md-4 ">
+                <%= link_to edit_campu_path(campu),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+              </div>
+              <div class="col-md-4 pull-right">
+                <%= link_to campu, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+              </div>
+              <br>
+            </div>
+        <% end %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Campus', new_campu_path, :class => 'btn btn-primary btn-md' %>
+    </div>
+  </div>
 </div>
-
-
-<style media="screen">
-  h2{color: #009688}
-</style>

@@ -7,7 +7,7 @@ class FindUsersController < ApplicationController
 
   def index
     @search_results = User.ransack(params[:q])
-    @users = @search_results.result.includes(:graduations,:jobs)
+    @users = @search_results.result.includes(:jobs)
   end
 
   def file_content

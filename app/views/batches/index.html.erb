@@ -1,38 +1,40 @@
-<div class="container col-sm-8">
-    <strong><%= notice %></strong>
+<div class="content-side-right">
+  <div class="container content">
 
-<div class="col-sm-8">
-  <h3>Listing Batches</h3>
-</div>
+    <div class="col-md-9">
+      <div class=" col-md-12 margin-bottom-40">
+        <div class="pull-left">
+          <h2>Batches</h2>
+        </div>
+        <div class="col-md-1 pull-right" id="file_uploader">
+          <%= render partial: 'import/file_uploader',  locals: {:klass => Graduation}%>
+        </div>
+        <div class="col-md-2 pull-right">
+          <%= link_to 'New Batch', new_batch_path, :class => 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <strong><%= notice %></strong>
 
-  <div class="col-sm-2" id="file_uploader">
-    <%= render partial: 'import/file_uploader',  locals: {:klass => Graduation}%>
-  </div>
-  <div class="col-sm-2">
-    <%= link_to 'New Batch', new_batch_path, :class => 'btn btn-primary btn-sm' %>
-  </div>
-
-  <table class="table table-striped table-hover ">
-    <thead>
-    <tbody>
       <% @batches.each do |batch| %>
-        <tr>
-          <td>
-            <% if !batch.month.nil? && !batch.year.nil?%>
-              <%= batch.month%> / <%= batch.year %>
-            <% end %>
-          </td>
-          <td><%= link_to edit_batch_path(batch) do %><span class="glyphicon glyphicon-edit"></span> <% end %></td>
-          <td><%= link_to batch, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-remove"></span> <% end %></td>
-        </tr>
+        <div class="lv-item item">
+
+            <div class="col-md-4 ">
+              <% if !batch.month.nil? && !batch.year.nil?%>
+                <%= batch.month%> / <%= batch.year %>
+              <% end %>
+            </div>
+            <div class="col-md-4">
+              <%= link_to edit_batch_path(batch), class: 'pull-right link' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+            </div>
+            <div class="col-md-4 pull-right">
+              <%= link_to batch, class: 'pull-right link', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+            </div>
+            <br>
+          </div>
+
       <% end %>
-    </tbody>
-  </table>
-  <%= will_paginate @batches %>
-  <br>
-
+    </div>
+  </div>
 </div>
-
-<style media="screen">
-  h2{color: #009688}
-</style>

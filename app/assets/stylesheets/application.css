@@ -29,7 +29,9 @@
  *= require plugins/scrollbar/css/jquery.mCustomScrollbar.css
  *= require plugins/sky-forms-pro/skyforms/css/sky-forms.css
  *= require plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css
+ *= require plugins/fancybox/source/jquery.fancybox.css
  *= require plugins/image-hover/css/img-hover.css
+ *= require custom.css
  *= require bootsy
  *= require font-awesome
  */
