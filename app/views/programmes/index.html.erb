@@ -1,24 +1,35 @@
+<div class="content-side-right">
+  <div class="container content">
+    <div class="col-md-9">
+      <div class=" col-md-12 margin-bottom-40">
+        <p id="notice"><%= notice %></p>
+        <div class="pull-left">
+          <h2>Programmes</h2>
+        </div>
+        <div class="col-md-2 pull-right">
+          <%= link_to 'New Programme', new_programme_path,  :class => 'btn btn-primary btn-sm pull-right' %>
+        </div>
+      </div>
+    </div>
 
-<div class="container col-sm-8">
-  <p id="notice"><%= notice %></p>
-
-  <h2>Programmes</h2>
-
-  <table  class="table table-striped">
-    <tbody>
-      <% @programmes.each do |programme| %>
-        <tr>
-          <td><%= programme.name %></td>
-          <td><%= link_to edit_programme_path(programme) do %><span class="glyphicon glyphicon-edit"></span> <% end %></td>
-          <td><%= link_to programme, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-remove"></span> <% end %></td>
-        </tr>
+    <div class="col-md-9">
+      <strong><%= notice %></strong>
+      <% if @programmes.any? %>
+        <% @programmes.each do |programme| %>
+          <div class="lv-item item">
+            <div class="col-md-4" style="padding-left: 0px">
+              <%= programme.name%>
+            </div>
+            <div class="col-md-4 ">
+              <%= link_to edit_programme_path(programme),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+            </div>
+            <div class="col-md-4 pull-right">
+              <%= link_to programme, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+            </div>
+            <br>
+          </div>
       <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= link_to 'New Programme', new_programme_path, :class => 'btn btn-primary btn-md'%>
+    <% end %>
+    </div>
+  </div>
 </div>
-
-<style media="screen">
-  h2{color: #009688}
-</style>

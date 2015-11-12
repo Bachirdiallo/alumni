@@ -10,4 +10,23 @@
 .link{
   color: gray
 }
+
+.radius{
+   padding: 15px;
+   background: #337ab7
+  }
+
+.search-label {
+  color: white
+  }
+
+.graduation-form{
+  padding-top: 7px;
+}
+
+.graduation-list{
+  padding-top: 50px;
+}
+
+
 #map-canvas { height: 300px; margin: 0; padding: 0; background: #CCC}

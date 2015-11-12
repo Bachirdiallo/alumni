@@ -1,66 +1,57 @@
-<div class="container">
-  <div class="col-sm-8 wrapper">
-    <p id="notice"><%= notice %></p>
+<div class="content-side-right">
+  <div class="container content">
     <%= render 'form' %>
-  </div>
-<div class="col-sm-8">
-  <br> <br>
-</div>
-<div class="col-sm-8">
-  <%if @graduations.any? %>
-      <% @graduations.each do |graduation| %>
-        <div class="col-sm-6" style="padding: 15px" id="list">
-          <div class="col-sm-4" style="padding-left: 0px">
-            <% if graduation.user.avatar.blank? %>
-              <%= image_tag("default.jpg", style: 'width: 70px; hight: 50px')%>
-            <%else%>
-              <%=  image_tag(graduation.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position')%>
-            <%end%>
+    <div class="col-md-9 graduation-list">
+        <%if @graduations.any? %>
+            <% @graduations.each do |graduation| %>
+              <div class="col-sm-6 item" style="padding: 15px">
+                <div class="col-sm-4" style="padding-left: 0px">
+                  <% if graduation.user.avatar.blank? %>
+                    <%= image_tag("default.jpg", style: 'width: 70px; hight: 50px')%>
+                  <%else%>
+                    <%=  image_tag(graduation.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position')%>
+                  <%end%>
+                </div>
+                <div class="col-sm-8">
+                  <%if !graduation.user.nil?%>
+                    <span style="color: green; font-size: 17px">
+                      <%= graduation.user.name %>
+                    </span>
+                    <br>
+                    <%if !graduation.user.phone.nil? %>
+                      <i class="fa fa-phone"></i>
+                      <%= graduation.user.phone %> <br>
+                    <%end%>
+                    <%if !graduation.user.email.nil? %>
+                      <i class="fa fa-envelope-o"></i>
+                      <%= graduation.user.email %><br>
+                    <%end%>
+                  <%end%>
+                  <%if !graduation.batch.nil? %>
+                  <i class="fa fa-graduation-cap"></i>
+                    <%= graduation.batch.month %> / <%= graduation.batch.year %> <br>
+                  <%end%>
+                  <%if !graduation.programme.nil?%>
+                    <%= graduation.programme.name %>
+                  <%end%>
+              </div>
+            </div>
+          <% end %>
+        <%else%>
+          <div class="col-sm-12" id="list">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+              <h4><em style="color: orange">No matching recrod!</em></h4>
+            </div>
           </div>
-          <div class="col-sm-8">
-            <%if !graduation.user.nil?%>
-              <span style="color: green; font-size: 17px">
-                <%= graduation.user.name %>
-              </span>
-              <br>
-              <%if !graduation.user.phone.nil? %>
-                <i class="fa fa-phone"></i>
-                <%= graduation.user.phone %> <br>
-              <%end%>
-              <%if !graduation.user.email.nil? %>
-                <i class="fa fa-envelope-o"></i>
-                <%= graduation.user.email %><br>
-              <%end%>
-            <%end%>
-            <%if !graduation.batch.nil? %>
-            <i class="fa fa-graduation-cap"></i>
-              <%= graduation.batch.month %> / <%= graduation.batch.year %> <br>
-            <%end%>
-            <%if !graduation.programme.nil?%>
-              <%= graduation.programme.name %>
-            <%end%>
-        </div>
+        <%end%>
+
+          <div class="col-sm-12">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+              <%= will_paginate @graduations %>
+            </div>
+          </div>
       </div>
-      
-    <% end %>
-  <%else%>
-  <div class="col-sm-12" id="list">
-    <div class="col-sm-5"></div>
-    <div class="col-sm-7">
-      <h4><em style="color: orange">No matching recrod!</em></h4>
-    </div>
-  </div>
-  <%end%>
-  <div class="col-sm-12">
-    <div class="col-sm-5"></div>
-    <div class="col-sm-7">
-      <%= will_paginate @graduations %>
-    </div>
   </div>
 </div>
-</div>
-<style media="screen">
-  h2{color: #009688;}
-  .wrapper{padding: 0px}
-  #list:hover{background-color: #eeeeee;}
-</style>
