@@ -24,9 +24,8 @@
       <div class="profile-body">
         <div class="profile-bio">
           <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-3" id="image_container">
               <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded md-margin-bottom-10') %>
-
               <a type="button" class="btn-u btn-u-sm" data-toggle="modal" data-target="#myModal" id="btn">
                  <span class="fa fa-camera"> Update Picture</span>
               </a>
@@ -65,3 +64,15 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $(this).find("#btn").hide();
+    $(document).on('mouseenter', '#image_container', function () {
+        $(this).find("#btn").show();
+    }).on('mouseleave', '#image_container', function () {
+        $(this).find("#btn").hide();
+    });
+  });
+</script>

@@ -3,15 +3,15 @@ Bootsy.setup do |config|
   # Default editor options
   #   You can also override them locally by passing an
   #   editor_options hash to bootsy_area
-   config.editor_options = {
-     font_styles: true,
-     emphasis: true,
-     lists: true,
-     html: false,
-     link: true,
-     image: true,
-     color: true
-   }
+  # config.editor_options = {
+  #   font_styles: true,
+  #   emphasis: true,
+  #   lists: true,
+  #   html: false,
+  #   link: true,
+  #   image: true,
+  #   color: true
+  # }
   #
   # Image versions available
   #  Possible values: :small, :medium, :large and/or :original
@@ -21,28 +21,28 @@ Bootsy.setup do |config|
   # SMALL IMAGES
   #
   # Width limit for small images
-   config.small_image[:width] = 160
+  # config.small_image[:width] = 160
   #
   # Height limit for small images
-   config.small_image[:height] = 160
+  # config.small_image[:height] = 160
   #
   #
   # MEDIUM IMAGES
   #
   # Width limit for medium images
-   config.medium_image[:width] = 360
+  # config.medium_image[:width] = 360
   #
   # Height limit for medium images
-   config.medium_image[:height] = 360
+  # config.medium_image[:height] = 360
   #
   #
   # LARGE IMAGES
   #
   # Width limit for large images
-   config.large_image[:width] = 760
+  # config.large_image[:width] = 760
   #
   # Height limit for large images
-   config.large_image[:height] = 760
+  # config.large_image[:height] = 760
   #
   #
   # Whether user can destroy uploaded files
@@ -60,10 +60,5 @@ Bootsy.setup do |config|
   #
   # Store directory (inside 'public') for storage = :file
   #   BE CAREFUL! Changing this may break previously uploaded file paths!
-   config.store_dir = 'uploads'
-  #
-  #
-  # Specify the controller to inherit from. Using ApplicationController
-  # allows you to perform authentication from within your app.
-  # config.base_controller = ActionController::Base
+  # config.store_dir = 'uploads'
 end

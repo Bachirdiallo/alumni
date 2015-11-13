@@ -1,39 +1,41 @@
-<div class="col-sm-9">
-<p id="notice"><%= notice %></p>
-<ul class="nav nav-tabs" style="background-color: #ccc;">
-  <li class="active a"><%= link_to 'Announcements', announcements_path%></li>
-  <li><%= link_to 'Carousel', carousels_path%></li>
-</ul>
-<br>
-<div class="col-sm-12">
-  <div class="col-sm-4">
-    <h4>Announcements</h4>
-  </div>
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <%= link_to 'New Announcement', new_announcement_path, :class => 'btn btn-primary btn-flat' %>
-  </div>
-</div>
+<div class="content-side-right">
+  <div class="container content">
+    <div class="col-md-9">
+      <div class=" col-md-12 margin-bottom-40">
+        <p id="notice"><%= notice %></p>
+        <div class="pull-left">
+          <h2>Announcements</h2>
+        </div>
+        <div class="col-md-2 pull-right">
+          <%= link_to 'New Announcement', new_announcement_path,  :class => 'btn btn-primary btn-sm pull-right' %>
+        </div>
+      </div>
+    </div>
 
-<table class="table table-striped table-hover ">
-  <tbody>
-    <% @announcements.each do |announcement| %>
-      <tr>
-        <td><%= announcement.title %></td>
-        <td>
-          <%= announcement.created_at.strftime("%B") %>
-          <%= announcement.created_at.strftime("%Y") %>
-        </td>
-        <td><%= link_to  announcement  do %> <span class="fa fa-eye"></span><%end%></td>
-        <td><%= link_to edit_announcement_path(announcement) do %> <span class="fa fa-pencil-square-o"></span><%end%></td>
-        <td><%= link_to announcement, method: :delete, data: { confirm: 'Are you sure?' } do %> <span class="fa fa-times"></span><%end%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
+    <div class="col-md-9">
+      <strong><%= notice %></strong>
+      <% if @announcements.any? %>
+        <% @announcements.each do |announcement| %>
+        <div class="lv-item item">
 
-<style media="screen">
-  h3{color: #009688}
-  .a{color: #000}
-</style>
+            <div class="col-md-4 ">
+                <%= announcement.title%>
+            </div>
+            <div class="col-md-4 ">
+              <%= announcement.created_at.strftime("%B") %>
+              <%= announcement.created_at.strftime("%Y") %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to edit_announcement_path(announcement), class: 'pull-right link' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+            </div>
+            <div class="col-md-2 pull-right">
+              <%= link_to announcement, class: 'pull-right link', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+            </div>
+
+            <br>
+          </div>
+          <% end %>
+      <% end %>
+
+    </div>
+  </div>

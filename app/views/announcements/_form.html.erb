@@ -14,11 +14,11 @@
 
 
     <div class="form-control-wrapper" >
-      <%= f.text_field :title, :class => 'form-control empty' %>
-      <div class="floating-label">Title</div>
-        <span class="material-input"></span>
+      <%= f.text_field :title, :class => 'form-control' %>
     </div>
-    <div class="form-control-wrapper">
+
+    <div class="">
+      <%#= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true }, :class => "form-control").html_safe %>
       <%= f.bootsy_area :content, :class => 'form-control empty', :placeholder => 'Content' %>
     </div>
       <%= f.submit "Post Announcement", :class => 'btn btn-primary btn-md' %>

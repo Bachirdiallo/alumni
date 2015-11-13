@@ -1,18 +1,108 @@
-<div class="col-sm-2">
+<br>
+<div class="col-md-2 md-margin-bottom-40">
+  <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1" style="list-style-type: none">
+
+      <li class='<%= "active" if controller.controller_name == "campus"%> "list-group-item "'>
+        <%= link_to campus_path do%>
+          <span class="fa fa-building"> Campuses</span>
+        <% end %>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "faculties"%> "list-group-item "'>
+        <%= link_to  faculties_path do%>
+          <span class="fa fa-university"> Faculties</span>
+        <% end %>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "programmes"%> "list-group-item "'>
+        <%= link_to programmes_path do %>
+          <span class="fa fa-book"> Programmes</span>
+        <% end %>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "batches"%> "list-group-item "'>
+        <%= link_to batches_path do %>
+            <span class="fa fa-calendar"> Batches</span>
+        <% end %>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "graduations"%> "list-group-item "'>
+        <%= link_to  graduations_path do %>
+          <span class="fa fa-graduation-cap"> Graduates</span>
+        <% end %>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "members"%> "list-group-item"'>
+        <%= link_to  members_path do%>
+          <span class="fa fa-users"> Admin List</span>
+        <% end %>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "events"%> "list-group-item"'>
+          <%= link_to 'Events',  events_path%>
+      </li>
+
+      <li class='<%= "active" if controller.controller_name == "announcements"%> "list-group-item "'>
+        <%= link_to  announcements_path do%>
+          <span class="fa fa-volume-up"> Announcements</span> 
+        <% end %>
+      </li>
+  </ul>
+</div>
+
+<!--<div class="col-md-2" style="padding-top: -2px">
   <nav class="navbar navbar-default" role="navigation" data-mcs-theme="minimal-dark">
     <div class="collapse navbar-collapse navbar-responsive-collapse">
       <div class="menu-container">
-        <ul class="nav navbar-nav">
-          <li class="dropdown active"><%= link_to 'Campuses', campus_path %></li>
-          <li> <%= link_to 'Faculties', faculties_path %></li>
-          <li><%= link_to 'Programmes',  programmes_path%></li>
-          <li><%= link_to 'Batches',  batches_path%></li>
-          <li><%= link_to 'Graduates',  graduations_path%></li>
-          <li><%= link_to 'Members',  members_path%></li>
-          <li><%= link_to 'Events',  events_path%></li>
-          <li><%= link_to 'Announcements',  announcements_path%></li>
+        <ul class="nav navbar-nav" >
+          <li class='<%= "active" if controller.controller_name == "campus"%>'>
+            <%= link_to campus_path do%>
+              <span class="fa fa-building"> Campuses</span>
+            <% end %>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "faculties"%>'>
+            <%= link_to  faculties_path do%>
+              <span class="fa fa-university"></span> Faculties
+            <% end %>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "programmes"%>'>
+            <%= link_to programmes_path do %>
+              <span class="fa fa-book"> Programmes</span>
+            <% end %>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "batches"%>'>
+            <%= link_to batches_path do %>
+                <span class="fa fa-calendar"> Batches</span>
+            <% end %>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "graduations"%>'>
+            <%= link_to  graduations_path do %>
+              <span class="fa fa-graduation-cap"></span> Graduates
+            <% end %>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "members"%>'>
+            <%= link_to  members_path do%>
+              <span class="fa fa-users"> Admin List</span>
+            <% end %>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "events"%>'>
+              <%= link_to 'Events',  events_path%>
+          </li>
+
+          <li class='<%= "active" if controller.controller_name == "announcements"%>'>
+            <%= link_to  announcements_path do%>
+              <span class="fa fa-volume-up"></span> Announcements
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 </div>
+!-->
