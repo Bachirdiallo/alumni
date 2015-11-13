@@ -1,0 +1,11 @@
+<%= semantic_form_for @user, url: user_profile_path(@user), html: {class: "sky-form", id: "sky-form3"} do |f| %>
+  <%= f.input :location_privacy_option, as: :select, collection: User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()) %>
+  <hr>
+  <%= f.input :social_privacy_option, as: :select, collection: User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()) %>
+  <hr>
+  <%= f.input :contact_privacy_option, as: :select, collection: User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()) %>
+  <hr>
+  <%= f.input :job_privacy_option, as: :select, collection: User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()) %>
+  <hr>
+  <%= f.submit "Save Changes", class: 'btn-u' %>
+<% end %>

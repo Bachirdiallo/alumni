@@ -1,37 +1,36 @@
 <div class="panel panel-profile">
-    <div class="panel-heading overflow-h">
-        <h2 class="panel-title heading-sm pull-left">
-          <% if current_user.id == @user.id %>
-            <%= link_to   edit_user_profile_path(current_user.id) do %>
-              <span class="glyphicon glyphicon-pencil"> My Contact</span>
-            <% end %>
-            <a href="#"><i class="fa fa-cog pull-right"></i></a>
-          <% else %>
-            My Contact
-          <% end %>
-        </h2>
-    </div>
-    <div class="panel-body">
-      <ul class="list-unstyled social-contacts-v2">
-         <li><i class="rounded-x gm fa fa-envelope"></i> <%= @user.email%></li>
-         <li><i class="rounded-x gm fa fa-phone"></i> <%= @user.phone%></li>
-          <li>
-            <% if @user.graduations.any? %>
-              <i class="rounded-x gm fa fa-graduation-cap"></i>
-              <% @user.graduations.each do |x|%>
-                <%= x.batch.month%> / <%= x.batch.year%>
-              <%end%>
-              <% @user.graduations.each do |x|%>
-                <%= x.programme.name%>,
-              <%end%>
-              <% @user.graduations.each do |x|%>
-                <%= x.faculty.name%>,
-              <%end%>
-              <% @user.graduations.each do |x|%>
-                <%= x.campu.name%>.
-              <%end%>
-            <%end%>
-          </li>
-      </ul>
-    </div>
+  <div class="panel-heading overflow-h">
+    <h2 class="panel-title heading-sm pull-left">
+      <% if current_user.id == @user.id %>
+        <%= link_to   edit_user_profile_path(current_user.id), style: 'color: #205081' do %>
+          <span class="glyphicon glyphicon-pencil"> My Contact</span>
+        <% end %>
+      <% else %>
+        My Contact
+      <% end %>
+    </h2>
+  </div>
+  <div class="panel-body">
+    <ul class="list-unstyled social-contacts-v2">
+     <li><i class="rounded-x gm fa fa-envelope"></i> <%= @user.email%></li>
+     <li><i class="rounded-x gm fa fa-phone"></i> <%= @user.phone%></li>
+      <li>
+        <% if @user.graduations.any? %>
+          <i class="rounded-x gm fa fa-graduation-cap"></i>
+          <% @user.graduations.each do |x|%>
+            <%= x.batch.month%> / <%= x.batch.year%>
+          <%end%>
+          <% @user.graduations.each do |x|%>
+            <%= x.programme.name%>,
+          <%end%>
+          <% @user.graduations.each do |x|%>
+            <%= x.faculty.name%>,
+          <%end%>
+          <% @user.graduations.each do |x|%>
+            <%= x.campu.name%>.
+          <%end%>
+        <%end%>
+      </li>
+    </ul>
+  </div>
 </div>

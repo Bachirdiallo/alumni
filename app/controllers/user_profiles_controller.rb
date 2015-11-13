@@ -6,7 +6,7 @@ class UserProfilesController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
-    @jobs = Job.all.paginate(:page => 1, :per_page => 30)
+    @jobs = @user.jobs
   end
 
   # GET /user_profiles/1

@@ -1,0 +1,39 @@
+<%= form_for @user, url: user_profile_path(@user), html: {class: "sky-form", id: "sky-form4"} do |f| %>
+  <section>
+        <label class="input">
+            <i class="icon-append fa fa-user"></i>
+            <%= f.text_field :name %>
+        </label>
+  </section>
+
+  <section>
+      <label class="input">
+          <i class="icon-append fa fa-envelope"></i>
+          <%= f.text_field :email %>
+      </label>
+  </section>
+
+
+  <section>
+      <label class="input">
+          <i class="icon-append fa fa-phone"></i>
+          <%= f.text_field :phone %>
+      </label>
+  </section>
+
+  <section>
+      <label class="input">
+
+          <%= f.text_field :country %>
+      </label>
+  </section>
+
+  <section>
+      <label class="input">
+
+          <%= f.text_field :city %>
+      </label>
+  </section>
+
+  <%= f.submit "Save Changes", class: "btn-u"%>
+<% end %>

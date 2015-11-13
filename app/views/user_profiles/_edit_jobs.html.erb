@@ -1,0 +1,18 @@
+  <% @user.jobs.each do |job|%>
+    <div class="col-md-5 "><%= job.title %></div>
+
+    <div class="col-md-3"><%= job.company %></div>
+
+    <div class="col-md-2">
+      <%= link_to job, method: :delete, data:{confirm: "Are you sure>"}, class: "pull-right greyesh" do%>
+        <i class="fa fa-trash-o"></i>
+      <% end %>
+    </div>
+
+    <div class="col-md-2">
+      <%= link_to edit_job_path(id: job), class: "pull-right greyesh" do%>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>

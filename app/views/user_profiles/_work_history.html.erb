@@ -83,6 +83,7 @@
         <li>
             <time datetime="" class="cbp_tmtime">
               <span><%= job.title %></span>
+
                <span>
                  <% if !job.from.nil?  %>
                   <%= job.from.strftime("%B %Y") %> - Current
@@ -90,9 +91,10 @@
               </span>
             </time>
 
-            <i class="cbp_tmicon rounded-x hidden-xs"></i>
+
 
             <div class="cbp_tmlabel">
+              <i class="cbp_tmicon rounded-x hidden-xs"></i>
                 <h2><%= job.company %></h2>
                 <h5><%= job.city %> <%= job.country %></h5>
                 <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
@@ -104,7 +106,7 @@
                 <span><%= job.title %></span>
                 <span>
                     <% if !job.from.nil?  %>
-                      From <%= job.from.strftime("%B %Y") %> - Current
+                      From <%= job.from.strftime("%B %Y") %> 
                     <% end %>
                 </span>
               </time>
