@@ -1,4 +1,4 @@
-<%= form_for(@faculty) do |f| %>
+<%= semantic_form_for(@faculty) do |f| %>
   <% if @faculty.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@faculty.errors.count, "error") %> prohibited this faculty from being saved:</h2>
@@ -10,15 +10,28 @@
     </div>
   <% end %>
 
-  <div class="dropdown" >
-    <%= f.select :campu_id, options_for_select(  Campu.all.collect {|p| [p.name,p.id] }) %>
-  </div>
+  <div class="panel panel-success">
+    <div class="panel-heading"><strong>New Faculty</strong></div>
+    <div class="panel-body">
+      <div class="col-md-4">
+        <br>
+        <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: 'Name' %>
+      </div>
 
-  <div class="form-control-wrapper" >
-    <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-    <div class="floating-label">Name </div>
-      <span class="material-input"></span>
+      <div class="col-md-3">
+        <strong>Campus:</strong>
+        <%= f.input :campu_id, as: :select, collection: Campu.all.collect {|p| [p.name,p.id] }%>
+      </div>
+
+      <div class="col-md-4">
+        <br>
+        <%= f.submit "Create Faculty", :class => 'btn-u' %>
+        <%= link_to 'Back', faculties_path, :class => 'btn btn-u-default btn-u' %>
+      </div>
+    </div>
   </div>
-    <%= f.submit "Create Faculty", :class => 'btn btn-primary btn-md' %>
-    <%= link_to 'Back', faculties_path, :class => 'btn btn-primary btn-md' %>
 <% end %>
+
+<script>
+  $('label').hide()
+</script>

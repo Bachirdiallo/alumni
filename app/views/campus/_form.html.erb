@@ -11,14 +11,17 @@
     </div>
   <% end %>
 
-  <div class="form-control-wrapper" >
-    <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-    <div class="floating-label">Campus Name</div>
-      <span class="material-input"></span>
-  </div>
+  <div class="panel panel-success">
+    <div class="panel-heading"><strong>New Campus</strong></div>
+    <div class="panel-body">
+      <div class="col-md-8" >
+        <%= f.text_field :name, placeholder: 'Name', autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Create Campus", :class => 'btn btn-primary btn-md'%>
-    <%= link_to 'Back', campus_path, :class => 'btn btn-primary btn-md' %>
+      <div class="col-md-4">
+        <%= f.submit "Save", :class => 'btn-u'%>
+        <%= link_to 'Back', campus_path, :class => 'btn-u btn-u-default' %>
+      </div>
+    </div>
   </div>
 <% end %>

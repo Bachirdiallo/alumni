@@ -6,10 +6,12 @@
             <% @graduations.each do |graduation| %>
               <div class="col-sm-6 item" style="padding: 15px">
                 <div class="col-sm-4" style="padding-left: 0px">
-                  <% if graduation.user.avatar.blank? %>
-                    <%= image_tag("default.jpg", style: 'width: 70px; hight: 50px')%>
-                  <%else%>
-                    <%=  image_tag(graduation.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position')%>
+                  <% if !graduation.user.nil? %>
+                    <% if graduation.user.avatar.nil? %>
+                      <%= image_tag("default.jpg", style: 'width: 70px; hight: 50px')%>
+                    <%else%>
+                      <%=  image_tag(graduation.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position')%>
+                    <%end%>
                   <%end%>
                 </div>
                 <div class="col-sm-8">

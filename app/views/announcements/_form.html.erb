@@ -13,13 +13,13 @@
     <% end %>
 
 
-    <div class="form-control-wrapper" >
+    <div >
       <%= f.text_field :title, :class => 'form-control' %>
     </div>
 
-    <div class="">
-      <%#= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true }, :class => "form-control").html_safe %>
-      <%= f.bootsy_area :content, :class => 'form-control empty', :placeholder => 'Content' %>
+    <div >
+      <%= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true }, :class => "form-control").html_safe %>
+
     </div>
       <%= f.submit "Post Announcement", :class => 'btn btn-primary btn-md' %>
       <%= link_to 'Back', announcements_path, :class => 'btn btn-primary btn-md' %>

@@ -1,6 +1,5 @@
 <div class="container">
   <div class="col-sm-8">
-      <h3>Add a new user</h3>
       <%= form_for(@user, url: members_path) do |f| %>
         <% if @user.errors.any? %>
           <div class="alert alert-dismissable alert-danger">
@@ -12,44 +11,40 @@
             </ul>
           </div>
         <% end %>
-        <div class="form-control-wrapper" >
-          <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">Name</div>
-            <span class="material-input"></span>
-        </div>
 
-        <div class="form-control-wrapper" >
-          <%= f.text_field :student_id, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">Id </div>
-            <span class="material-input"></span>
-        </div>
-        <div class="form-control-wrapper">
-          <%= f.email_field :email, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">Email </div>
-            <span class="material-input"></span>
-        </div>
-        <p>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-        </p>
-        <div class="form-control-wrapper">
-          <%= f.password_field :password, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">Password </div>
-          <span class="material-input"></span>
-        </div>
-        <div class="form-control-wrapper">
-          <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'form-control empty' %>
-          <div class="floating-label">Confirm password </div>
-            <span class="material-input"></span>
-        </div>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-3">
-              <%= f.submit "Create", :class => 'btn btn-primary btn-sm' %>
+        <div class="panel panel-success">
+          <div class="panel-heading"><strong>Add New Admin</strong></div>
+          <div class="panel-body">
+            <div class="form-control-wrapper user-form" >
+              <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: 'Name', :class => 'form-control empty' %>
             </div>
-            <div class="col-sm-3">
-              <%= link_to 'Back', members_path, :class => 'btn btn-primary btn-sm' %>
+
+            <div class="form-control-wrapper user-form" >
+              <%= f.text_field :student_id, autocomplete: "off", placeholder: 'Id', :class => 'form-control empty' %>
+            </div>
+
+            <div class="form-control-wrapper user-form">
+              <%= f.email_field :email, autocomplete: "off", placeholder: 'Email', :class => 'form-control empty' %>
+            </div>
+
+            <p>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <br />
+              <% end %>
+            </p>
+
+            <div class="form-control-wrapper user-form">
+              <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :class => 'form-control empty' %>
+            </div>
+
+            <div class="form-control-wrapper user-form">
+              <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', :class => 'form-control empty' %>
+            </div>
+
+            <div class="user-form">
+              <%= f.submit "Create", :class => 'btn-u' %>
+              <%= link_to 'Back', members_path, :class => 'btn btn-u-default btn-u' %>
             </div>
           </div>
         </div>

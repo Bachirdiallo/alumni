@@ -3,19 +3,27 @@
     <div id="error_explanation">
       <h2><%= pluralize(@programme.errors.count, "error") %> prohibited this programme from being saved:</h2>
       <ul>
-      <% @programme.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @programme.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="form-control-wrapper" >
-    <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-    <div class="floating-label">Programme name</div>
-      <span class="material-input"></span>
+  <div class="panel panel-success">
+    <div class="panel-heading"><strong>New Programme</strong></div>
+    <div class="panel-body">
+        <div class="col-md-6" >
+          <%= f.text_field :name, placeholder: 'Name', autofocus: true, autocomplete: "off" %>
+        </div>
+
+        <div class="col-md-3">
+          Faculty: <%= f.select :faculty_id, options_for_select(Faculty.all.collect {|p| [p.name,p.id] }) %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.submit "Save", :class => 'btn-u'%>
+          <%= link_to 'Back', programmes_path, :class => 'btn-u btn-u-default' %>
+        </div>
+    </div>
   </div>
-<br>
-    Faculty: <%= f.select :faculty_id, options_for_select(Faculty.all.collect {|p| [p.name,p.id] }) %><br>
-    <%= f.submit "Save", :class => 'btn btn-primary btn-md'%>
-    <%= link_to 'Back', programmes_path, :class => 'btn btn-primary btn-md' %>
 <% end %>
