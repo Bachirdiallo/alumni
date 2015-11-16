@@ -1,9 +1,8 @@
-<%= render partial: 'locate_user'%>
 <div class="job-img-inputs" >
   <div class="container content">
     <div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3">
       <div class="row radius" id="form">
-        <%= search_form_for @search_results, url:  file_content_find_users_path, remote: true,  onload: "getLocation();" do |f| %>
+        <%= search_form_for @search_results, url:  file_content_find_users_path, id: 'form', remote: true do |f| %>
           <div class="col-sm-2 md-margin-bottom-10">
             <strong class="search-label">Campus:</strong><br><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'col-md-7'%>
           </div>
@@ -22,17 +21,10 @@
           </div>
           <div class="col-sm-2 md-margin-bottom-10 pull-right">
             <br>
-            <%= f.submit :class => 'btn-u btn-u-red btn-lg', onclick: "getLocation();" %>
+            <%= f.submit :class => 'btn-u btn-u-red btn-lg', remote: true,  id: 'location' %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<style>
-  .radius{ padding: 15px; background: #337ab7}
-  .control{width: 300px; color: black}
-  .search-label {color: white}
-  .back{background: #eeeeee}
-</style>

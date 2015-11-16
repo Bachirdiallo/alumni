@@ -11,8 +11,7 @@
                 </p>
             </div>
             <div class="news-v2-desc">
-                <h3><%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%></h3>
-                <small>By Admin | California, US | In <a href="#">Art</a></small>
+                <h3><%= link_to  announcement.title.html_safe, announcement_path(id: announcement.id)%></h3>
                 <p><%= announcement.content%></p>
             </div>
         </div>
@@ -35,7 +34,6 @@
             </div>
             <div class="news-v2-desc">
                 <h3><%= link_to  event.title.html_safe,   event_path(id: event.id)%></h3>
-                <small>By Admin | California, US | In <a href="#">Art</a></small>
                 <p><%= event.description%></p>
             </div>
         </div>
