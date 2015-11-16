@@ -3,7 +3,7 @@
     <h2 class="panel-title heading-sm pull-left">
       <% if current_user.id == @user.id %>
         <%= link_to   edit_user_profile_path(current_user.id), style: 'color: #205081' do %>
-          <span class="glyphicon glyphicon-pencil"> My Contact</span>
+          <span class="glyphicon glyphicon-pencil"> Edit Profile</span>
         <% end %>
       <% else %>
         My Contact

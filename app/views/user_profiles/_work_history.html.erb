@@ -3,120 +3,118 @@
       <%if @user.job_privacy_option == "My Batch"%>
           <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
              <% if job.current == true%>
-             <li>
-                 <time datetime="" class="cbp_tmtime">
-                   <span><%= job.title %></span>
-                  <span>
-                    <% if !job.from.nil? && !job.to.nil? %>
-                       From <%= job.from.strftime("%B %Y") %> -Current
-                   <% end %>
-                   </span>
-                </time>
-                 <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                 <div class="cbp_tmlabel">
-                     <h2><%= job.company %></h2>
-                     <h5><%= job.city %> <%= job.country %></h5>
-                     <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
-                 </div>
-             </li>
-               <% else %>
-               <li>
-                   <time datetime="" class="cbp_tmtime">
-                     <span><%= job.title %></span>
+                 <li>
+                     <time datetime="" class="cbp_tmtime">
+                       <span><%= job.title %></span>
                       <span>
-                         <% if !job.from.nil? && !job.to.nil? %>
-                          From <%= job.from.strftime("%B %Y") %> -Current
-                         <% end %>
-                     </span>
-                   </time>
-                   <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                   <div class="cbp_tmlabel">
+                        <% if !job.from.nil? && !job.to.nil? %>
+                           From <%= job.from.strftime("%B %Y") %> - Current
+                       <% end %>
+                       </span>
+                    </time>
+                     <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                     <div class="cbp_tmlabel">
+                         <h2><%= job.company %></h2>
+                         <h5><%= job.city %> <%= job.country %></h5>
+                     </div>
+                 </li>
+               <% else %>
+                 <li>
+                     <time datetime="" class="cbp_tmtime">
+                       <span><%= job.title %></span>
+                        <span>
+                           <% if !job.from.nil?  %>
+                            From <%= job.from.strftime("%B %Y") %>
+                           <% end %>
+
+                           <% if  !job.to.nil? %>
+                              to <%= job.to.strftime("%B %Y") %>
+                           <% end %>
+                       </span>
+                     </time>
+                     <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                     <div class="cbp_tmlabel">
                        <h2><%= job.company %></h2>
                        <h5><%= job.city %> <%= job.country %></h5>
-                       <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
-                   </div>
-               </li>
+                     </div>
+                 </li>
              <% end %>
           <% end %>
       <%elsif @user.job_privacy_option == "My Programme"%>
             <% if current_user.graduations.map { |p| p.programme  }& @user.graduations.map { |p| p.programme  } %>
               <% if job.current == true%>
-
-              <li>
-                  <time datetime="" class="cbp_tmtime">
-                    <span><%= job.title %></span>
-                    <span>
-                      <% if !job.from.nil? && !job.to.nil? %>
-                        From <%= job.from.strftime("%B %Y") %> - Current
-                      <% end %>
-                    </span>
-                  </time>
-                  <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                  <div class="cbp_tmlabel">
-                      <h2><%= job.company %></h2>
-                      <h5><%= job.city %> <%= job.country %></h5>
-                      <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
-                  </div>
-              </li>
+                  <li>
+                      <time datetime="" class="cbp_tmtime">
+                        <span><%= job.title %></span>
+                        <span>
+                          <% if !job.from.nil? && !job.to.nil? %>
+                            From <%= job.from.strftime("%B %Y") %> - Current
+                          <% end %>
+                        </span>
+                      </time>
+                      <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                      <div class="cbp_tmlabel">
+                          <h2><%= job.company %></h2>
+                          <h5><%= job.city %> <%= job.country %></h5>
+                      </div>
+                  </li>
               <% else %>
-
-              <li>
-                  <time datetime="" class="cbp_tmtime">
-                    <span><%= job.title %></span>
-                     <span>
-                       <% if !job.from.nil? && !job.to.nil? %>
-                        From <%= job.from.strftime("%B %Y") %>
-                       <% end %>
-                    </span>
-                  </time>
-                  <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                  <div class="cbp_tmlabel">
-                      <h2><%= job.company %></h2>
-                      <h5><%= job.city %> <%= job.country %></h5>
-                      <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
-                  </div>
-              </li>
+                  <li>
+                      <time datetime="" class="cbp_tmtime">
+                        <span><%= job.title %></span>
+                         <span>
+                           <% if !job.from.nil? && !job.to.nil? %>
+                            From <%= job.from.strftime("%B %Y") %>
+                           <% end %>
+                        </span>
+                      </time>
+                      <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                      <div class="cbp_tmlabel">
+                          <h2><%= job.company %></h2>
+                          <h5><%= job.city %> <%= job.country %></h5>
+                          <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
+                      </div>
+                  </li>
               <% end %>
             <% end %>
       <%else%>
         <% if job.current == true%>
-        <li>
-            <time datetime="" class="cbp_tmtime">
-              <span><%= job.title %></span>
-
-               <span>
-                 <% if !job.from.nil?  %>
-                  <%= job.from.strftime("%B %Y") %> - Current
-                 <% end %>
-              </span>
-            </time>
-
-
-
-            <div class="cbp_tmlabel">
-              <i class="cbp_tmicon rounded-x hidden-xs"></i>
-                <h2><%= job.company %></h2>
-                <h5><%= job.city %> <%= job.country %></h5>
-                <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
-            </div>
-        </li>
-          <% else %>
           <li>
               <time datetime="" class="cbp_tmtime">
                 <span><%= job.title %></span>
-                <span>
-                    <% if !job.from.nil?  %>
-                      From <%= job.from.strftime("%B %Y") %> 
-                    <% end %>
+
+                 <span>
+                   <% if !job.from.nil?  %>
+                    <%= job.from.strftime("%B %Y") %> - Current
+                   <% end %>
                 </span>
               </time>
-              <i class="cbp_tmicon rounded-x hidden-xs"></i>
+
               <div class="cbp_tmlabel">
+                <i class="cbp_tmicon rounded-x hidden-xs"></i>
                   <h2><%= job.company %></h2>
                   <h5><%= job.city %> <%= job.country %></h5>
-                  <p>Winter purslane courgette pumpkin quandong komatsuna fennel green bean cucumber watercress. Peasprouts wattle seed rutabaga okra yarrow cress avocado grape.</p>
               </div>
-          </li>
+            </li>
+          <% else %>
+            <li>
+                <time datetime="" class="cbp_tmtime">
+                  <span><%= job.title %></span> 
+                  <span>
+                      <% if !job.from.nil?  %>
+                        From <%= job.from.strftime("%B %Y") %>
+                      <% end %>
+                      <% if !job.from.nil?  %>
+                        to <%= job.to.strftime("%B %Y") %>
+                      <% end %>
+                  </span>
+                </time>
+                <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                <div class="cbp_tmlabel">
+                    <h2><%= job.company %></h2>
+                    <h5><%= job.city %> <%= job.country %></h5>
+                </div>
+            </li>
           <% end %>
       <% end %> <!--if job_privacy_otpion == My Batch -->
     <% end %><!--if job_privacy_otpion != Only Me -->

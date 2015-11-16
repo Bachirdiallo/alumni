@@ -1,59 +1,67 @@
-<div class="container">
-  <%= search_form_for @search, url:  search_employers_path do |f| %>
-    <div class="col-sm-3">
-
-    </div>
-    <div class="col-sm-4" style="padding-top: 20px">
-      Programme: <%= f.select :programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
-    </div>
-
-    <div class="col-sm-2"style="padding-top: 20px">
-      Class: <%= f.select :batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
-    </div>
-
-    <div class="col-sm-3">
-      <%= f.submit :class => 'btn btn-primary btn-md' do %>
-        <i class="fa fa-search">Search</i>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div class="col-md-12" ><br> <br><br></div>
-<div class="container">
-  <% if @users.any? %>
-    <% @users.each do |user| %>
-      <%@jobs = Job.where(user_id: user.user.id) %>
-      <div class="col-md-10 radius"  id="list">
-        <div class="col-md-2">
-          <% if user.user.avatar.blank? %>
-            <%= link_to image_tag("default.jpg", style: 'width: 70px; hight: 50px'), user_profile_view_profile_path(user.user.id) %>
-          <%else%>
-            <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position'), user_profile_view_profile_path(user.user.id)%>
-          <%end%>
-        </div>
-        <div class="col-md-3">
-          <span style="color: green; font-size: 20px">
-            <%= user.user.name %>
-          </span><br>
-          <%@jobs.each do |job| %>
-            <%= job.title%> <br>
-          <%end%>
-          <%= user.user.phone %> <br>
-          <%= user.user.email %><br>
-          <%= user.programme.name %>
-          <br>
-        </div>
+<div class="container content">
+  <div class="col-md-9">
+    <%= semantic_form_for @search, url:  search_employers_path do |f| %>
+      <div class="col-sm-4">
+        <strong>Programme:</strong>
+        <%= f.input :programme_id_eq, as: :select, collection: Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
       </div>
-    <%end%>
-  <%else%>
-  <br>
-    <div class="col-md-3"></div>
-    <em>No Matching record</em>
-  <%end%>
+
+      <div class="col-sm-4">
+        <strong>Class:</strong>
+        <%= f.input :batch_id_eq, as: :select, collection: Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
+      </div>
+
+      <div class="col-sm-3">
+        <br>
+        <%= f.submit "Search", :class => 'btn-u'%>
+      </div>
+    <% end %>
+  </div>
 </div>
-<style>
-  .radius{border-radius: 15px; padding: 15px}
-  .control{width: 300px}
-  .back{background: #eeeeee}
-  #list:hover{background-color: #eeeeee;}
-</style>
+
+<div class="container content profile">
+  <div class="col-md-9">
+    <div class="profile-body margin-bottom-20">
+      <div class="row margin-bottom-20">
+        <% if @users.any? %>
+          <% @users.each do |user| %>
+              <div class="col-sm-6 sm-margin-bottom-20">
+                  <div class="profile-blog">
+                    <% if user.user.avatar.blank? %>
+                      <%= link_to image_tag("default.jpg", class: 'rounded-x'), user_profile_view_profile_path(user.user.id) %>
+                    <%else%>
+                      <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'rounded-x'), user_profile_view_profile_path(user.user.id)%>
+                    <%end%>
+                      <div class="name-location">
+                          <strong><%= user.user.name%></strong>
+                          <span><%= user.programme.name %></span> <br>
+                          <span>
+                            <% if user.user.jobs.includes(:jobs).any?%>
+                              <%= user.user.jobs.last.title%>,
+                            <% end %>
+                            <%= user.user.jobs.last.company%>
+                          </span>
+                      </div>
+                      <div class="clearfix margin-bottom-20"></div>
+                      <p></p>
+                      <hr>
+                      <ul class="list-inline share-list">
+                          <li><i class="fa fa-phone"></i><%= user.user.phone %></li>
+                          <li><i class="fa fa-envelope"></i><%= user.user.email %></li>
+                      </ul>
+                  </div>
+              </div>
+          <% end %>
+        <% else %>
+          <div class="profile-blog">
+            <strong>No Record found!  </strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('label').hide();
+</script>
