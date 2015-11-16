@@ -1,17 +1,18 @@
+<h5>  Discover the best talent from our University</h5>
 <div class="container content">
-  <div class="col-md-9">
+  <div class="col-md-9 radius row-margin-bottom-20">
     <%= semantic_form_for @search, url:  search_employers_path do |f| %>
-      <div class="col-sm-4">
-        <strong>Programme:</strong>
+      <div class="col-sm-5  ">
+        <strong class="search-label">Programme:</strong>
         <%= f.input :programme_id_eq, as: :select, collection: Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
       </div>
 
-      <div class="col-sm-4">
-        <strong>Class:</strong>
+      <div class="col-sm-5">
+        <strong class="search-label">Class:</strong>
         <%= f.input :batch_id_eq, as: :select, collection: Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
       </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <br>
         <%= f.submit "Search", :class => 'btn-u'%>
       </div>
@@ -28,7 +29,7 @@
               <div class="col-sm-6 sm-margin-bottom-20">
                   <div class="profile-blog">
                     <% if user.user.avatar.blank? %>
-                      <%= link_to image_tag("default.jpg", class: 'rounded-x'), user_profile_view_profile_path(user.user.id) %>
+                      <%= link_to image_tag("user.jpg", class: 'rounded-x'), user_profile_view_profile_path(user.user.id) %>
                     <%else%>
                       <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'rounded-x'), user_profile_view_profile_path(user.user.id)%>
                     <%end%>

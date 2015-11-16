@@ -24,7 +24,6 @@
                     <button type="button" name="button" class="btn btn-primary btn-sm .no-padding" id= "button">Hide</button>
                 <%end%>
               <%end%>
-
             </div>
           </div>
         </div>
@@ -38,43 +37,40 @@
           <%end%>
         <%end%>
         <%= yield %>
-        <%#= render partial: 'layouts/footer' %>
+        <% if !user_signed_in? %>
+          <%= render partial: 'layouts/footer' %>
+        <%end%>
       </div>
         <%= javascript_include_tag 'application'%>
     </body>
-    <style >
-      .backgrnd{padding: 0px; background-color: white}
-      .pad{padding: 10px;}
-      .no-padding{padding: 0px}
-      .pad-top{padding-top: 5px}
-    </style>
 
     <script>
-      $("#bar").hide();
-    <% if user_signed_in?%>
-      var old_city = "<%= current_user.city%>";
-      var current_city = window.name;
+    $("#bar").hide();
+      <% if user_signed_in?%>
+        var old_city = "<%= current_user.city%>";
+        var current_city = window.name;
 
-      if(current_city != old_city){
-        $("#bar").show();
-      }
-      else{
-        $("#bar").hide();
-      }
-      $("#button").click(function(){
-        $("#bar").hide();
+        if(current_city != old_city){
+          $("#bar").show();
+        }
+        else{
+          $("#bar").hide();
+        }
+        $("#button").click(function(){
+          $("#bar").hide();
+        });
+      <%end%>
+
+      jQuery(document).ready(function() {
+          App.init();
+          OwlCarousel.initOwlCarousel();
+          ParallaxSlider.initParallaxSlider();
+          App.initParallaxBg();
+          App.initScrollBar();
+          Datepicker.initDatepicker();
+          CirclesMaster.initCirclesMaster1();
+          App.initSidebarMenuDropdown();
       });
-    <%end%>
 
-    jQuery(document).ready(function() {
-        App.init();
-        OwlCarousel.initOwlCarousel();
-        ParallaxSlider.initParallaxSlider();
-        App.initParallaxBg();
-        App.initScrollBar();
-        Datepicker.initDatepicker();
-        CirclesMaster.initCirclesMaster1();
-        App.initSidebarMenuDropdown();
-    });
     </script>
 </html>

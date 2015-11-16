@@ -1,147 +1,45 @@
 <div class="headline"><h2>Recent Announcements</h2></div>
-<div class="row margin-bottom-20">
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-          <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
+<div class="row news-v2 margin-bottom-50">
+    <% if @announcements.any? %>
+      <% @announcements.each do |announcement| %>
+        <div class="col-sm-4 sm-margin-bottom-30">
+            <div class="news-v2-badge">
+                <img class="img-responsive" src="assets/img/main/img18.jpg" alt="">
+                <p>
+                    <span><%= announcement.created_at.strftime("%d")%></span>
+                    <small><%= announcement.created_at.strftime("%b")%></small>
+                </p>
             </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project One</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-            <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img12.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
-            </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project Two</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+            <div class="news-v2-desc">
+                <h3><%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%></h3>
+                <small>By Admin | California, US | In <a href="#">Art</a></small>
+                <p><%= announcement.content%></p>
             </div>
         </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-            <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img3.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
-            </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project Three</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-            <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img17.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
-            </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project Four</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-            </div>
-        </div>
-    </div>
+      <% end %>
+  <% end %>
 </div>
 
-<div class="headline"><h2>Recent Events</h2></div>
-<div class="row margin-bottom-20">
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-          <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
+<div class="headline"><h2>Latest Events</h2></div>
+<div class="row news-v2 margin-bottom-50">
+  <div class="row news-v2 margin-bottom-50">
+    <% if @events.any? %>
+      <% @events.each do |event| %>
+        <div class="col-sm-4 sm-margin-bottom-30">
+            <div class="news-v2-badge">
+                <img class="img-responsive" src="assets/img/main/img18.jpg" alt="">
+                <p>
+                    <span><%= event.created_at.strftime("%d")%></span>
+                    <small><%= event.created_at.strftime("%b")%></small>
+                </p>
             </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project One</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-            <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img12.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
-            </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project Two</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+            <div class="news-v2-desc">
+                <h3><%= link_to  event.title.html_safe,   event_path(id: event.id)%></h3>
+                <small>By Admin | California, US | In <a href="#">Art</a></small>
+                <p><%= event.description%></p>
             </div>
         </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-            <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img3.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
-            </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project Three</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-        <div class="thumbnails thumbnail-style thumbnail-kenburn">
-            <div class="thumbnail-img">
-                <div class="overflow-hidden">
-                    <img class="img-responsive" src="assets/img/main/img17.jpg" alt="">
-                </div>
-                <a class="btn-more hover-effect" href="#">read more +</a>
-            </div>
-            <div class="caption">
-                <h3><a class="hover-effect" href="#">Project Four</a></h3>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<h4>Latest News</h4>
-<% count = 0%>
-<% @announcements.each do |announcement| %>
-  <div id="news">
-    <% if count < 4 %>
-      <div>
-         <p>
-           <%= link_to  announcement.title.html_safe,   announcement_path(id: announcement.id)%> <br>
-           <%= announcement.created_at.strftime("%B")%> <%=announcement.created_at.strftime("%Y")%>
-          </p>
-      </div>
-      <% count = count + 1%>
+      <% end %>
     <% end %>
   </div>
-<% end %>
-
-<strong>Events & Reunions</strong>
-<% event_count = 0%>
-<% @events.each do |event| %>
-  <% if event_count < 3 %>
-    <h4> <%= link_to  event.title, event_path(id: event.id) %></h4>
-    <%= event.date.strftime("%B") %> <%= event.date.strftime("%Y") %><br>
-    <%= event.description.truncate(50).html_safe %><br><br>
-    <% event_count = event_count + 1%>
-  <% end %>
-<% end %>
+</div>
