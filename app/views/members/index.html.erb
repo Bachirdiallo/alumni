@@ -2,7 +2,11 @@
   <div class="container content">
     <div class="col-md-9">
       <div class=" col-md-12 margin-bottom-40">
-        <p id="notice"><%= notice %></p>
+        <% if !notice.nil? %>
+          <div class="alert alert-info fade in">
+            <p id="notice"><%= notice %></p>
+          </div>
+        <%end%>
         <div class="pull-left">
           <h2>Admin</h2>
         </div>
@@ -13,7 +17,6 @@
     </div>
 
     <div class="col-md-9">
-      <strong><%= notice %></strong>
       <% if @users.any? %>
         <% @users.each do |user| %>
           <% if !user.is_graduate && !user.is_employer%>

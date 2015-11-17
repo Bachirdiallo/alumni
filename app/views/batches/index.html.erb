@@ -3,6 +3,11 @@
 
     <div class="col-md-9">
       <div class=" col-md-12 margin-bottom-40">
+        <% if !notice.nil? %>
+          <div class="alert alert-info fade in">
+            <p id="notice"><%= notice %></p>
+          </div>
+        <%end%>
         <div class="pull-left">
           <h2>Batches</h2>
         </div>
@@ -15,8 +20,6 @@
       </div>
     </div>
     <div class="col-md-9">
-      <strong><%= notice %></strong>
-
       <% @batches.each do |batch| %>
         <div class="lv-item item">
 
