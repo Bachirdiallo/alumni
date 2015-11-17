@@ -1,21 +1,15 @@
-<div class="col-sm-9">
-  <div class="container">
-    <p id="notice"><%= notice %></p>
-    <p>
-      <h3><%= @announcement.title.html_safe %></h3>
-    </p>
-    <p>
-      <%= @announcement.content.html_safe %>
-    </p>
-    <% if user_signed_in?%>
-      <% if !current_user.is_graduate? %>
-        <%= link_to 'Edit', edit_announcement_path(@announcement), :class => 'btn btn-primary btn-md' %>
-        <%= link_to 'Back', announcements_path, :class => 'btn btn-primary btn-md' %>
-      <% end %>
+<div class="container content">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <h3><%= @announcement.title.html_safe %></h3>
+  </p>
+  <p>
+    <%= @announcement.content.html_safe %>
+  </p>
+  <% if user_signed_in?%>
+    <% if !current_user.is_graduate? %>
+      <%= link_to 'Edit', edit_announcement_path(@announcement), :class => 'btn btn-primary btn-md' %>
+      <%= link_to 'Back', announcements_path, :class => 'btn btn-primary btn-md' %>
     <% end %>
-
-  </div>
+  <% end %>
 </div>
-<style media="screen">
-  h3{color: #009688}
-</style>

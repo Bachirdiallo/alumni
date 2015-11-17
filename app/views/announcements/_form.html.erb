@@ -1,5 +1,5 @@
 <div class="col-md-9">
-  <%= form_for @announcement, url: new_announcement_path, method: :post  do |f| %>
+  <%= form_for @announcement  do |f| %>
     <% if @announcement.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
@@ -11,7 +11,7 @@
       </div>
     <% end %>
 
-      <%= f.text_field :title%>
+      <%= f.text_field :title, class: 'form-control'%>
       <%= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true, link: true }, :class => "form-control").html_safe %>
 
       <%= f.submit "Publish",  :class => 'btn btn-primary' %>
