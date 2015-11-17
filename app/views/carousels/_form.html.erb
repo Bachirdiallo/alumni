@@ -1,34 +1,36 @@
 <div class="col-sm-9">
+  <%= form_for(@carousel) do |f| %>
+    <% if @carousel.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@carousel.errors.count, "error") %> prohibited this carousel from being saved:</h2>
 
-<%= form_for(@carousel) do |f| %>
-  <% if @carousel.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@carousel.errors.count, "error") %> prohibited this carousel from being saved:</h2>
+        <ul>
+          <% @carousel.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% @carousel.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+   <!-- Modal -->
+     <div id="carousel-modal" class="modal fade" role="dialog">
+       <div class="modal-dialog">
+         <!-- Modal content-->
+         <div class="modal-content">
+           <div class="modal-header">
+             <h4>Upload Carousel Image</h4>
+           </div>
+           <div class="modal-body">
+             <%= f.text_field :name, placeholder: 'Image Caption', :class => 'form-control empty required' %>
+             <br>
+             <%= f.file_field :image, class: 'btn btn-default' %>
+           </div>
+           <div class="modal-footer">
+             <%= f.submit "Upload", :class=>'btn-u rounded' %>
+              <button type="button" class="btn-u  btn-u-default rounded" data-dismiss="modal">Close</button>
+          </div>
+         </div>
+       </div>
+     </div>
   <% end %>
-
-
-  <div class="form-control-wrapper" >
-    <%= f.text_field :name, :class => 'form-control empty' %>
-    <div class="floating-label">Caption</div>
-      <span class="material-input"></span>
-  </div>
-  <br>
-    <%= f.file_field :image %>
-    <br>
-
-
-
-    <div class="modal-footer">
-    <%= f.submit "Upload", :class=>'btn btn-primary' %>
-      <button type="button" class="btn btn-primary btn flat" data-dismiss="modal">Close</button>
-    </div>
-<% end %>
-
 </div>

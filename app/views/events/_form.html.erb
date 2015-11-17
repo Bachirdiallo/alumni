@@ -1,35 +1,42 @@
 <div class="col-sm-9">
-  <%= form_for(@event) do |f| %>
-    <% if @event.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+  <div class="panel panel-success">
+    <div class="panel-heading"><strong>New Event</strong></div>
+        <%= form_for(@event) do |f| %>
+        <div class="panel-body">
+          <% if @event.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-        <ul>
-        <% @event.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+              <ul>
+              <% @event.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-control-wrapper" >
+            <%= f.text_field :title, placeholder: 'Title', autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.datetime_select :date %>
+          </div>
+          <br>
+          <div class="form-control-wrapper" >
+            <%= f.bootsy_area :description, :class => 'form-control' %>
+          </div>
+
+            <div class="form-control-wrapper">
+              <%#= f.submit "Publish", :class => 'btn-u rounded' %>
+              <%#= link_to 'Back', events_path, :class => 'btn-u btn-u-default rounded' %>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <%= f.submit "Publish", :class => 'btn-u rounded' %>
+            <%= link_to 'Back', events_path, :class => 'btn-u btn-u-default rounded' %>
+          </div>
         <% end %>
-        </ul>
-      </div>
-    <% end %>
 
-
-
-    <div class="form-control-wrapper" >
-      <%= f.text_field :title, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-      <div class="floating-label">Title</div>
-        <span class="material-input"></span>
-    </div>
-    <br>
-    <div class="field">
-      <%= f.datetime_select :date %>
-    </div>
-<br>
-    <div class="form-control-wrapper" >
-      <%= f.bootsy_area :description, :class => 'form-control empty' %>
-    </div>
-
-      <%= f.submit "Publish", :class => 'btn btn-primary btn-md' %>
-      <%= link_to 'Back', events_path, :class => 'btn btn-primary btn-md' %>
-  <% end %>
-
+  </div>
 </div>

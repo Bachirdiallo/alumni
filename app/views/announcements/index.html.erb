@@ -1,19 +1,23 @@
 <div class="content-side-right">
-  <div class="container content">
+  <div class="container ">
     <div class="col-md-9">
-      <div class=" col-md-12 margin-bottom-40">
+      <ul class="nav nav-tabs  margin-bottom-40" style="background-color: #ccc;">
+        <li class="active">
+          <%= link_to 'Announcements', announcements_path%></li>
+        <li><%= link_to 'Carousel', carousels_path%></li>
+      </ul>
+      <div class=" col-sm-12 margin-bottom-40">
         <p id="notice"><%= notice %></p>
         <div class="pull-left">
           <h2>Announcements</h2>
         </div>
-        <div class="col-md-2 pull-right">
-          <%= link_to 'New Announcement', new_announcement_path,  :class => 'btn btn-primary btn-sm pull-right' %>
+        <div class="col-sm-2 pull-right">
+          <%= link_to 'New Post', new_announcement_path,  :class => 'btn-u btn-u-light-green rounded' %>
         </div>
       </div>
     </div>
 
     <div class="col-md-9">
-      <strong><%= notice %></strong>
       <% if @announcements.any? %>
         <% @announcements.each do |announcement| %>
         <div class="lv-item item">
@@ -31,11 +35,9 @@
             <div class="col-md-2 pull-right">
               <%= link_to announcement, class: 'pull-right link', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
             </div>
-
             <br>
           </div>
           <% end %>
       <% end %>
-
     </div>
   </div>

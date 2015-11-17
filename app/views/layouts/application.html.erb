@@ -45,20 +45,21 @@
     </body>
 
     <script>
-    $("#bar").hide();
-      <% if user_signed_in?%>
-        var old_city = "<%= current_user.city%>";
-        var current_city = window.name;
+      $("#bar").hide();
 
-        if(current_city != old_city){
-          $("#bar").show();
-        }
-        else{
-          $("#bar").hide();
-        }
-        $("#button").click(function(){
-          $("#bar").hide();
-        });
+      <% if user_signed_in?%>
+          var old_city = "<%= current_user.city%>";
+          var current_city = window.name;
+
+          if(current_city != old_city){
+            $("#bar").show();
+          }
+          else{
+            $("#bar").hide();
+          }
+          $("#button").click(function(){
+            $("#bar").hide();
+          });
       <%end%>
 
       jQuery(document).ready(function() {
