@@ -3,7 +3,7 @@
   <div class="container">
     <!-- Logo -->
     <a class="logo " href="#">
-    
+
       <%= image_tag('logo1-default.png') %>
     </a>
     <!-- End Logo -->
@@ -90,7 +90,7 @@
           <%else%>
 
           <li class='<%= "active" if controller.controller_name == "home"%>'>
-            <%= link_to home_index_path do %>
+            <%= link_to root_path do %>
               <span class="glyphicon glyphicon-home"></span>
             <%end%>
           </li>
