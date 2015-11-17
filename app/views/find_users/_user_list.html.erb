@@ -7,7 +7,7 @@
                 <% if search_result.id != current_user.id %>
                 <div class="col-sm-2">
                   <% if search_result.avatar.blank? %>
-                    <img src="assets/img/team/img32-md.jpg" class="img-responsive profile-img margin-bottom-20" alt="Profile" />
+                  <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
                   <%else%>
                     <%= image_tag(search_result.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if search_result.avatar?%>
                   <%end%>

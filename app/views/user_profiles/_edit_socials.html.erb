@@ -1,18 +1,18 @@
 <%= semantic_form_for @user, url: user_profile_path(@user), html: {class: "sky-form", id: "sky-form3"} do |f| %>
   <div style="padding-bottom: 20px">
-    <%= f.text_field :facebook, style: 'width: 100%; height: 34px;' %>
+    <%= f.text_field :facebook, placeholder: 'Facebook', style: 'width: 100%; height: 34px;' %>
   </div>
 
   <div style="padding-bottom: 20px">
-    <%= f.text_field :twitter, style: 'width: 100%; height: 34px;' %>
-  </div>
-  
-  <div style="padding-bottom: 20px">
-    <%= f.text_field :instagram, style: 'width: 100%; height: 34px;' %>
+    <%= f.text_field :twitter,  placeholder: 'Twitter', style: 'width: 100%; height: 34px;' %>
   </div>
 
   <div style="padding-bottom: 20px">
-    <%= f.text_field :linkedin, style: 'width: 100%; height: 34px;' %>
+    <%= f.text_field :instagram,  placeholder: 'Instagram', style: 'width: 100%; height: 34px;' %>
+  </div>
+
+  <div style="padding-bottom: 20px">
+    <%= f.text_field :linkedin,  placeholder: 'Linkedin', style: 'width: 100%; height: 34px;' %>
   </div>
 
   <%= f.submit "Save Changes", class: 'btn-u' %>

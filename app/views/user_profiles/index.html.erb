@@ -22,7 +22,11 @@
         <div class="profile-bio">
           <div class="row">
             <div class="col-md-3" id="image_container">
-              <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+              <% if @user.avatar.blank? %>
+                <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+              <%else%>
+                <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+              <%end%>
               <a type="button" class="btn-u btn-u-sm" data-toggle="modal" data-target="#myModal" id="btn">
                  <span class="fa fa-camera"> Update Picture</span>
               </a>

@@ -21,23 +21,28 @@
         <div class="profile-bio">
           <div class="row">
             <div class="col-md-5">
-              <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive md-margin-bottom-10') %>
-
+              <% if @user.avatar.blank? %>
+                <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+              <%else%>
+                <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+              <%end%>
+              
               <a type="button" class="btn-u btn-u-sm" data-toggle="modal" data-target="#myModal" id="btn">
                  <span class="fa fa-camera"> Update Picture</span>
               </a>
               <%= render 'profile_photo'%>
             </div>
             <div class="col-md-7">
-                <h2><%= @user.name %></h2>
+              <h2><%= @user.name %></h2>
                 <span>
-                  <% if @user.jobs.each.map { |x| x.current } %>
-                    <h5><strong><%= @user.jobs.each.map { |x| x.title  }.join%>, <%= @user.city%></strong></h5>
-                  <%end%>
+                  <% if @user.jobs.any? %>
+                    <% if @user.jobs.each.map { |x| x.current } %>
+                    <h5><strong><%= @user.jobs.last.title %></strong></h5>
+                    <%end%>
                 </span>
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
-                <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                <p><%= @user.jobs.last.experience  %></p>
+              <%end%>
             </div>
           </div>
         </div>
