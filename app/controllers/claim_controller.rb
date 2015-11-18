@@ -10,7 +10,7 @@ class ClaimController < ApplicationController
   end
 
   def change
-    @user = User.where(student_id: params[:q][:student_id_eq]).first
+    @user = User.where(student_id: params[:q][:student_id_eq], id_number: params[:q][:id_number_eq] ).first
 
     if @user.nil?
       #display message and redirect_to claim account page
@@ -30,7 +30,6 @@ class ClaimController < ApplicationController
   def update
     respond_to do |format|
       @user = User.find(params[:id])
-      puts '@user = ', params[:id]
       if @user.update(claim_account_params)
         format.html { redirect_to claim_account_claim_index_url, notice: 'Email was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }

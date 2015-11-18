@@ -18,8 +18,10 @@ class FindUsersController < ApplicationController
     is_current_city = params[:q][:is_current_city]
 
     respond_to do |format|
-      if is_current_city
+      if is_current_city == "1"
         @users = @user.where(city: params[:city], country: params[:country])
+      else
+        @users = @search_results.result
       end
       format.js
     end
