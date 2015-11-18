@@ -6,6 +6,7 @@
   <%= f.input :contact_privacy_option, as: :select, collection: User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()) %>
   <hr>
   <%= f.input :job_privacy_option, as: :select, collection: User::PRIVACY_OPTIONS.first(User::PRIVACY_OPTIONS.size()) %>
+   <%= f.check_box :is_job_seeker %> <strong>  Let employers find me </strong>
   <hr>
   <%= f.submit "Save Changes", class: 'btn-u' %>
 <% end %>

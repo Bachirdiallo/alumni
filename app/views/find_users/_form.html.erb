@@ -6,7 +6,7 @@
           <div class="col-sm-2 md-margin-bottom-10">
             <strong class="search-label">Campus:</strong><br><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'col-md-7'%>
           </div>
-          <div class="col-sm-2 md-margin-bottom-10">
+          <div class="col-sm-3 md-margin-bottom-10">
             <strong class="search-label">Faculty of:</strong> <br><%= f.select :graduations_faculty_id_eq, Faculty.all.map{|p| [p.name, p.id]}, :include_blank => true%>
           </div>
           <div class="col-sm-3 md-margin-bottom-10">
@@ -17,7 +17,7 @@
           </div>
           <div class="col-sm-2 md-margin-bottom-10">
             <br>
-            <strong class="search-label">Current city:</strong> <%= f.check_box :is_current_city, checked: true %>
+            <%= f.check_box :is_current_city, checked: true %><strong class="search-label"> Current city</strong>
           </div>
           <div class="col-sm-2 md-margin-bottom-10 pull-right">
             <br>

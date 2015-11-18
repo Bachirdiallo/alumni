@@ -4,7 +4,8 @@
       <div class=" col-md-12 margin-bottom-40">
         <% if !notice.nil? %>
           <div class="alert alert-info fade in">
-            <p id="notice"><%= notice %></p>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong><%= notice %></strong>
           </div>
         <%end%>
         <div class="pull-left">

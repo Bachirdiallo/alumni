@@ -1,47 +1,60 @@
   <div class="container">
     <div class="col-sm-8">
-      <h1>Editing User</h1>
-      <%= form_for(@user, url: member_path(@user)) do |f| %>
-        <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <div class="panel panel-success">
+        <div class="panel-heading"><h1>Editing User</h1></div>
+        <div class="panel-body">
 
-            <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+          <%= form_for(@user, url: member_path(@user)) do |f| %>
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
             <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <%= form_for(@user, url: members_path) do |f| %>
-          <% if @user.errors.any? %>
-            <div class="alert alert-dismissable alert-danger">
-              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-              <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
+            <%= form_for(@user, url: members_path) do |f| %>
+              <% if @user.errors.any? %>
+                <div class="alert alert-dismissable alert-danger">
+                  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                  <ul>
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                  </ul>
+                </div>
               <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="form-control-wrapper" >
-            <%= f.text_field :name, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-            <div class="floating-label">Name</div>
-              <span class="material-input"></span>
-          </div>
-          <div class="form-control-wrapper" >
-            <%= f.text_field :student_id, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-            <div class="floating-label">Id </div>
-              <span class="material-input"></span>
-          </div>
-          <div class="form-control-wrapper">
-            <%= f.email_field :email, autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
-            <div class="floating-label">Email </div>
-              <span class="material-input"></span>
-          </div>
-          <%= f.submit "Update", :class => 'btn btn-primary btn-md' %>
-          <%= link_to 'Back', members_path, :class => 'btn btn-primary btn-md' %>
+
+              <div class="form-control-wrapper user-form" >
+                <%= f.text_field :name, autofocus: true, placeholder: 'Name', autocomplete: "off", :class => 'form-control' %>
+              </div>
+
+              <div class="form-control-wrapper user-form" >
+                <%= f.text_field :student_id, autofocus: true, placeholder: 'Username/Student Id', autocomplete: "off", :class => 'form-control empty' %>
+              </div>
+
+              <div class="form-control-wrapper user-form">
+                <%= f.email_field :email, autofocus: true, placeholder: 'Email', autocomplete: "off", :class => 'form-control empty' %>
+              </div>
+
+              <div class="form-control-wrapper user-form">
+                <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :class => 'form-control empty' %>
+              </div>
+
+              <div class="form-control-wrapper user-form">
+                <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', :class => 'form-control empty' %>
+              </div>
+
+              <div class="user-form">
+                <%= f.submit "Update", :class => 'btn-u' %>
+                <%= link_to 'Back', members_path, :class => 'btn-u btn-u-default' %>
+              </div>
+            <% end %>
         <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
 </div>

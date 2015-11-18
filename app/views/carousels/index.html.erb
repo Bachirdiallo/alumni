@@ -1,5 +1,10 @@
 <div class="col-sm-9">
-  <p id="notice"><%= notice %></p>
+  <% if !notice.nil? %>
+    <div class="alert alert-info fade in">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <strong><%= notice %></strong>
+    </div>
+  <%end%>
   <br>
   <ul class="nav nav-tabs" style="background-color: #ccc;">
     <li><%= link_to 'Announcements', announcements_path%></li>

@@ -7,7 +7,12 @@
         <li><%= link_to 'Carousel', carousels_path%></li>
       </ul>
       <div class=" col-sm-12 margin-bottom-40">
-        <p id="notice"><%= notice %></p>
+        <% if !notice.nil? %>
+          <div class="alert alert-info fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <strong><%= notice %></strong>
+          </div>
+        <%end%>
         <div class="pull-left">
           <h2>Announcements</h2>
         </div>
