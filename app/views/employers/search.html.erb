@@ -43,8 +43,8 @@
                           <span>
                             <% if user.user.jobs.includes(:jobs).any?%>
                               <%= user.user.jobs.last.title%>,
-                            <% end %>
                             <%= user.user.jobs.last.company%>
+                            <% end %>
                           </span>
                       </div>
                       <div class="clearfix margin-bottom-20"></div>
@@ -55,6 +55,7 @@
                           <li><i class="fa fa-envelope"></i><%= user.user.email %></li>
                       </ul>
                   </div>
+                  <br>
               </div>
           <% end %>
         <% else %>
