@@ -23,7 +23,6 @@
 //= require plugins/jquery/jquery.min.js
 //= require plugins/bootstrap/js/bootstrap.min.js
 //= require plugins/jquery/jquery-migrate.min.js
-
 //= require plugins/smoothScroll.js
 //= require plugins/parallax-slider/js/modernizr.js
 //= require plugins/parallax-slider/js/jquery.cslider.js
