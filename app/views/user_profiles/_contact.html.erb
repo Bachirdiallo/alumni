@@ -1,78 +1,24 @@
-<% if @user.contact_privacy_option != "Only Me" %>
-  <%if @user.contact_privacy_option == "My Batch"%>
+<% if current_user != @user%>
+  <% if @user.contact_privacy_option != "Only Me" %>
+    <%if @user.contact_privacy_option == "My Batch"%>
       <% if @user.graduations.map { |b| b.batch} & current_user.graduations.map { |s| s.batch }%>
-          <p><%= @user.city%>, <%= @user.country%></p>
-          <% if !@user.phone.nil? %>
-
-            <div class="col-sm-1 pad">
-              <i class="fa fa-phone"></i>
-            </div>
-            <div class="col-sm-11 pad">
-              <%= @user.phone %>
-            </div>
-            <% else %>
-                N/A
-            <% end %>
-
-            <% if !@user.email.nil?%>
-              <div class="col-sm-1 pad">
-                <i class="fa fa-envelope-o"></i>
-              </div>
-              <div class="col-sm-11 pad">
-                <%= @user.email%>
-              </div>
-            <% else %>
-                N/A
-            <% end %>
+        <li><i class="rounded-x gm fa fa-envelope"></i> <%= @user.email%></li>
+        <% if !@user.phone.nil? %>
+          <li><i class="rounded-x gm fa fa-phone"></i> <%= @user.phone%></li>
+         <%end%>
       <% end %>
-  <%elsif @user.contact_privacy_option == "My Programme"%>
-    <% if @user.graduations.map { |p| p.programme  }& current_user.graduations.map { |p| p.programme  } %>
-    <p><%= @user.city%>, <%= @user.country%></p>
-    <% if !@user.phone.nil? %>
-      <div class="col-sm-1 pad">
-        <i class="fa fa-phone"></i>
-      </div>
-      <div class="col-sm-11 pad">
-        <%= @user.phone %>
-      </div>
-      <% else %>
-          N/A
-      <% end %>
-
-      <% if !@user.email.nil?%>
-        <div class="col-sm-1 pad">
-          <i class="fa fa-envelope-o"></i>
-        </div>
-        <div class="col-sm-11 pad">
-          <%= @user.email%>
-        </div>
-      <% else %>
-          N/A
-      <% end %>
-        <% end %>
-      <%else%>
-      <p><%= @user.city%>, <%= @user.country%></p>
-      <% if !@user.phone.nil? %>
-
-        <div class="col-sm-1 pad">
-          <i class="fa fa-phone"></i>
-        </div>
-        <div class="col-sm-11 pad">
-          <%= @user.phone %>
-        </div>
-        <% else %>
-            N/A
-        <% end %>
-
-        <% if !@user.email.nil?%>
-          <div class="col-sm-1 pad">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-          <div class="col-sm-11 pad">
-            <%= @user.email%>
-          </div>
-        <% else %>
-            N/A
-        <% end %>
-  <% end %> <!--if contact_privacy_otpion == My Batch -->
-<% end %><!--if social != Only Me -->
+    <%elsif @user.contact_privacy_option == "My Programme"%>
+      <% if @user.graduations.map { |p| p.programme  }& current_user.graduations.map { |p| p.programme  } %>
+        <li><i class="rounded-x gm fa fa-envelope"></i> <%= @user.email%></li>
+        <% if !@user.phone.nil? %>
+          <li><i class="rounded-x gm fa fa-phone"></i> <%= @user.phone%></li>
+        <%end%>
+      <%end%>
+    <% end %> <!--if contact_privacy_otpion == My Batch -->
+  <% end %><!--if social != Only Me -->
+<%else%>
+<li><i class="rounded-x gm fa fa-envelope"></i> <%= @user.email%></li>
+<% if !@user.phone.nil? %>
+  <li><i class="rounded-x gm fa fa-phone"></i> <%= @user.phone%></li>
+ <%end%>
+<%end%>
