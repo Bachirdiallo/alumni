@@ -38,3 +38,7 @@
 .greyesh{
   color: grey;
 }
+
+div.da-slider{
+  background: transparent url('bg.jpg') repeat 0% 0%
+}

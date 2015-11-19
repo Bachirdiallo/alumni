@@ -20,7 +20,8 @@
 //= require twitter/bootstrap/button
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/carousel
-
+//= require plugins/jquery/jquery.min.js
+//= require plugins/bootstrap/js/bootstrap.min.js
 //= require plugins/jquery/jquery-migrate.min.js
 //= require plugins/smoothScroll.js
 //= require plugins/parallax-slider/js/modernizr.js
