@@ -1,3 +1,5 @@
+<% if @jobs.any? %>
+
 <%@jobs.each do |job| %>
   <% if @user.job_privacy_option != "Only Me" %>
       <%if @user.job_privacy_option == "My Batch"%>
@@ -99,7 +101,7 @@
           <% else %>
             <li>
                 <time datetime="" class="cbp_tmtime">
-                  <span><%= job.title %></span> 
+                  <span><%= job.title %></span>
                   <span>
                       <% if !job.from.nil?  %>
                         From <%= job.from.strftime("%B %Y") %>
@@ -119,3 +121,4 @@
       <% end %> <!--if job_privacy_otpion == My Batch -->
     <% end %><!--if job_privacy_otpion != Only Me -->
 <% end %>
+<%end%>
