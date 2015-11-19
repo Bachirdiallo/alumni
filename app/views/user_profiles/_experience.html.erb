@@ -6,6 +6,8 @@
     <div class="cbp_tmlabel">
         <h2><%= job.company %></h2>
         <h3><%= job.city %> <%= job.country %></h3>
-        <p><%= job.description%></p>
+        <% if !job.description.nil? %>
+          <p><%= job.description%></p>
+        <%end%>
     </div>
 </li>
