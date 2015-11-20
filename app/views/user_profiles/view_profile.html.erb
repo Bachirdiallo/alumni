@@ -20,13 +20,13 @@
       <div class="profile-body">
         <div class="profile-bio">
           <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
               <% if @user.avatar.blank? %>
                 <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
               <%else%>
-                <%= image_tag(@user.avatar_url(:thumb), :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+                <%= image_tag(@user.avatar, :class => 'img-responsive img-rounded md-margin-bottom-10') %>
               <%end%>
-              
+
               <a type="button" class="btn-u btn-u-sm" data-toggle="modal" data-target="#myModal" id="btn">
                  <span class="fa fa-camera"> Update Picture</span>
               </a>
@@ -42,6 +42,8 @@
                 </span>
                 <hr>
                 <p><%= @user.jobs.last.experience  %></p>
+                <% else %>
+                  <strong style="color: lightblue"><em>Work history not added</em></strong>
               <%end%>
             </div>
           </div>

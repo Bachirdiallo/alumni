@@ -11,7 +11,7 @@
                       <% if search_result.avatar.blank? %>
                         <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
                       <%else%>
-                        <%= image_tag(search_result.avatar_url(:thumb), :class => 'img-responsive img-rounded position') if search_result.avatar?%>
+                        <%= image_tag(search_result.avatar, :class => 'img-responsive img-rounded position') if search_result.avatar?%>
                       <%end%>
                     </div>
                   <div class="col-sm-8">

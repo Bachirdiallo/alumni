@@ -20,14 +20,17 @@
           <% @user.graduations.each do |x|%>
             <%= x.batch.month%> / <%= x.batch.year%>
           <%end%>
+          <br>
           <% @user.graduations.each do |x|%>
             <%= x.programme.name%>,
           <%end%>
+          <br>
           <% @user.graduations.each do |x|%>
             <% if !x.faculty.nil? %>
               <%= x.faculty.name%>,
             <% end %>
           <%end%>
+          <br>
           <% @user.graduations.each do |x|%>
             <% if !x.campu.nil? %>
               <%= x.campu.name%>.
