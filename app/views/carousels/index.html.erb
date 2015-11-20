@@ -35,24 +35,28 @@
       </div>
     </div>
     <br>
-    <% @carousels.each do |carousel| %>
-        <div class="col-lg-4">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <div class="pull-right">
-                <%= check_box_tag "is_published[]", carousel.id, false%>
+    <% if @carousels.any? %>
+      <% @carousels.each do |carousel| %>
+          <div class="col-lg-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <div class="pull-right">
+                  <%= check_box_tag "is_published[]", carousel.id, false%>
+                </div>
+                <% if carousel.is_published? %>
+                  <h3 class="panel-title"> Published</h3>
+                <%else%>
+                  <h3 class="panel-title"> Unpublished</h3>
+                <%end%>
               </div>
-              <% if carousel.is_published? %>
-                <h3 class="panel-title"> Published</h3>
-              <%else%>
-                <h3 class="panel-title"> Unpublished</h3>
-              <%end%>
-            </div>
-            <div class="panel-body panel-primary">
-              <%= image_tag(carousel.image, :class => 'img-responsive img-rounded position') if carousel.image?%>
+              <div class="panel-body panel-primary">
+                <%= image_tag(carousel.image, :class => 'img-responsive img-rounded position') if carousel.image?%>
+              </div>
             </div>
           </div>
-          </div>
+      <% end %>
+    <% else %>
+      <strong style="color: lightblue; padding-left: 50px"><i>No Image Uploaded Yet</i></strong>
     <% end %>
   <%end%>
 </div>
