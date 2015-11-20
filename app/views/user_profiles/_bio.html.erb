@@ -24,10 +24,14 @@
             <%= x.programme.name%>,
           <%end%>
           <% @user.graduations.each do |x|%>
-            <%= x.faculty.name%>,
+            <% if !x.faculty.nil? %>
+              <%= x.faculty.name%>,
+            <% end %>
           <%end%>
           <% @user.graduations.each do |x|%>
-            <%= x.campu.name%>.
+            <% if !x.campu.nil? %>
+              <%= x.campu.name%>.
+            <% end %>
           <%end%>
         <%end%>
       </li>
