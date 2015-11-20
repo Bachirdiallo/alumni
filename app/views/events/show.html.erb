@@ -1,7 +1,6 @@
-<div class="col-sm-9">
-  <div class="container">
+<div class="container content">
     <p id="notice"><%= notice %></p>
-    <h1><%= @event.title.html_safe %></h1>
+    <h3><%= @event.title.html_safe %></h3>
     <p><%= @event.description.html_safe %></p>
     <p><%= @event.date.strftime("%B") %> <%= @event.date.strftime("%Y") %></p>
 
@@ -12,7 +11,3 @@
       <% end %>
     <% end %>
   </div>
-</div>
-<style media="screen">
-  h1{color: #009688}
-</style>
