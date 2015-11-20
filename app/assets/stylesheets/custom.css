@@ -46,15 +46,3 @@
 .profile-body .map{
   height: auto;
 }
-
-.image-background{
-  width: 100%;
-    height: 427px;
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    background-image: url('bg.jpg');
-    box-shadow: 0px 1px 1px rgba(0,0,0,0.2), 0px -2px 1px #fff;
-    -webkit-transition: background-position 1.4s ease-in-out 0.3s;
-    transition: background-position 1.4s ease-in-out 0.3s;
-}
