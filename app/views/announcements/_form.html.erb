@@ -1,20 +1,34 @@
 <div class="col-md-9">
-  <%= form_for @announcement  do |f| %>
-    <% if @announcement.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
-        <ul>
-          <% @announcement.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+  <div class="panel panel-success">
+    <div class="panel-heading"><h1>New Announcement</h1></div>
+    <%= form_for @announcement  do |f| %>
+      <div class="panel-body">
+        <% if @announcement.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+            <ul>
+              <% @announcement.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-control-wrapper">
+          <%= f.text_field :title, class: 'form-control', placeholder: 'Title'%>
+        </div>
+
+        <br>
+
+        <div class="form-control-wrapper">
+          <%= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true, link: true }, :style => "height: 800px", :class => "form-control").html_safe %>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <%= f.submit "Publish",  :class => 'btn-u rounded' %>
+        <%= link_to 'Back', announcements_path, :class => 'btn-u btn-u-default rounded' %>
       </div>
     <% end %>
-
-      <%= f.text_field :title, class: 'form-control'%>
-      <%= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true, link: true }, :class => "form-control").html_safe %>
-
-      <%= f.submit "Publish",  :class => 'btn btn-primary' %>
-      <%= link_to 'Back', announcements_path, :class => 'btn-u btn-u-default' %>
-  <% end %>
+  </div>
 </div>

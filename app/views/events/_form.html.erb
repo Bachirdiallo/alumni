@@ -1,6 +1,6 @@
 <div class="col-sm-9">
   <div class="panel panel-success">
-    <div class="panel-heading"><strong>New Event</strong></div>
+    <div class="panel-heading"><h1>New Event</h1></div>
         <%= form_for(@event) do |f| %>
         <div class="panel-body">
           <% if @event.errors.any? %>
@@ -24,7 +24,7 @@
           </div>
           <br>
           <div class="form-control-wrapper" >
-            <%= f.bootsy_area :description, :class => 'form-control' %>
+            <%= f.bootsy_area :description, placeholder: 'Content', :class => 'form-control', :style => "height: 500px" %>
           </div>
 
             <div class="form-control-wrapper">
