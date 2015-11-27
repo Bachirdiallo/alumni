@@ -50,7 +50,7 @@ root to: 'home#index'
 
   resources :find_users do
     collection do
-      get :file_content
+      get :geo_locate
     end
   end
 

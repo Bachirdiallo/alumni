@@ -5,8 +5,14 @@
 </div>
 
 <%= render 'form'%>
+<%= render partial: 'locate_user' %>
 <div class="col-md-9 ">
-  <div class="container ">
-    <%=render partial: 'user_list' %>
+  <div class="container content" id="user_list">
   </div>
 </div>
+
+<% content_for :script_tag do %>
+  <script>
+    getLocation();
+  </script>
+<%end%>

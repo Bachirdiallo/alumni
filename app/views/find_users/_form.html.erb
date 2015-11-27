@@ -2,7 +2,7 @@
   <div class="container content">
     <div class="col-md-9 ">
       <div class="row radius" id="form">
-        <%= search_form_for @search_results, url:  file_content_find_users_path, id: 'form', remote: true do |f| %>
+        <%= search_form_for @search_results, url:  geo_locate_find_users_path, id: 'form', remote: true do |f| %>
         <div class="col-sm-12">
           <div class="col-md-6 md-margin-bottom-10">
             <strong class="search-label">Faculty of:</strong> <%= f.select :graduations_faculty_id_eq, Faculty.all.map{|p| [p.name, p.id]}, :include_blank => true%>
@@ -24,7 +24,7 @@
             <%= f.check_box :is_current_city, checked: false %><strong class="search-label"> Current city</strong>
           </div>
           <div class="col-md-2 md-margin-bottom-10 ">
-            <%= f.submit :class => 'btn-u btn-u-red btn-lg pull-right', remote: true,  id: 'location' %>
+            <%= f.submit :class => 'btn-u btn-u-red btn-lg pull-right', id: 'button' %>
           </div>
         </div>
         <% end %>

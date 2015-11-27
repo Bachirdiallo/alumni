@@ -168,7 +168,6 @@ GEM
     remotipart (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rmagick (2.15.4)
     roo (2.2.0)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -247,7 +246,6 @@ DEPENDENCIES
   rails_12factor
   ransack (~> 1.6.6)
   remotipart
-  rmagick (~> 2.15.3)
   roo
   sass-rails (>= 3.2)
   sdoc (~> 0.4.0)

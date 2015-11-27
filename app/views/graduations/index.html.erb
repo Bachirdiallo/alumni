@@ -11,7 +11,7 @@
                     <% if graduation.user.avatar.blank? %>
                       <%= image_tag("user.jpg", style: 'width: 70px; hight: 50px')%>
                     <%else%>
-                      <%=  image_tag(graduation.user.avatar_url(:thumb), :class => 'img-responsive img-rounded position')%>
+                      <%=  image_tag(graduation.user.avatar, :class => 'img-responsive img-rounded position')%>
                     <%end%>
                   <%end%>
                 </div>

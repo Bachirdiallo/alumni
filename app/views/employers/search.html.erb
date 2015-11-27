@@ -35,7 +35,7 @@
                     <% if user.user.avatar.blank? %>
                       <%= link_to image_tag("user.jpg", class: 'rounded-x'), user_profile_view_profile_path(user.user.id) %>
                     <%else%>
-                      <%=link_to  image_tag(user.user.avatar_url(:thumb), :class => 'rounded-x'), user_profile_view_profile_path(user.user.id)%>
+                      <%=link_to  image_tag(user.user.avatar, :class => 'rounded-x'), user_profile_view_profile_path(user.user.id)%>
                     <%end%>
                       <div class="name-location">
                           <strong><%= user.user.name%></strong>

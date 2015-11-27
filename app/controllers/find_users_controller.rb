@@ -10,24 +10,22 @@ class FindUsersController < ApplicationController
     @users = @search_results.result.includes(:jobs)
   end
 
-  def file_content
+  def geo_locate
 
     @search_results = User.ransack(params[:q])
-    @user = @search_results.result
-
+    #@user = @search_results.result
+    is_current_city = params[:q][:is_current_city]
 
     respond_to do |format|
 
-      is_current_city = params[:q][:is_current_city]
-
-
-        if is_current_city == "1"
-          @users = @user.where(city: params[:city], country: params[:country])
-        else
-          @users = @search_results.result
+        format.js do
+          if is_current_city == "1"
+            @user = @search_results.result
+            @users = @user.where(city: params[:city], country: params[:country])
+          else
+            @users = @search_results.result
+          end
         end
-        format.html{}
-        format.js
     end
   end
 

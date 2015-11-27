@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
-ruby "2.2.1"
+#ruby "2.2.1"
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 #gem 'mysql2'
@@ -32,7 +32,7 @@ gem 'formtastic-bootstrap'
 gem 'ransack', '~> 1.6.6'
 gem 'carrierwave'
 gem 'imagemagick-binaries', '~> 6.8.7.5.1'
-gem 'rmagick', '~> 2.15.3'
+#gem 'rmagick', '~> 2.15.3'
 gem 'roo'
 gem "iconv", "~> 1.0.3"
 gem "therubyracer"
