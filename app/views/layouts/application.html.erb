@@ -10,23 +10,20 @@
   </head>
     <body>
       <div class="wrapper" id="bar">
-        <div class="row backgrnd">
-          <div class="col-md-12 ">
-            <div class="col-md-2">
-
-            </div>
-            <div class="col-md-10">
+        <div class="container content" style="padding-top: 10px">
+            <div class="col-md-12 ">
               <% if user_signed_in?%>
                 <% if current_user.is_graduate %>
                     <%= render 'find_users/locate_user'%>
-                    Your locaiton has changed, would you like to see the alumni in your current city?
-                    <%= link_to "Find", find_users_path, :class => 'btn btn-primary btn-sm' %>
-                    <button type="button" name="button" class="btn btn-primary btn-sm .no-padding" id= "button">Hide</button>
+                    <div >
+                      <strong>  Your locaiton has changed, would you like to see the alumni in your current city?</strong>
+                      <%= link_to "Find", find_users_path, :class => 'btn-u rounded' %>
+                      <button type="button" name="button" class="btn-u btn-u-default rounded" id= "button">Hide</button>
+                    </div>
                 <%end%>
               <%end%>
             </div>
           </div>
-        </div>
       </div>
 
       <div class="wrapper">
