@@ -1,38 +1,46 @@
-<div class="container content">
-  <div class="row">
-        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-            <div class="reg-page">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <div class="reg-header">
-                    <h2>Login to your account</h2>
-                </div>
+<div class="image-block">
+  <div class="container">
+      <div class="company-description">
+        <div class="row">
+          <% if !notice.nil? %>
+            <div class="alert alert-info fade in">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <strong><%= notice %></strong>
+            </div>
+          <% end %>
+          <div class="col-md-12 col-sm-12">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="reg-header">
+                  <h2>Login to your account</h2>
+              </div>
 
-                <div class="input-group margin-bottom-20">
-                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <%= f.text_field :student_id, autofocus: true, placeholder: 'Student Id', autocomplete: "off", :class => 'form-control empty' %>
-                </div>
-                <div class="input-group margin-bottom-20">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <%= f.password_field :password, placeholder: 'Password', autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
-                </div>
+              <div class="input-group margin-bottom-20">
+                  <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                  <%= f.text_field :student_id, autofocus: true, placeholder: 'Student Id', autocomplete: "off", :class => 'form-control empty' %>
+              </div>
+              <div class="input-group margin-bottom-20">
+                  <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                  <%= f.password_field :password, placeholder: 'Password', autofocus: false, autocomplete: "off", :class => 'form-control empty' %>
+              </div>
 
-                <div class="row">
-                    <div class="col-md-6 checkbox">
-                        <label>
-                          <% if devise_mapping.rememberable? -%>
-                            <%= f.check_box :remember_me %>
-                          <% end -%> Stay signed in
-                        </label>
-                    </div>
-                    <div class="col-md-6">
-                        <%= f.submit "Login", :class => 'btn-u pull-right' %>
-                    </div>
-                </div>
-                <hr>
-                <h4>Forget your Password ?</h4>
-                <p>no worries, <a class="color-green" href="#">click here</a> to reset your password.</p>
-              <%end%>
-          </div>
-        </div>
-    </div><!--/row-->
-</div><!--/container-->
+              <div class="row">
+                  <div class="col-md-6 checkbox">
+                      <label>
+                        <% if devise_mapping.rememberable? -%>
+                          <%= f.check_box :remember_me %>
+                        <% end -%> Stay signed in
+                      </label>
+                  </div>
+                  <div class="col-md-6">
+                      <%= f.submit "Login", :class => 'btn-u pull-right' %>
+                  </div>
+              </div>
+              <hr>
+              <h4>Forget your Password ?</h4>
+              <h4>No worries, <a class="color-green" href="#">click here</a> to reset your password.</h4>
+            <%end%>
+         </div>
+       </div>
+    </div>
+  </div>
+</div>
