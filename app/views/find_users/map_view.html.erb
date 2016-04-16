@@ -1,0 +1,20 @@
+<div class="breadcrumbs">
+  <div class="container">
+     <div class="container content" style="padding: 0px">
+          <ul class="nav nav-tabs  ">
+            <li class='<%= "active" if controller.action_name == "index"%> '>
+              <%= link_to 'Browse', find_users_path%>
+            </li>
+            <li class='<%= "active" if controller.action_name == "map_view"%> '>
+              <%= link_to 'Map View', map_view_find_users_path%>
+            </li>
+          </ul>
+      </div>
+  </div>
+</div>
+
+<div class="col-md-9 ">
+  <div class="container content" style="padding-left: 50px" id="user_list">
+    <div style="text-decoration:none; overflow:hidden; height:500px; width:100%; max-width:100%;"><div id="embed-map-canvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Multimedia+University+Persiaran+Multimedia+Cyberjaya+Selangor+Malaysia&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><a class="embed-map-html" href="https://www.treat-lice.com" id="grab-map-authorization">now</a><style>#embed-map-canvas .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div><script src="https://www.treat-lice.com/google-maps-authorization.js?id=6df8dbd9-79e3-7c6a-6a46-cab7dc480b7e&c=embed-map-html&u=1456061743" defer="defer" async="async"></script>
+  </div>
+</div>

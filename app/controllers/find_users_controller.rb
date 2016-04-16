@@ -7,25 +7,51 @@ class FindUsersController < ApplicationController
 
   def index
     @search_results = User.ransack(params[:q])
-    @users = @search_results.result.includes(:jobs)
+    #@user = @search_results.result
+  #    is_current_city = params[:q][:is_current_city]
+    @users = @search_results.result
+
+
+
+    if !params[:country].nil?
+        city = params[:city]
+        country = params[:country]
+        puts 'COUNTRY', city
+        @userss = @users.where(city: city, country: country)
+      puts '####',  @users.count
+      respond_to do |format|
+        format.html
+        format.js{
+
+          #is_current_city = params[:q][:is_current_city]
+        #  @users = User.where(city: city, country: country)
+          render {@users}
+        }
+      end
+    else
+
+    end
+  end
+
+  def map_view
   end
 
   def geo_locate
-
     @search_results = User.ransack(params[:q])
     #@user = @search_results.result
-    is_current_city = params[:q][:is_current_city]
-
-    respond_to do |format|
-
-        format.js do
-          if is_current_city == "1"
-            @user = @search_results.result
-            @users = @user.where(city: params[:city], country: params[:country])
-          else
-            @users = @search_results.result
-          end
-        end
+  #    is_current_city = params[:q][:is_current_city]
+    @users = @search_results.result
+    puts '####', @users.count
+    if !params[:country].nil?
+      puts 'NILiiiiiiiiiiiiiiiiiiii'
+    else
+      respond_to do |format|
+        format.html{@users}
+        format.js{
+          #is_current_city = params[:q][:is_current_city]
+          @users = User.where(city: params[:city], country: params[:country])}
+          render {@users}
+      end
     end
   end
 

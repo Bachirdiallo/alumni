@@ -1,18 +1,28 @@
 <div class="breadcrumbs">
   <div class="container">
-    <h1>Find the Alumni from your University</h1>
+     <div class="container content" style="padding: 0px">
+          <ul class="nav nav-tabs  ">
+            <li class="active">
+              <%= link_to 'Browse', find_users_path%>
+            </li>
+            <li>
+              <%= link_to 'Map View', map_view_find_users_path%>
+            </li>
+          </ul>
+      </div>
   </div>
 </div>
 
 <%= render 'form'%>
 <%= render partial: 'locate_user' %>
+<div id="locate">
+
+</div>
 <div class="col-md-9 ">
-  <div class="container content" style="padding-left: 50px" id="user_list">
+    <div class="container content" style="padding-left: 50px" id="user_list">
   </div>
 </div>
 
-<% content_for :script_tag do %>
   <script>
     getLocation();
   </script>
-<%end%>

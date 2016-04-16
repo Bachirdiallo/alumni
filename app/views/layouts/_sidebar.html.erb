@@ -3,21 +3,21 @@
   <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1" style="list-style-type: none">
 
       <li class='<%= "active" if controller.controller_name == "campus"%> "list-group-item "'>
-        <%= link_to campus_path do%>
+        <%#= link_to campus_path do%>
           <span class="fa fa-building"> Campuses</span>
-        <% end %>
+        <%# end %>
       </li>
-
+<br>
       <li class='<%= "active" if controller.controller_name == "faculties"%> "list-group-item "'>
-        <%= link_to  faculties_path do%>
+        <%#= link_to  faculties_path do%>
           <span class="fa fa-university"> Faculties</span>
-        <% end %>
+        <%# end %>
       </li>
-
+<br>
       <li class='<%= "active" if controller.controller_name == "programmes"%> "list-group-item "'>
-        <%= link_to programmes_path do %>
+        <%#= link_to programmes_path do %>
           <span class="fa fa-book"> Programmes</span>
-        <% end %>
+        <%# end %>
       </li>
 
       <li class='<%= "active" if controller.controller_name == "batches"%> "list-group-item "'>
@@ -37,15 +37,15 @@
           <span class="fa fa-users"> Admin List</span>
         <% end %>
       </li>
-
+<br>
       <li class='<%= "active" if controller.controller_name == "announcements"%> "list-group-item "'>
-        <%= link_to  announcements_path do%>
+        <%#= link_to  announcements_path do%>
           <span class="fa fa-volume-up"> Announcements</span>
-        <% end %>
+        <%# end %>
       </li>
 
       <li class='<%= "active" if controller.controller_name == "events"%> "list-group-item"'>
-          <%= link_to 'Events',  events_path%>
+          <%#= link_to 'Events',  events_path%>
       </li>
   </ul>
 </div>

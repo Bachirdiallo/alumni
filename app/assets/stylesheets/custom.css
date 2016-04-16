@@ -46,3 +46,7 @@
 .profile-body .map{
   height: auto;
 }
+
+div.image-block{
+  background: url('jump.jpg') 70% 40% no-repeat;
+}

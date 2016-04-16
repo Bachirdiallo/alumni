@@ -53,9 +53,9 @@
               }
               var address = {'city': locality, 'country': country, 'f': params}
               var params =  <%= params[:q].to_json.html_safe%>;
-              
+
               $.ajax({
-                url: "<%= geo_locate_find_users_path %>",
+                url: "<%= find_users_path%>", format: 'js',
                 data: {'city': locality, 'country': country, 'q': params}
               });
               } else {

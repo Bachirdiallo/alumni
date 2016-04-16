@@ -1,8 +1,8 @@
 <div class="job-img-inputs" >
   <div class="container content">
     <div class="col-md-9 ">
-      <div class="row radius" id="form">
-        <%= search_form_for @search_results, url:  geo_locate_find_users_path, id: 'form', remote: true do |f| %>
+      <div class="row radius" >
+        <%= search_form_for @search_results, url: find_users_path, id: 'form', remote: true do |f| %>
         <div class="col-sm-12">
           <div class="col-md-6 md-margin-bottom-10">
             <strong class="search-label">Faculty of:</strong> <%= f.select :graduations_faculty_id_eq, Faculty.all.map{|p| [p.name, p.id]}, :include_blank => true%>
