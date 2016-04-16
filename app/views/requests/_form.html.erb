@@ -1,0 +1,32 @@
+<%= form_for(@request) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="reg-header">
+      <h4>If you do not have an anlumni key and did not complete your studies in MMU fill up the following form.</h4>
+  </div>
+  <div class="form-group">
+    <%#= f.text_field :email, :class => 'form-control', placeholder: 'Email', :autocomplete => "off" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :name, :class => 'form-control', placeholder: 'Name', :autocomplete => "off" %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :student_id, :class => 'form-control', placeholder: 'Student Id', :autocomplete => "off" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Submit", :action=>"update", :class => 'btn btn-primary btn-flat' %>
+  </div>
+
+<% end %>

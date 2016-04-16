@@ -7,6 +7,9 @@ class ClaimController < ApplicationController
   def claim_account
     @q = User.ransack(params[:q])
     @results = @q.result
+
+    @request = Request.new
+
   end
 
   def change

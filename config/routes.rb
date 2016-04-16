@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :requests
   resources :carousels do
     collection do
       post :publish

@@ -1,13 +1,17 @@
 <div class="image-block">
     <div class="container">
+      <% if !notice.nil? %>
+      <div class="<div class="company-description">"
+
+        <div class="alert alert-info fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <strong><%= notice %></strong>
+        </div>
+
+      </div>
+      <% end %>
         <div class="company-description">
           <div class="row">
-            <% if !notice.nil? %>
-              <div class="alert alert-info fade in">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <strong><%= notice %></strong>
-              </div>
-            <% end %>
             <div class="col-md-12 col-sm-12">
               <div class="">
                 <%= search_form_for @q , url:change_claim_index_path(student_id: params[:q]) do |f| %>
@@ -31,29 +35,8 @@
 
     <div class="company-description">
       <div class="row">
-        <% if !notice.nil? %>
-          <div class="alert alert-info fade in">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <strong><%= notice %></strong>
-          </div>
-        <% end %>
         <div class="col-md-12 col-sm-12">
-          <div class="">
-            <%= search_form_for @q , url:change_claim_index_path(student_id: params[:q]) do |f| %>
-              <div class="reg-header">
-                  <h4>If you do not have an anlumni key and did not complete your studies in MMU fill up the following form.</h4>
-              </div>
-              <div class="input-group margin-bottom-20">
-                <span class="input-group-addon"></span>
-                <%= f.search_field :id_number_eq, :class => 'form-control empty', placeholder: 'Id Number', :autocomplete => "off" %>
-              </div>
-              <div class="input-group margin-bottom-20">
-                <span class="input-group-addon"></i></span>
-                <%= f.search_field :student_id_eq, :class => 'form-control empty', placeholder: 'Student Id', :autocomplete => "off" %>
-              </div>
-              <%= f.submit "Submit", :class => 'btn btn-primary btn-flat rounded', style: 'width: 100%' %>
-           <% end %>
-         </div>
+          <%= render partial: 'request_form' %>
        </div>
      </div>
    </div>
