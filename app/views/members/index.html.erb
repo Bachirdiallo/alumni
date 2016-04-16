@@ -35,6 +35,7 @@
               <%= link_to edit_member_path(user),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
             </div>
             <div class="col-md-2 pull-right">
+              
               <%= link_to member_path(id: user.id), class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
             </div>
             <br>

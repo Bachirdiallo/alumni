@@ -117,13 +117,15 @@ ActiveRecord::Schema.define(version: 20160416095634) do
   add_index "programmes", ["faculty_id"], name: "index_programmes_on_faculty_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
-    t.string "name"
-    t.string "student_id"
-    t.string "programme"
-    t.string "faculty"
-    t.string "campus"
-    t.string "intake"
-    t.string "email"
+    t.string   "name"
+    t.string   "email"
+    t.string   "student_id"
+    t.string   "programme"
+    t.string   "faculty"
+    t.string   "campus"
+    t.string   "intake"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

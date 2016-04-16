@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-sm-8">
-      <%= form_for(@user, url: members_path) do |f| %>
+      <%= semantic_form_for(@user, url: members_path) do |f| %>
         <% if @user.errors.any? %>
           <div class="alert alert-dismissable alert-danger">
             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -13,7 +13,7 @@
         <% end %>
 
         <div class="panel panel-success">
-          <div class="panel-heading"><strong>Add New Admin</strong></div>
+          <div class="panel-heading"><strong>Add New User</strong></div>
           <div class="panel-body">
             <div class="form-control-wrapper user-form" >
               <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: 'Name', :class => 'form-control empty' %>
@@ -25,6 +25,27 @@
 
             <div class="form-control-wrapper user-form">
               <%= f.email_field :email, autocomplete: "off", placeholder: 'Email', :class => 'form-control empty' %>
+            </div>
+
+            <div class="form-control-wrapper user-form" >
+              <%= f.input :campus, as: :select, collection: Campu.all.collect {|p| [p.name, p.id] }%>
+            </div>
+
+            <div class="form-control-wrapper user-form" >
+              <%= f.input :faculty, as: :select, collection: Faculty.all.collect {|p| [p.name, p.id] }%>
+            </div>
+
+            <div class="form-control-wrapper user-form" >
+              <%= f.input :programme, as: :select, collection: Programme.all.collect {|p| [p.name, p.id] }%>
+            </div>
+
+            <div class="form-control-wrapper user-form" >
+              <%= f.input :batch, as: :select, collection: Batch.all.collect {|p| [p.year, p.id] }%>
+            </div>
+
+
+            <div class="form-control-wrapper user-form" >
+              <%= f.input :is_graduate, :as => :radio %>
             </div>
 
             <p>

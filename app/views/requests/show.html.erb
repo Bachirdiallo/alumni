@@ -1,4 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-md-10">
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Personal Info</strong></div>
+        <div class="panel-body">
+          <strong>Name:</strong><%=@request.name%>
+          <br>
+          <strong>Student ID:</strong><%=@request.student_id%>
+          <br>
+          <strong>Email:</strong><%=@request.email%>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Requested Date </strong></div>
+        <div class="panel-body">
+          <strong>Date: </strong><%=@request.created_at.strftime("%D")%>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Academic</strong></div>
+        <div class="panel-body">
+          <strong>Faculty: </strong><%=@request.faculty%>
+          <br>
+
+          <strong>Programme: </strong><%=@request.programme%>
+          <br>
+
+          <strong>Campus: </strong><%=@request.campus%>
+          <br>
+          <strong>Intake: </strong><%=@request.intake%>
+        </div>
+      </div>
+  </div>
+
+
 <%= link_to 'Back', requests_path %>

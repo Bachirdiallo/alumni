@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :is_current_city
+  attr_accessor :is_current_city, :faculty, :programme, :batch, :campus
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

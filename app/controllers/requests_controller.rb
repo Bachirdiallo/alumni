@@ -71,6 +71,6 @@ class RequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
       #params.fetch(:request, {:name, :student_id})
-      params.require(:request).permit(:name, :student_id, :faculty, :campus, :programme, :intake)
+      params.require(:request).permit(:name, :email, :student_id, :faculty, :campus, :programme, :intake)
     end
 end
