@@ -30,6 +30,8 @@ module Importable
                   user = User.find_or_initialize_by(:student_id => data.row(entry)[mapping[k].to_i])
                 elsif k == "name".to_sym
                   user.name = data.row(entry)[mapping[k].to_i]
+                elsif k == "last_name".to_sym
+                  user.last_name = data.row(entry)[mapping[k].to_i].downcase
                 elsif k == "email".to_sym
                   user.email = data.row(entry)[mapping[k].to_i].to_s
                 elsif k == "alumni_key".to_sym

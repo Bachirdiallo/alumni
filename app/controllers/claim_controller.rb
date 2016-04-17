@@ -13,7 +13,7 @@ class ClaimController < ApplicationController
   end
 
   def change
-    @user = User.where(student_id: params[:q][:student_id_eq], alumni_key: params[:q][:alumni_key_eq], last_name: params[:q][:last_name_eq] ).first
+    @user = User.where(student_id: params[:q][:student_id_eq], alumni_key: params[:q][:alumni_key_eq], last_name: params[:q][:last_name_eq].downcase ).first
 
     if @user.nil?
       #display message and redirect_to claim account page
