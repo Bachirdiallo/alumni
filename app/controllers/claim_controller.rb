@@ -13,8 +13,7 @@ class ClaimController < ApplicationController
   end
 
   def change
-    @user = User.where(student_id: params[:q][:student_id_eq], id_number: params[:q][:id_number_eq] ).first
-    #@user = User.where(student_id: params[:q][:student_id_eq], alumni_key: params[:q][:alumni_key_eq], name: params[:q][:name_eq] ).first
+    @user = User.where(student_id: params[:q][:student_id_eq], alumni_key: params[:q][:alumni_key_eq], last_name: params[:q][:last_name_eq] ).first
 
     if @user.nil?
       #display message and redirect_to claim account page
@@ -35,7 +34,7 @@ class ClaimController < ApplicationController
     respond_to do |format|
       @user = User.find(params[:id])
       if @user.update(claim_account_params)
-        format.html { redirect_to claim_account_claim_index_url, notice: 'Email was successfully updated.' }
+        format.html { redirect_to claim_account_claim_index_url, notice: 'Password successfully updated!' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -55,6 +54,6 @@ class ClaimController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def claim_account_params
-    params.require(:user).permit(:user_id, :email, :password, :name, :student_id, :alumni_key)
+    params.require(:user).permit(:user_id, :email, :password, :last_name, :student_id, :alumni_key)
   end
 end
