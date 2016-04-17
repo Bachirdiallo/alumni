@@ -30,8 +30,10 @@ module Importable
                   user = User.find_or_initialize_by(:student_id => data.row(entry)[mapping[k].to_i])
                 elsif k == "name".to_sym
                   user.name = data.row(entry)[mapping[k].to_i]
-                elsif k == "id_number".to_sym
-                  user.id_number = data.row(entry)[mapping[k].to_i]
+                elsif k == "email".to_sym
+                  user.email = data.row(entry)[mapping[k].to_i].to_s
+                elsif k == "alumni_key".to_sym
+                  user.alumni_key = data.row(entry)[mapping[k].to_i]
                 elsif k == "batch_id".to_sym
                   the_date = data.row(entry)[mapping[k].to_i].to_s
                   the_month = Date.strptime(the_date, '%Y-%m').month
@@ -53,10 +55,6 @@ module Importable
               end
             end
           end
-
-       if user.email.blank?
-         user.email = user.id_number + "@something.com"
-       end
 
        if user.password.blank?
          password_length = 8

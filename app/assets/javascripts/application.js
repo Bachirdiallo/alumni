@@ -26,4 +26,3 @@
 //= require js/plugins/fancy-box.js
 //= require custom.js
 //= require js/app.js
-//= require_tree .

@@ -14,11 +14,12 @@ class ClaimController < ApplicationController
 
   def change
     @user = User.where(student_id: params[:q][:student_id_eq], id_number: params[:q][:id_number_eq] ).first
+    #@user = User.where(student_id: params[:q][:student_id_eq], alumni_key: params[:q][:alumni_key_eq], name: params[:q][:name_eq] ).first
 
     if @user.nil?
       #display message and redirect_to claim account page
       respond_to do |format|
-        format.html { redirect_to   :back , notice: 'Account Not Found!' }
+        format.html { redirect_to   :back , notice: 'Your record does not exist in our system. Please fill up the second form.' }
         format.json { render :show, status: :created, location: @user }
       end
     end
@@ -54,6 +55,6 @@ class ClaimController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def claim_account_params
-    params.require(:user).permit(:user_id, :email, :password)
+    params.require(:user).permit(:user_id, :email, :password, :name, :student_id, :alumni_key)
   end
 end

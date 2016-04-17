@@ -9,7 +9,8 @@ class Graduation < ActiveRecord::Base
    IMPORT_ENABLED = {
      :user_id => {exact: "Student Id", is_identifier: false},
      :name => {exact: "Student Name", is_identifier: false},
-     :id_number => {exact: "Id Number", is_identifier: false},
+     :email => {exact: "Email", is_identifier: false},
+     :alumni_key => {exact: "Alumni Key", is_identifier: false},
      :batch_id => {exact: "Batch", is_identifier: false},
      :programme_id => {exact: "Programme", is_identifier: false},
      :campu_id => {exact: "Campus", is_identifier: false},
