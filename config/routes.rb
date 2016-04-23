@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :messages
+  resources :messages do
+    collection do
+      get :sent
+    end
+  end
+
   resources :requests
   resources :carousels do
     collection do

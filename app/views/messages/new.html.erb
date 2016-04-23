@@ -2,7 +2,9 @@
   <div class="col-md-12">
     <br>
     <div class="panel panel-success">
-      <div class="panel-heading"><strong>You are sending to: <%= current_user.name %></strong></div>
+      <div class="panel-heading"><strong>You are sending to: <% if !params[:id].nil? %>
+        <%= User.where(id:params[:id]).first.name %></strong></div>
+      <% end %>
       <div class="panel-body">
         <%= render 'form' %>
         <%= link_to 'Back', messages_path %>

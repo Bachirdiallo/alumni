@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
+  <div class="container">
+    <div class="col-md-12">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h4><%= @message.subject%></h4>
+      </div>
+      <div class="panel-body">
+        <%= simple_format(@message.body)%>
+      </div>
+    </div>
+    </div>
+  </div>
 <%= link_to 'Back', messages_path %>

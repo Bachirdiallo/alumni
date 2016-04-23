@@ -62,19 +62,24 @@
               <% if current_user.is_graduate %>
                 <li class='<%= "active" if controller.controller_name == "home"%>'>
                   <%= link_to home_index_path do %>
-                    <span class="glyphicon glyphicon-home"></span>
+                    <span class="glyphicon glyphicon-home fa-lg"></span>
                   <%end%>
                 </li>
 
                   <li class='<%= "active" if (controller.controller_name == "user_profiles" && controller.action_name != "privacy")%>'>
                     <%= link_to user_profiles_path do %>
-                      <span class="fa fa-user"></span>
+                      <span class="fa fa-user fa-lg"></span>
                     <%end%>
                   </li>
 
+                  <li class='<%= "active" if (controller.controller_name == "messages")%>'>
+                    <%= link_to messages_path do %>
+                      <span class="fa fa-comments fa-lg"></span>
+                    <%end%>
+                  </li>
                   <li class='<%= "active" if controller.controller_name == "find_users"%>'>
                     <%= link_to find_users_path do %>
-                      <span class="fa fa-search"></span>
+                      <span class="fa fa-search fa-lg"></span>
                     <%end%>
                   </li>
 
