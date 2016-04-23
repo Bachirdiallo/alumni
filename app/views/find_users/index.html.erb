@@ -14,15 +14,14 @@
 </div>
 
 <%= render 'form'%>
-<%= render partial: 'locate_user' %>
-<div id="locate">
+<%#= render partial: 'locate_user' %>
 
-</div>
 <div class="col-md-9 ">
     <div class="container content" style="padding-left: 50px" id="user_list">
+      <%= render partial: 'user_list' %>
   </div>
 </div>
 
   <script>
-    getLocation();
+  //  getLocation();
   </script>

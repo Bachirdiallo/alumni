@@ -7,30 +7,7 @@ class FindUsersController < ApplicationController
 
   def index
     @search_results = User.ransack(params[:q])
-    #@user = @search_results.result
-  #    is_current_city = params[:q][:is_current_city]
     @users = @search_results.result
-
-
-
-    if !params[:country].nil?
-        city = params[:city]
-        country = params[:country]
-        puts 'COUNTRY', city
-        @userss = @users.where(city: city, country: country)
-      puts '####',  @users.count
-      respond_to do |format|
-        format.html
-        format.js{
-
-          #is_current_city = params[:q][:is_current_city]
-        #  @users = User.where(city: city, country: country)
-          render {@users}
-        }
-      end
-    else
-
-    end
   end
 
   def map_view
