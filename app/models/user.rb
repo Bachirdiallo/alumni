@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :graduations, dependent: :destroy
   has_many :jobs, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 
