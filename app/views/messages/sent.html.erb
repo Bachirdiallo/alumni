@@ -15,15 +15,24 @@
         </div>
         <div class="panel-body">
           <% @messages.each do |message| %>
-            <div class="col-md-7">
-              <strong> <%= link_to message.subject, message_path(:id=>message.id), style: 'color: #00BFFF; font-size: 20px; font-style: arial'%></strong> <br>
-              <small><%= message.created_at.strftime("%D") %></small>
-            </div>
+            <div class="lv-item item" style="padding-bottom: 0px; padding-left: 0px">
+              <div class="col-md-4 col-sm-4">
+                <% receiver = User.find(message.receiver) %>
+                To: <%= link_to receiver.name, message_path(:id=>message.id), style: 'color: #000; font-style: arial'%></strong>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <%= link_to message.subject, message_path(:id=>message.id), style: 'color: #000; font-style: arial'%>
+              </div>
+              <div class="col-md-1 col-sm-1">
+                <small><%= message.created_at.strftime("%D") %></small>
+              </div>
 
-            <div class="col-md-5">
-              <%= link_to message, class: 'link', method: :delete, data: { confirm: 'Are you sure?' } do%>
-                <i class="fa fa-trash-o"></i>
-              <% end %>
+              <div class="col-md-1 col-sm-1">
+                <%= link_to message, class: 'link pull-right', method: :delete, data: { confirm: 'Are you sure?' } do%>
+                  <i class="fa fa-trash-o"></i>
+                <% end %>
+              </div>
+              <hr>
             </div>
           <% end %>
         </div>

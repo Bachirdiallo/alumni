@@ -2,12 +2,15 @@
   <div class="col-md-12">
     <br>
     <div class="panel panel-success">
-      <div class="panel-heading"><strong>You are sending to: <% if !params[:id].nil? %>
-        <%= User.where(id:params[:id]).first.name %></strong></div>
-      <% end %>
+      <div class="panel-heading">
+        <% if !@receiver.nil? %>
+        <strong>You are sending to: <%= @receiver.name %></strong>
+        <% else %>
+          <strong>Unknown recipient</strong>
+        <% end %>
+      </div>
       <div class="panel-body">
         <%= render 'form' %>
-        <%= link_to 'Back', messages_path %>
       </div>
     </div>
   </div>

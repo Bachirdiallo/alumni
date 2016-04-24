@@ -21,6 +21,7 @@ class UserProfilesController < ApplicationController
   #find users
   def view_profile
    id = params[:user_profile_id]
+   session[:user_id] = id
    @user = User.find_by_id(id)
    @jobs = Job.where(:user_id => id)
   end

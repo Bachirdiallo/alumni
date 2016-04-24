@@ -1,14 +1,15 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.where(receiver: current_user.id)
+    @messages = Message.where(receiver: current_user.id).includes(:user).order('created_at DESC')
   end
 
   def sent
-    @messages = @messages = current_user.messages
+    @messages = @messages = current_user.messages.order('created_at DESC')
   end
   # GET /messages/1
   # GET /messages/1.json
@@ -17,6 +18,11 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
+
+    if !session[:user_id].nil?
+      @receiver= User.find_by_id(session[:user_id])
+    end
+
     @message = Message.new
   end
 
@@ -29,7 +35,11 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-    @message.receiver = params[:message][:receiver]
+    if !session[:user_id].nil?
+      @message.receiver = session["user_id"]
+    end
+
+
 
     respond_to do |format|
       if @message.save

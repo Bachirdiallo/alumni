@@ -1,32 +1,42 @@
 <div class="container">
   <div class="col-md-12">
-    <p id="notice"><%= notice %></p>
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h3>My Messages</h3>
-          <ul class="nav nav-tabs">
-            <li class="active">
-              <%= link_to 'Received', messages_path%>
-            </li>
-            <li>
-              <%= link_to ' Sent',  sent_messages_path%>
-            </li>
-          </ul>
-        </div>
-        <div class="panel-body">
-          <% @messages.each do |message| %>
-            <div class="col-md-7">
-              <strong> <%= link_to message.subject, message_path(:id=>message.id), style: 'color: #00BFFF; font-size: 20px; font-style: arial'%></strong> <br>
-              <small><%= message.created_at.strftime("%D") %></small>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3>My Messages</h3>
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <%= link_to 'Received', messages_path%>
+          </li>
+          <li>
+            <%= link_to ' Sent',  sent_messages_path%>
+          </li>
+        </ul>
+      </div>
+      <div class="panel-body">
+        <% @messages.each do |message| %>
+          <div class="lv-item item" style="padding-bottom: 0px; padding-left: 0px">
+            <div class="col-md-4 col-sm-4">
+              From: <%= link_to message.user.name, message_path(:id=>message.id), style: 'color: #000; font-style: arial'%></strong>
+              <% if message.user.last_sign_in_at.to_f - message.created_at.to_f   < 0 %>
+                <i style="color: red">NEW</i>
+              <% end %>
+            </div>
+            <div class="col-md-6 col-sm-6">
+               <%= link_to message.subject, message_path(:id=>message.id), style: 'color: #000; font-style: arial'%>
+            </div>
+            <div class="col-md-1 col-sm-1">
+              <small><%= message.created_at.strftime("%b %d") %></small>
             </div>
 
-            <div class="col-md-5">
-              <%= link_to message, class: 'link', method: :delete, data: { confirm: 'Are you sure?' } do%>
+            <div class="col-md-1 col-sm-1">
+              <%= link_to message, class: 'link pull-right', method: :delete, data: { confirm: 'Are you sure?' } do%>
                 <i class="fa fa-trash-o"></i>
               <% end %>
             </div>
-          <% end %>
-        </div>
+            <hr>
+          </div>
+        <% end %>
       </div>
+    </div>
   </div>
 </div>
