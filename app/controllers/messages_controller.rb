@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.where(receiver: current_user.id).includes(:user).order('created_at DESC')
+    @message = Message.new
   end
 
   def sent
@@ -35,9 +36,14 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.user_id = current_user.id
-    if !session[:user_id].nil?
+
+    if !params[:message][:receiver].nil?
+      puts '#####3#',params[:message][:receiver]
+      @message.receiver = params[:message][:receiver]
+    else
       @message.receiver = session["user_id"]
     end
+
 
 
 
