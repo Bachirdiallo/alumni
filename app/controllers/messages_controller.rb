@@ -38,14 +38,10 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
 
     if !params[:message][:receiver].nil?
-      puts '#####3#',params[:message][:receiver]
       @message.receiver = params[:message][:receiver]
     else
       @message.receiver = session["user_id"]
     end
-
-
-
 
     respond_to do |format|
       if @message.save
