@@ -2,10 +2,10 @@
 <div class="header">
   <div class="container">
     <!-- Logo -->
-    <a class="logo " href="/">
-
-      <%= image_tag('logo_mmu.png') %>
+    <a class="logo logo-container" href="/">
+      <%= image_tag('logo_mmu.png', class: 'logo-container')  %>
     </a>
+    <br>
     <!-- End Logo -->
 
     <!-- Topbar -->
@@ -25,19 +25,19 @@
           <%else%>
           <li>
             <% if controller.controller_name == "employers" %>
-              <a href="#" data-toggle="modal" data-target="#myModal">Login</a>
+              <a href="#" data-toggle="modal" data-target="#myModal" class="btn-u" style= "color: white">Login</a>
             <%else%>
-              <%= link_to "Login", user_session_path %>
+              <%= link_to "Login", user_session_path, class: "btn-u", style: 'color: white' %>
             <%end%>
           </li>
 
-          <li class="topbar-devider"></li>
+
 
           <li>
             <% if controller.controller_name == "employers" %>
-              <a href="#" data-toggle="modal" data-target="#sign_up">Sign Up</a>
+              <a href="#" data-toggle="modal" data-target="#sign_up" style= "color: white"  class="btn-u">Sign Up</a>
             <%else%>
-              <%= link_to "Sign Up",  claim_account_claim_index_path %>
+              <%= link_to "Sign Up",  claim_account_claim_index_path, style: 'color: white',  class: "btn-u" %>
             <%end%>
           </li>
 
@@ -49,9 +49,14 @@
       <span class="sr-only">Toggle navigation</span>
       <span class="fa fa-bars"></span>
     </button>
+
   </div>
     <!-- Navbar -->
-    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse" role="navigation">
+    <br />
+
+<% if user_signed_in?%>
+  <% if current_user.is_graduate%>
+    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse bottom-nav"  role="navigation" >
       <div class="container">
         <ul class="nav navbar-nav">
           <li class='<%= "active" if controller.controller_name == "home"%>'>
@@ -82,13 +87,6 @@
                       <span class="fa fa-search fa-lg"></span>
                     <%end%>
                   </li>
-
-                <!--  <li class='<%= "active" if (controller.controller_name == "user_profiles" && controller.action_name == "privacy")%>'>
-                    <%= link_to privacy_user_profiles_path(id: current_user.id) do %>
-                    <span class="icon-custom icon-lg icon-color-u fa fa-cog"></span>
-                    <%end%>
-                  </li>!-->
-
               <% else %>
 
               <% end %>
@@ -108,6 +106,9 @@
       </div>
     </div>
     <!-- End Navbar -->
-
+    <%end%>
+ <%else%>
+  <%= render partial: 'layouts/navigation' %>
+ <%end%>
 </div>
 <!--=== End Header ===-->

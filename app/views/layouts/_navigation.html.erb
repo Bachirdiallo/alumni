@@ -1,57 +1,49 @@
-    <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header ">
-              <a class="navbar-brand " href="#">
-                <img src="http://www.utpalumni.com/wp-content/themes/envision/images/alumni.png" alt="" />
-              </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-items">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="navbar navbar-default  pull-right" id="menu-items" >
-                <ul class="nav navbar-nav">
-                    <li>
-                      <% if user_signed_in?%>
-                        <% if current_user.is_graduate%>
-                            <%= link_to user_profiles_path do %> <span class="fa fa-user"> </span> <% end %>
-                        <%end%>
-                      <%end%>
-                    </li>
-                    <li>
-                      <% if user_signed_in?%>
-                        <% if current_user.is_graduate %>
-                          <%= link_to find_users_path do %> <span class="fa fa-search"></span> <% end %>
-                        <%end%>
-                        <%end%>
-                    </li>
-                    <li>
-                      <% if user_signed_in?%>
-                        <% if current_user.is_graduate %>
-                          <%= link_to privacy_user_profiles_path(id: current_user.id) do %> <span class="fa fa-cog fa-fw"></span><% end %>
-                         <% end %>
-                      <% end %>
-                    </li>
-                    <li>
-                      <% if current_user %>
-                        <%= link_to destroy_user_session_path, :class => 'pull-left', :method => :delete do %> <span class="glyphicon glyphicon-log-out"></span> <% end %>
-                      <% else %>
-                        <%= link_to user_session_path do %> <span class="glyphicon glyphicon-log-in"></span> <% end %>
-                      <% end %>
-                    </li>
-                    <li>
-                      <% if !user_signed_in?%>
-                        <%= link_to "Employers", employers_path, class: 'btn btn-info btn-sm', style: 'color: white' %>
-                      <%end%>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse bottom-nav"  role="navigation" >
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li class='<%= "active" if controller.controller_name == "home"%>'>
+        &nbsp;&nbsp;
+      </li>
+
+      <% if user_signed_in?%>
+          <% if current_user.is_graduate %>
+            <li class='<%= "active" if controller.controller_name == "home"%>'>
+              <%= link_to home_index_path, title: 'Home' do %>
+                <span class="fa fa-home fa-lg"></span>
+              <%end%>
+            </li>
+
+              <li class='<%= "active" if (controller.controller_name == "user_profiles" && controller.action_name != "privacy")%>'>
+                <%= link_to user_profiles_path, title: 'Profile' do %>
+                  <span class="fa fa-user fa-lg"></span>
+                <%end%>
+              </li>
+
+              <li class='<%= "active" if (controller.controller_name == "messages")%>'>
+                <%= link_to messages_path, title: 'Messages' do %>
+                  <span class="fa fa-comments fa-lg"></span>
+                <%end%>
+              </li>
+              <li class='<%= "active" if controller.controller_name == "find_users"%>'>
+                <%= link_to find_users_path, title: 'Find Users' do %>
+                  <span class="fa fa-search fa-lg"></span>
+                <%end%>
+              </li>
+          <% else %>
+
+          <% end %>
+      <%else%>
+
+      <li class='<%= "active" if controller.controller_name == "home"%>'>
+        <%= link_to root_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <%end%>
+      </li>
+
+        <li class='<%= "active" if controller.controller_name == "employers"%>'>
+            <%= link_to "For employers", employers_path %>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

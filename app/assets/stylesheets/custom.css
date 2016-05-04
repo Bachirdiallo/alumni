@@ -97,3 +97,24 @@ div.da-slide h2 i {
 .event-list{
   padding-left: 20px
 }
+
+.logo-container{
+  height: 48px;
+  width: 150px;
+  padding-bottom: 6px;
+}
+
+.bottom-nav{
+  background-color: #f1f2f2;;
+  padding-bottom: -1px;
+}
+
+.btn-u {
+    background: #0c4697;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 25px;
+    font-family: interfaceregular;
+    font-size: 14px;
+    display: inline-block;
+}
