@@ -51,7 +51,15 @@ div.image-block{
   background: url('jump.jpg') 70% 40% no-repeat;
 }
 
+div.da-slide h2 span {
+  font-size: 28px;
+  background-color:#407F7F;
+  font-family: "Courier New",Courier, monospace;
+  font-style: italic;
+}
+
 div.da-slide h2 i {
-  font-size: 30px;
-  font-family: "Courier New",Courier, monospace
+  font-size: 28px;
+  font-family: "Courier New",Courier, monospace;
+  background-color:  #496D89
 }
