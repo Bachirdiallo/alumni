@@ -2,7 +2,7 @@
 <div class="header">
   <div class="container">
     <!-- Logo -->
-    <a class="logo " href="#">
+    <a class="logo " href="/">
 
       <%= image_tag('logo_mmu.png') %>
     </a>
@@ -62,7 +62,7 @@
               <% if current_user.is_graduate %>
                 <li class='<%= "active" if controller.controller_name == "home"%>'>
                   <%= link_to home_index_path do %>
-                    <span class="glyphicon glyphicon-home fa-lg"></span>
+                    <span class="fa fa-home fa-lg"></span>
                   <%end%>
                 </li>
 
