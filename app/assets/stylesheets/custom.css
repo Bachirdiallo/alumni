@@ -50,3 +50,8 @@
 div.image-block{
   background: url('jump.jpg') 70% 40% no-repeat;
 }
+
+div.da-slide h2 i {
+  font-size: 30px;
+  font-family: "Courier New",Courier, monospace
+}
