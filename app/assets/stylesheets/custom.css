@@ -63,3 +63,33 @@ div.da-slide h2 i {
   font-family: "Courier New",Courier, monospace;
   background-color:  #496D89
 }
+
+.list-padding{
+  padding: 0px;
+}
+
+.side-bar{
+  height: 100%;
+  background-color: #496D89;
+  color: white;
+  position: absolute;
+  margin-right: 20px;
+  padding-right: 0px;
+}
+.color-link{
+  color: white;
+}
+
+.container-top{
+  background: #f3f3f4;
+  padding-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 0px;
+}
+.main-content{
+  padding-left: 50px;
+}
+
+.table-padding{
+  padding-bottom: 30px;
+}

@@ -13,10 +13,24 @@
         <%= render 'layouts/header' %>
         <% if user_signed_in?%>
           <% if !current_user.is_graduate && !current_user.is_employer %>
-            <%= render 'layouts/sidebar' %>
+            <div class="side-bar col-md-2">
+              <%= render 'layouts/sidebar' %>
+            </div>
           <%end%>
         <%end%>
-        <%= yield %>
+        <% if user_signed_in?%>
+          <% if !current_user.is_graduate && !current_user.is_employer   %>
+            <div class=" cold-md-10">
+              <div class="container pull-right">
+                <%= yield %>
+              </div>
+            </div>
+          <%else%>
+            <%= yield %>
+          <%end%>
+        <%else%>
+          <%= yield %>
+        <%end%>
         <% if !user_signed_in? %>
           <%= render partial: 'layouts/footer' %>
         <%end%>

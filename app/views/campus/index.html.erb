@@ -1,8 +1,4 @@
-<div class="content-side-right">
-  <div class="container content">
-
-    <div class="col-md-9">
-      <div class=" col-md-12 margin-bottom-40">
+    <div class="container-top">
         <% if !notice.nil? %>
           <div class="alert alert-info fade in">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -10,36 +6,54 @@
           </div>
         <%end%>
         <div class="pull-left">
-          <h2>Campuses</h2>
+          <h3>Campuses</h3>
         </div>
-        <div class="col-md-2 pull-right">
-          <%= link_to 'Add Campus', new_campu_path,  :class => 'btn-u btn-u-light-green rounded pull-right' %>
+        <div class="col-md-2 pull-right" style="padding-top: 5px">
+          <%= link_to  new_campu_path, title: "New Campus", :class => 'btn-u btn-u-light-green btn-sm pull-right' do%>
+          <span class="fa fa-plus"></span>
+          <%end%>
         </div>
-      </div>
     </div>
-
-    <div class="col-md-9">
-      <div class="panel panel-sucess">
-        <div class="panel-body">
+    <div class="main-content">
+      <br>
+      <table class="table table-hover">
+        <tbody>
           <% if @campus.any? %>
             <% @campus.each do |campu| %>
-                <div class="lv-item item">
-                  <div class="col-md-4" style="padding-left: 0px">
-                    <%= campu.name%>
-                  </div>
-                  <div class="col-md-4 ">
-                    <%= link_to edit_campu_path(campu),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
-                  </div>
-                  <div class="col-md-4 pull-right">
-                    <%= link_to campu, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
-                  </div>
-                  <br>
-                </div>
-                <hr>
+              <tr>
+                <td style="padding-top: 30px">
+                  <%= campu.name%>
+                </td>
+                <td style="padding-top: 30px">
+                  <%= link_to edit_campu_path(campu),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+                </td>
+                <td style="padding-top: 30px">
+                  <%= link_to campu, class: 'pull-right', style: 'color: grey; padding-right: 5px', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+                </td>
+              </tr>
             <% end %>
           <% end %>
-        </div>
+        </tbody>
+      </table>
+    </div>
+  <!--  <div class="panel panel-sucess main-content">
+      <div class="panel-body">
+        <% if @campus.any? %>
+          <% @campus.each do |campu| %>
+              <div class="lv-item item">
+                <div class="col-md-4" style="padding-left: 0px">
+                  <%= campu.name%>
+                </div>
+                <div class="col-md-4 ">
+                  <%= link_to edit_campu_path(campu),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+                </div>
+                <div class="col-md-4 pull-right">
+                  <%= link_to campu, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+                </div>
+                <br>
+              </div>
+              <hr>
+          <% end %>
+        <% end %>
       </div>
     </div>
-  </div>
-</div>
