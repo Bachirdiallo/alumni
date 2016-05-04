@@ -1,12 +1,11 @@
-<div class="content-side-right">
-  <div class="container ">
-    <div class="col-md-9">
-      <ul class="nav nav-tabs  margin-bottom-40" style="background-color: #ccc;">
+
+    <div class="container-top">
+      <ul class="nav nav-tabs bottom-nav margin-bottom-10" >
         <li class="active">
           <%= link_to 'Announcements', announcements_path%></li>
         <li><%= link_to 'Carousel', carousels_path%></li>
       </ul>
-      <div class=" col-sm-12 margin-bottom-40">
+      <div class=" col-sm-12">
         <% if !notice.nil? %>
           <div class="alert alert-info fade in">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -17,12 +16,14 @@
           <h2>Announcements</h2>
         </div>
         <div class="col-sm-2 pull-right">
-          <%= link_to 'New Post', new_announcement_path,  :class => 'btn-u btn-u-light-green rounded' %>
+          <%= link_to  new_announcement_path, title: 'Add Announcement',  :class => 'btn-u btn-u-light-green rounded' do%>
+            <span class="fa fa-plus"></span>
+          <%end%>
         </div>
       </div>
     </div>
 
-    <div class="col-md-9">
+    <div class="main-content">
       <% if @announcements.any? %>
         <% @announcements.each do |announcement| %>
         <div class="lv-item item">
@@ -45,4 +46,3 @@
           <% end %>
       <% end %>
     </div>
-  </div>

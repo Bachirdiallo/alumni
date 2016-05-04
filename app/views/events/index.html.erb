@@ -11,15 +11,14 @@
   </div>
 
   <div class="col-md-2 pull-right" style="padding-top: 5px">
-    <%= link_to new_event_path, title: "New Event", :class => 'btn-u btn-u-light-green rounded pull-right' do%>
+    <%= link_to new_event_path, title: "New Event", :class => 'btn-u btn-u-light-green rounded ' do%>
       <span class="fa fa-plus"></span>
     <%end%>
   </div>
 </div>
 
 
-  <div class="container-content">
-    <div class="event-list">
+  <div class="main-content">
       <% if @events.any? %>
         <% @events.each do |event| %>
           <div class="lv-item item">
@@ -43,5 +42,3 @@
         <% end %>
       <% end %>
     </div>
-  </div>
-</div>

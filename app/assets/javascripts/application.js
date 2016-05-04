@@ -24,5 +24,9 @@
 //= require plugins/image-hover/js/touch.js
 //= require plugins/image-hover/js/modernizr.js
 //= require js/plugins/fancy-box.js
+//= require floatlabel/floatlabels.js
+//= require jquery-validate/jquery.validate.min.js
+//= require jquery-validate/additional-methods.min.js
+//= require validation.js.coffee
 //= require custom.js
 //= require js/app.js

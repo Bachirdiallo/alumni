@@ -1,44 +1,40 @@
-<div class="content-side-right">
-  <div class="container content">
-    <div class="col-md-9">
-      <div class=" col-md-12 margin-bottom-40">
-        <% if !notice.nil? %>
-          <div class="alert alert-info fade in">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <strong><%= notice %></strong>
-          </div>
-        <%end%>
-        <div class="pull-left">
-          <h2>Programmes</h2>
-        </div>
-        <div class="col-md-2 pull-right">
-          <%= link_to 'New Programme', new_programme_path,  :class => 'btn-u btn-u-light-green rounded pull-right' %>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-md-9">
-      <div class="panel panel-sucess">
-        <div class="panel-body">
-            <% if @programmes.any? %>
-              <% @programmes.each do |programme| %>
-                <div class="lv-item item">
-                  <div class="col-md-4" style="padding-left: 0px">
-                    <%= programme.name%>
-                  </div>
-                  <div class="col-md-4 ">
-                    <%= link_to edit_programme_path(programme),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
-                  </div>
-                  <div class="col-md-4 pull-right">
-                    <%= link_to programme, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
-                  </div>
-                  <br>
-                </div>
-                <hr>
-            <% end %>
-          <% end %>
-        </div>
+  <div class=" container-top">
+    <% if !notice.nil? %>
+      <div class="alert alert-info fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <strong><%= notice %></strong>
       </div>
+    <%end%>
+    <div class="pull-left">
+      <h2>Programmes</h2>
+    </div>
+    <div class="col-md-2 pull-right" style="padding-top: 5px">
+      <%= link_to new_programme_path, title: 'Add Programme',  :class => 'btn-u btn-u-light-green rounded pull-right' do%>
+        <span class="fa fa-plus"></span>
+      <%end%>
     </div>
   </div>
-</div>
+
+  <div class="main-content">
+    <br>
+    <table class="table table-hover">
+      <tbody>
+        <% if @programmes.any? %>
+          <% @programmes.each do |programme| %>
+            <tr>
+              <td style="padding-top: 30px">
+                <%= programme.name %>
+              </td>
+              <td style="padding-top: 30px">
+                <%= link_to edit_programme_path(programme),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+              </td>
+              <td style="padding-top: 30px">
+                <%= link_to programme, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
