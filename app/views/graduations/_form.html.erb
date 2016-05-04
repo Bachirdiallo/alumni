@@ -1,18 +1,17 @@
-<div class="col-md-10  radius" id="form">
+
   <%= search_form_for @users do |f| %>
     <div class="col-md-3 graduation-form">
         <%= f.search_field :user_name_cont, placeholder: 'Name', :autocomplete => "off" %>
     </div>
     <div class="col-md-2 graduation-form">
-      <strong class="search-label">Class:</strong>
+      <span class="search-label">Class:</span>
       <%= f.select :batch_id_eq, [""]+Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }%>
     </div>
     <div class="col-md-5 graduation-form">
-      <strong class="search-label">Programme: </strong>
+      <span class="search-label">Programme: </span>
       <%= f.select :programme_id_eq, [""]+Programme.all.map{|p| [p.name, p.id]} %>
     </div>
     <div class="col-md-2">
-      <%= f.submit "Search", :class => 'btn-u btn-u-red btn-lg' %>
+      <%= f.submit "Search", :class => 'btn-u btn-u-green btn-lg' %>
     </div>
   <% end %>
-</div>

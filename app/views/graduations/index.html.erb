@@ -1,8 +1,8 @@
-<div class="content-side-right">
-  <div class="container content">
+<div class="container-top">
+<br>
     <%= render 'form' %>
-    <br>
-    <div class="col-md-10 graduation-list">
+</div>
+    <div class="main-content">
         <%if @graduations.any? %>
             <% @graduations.each do |graduation| %>
               <div class="col-sm-6 item" style="padding: 15px">

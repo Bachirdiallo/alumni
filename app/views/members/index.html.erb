@@ -1,7 +1,5 @@
-<div class="content-side-right">
-  <div class="container content">
-    <div class="col-md-9">
-      <div class=" col-md-12 margin-bottom-40">
+
+      <div class=" container-top">
         <% if !notice.nil? %>
           <div class="alert alert-info fade in">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -11,15 +9,15 @@
         <div class="pull-left">
           <h2>Admin</h2>
         </div>
-        <div class="col-md-2 pull-right">
-          <%= link_to 'New User', new_member_path,  :class => 'btn-u btn-u-light-green rounded pull-right' %>
+        <div class="col-md-2 pull-right" style="padding-top: 5px">
+          <%= link_to new_member_path, title: 'Add User', :class => 'btn-u btn-u-light-green rounded pull-right' do%>
+            <span class="fa fa-plus"></span>
+          <%end%>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-9">
-      <div class="panel panel-sucess">
-        <div class="panel-body">
+
+        <div class="main-content">
           <% if @users.any? %>
               <% @users.each_with_index do |user, i| %>
                 <% if !user.is_graduate && !user.is_employer%>
@@ -50,5 +48,3 @@
         </div>
       </div>
     </div>
-  </div>
-</div>

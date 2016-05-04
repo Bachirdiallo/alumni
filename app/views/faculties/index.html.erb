@@ -1,44 +1,40 @@
-<div class="content-side-right">
-  <div class="container">
-    <div class="col-md-9">
-      <div class=" col-md-12 margin-bottom-40">
-        <% if !notice.nil? %>
-          <div class="alert alert-info fade in">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <strong><%= notice %></strong>
-          </div>
-        <%end%>
-        <div class="pull-left">
-          <h2>Faculties</h2>
-        </div>
-        <div class="col-md-2 pull-right">
-          <%= link_to 'New Faculty', new_faculty_path,  :class => 'btn-u btn-u-light-green rounded pull-right' %>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-md-9">
-      <div class="panel panel-sucess">
-        <div class="panel-body">
-          <% if @faculties.any? %>
-            <% @faculties.each do |faculty| %>
-                <div class="lv-item item">
-                  <div class="col-md-4" style="padding-left: 0px">
-                    <%= faculty.name%>
-                  </div>
-                  <div class="col-md-4 ">
-                    <%= link_to edit_faculty_path(faculty),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
-                  </div>
-                  <div class="col-md-4 pull-right">
-                    <%= link_to faculty, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
-                  </div>
-                  <br>
-                </div>
-                <hr>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
+<div class="container-top">
+  <% if !notice.nil? %>
+    <div class="alert alert-info fade in">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <strong><%= notice %></strong>
     </div>
+  <%end%>
+  <div class="pull-left">
+    <h2>Faculties</h2>
   </div>
+  <div class="col-md-2 pull-right">
+    <%= link_to new_faculty_path, title: 'Add Faculty', :class => 'btn-u btn-u-light-green rounded pull-right' do%>
+      <span class="fa fa-plus"></span>
+    <%end%>
+  </div>
+</div>
+
+<div class="main-content">
+  <br>
+  <table class="table table-hover">
+    <tbody>
+      <% if @faculties.any? %>
+        <% @faculties.each do |faculty| %>
+        <tr>
+          <td style="padding-top: 30px">
+            <%= faculty.name%>
+          </td>
+          <td style="padding-top: 30px">
+            <%= link_to edit_faculty_path(faculty),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+          </td>
+          <td style="padding-top: 30px">
+            <%= link_to faculty, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
