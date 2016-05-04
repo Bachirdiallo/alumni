@@ -19,22 +19,27 @@
     </div>
 
     <div class="col-md-9">
-      <% if @campus.any? %>
-        <% @campus.each do |campu| %>
-            <div class="lv-item item">
-              <div class="col-md-4" style="padding-left: 0px">
-                <%= campu.name%>
-              </div>
-              <div class="col-md-4 ">
-                <%= link_to edit_campu_path(campu),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
-              </div>
-              <div class="col-md-4 pull-right">
-                <%= link_to campu, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
-              </div>
-              <br>
-            </div>
-        <% end %>
-    <% end %>
+      <div class="panel panel-sucess">
+        <div class="panel-body">
+          <% if @campus.any? %>
+            <% @campus.each do |campu| %>
+                <div class="lv-item item">
+                  <div class="col-md-4" style="padding-left: 0px">
+                    <%= campu.name%>
+                  </div>
+                  <div class="col-md-4 ">
+                    <%= link_to edit_campu_path(campu),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <%= link_to campu, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+                  </div>
+                  <br>
+                </div>
+                <hr>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

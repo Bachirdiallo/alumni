@@ -1,5 +1,5 @@
 <div class="content-side-right">
-  <div class="container content">
+  <div class="container">
     <div class="col-md-9">
       <div class=" col-md-12 margin-bottom-40">
         <% if !notice.nil? %>
@@ -18,22 +18,27 @@
     </div>
 
     <div class="col-md-9">
-      <% if @faculties.any? %>
-        <% @faculties.each do |faculty| %>
-            <div class="lv-item item">
-              <div class="col-md-4" style="padding-left: 0px">
-                <%= faculty.name%>
-              </div>
-              <div class="col-md-4 ">
-                <%= link_to edit_faculty_path(faculty),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
-              </div>
-              <div class="col-md-4 pull-right">
-                <%= link_to faculty, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
-              </div>
-              <br>
-            </div>
-        <% end %>
-    <% end %>
+      <div class="panel panel-sucess">
+        <div class="panel-body">
+          <% if @faculties.any? %>
+            <% @faculties.each do |faculty| %>
+                <div class="lv-item item">
+                  <div class="col-md-4" style="padding-left: 0px">
+                    <%= faculty.name%>
+                  </div>
+                  <div class="col-md-4 ">
+                    <%= link_to edit_faculty_path(faculty),  style: 'color: grey', class: 'pull-right' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+                  </div>
+                  <div class="col-md-4 pull-right">
+                    <%= link_to faculty, class: 'pull-right', style: 'color: grey', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+                  </div>
+                  <br>
+                </div>
+                <hr>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

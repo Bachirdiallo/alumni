@@ -21,24 +21,29 @@
       </div>
     </div>
     <div class="col-md-9">
-      <% @batches.each do |batch| %>
-        <div class="lv-item item">
-
-            <div class="col-md-4 ">
-              <% if !batch.month.nil? && !batch.year.nil?%>
-                <%= batch.month%> / <%= batch.year %>
+      <div class="panel panel-sucess">
+        <div class="panel-body">
+            <% if @batches.any? %>
+              <% @batches.each do |batch| %>
+                <div class="lv-item item">
+                    <div class="col-md-4 ">
+                      <% if !batch.month.nil? && !batch.year.nil?%>
+                        <%= batch.month%> / <%= batch.year %>
+                      <% end %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= link_to edit_batch_path(batch), class: 'pull-right link' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
+                    </div>
+                    <div class="col-md-4 pull-right">
+                      <%= link_to batch, class: 'pull-right link', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
+                    </div>
+                    <br>
+                  </div>
+                  <hr>
               <% end %>
-            </div>
-            <div class="col-md-4">
-              <%= link_to edit_batch_path(batch), class: 'pull-right link' do %><span class="glyphicon glyphicon-pencil"></span> <% end %>
-            </div>
-            <div class="col-md-4 pull-right">
-              <%= link_to batch, class: 'pull-right link', method: :delete, data: { confirm: 'Are you sure?' } do %><span class="fa fa-trash-o"></span> <% end %>
-            </div>
-            <br>
-          </div>
-
-      <% end %>
+            <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
