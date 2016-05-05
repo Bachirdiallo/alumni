@@ -11,46 +11,47 @@
           </ul>
         </div>
       <% end %>
-      <div class="panel panel-success">
-        <div class="panel-heading"><h1>New Job</h1></div>
+      <div class="panel panel-default">
+        <div class="panel-heading"><h1>Job</h1></div>
           <div class="panel-body">
-            <div class="job-padding" >
+            <div class="job-padding col-md-6" >
               <%= f.text_field :title, autofocus: true, placeholder: 'Title', :class => 'form-control' %>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-6" >
               <%= f.text_field :company, placeholder: "Company", :class => 'form-control' %>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-6" >
               <%= f.text_field :city, placeholder: 'City', :class => 'form-control' %>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-6" >
               <%= f.text_field :country, placeholder: 'Country', :class => 'form-control' %>
             </div>
 
-            <div class="job-padding">
-              <%= f.check_box :current %> Current Job
+            <div class="job-padding col-md-2">
+              <br>
+              <%= f.input :current, label: "Current Job?"%>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-5" >
               <%= f.input :from, :as => :date_select, :discard_year => false, :start_year => 1995,  :end_year => Date.current.year, :order => [:month, :year], :discard_day => true, :class => 'form-control' %>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-5" >
               <%= f.input :to, :as => :date_select, :discard_month => false, :start_year => 1995,  :end_year => Date.current.year,  :order => [:month, :year], :discard_day => true, :class => 'form-control' %>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-6" >
               <%= f.text_area :skills, placeholder: 'Skills', :class => 'form-control' %>
             </div>
 
-            <div class="job-padding" >
+            <div class="job-padding col-md-6" >
               <%= f.text_area :experience, placeholder: 'Description', :class => 'form-control' %>
             </div>
 
-            <div class="job-padding">
+            <div class="job-padding col-md-6">
               <%= f.submit "Add Job", :class => 'btn-u' %>
               <%= link_to 'Back', user_profiles_path, class: 'btn-u btn-u-default' %>
             </div>

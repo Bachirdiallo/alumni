@@ -51,11 +51,13 @@ $('#new_user').validate
     'user[email]': required: true
     'user[name]': required: true
 
+
   messages:
     'user[student_id]': required: 'Student id is required'
     'user[password]': required: 'Password is required'
     'user[email]': required: 'Email is required'
     'user[name]': required: 'Name is required'
+
 
   validClass: 'has-success'
   errorClass: 'help-block'
@@ -157,6 +159,46 @@ $('#new_event').validate
   messages:
     'event[title]': required: 'Title is required'
     'event[content]': required: 'Content is required'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_job').validate
+  rules:
+    'job[title]': required: true
+    'job[company]': required: true
+    'job[city]': required: true
+    'job[country]': required: true
+    'job[skills]': required: true
+    'job[description]': required: true
+
+  messages:
+    'job[title]': required: 'Job title is required'
+    'job[company]': required: 'Company name is required'
+    'job[city]': required: 'City is required'
+    'job[country]': required: 'country is required'
+    'job[skills]': required: 'skills is required'
+    'job[description]': required: 'description is requred'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_message').validate
+  rules:
+    'message[body]': required: true
+
+  messages:
+    'message[body]': required: 'Message body cannot be empty!'
 
   validClass: 'has-success'
   errorClass: 'help-block'
