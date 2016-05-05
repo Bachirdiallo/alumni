@@ -4,11 +4,11 @@
         <%= f.search_field :user_name_cont, placeholder: 'Name', :autocomplete => "off" %>
     </div>
     <div class="col-md-2 graduation-form">
-      <span class="search-label">Class:</span>
+      <span class="">Class:</span>
       <%= f.select :batch_id_eq, [""]+Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }%>
     </div>
     <div class="col-md-5 graduation-form">
-      <span class="search-label">Programme: </span>
+      <span class="">Programme: </span>
       <%= f.select :programme_id_eq, [""]+Programme.all.map{|p| [p.name, p.id]} %>
     </div>
     <div class="col-md-2">
