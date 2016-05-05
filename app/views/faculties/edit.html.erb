@@ -1,8 +1,40 @@
-<div class="container col-sm-8">
-  <h2>Editing Faculty</h2>
-  <%= render 'form' %>
-</div>
+<div class="col-md-9 main-content">
+  <%= semantic_form_for(@faculty) do |f| %>
+    <% if @faculty.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@faculty.errors.count, "error") %> prohibited this faculty from being saved:</h2>
+        <ul>
+        <% @faculty.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Editing Faculty</strong></div>
+      <div class="panel-body">
+        <div class="col-md-4">
+          <br>
+          <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: 'Name' %>
+        </div>
 
-<style media="screen">
-  h2{color: #009688}
-</style>
+        <div class="col-md-3">
+          <strong>Campus:</strong>
+          <%= f.input :campu_id, as: :select, collection: Campu.all.collect {|p| [p.name,p.id] }%>
+        </div>
+
+        <div class="col-md-4">
+          <br>
+          <%= f.submit "Create Faculty", :class => 'btn-u' %>
+          <%= link_to 'Back', faculties_path, :class => 'btn btn-u-default btn-u' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <script>
+    $('label').hide()
+  </script>
+
+</div>

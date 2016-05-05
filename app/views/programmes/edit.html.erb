@@ -1,10 +1,42 @@
-<div class="container ">
-  <div class="col-sm-8">
-    <h2>Editing Programme</h2>
-    <%= render 'form' %>
-  </div>
-</div>
+<div class="col-md-9 main-content">
+  <%= semantic_form_for(@programme) do |f| %>
+    <% if @programme.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@programme.errors.count, "error") %> prohibited this programme from being saved:</h2>
+        <ul>
+          <% @programme.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Editing Programme</strong></div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <div class="col-md-4" >
+            <br>
+            <%= f.text_field :name, placeholder: 'Name', autofocus: true, autocomplete: "off", class: 'form-control' %>
+          </div>
 
-<style media="screen">
-  h2{color: #009688}
-</style>
+          <div class="col-md-7">
+            Faculty: <%= f.input :faculty_id, as: :select, collection: Faculty.all.collect {|p| [p.name,p.id] } %>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="col-md-3">
+            <%= f.submit "Save", :class => 'btn-u'%>
+            <%= link_to 'Back', programmes_path, :class => 'btn-u btn-u-default' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <script>
+    $('label').hide()
+  </script>
+
+</div>

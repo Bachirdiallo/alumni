@@ -61,3 +61,70 @@ $('#new_user').validate
     element.parent().parent().parent().addClass("has-error")
     error.insertAfter element.parent()
     return
+
+$('#new_batch').validate
+  rules:
+    'batch[month]': required: true
+    'batch[year]': required: true
+
+
+  messages:
+    'batch[month]': required: 'Please select month'
+    'batch[year]': required: 'Please select year'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_campu').validate
+  rules:
+    'campu[name]': required: true
+
+  messages:
+    'campu[name]': required: 'Campus name is required'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_faculty').validate
+  rules:
+    'faculty[name]': required: true
+    'faculty[campu_id]': required: true
+
+  messages:
+    'faculty[name]': required: 'faculty name is required'
+    'faculty[campu_id]': required: 'Please select campus'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_programme').validate
+  rules:
+    'programme[name]': required: true
+    'programme[faculty_id]': required: true
+
+  messages:
+    'programme[name]': required: 'Programme name is required'
+    'programme[faculty_id]': required: 'Please select programme'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
