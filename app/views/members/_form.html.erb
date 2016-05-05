@@ -1,8 +1,7 @@
-<%= form_for(@user, url) do |f| %>
+<%= semantic_form_for(@user, url: members_path) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-dismissable alert-danger">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,7 +9,63 @@
       </ul>
     </div>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
+<br>
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Add New User</strong></div>
+    <div class="panel-body">
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: 'Name', :class => 'form-control empty' %>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.text_field :student_id, autocomplete: "off", placeholder: 'Id', :class => 'form-control empty' %>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6">
+        <br>
+        <%= f.email_field :email, autocomplete: "off", placeholder: 'Email', :class => 'form-control empty' %>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.input :campus, as: :select, collection: Campu.all.collect {|p| [p.name, p.id] }%>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.input :faculty, as: :select, collection: Faculty.all.collect {|p| [p.name, p.id] }%>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.input :programme, as: :select, collection: Programme.all.collect {|p| [p.name, p.id] }%>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.input :batch, as: :select, collection: Batch.all.collect {|p| [p.year, p.id] }%>
+      </div>
+
+
+      <div class="form-control-wrapper user-form col-md-6" >
+        <%= f.input :is_graduate, label: "Are you admin?", :as => :radio %>
+      </div>
+
+      <p>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <br />
+        <% end %>
+      </p>
+
+      <div class="form-control-wrapper user-form col-md-6">
+        <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :class => 'form-control empty' %>
+      </div>
+
+      <div class="form-control-wrapper user-form col-md-6">
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', :class => 'form-control empty' %>
+      </div>
+
+      <div class="user-form">
+        <%= f.submit "Create", :class => 'btn-u btn-lg' %>
+        <%= link_to 'Back', members_path, :class => 'btn btn-u-default btn-u btn-lg' %>
+      </div>
+    </div>
   </div>
 <% end %>

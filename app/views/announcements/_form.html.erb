@@ -1,6 +1,5 @@
-<div class="col-md-9">
-  <div class="panel panel-success">
-    <div class="panel-heading"><h1>New Announcement</h1></div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h4>Announcement</h4></div>
     <%= form_for @announcement  do |f| %>
       <div class="panel-body">
         <% if @announcement.errors.any? %>
@@ -21,7 +20,7 @@
         <br>
 
         <div class="form-control-wrapper">
-          <%= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true, link: true }, :style => "height: 800px", :class => "form-control").html_safe %>
+          <%= f.bootsy_area(:content, :placeholder => "Content", editor_options: { image: true, link: true }, :style => "height: 300px", :class => "form-control").html_safe %>
         </div>
       </div>
 
@@ -31,4 +30,3 @@
       </div>
     <% end %>
   </div>
-</div>

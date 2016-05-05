@@ -1,4 +1,4 @@
-<div class="col-sm-9">
+<div class="container-top">
   <% if !notice.nil? %>
     <div class="alert alert-info fade in">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -34,29 +34,31 @@
         <%end%>
       </div>
     </div>
+  </div>
     <br>
-    <% if @carousels.any? %>
-      <% @carousels.each do |carousel| %>
-          <div class="col-lg-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <div class="pull-right">
-                  <%= check_box_tag "is_published[]", carousel.id, false%>
+    <div class="main-content">
+      <% if @carousels.any? %>
+        <% @carousels.each do |carousel| %>
+            <div class="col-lg-4">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <div class="pull-right">
+                    <%= check_box_tag "is_published[]", carousel.id, false%>
+                  </div>
+                  <% if carousel.is_published? %>
+                    <h3 class="panel-title"> Published</h3>
+                  <%else%>
+                    <h3 class="panel-title"> Not published</h3>
+                  <%end%>
                 </div>
-                <% if carousel.is_published? %>
-                  <h3 class="panel-title"> Published</h3>
-                <%else%>
-                  <h3 class="panel-title"> Unpublished</h3>
-                <%end%>
-              </div>
-              <div class="panel-body panel-primary">
-                <%= image_tag(carousel.image, :class => 'img-responsive img-rounded position') if carousel.image?%>
+                <div class="panel-body panel-primary">
+                  <%= image_tag(carousel.image, :class => 'img-responsive img-rounded position') if carousel.image?%>
+                </div>
               </div>
             </div>
-          </div>
+        <% end %>
+      <% else %>
+        <strong style="color: lightblue; padding-left: 50px"><i>No Image Uploaded Yet</i></strong>
       <% end %>
-    <% else %>
-      <strong style="color: lightblue; padding-left: 50px"><i>No Image Uploaded Yet</i></strong>
-    <% end %>
+    </div>
   <%end%>
-</div>

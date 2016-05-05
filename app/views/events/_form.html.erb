@@ -1,6 +1,5 @@
-<div class="col-sm-9">
-  <div class="panel panel-success">
-    <div class="panel-heading"><h1>New Event</h1></div>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Event</h3></div>
     <%= form_for(@event) do |f| %>
       <div class="panel-body">
           <% if @event.errors.any? %>
@@ -14,7 +13,6 @@
               </ul>
             </div>
           <% end %>
-
           <div class="form-control-wrapper" >
             <%= f.text_field :title, placeholder: 'Title', autofocus: true, autocomplete: "off", :class => 'form-control empty' %>
           </div>
@@ -24,7 +22,7 @@
           </div>
           <br>
           <div class="form-control-wrapper" >
-            <%= f.bootsy_area :description, placeholder: 'Content', :class => 'form-control', :style => "height: 500px" %>
+            <%= f.bootsy_area :description, placeholder: 'Content', :class => 'form-control', :style => "height: 300px" %>
           </div>
         </div>
 
@@ -34,4 +32,3 @@
         </div>
       <%end%>
     </div>
-</div>

@@ -1,7 +1,7 @@
-  <div class="container">
-    <div class="col-sm-8">
-      <div class="panel panel-success">
-        <div class="panel-heading"><h1>Editing User</h1></div>
+  <div class="main-content">
+    <br>
+      <div class="panel panel-default">
+        <div class="panel-heading"><Strong>Editing User</Strong></div>
         <div class="panel-body">
 
           <%= form_for(@user, url: member_path(@user)) do |f| %>
@@ -16,7 +16,7 @@
                 </ul>
               </div>
             <% end %>
-            <%= form_for(@user, url: members_path) do |f| %>
+            <%= semantic_form_for(@user, url: members_path) do |f| %>
               <% if @user.errors.any? %>
                 <div class="alert alert-dismissable alert-danger">
                   <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -28,23 +28,52 @@
                 </div>
               <% end %>
 
-              <div class="form-control-wrapper user-form" >
-                <%= f.text_field :name, autofocus: true, placeholder: 'Name', autocomplete: "off", :class => 'form-control' %>
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.text_field :name, autofocus: true, autocomplete: "off", placeholder: 'Name', :class => 'form-control empty' %>
               </div>
 
-              <div class="form-control-wrapper user-form" >
-                <%= f.text_field :student_id, autofocus: true, placeholder: 'Username/Student Id', autocomplete: "off", :class => 'form-control empty' %>
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.text_field :student_id, autocomplete: "off", placeholder: 'Id', :class => 'form-control empty' %>
               </div>
 
-              <div class="form-control-wrapper user-form">
-                <%= f.email_field :email, autofocus: true, placeholder: 'Email', autocomplete: "off", :class => 'form-control empty' %>
+              <div class="form-control-wrapper user-form col-md-6">
+                <br>
+                <%= f.email_field :email, autocomplete: "off", placeholder: 'Email', :class => 'form-control empty' %>
               </div>
 
-              <div class="form-control-wrapper user-form">
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.input :campus, as: :select, collection: Campu.all.collect {|p| [p.name, p.id] }%>
+              </div>
+
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.input :faculty, as: :select, collection: Faculty.all.collect {|p| [p.name, p.id] }%>
+              </div>
+
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.input :programme, as: :select, collection: Programme.all.collect {|p| [p.name, p.id] }%>
+              </div>
+
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.input :batch, as: :select, collection: Batch.all.collect {|p| [p.year, p.id] }%>
+              </div>
+
+
+              <div class="form-control-wrapper user-form col-md-6" >
+                <%= f.input :is_graduate, :as => :radio, label: "Are you admin" %>
+              </div>
+
+              <p>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <br />
+                <% end %>
+              </p>
+
+              <div class="form-control-wrapper user-form col-md-6">
                 <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', :class => 'form-control empty' %>
               </div>
 
-              <div class="form-control-wrapper user-form">
+              <div class="form-control-wrapper user-form col-md-6">
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', :class => 'form-control empty' %>
               </div>
 
@@ -57,4 +86,3 @@
       </div>
     </div>
   </div>
-</div>

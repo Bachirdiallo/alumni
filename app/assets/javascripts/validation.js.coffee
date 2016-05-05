@@ -48,11 +48,14 @@ $('#new_user').validate
   rules:
     'user[student_id]': required: true
     'user[password]': required: true
-
+    'user[email]': required: true
+    'user[name]': required: true
 
   messages:
     'user[student_id]': required: 'Student id is required'
     'user[password]': required: 'Password is required'
+    'user[email]': required: 'Email is required'
+    'user[name]': required: 'Name is required'
 
   validClass: 'has-success'
   errorClass: 'help-block'
@@ -120,6 +123,40 @@ $('#new_programme').validate
   messages:
     'programme[name]': required: 'Programme name is required'
     'programme[faculty_id]': required: 'Please select programme'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_announcement').validate
+  rules:
+    'announcement[title]': required: true
+    'announcement[content]': required: true
+
+  messages:
+    'announcement[title]': required: 'Title is required'
+    'announcement[content]': required: 'Content is required'
+
+  validClass: 'has-success'
+  errorClass: 'help-block'
+  errorElement: 'small'
+  errorPlacement: (error, element) ->
+    element.parent().parent().parent().addClass("has-error")
+    error.insertAfter element.parent()
+    return
+
+$('#new_event').validate
+  rules:
+    'event[title]': required: true
+    'event[content]': required: true
+
+  messages:
+    'event[title]': required: 'Title is required'
+    'event[content]': required: 'Content is required'
 
   validClass: 'has-success'
   errorClass: 'help-block'
