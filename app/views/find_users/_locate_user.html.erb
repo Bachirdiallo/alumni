@@ -51,13 +51,25 @@
                   country = results[0]["address_components"][i]["long_name"]
                 }
               }
-              var address = {'city': locality, 'country': country, 'f': params}
-              var params =  <%= params[:q].to_json.html_safe%>;
+              var address = {'city': locality, 'country': country};
+              var faculty = $("#q_graduations_faculty_id_eq").val();
+              var programme = $("#q_graduations_programme_id_eq").val();
+              var campus = $("#q_graduations_campu_id_eq").val();
+              var batch = $("#q_graduations_batch_id_eq").val();
+              var is_current_city = 0;
 
-              $.ajax({
-                url: "<%= find_users_path%>", format: 'js',
-                data: {'city': locality, 'country': country, 'q': params}
-              });
+              var checked = $('#q_is_current_city').is(":checked");
+
+              if (checked){
+                is_current_city = 1;
+              }
+
+            $.ajax({
+              type: 'get',
+              url: "<%= find_users_path%>",
+              data: {form: {faculty: faculty, programme: programme, campus: campus, batch: batch, current_city: is_current_city}, 'city': locality, 'country': country},//{form: params, address: address},
+              dataType: "script"
+            });
               } else {
                 error('Google did not return any results.');
               }

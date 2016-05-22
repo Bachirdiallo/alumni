@@ -6,3 +6,9 @@ $(document).ready(function () {
       $(this).find("#btn").hide();
   });
 });
+
+$('#form').submit(function(e) {
+  e.preventDefault(); // stops default behavior
+  window.getLocation();
+  return false;
+});

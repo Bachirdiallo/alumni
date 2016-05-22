@@ -6,9 +6,25 @@ class FindUsersController < ApplicationController
   # GET /find_users.json
 
   def index
-    @search_results = User.ransack(params[:q])
-    @users = @search_results.result
-  end
+     @search_results = User.ransack(params[:form])
+     @users = @search_results.result
+
+     if !params[:form].nil?
+       current_city = params[:form][:current_city]
+       if current_city == "1"
+         @users = @search_results.result.where(city: params[:city], country: params[:country])
+         puts '#####',@users.count
+       else
+         @users = @search_results.result
+         puts '#####',@users.count
+       end
+     end
+
+     respond_to do |format|
+       format.html{}
+       format.js
+     end
+   end
 
   def map_view
   end

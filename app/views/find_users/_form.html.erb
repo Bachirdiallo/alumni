@@ -1,34 +1,26 @@
-<div class="job-img-inputs" >
-  <div class="container content">
-    <div class="col-md-9 ">
-      <div class="row radius" >
-        <%= search_form_for @search_results, url: find_users_path, id: 'form' do |f| %>
-        <div class="col-sm-12">
-          <div class="col-md-6 md-margin-bottom-10">
-            <strong class="search-label">Faculty of:</strong> <%= f.select :graduations_faculty_id_eq, Faculty.all.map{|p| [p.name, p.id]}, :include_blank => true%>
-          </div>
-          <div class="col-md-6 md-margin-bottom-10">
-            <strong class="search-label">Programme:</strong> <%= f.select :graduations_programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
-          </div>
-        </div>
-        <br><br>
-        <div class="col-sm-12 ">
-          <div class="col-md-3 md-margin-bottom-10">
-            <strong class="search-label">Campus:</strong><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'col-md-7'%>
-          </div>
-          <div class="col-md-3 md-margin-bottom-10">
-            <strong class="search-label">Class:</strong><%= f.select :graduations_batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
-          </div>
-          <div class="col-md-3 md-margin-bottom-10">
-
-            <%= f.check_box :is_current_city, checked: false %><strong class="search-label"> Current city</strong>
-          </div>
-          <div class="col-md-2 md-margin-bottom-10 ">
-            <%= f.submit :class => 'btn-u btn-u-red btn-lg pull-right', id: 'button' %>
-          </div>
-        </div>
-        <% end %>
-      </div>
-    </div>
+<%= search_form_for @search_results, url: find_users_path, remote: true, method: :get, id: 'form' do |f| %>
+<div class="col-sm-12">
+  <div class="col-md-6 md-margin-bottom-10">
+    <strong class="search-label">Faculty of:</strong> <%= f.select :graduations_faculty_id_eq, Faculty.all.map{|p| [p.name, p.id]}, :include_blank => true%>
+  </div>
+  <div class="col-md-6 md-margin-bottom-10">
+    <strong class="search-label">Programme:</strong> <%= f.select :graduations_programme_id_eq,Programme.select("distinct name, id").map{|p| [p.name, p.id]}, :include_blank => true %>
   </div>
 </div>
+<br><br>
+<div class="col-sm-12 ">
+  <div class="col-md-3 md-margin-bottom-10">
+    <strong class="search-label">Campus:</strong><%= f.select :graduations_campu_id_eq, Campu.all.map{|p| [p.name, p.id]}, :include_blank => true, :class => 'col-md-7'%>
+  </div>
+  <div class="col-md-3 md-margin-bottom-10">
+    <strong class="search-label">Class:</strong><%= f.select :graduations_batch_id_eq, Batch.all.map{|p| ["#{p.month} / #{p.year}", p.id] }, :include_blank => true%>
+  </div>
+  <div class="col-md-3 md-margin-bottom-10">
+
+    <%= f.check_box :is_current_city, checked: false %><strong class="search-label"> Current city</strong>
+  </div>
+  <div class="col-md-2 md-margin-bottom-10 ">
+    <%= f.submit :class => 'btn-u btn-u-red btn-lg pull-right', id: 'button' %>
+  </div>
+</div>
+<% end %>
