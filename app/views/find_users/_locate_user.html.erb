@@ -67,7 +67,7 @@
             $.ajax({
               type: 'get',
               url: "<%= find_users_path%>",
-              data: {form: {faculty: faculty, programme: programme, campus: campus, batch: batch, current_city: is_current_city}, 'city': locality, 'country': country},//{form: params, address: address},
+              data: {f: {faculty: faculty, programme: programme, campus: campus, batch: batch, current_city: is_current_city}, 'city': locality, 'country': country},
               dataType: "script"
             });
               } else {

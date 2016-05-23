@@ -6,22 +6,24 @@ class FindUsersController < ApplicationController
   # GET /find_users.json
 
   def index
-     @search_results = User.ransack(params[:form])
+     @search_results = User.ransack(params[:f])
      @users = @search_results.result
 
-     if !params[:form].nil?
-       current_city = params[:form][:current_city]
+     if !params[:f].nil?
+       current_city = params[:f][:current_city]
        if current_city == "1"
          @users = @search_results.result.where(city: params[:city], country: params[:country])
          puts '#####',@users.count
        else
-         @users = @search_results.result
+         @query = User.ransack(graduations_faculty_id_eq: params[:f][:faculty], graduations_batch_id_eq: params[:f][:batch],
+         graduations_programme_id_eq: params[:f][:programme], graduations_campu_id_eq: params[:f][:campus])
+         @users = @query.result
          puts '#####',@users.count
        end
      end
 
      respond_to do |format|
-       format.html{}
+       format.html
        format.js
      end
    end

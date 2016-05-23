@@ -1,107 +1,95 @@
 <div id="result">
-  <% if @users.any? %>
-    <% @users.each do |search_result| %>
-      <% if search_result.location_privacy_option != "Only Me" %>
-        <div class="panel panel-profile">
-            <div class="panel-body margin-bottom-5">
-              <div class="col-sm-10">
-                <% if search_result.is_graduate && search_result.location_privacy_option != "Only Me"%>
-                  <% if search_result.id != current_user.id %>
-                    <div class="col-sm-2">
-                      <% if search_result.avatar.blank? %>
-                        <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
-                      <%else%>
-                        <%= image_tag(search_result.avatar, :class => 'img-responsive img-rounded position') if search_result.avatar?%>
-                      <%end%>
-                    </div>
-                  <div class="col-sm-8">
-                  <font size="4" class="a"><%= search_result.name %><br></font>
-                   <%= search_result.country %><br>
-                      <% if search_result.location_privacy_option != "Only Me" %>
-                        <% if search_result.location_privacy_option == "My Batch" %>
-                          <% if current_user.graduations.include(:batch, :programme).map{|x| x.batch} & search_result.graduations.map{|s| s.batch}%>
-                            <% if search_result.job_privacy_option != "Only Me" %>
-                              <%if search_result.job_privacy_option == "My Batch"%>
-                                <% search_result.jobs.each do |u|%>
-                                 <% if current_user.graduations.map { |b| b.batch}&job.graduations.map { |s| s.batch }%>
-                                     <% if u.current == true %>
-                                        Current <%= u.title %> at <%= u.company %><br>
-                                     <% else %>
-                                        Past <%= u.title %> at <%= u.company %><br>
+  <% if !@users.blank? %>
+    <% if @users.any? %>
+      <% @users.each do |search_result| %>
+        <% if search_result.location_privacy_option != "Only Me" %>
+          <div class="panel panel-profile">
+              <div class="panel-body margin-bottom-5">
+                <div class="col-sm-10">
+                  <% if search_result.is_graduate && search_result.location_privacy_option != "Only Me"%>
+                    <% if search_result.id != current_user.id %>
+                      <div class="col-sm-2">
+                        <% if search_result.avatar.blank? %>
+                          <%= image_tag('user.jpg', :class => 'img-responsive img-rounded md-margin-bottom-10') %>
+                        <%else%>
+                          <%= image_tag(search_result.avatar, :class => 'img-responsive img-rounded position') if search_result.avatar?%>
+                        <%end%>
+                      </div>
+                    <div class="col-sm-8">
+                    <font size="4" class="a"><%= search_result.name %><br></font>
+                     <%= search_result.country %><br>
+                        <% if search_result.location_privacy_option != "Only Me" %>
+                          <% if search_result.location_privacy_option == "My Batch" %>
+                            <% if current_user.graduations.include(:batch, :programme).map{|x| x.batch} & search_result.graduations.map{|s| s.batch}%>
+                              <% if search_result.job_privacy_option != "Only Me" %>
+                                <%if search_result.job_privacy_option == "My Batch"%>
+                                  <% search_result.jobs.each do |u|%>
+                                   <% if current_user.graduations.map { |b| b.batch}&job.graduations.map { |s| s.batch }%>
+                                       <% if u.current == true %>
+                                          Current <%= u.title %> at <%= u.company %><br>
+                                       <% else %>
+                                          Past <%= u.title %> at <%= u.company %><br>
+                                       <% end %>
                                      <% end %>
-                                   <% end %>
-                                <% end %>
-                                <span class="fa fa-graduation-cap"></span>
-                                <% search_result.graduations.each do |x|%>
-                                  <%= x.batch.month%> / <%= x.batch.year%>,
-                                    <%= x.programme.name%><br>
-                                <%end%>
-                              <%elsif search_result.job_privacy_option == "My Programme"%>
-                                <% search_result.jobs.each do |u|%>
-                                  <% if current_user.graduations.map { |p| p.programme  }& search_result.graduations.map { |p| p.programme  } %>
-                                    <% if u.current == "1" %>
-                                      Current<%= u.title %> at  <%= u.company %><br>
-                                    <% else %>
-                                      Past <%= u.title %> at <%= u.company %><br>
-                                    <% end %>
                                   <% end %>
-                                <% end %><!--loop -->
-                                <span class="fa fa-graduation-cap"></span>
-                                <% search_result.graduations.each do |x|%>
-                                  <%= x.batch.month%> / <%= x.batch.year%>,
-                                    <%= x.programme.name%><br>
-                                <%end%>
-                              <%else%>
-                                <% search_result.jobs.each do |u|%>
-                                  <% if u.current == "1" %>
-                                    Current <%= u.title %> at <%= u.company %><br>
-                                  <% else %>
-                                    Past <%= u.title %> at <%= u.company %><br>
-                                  <% end %>
-                                <% end %>
-                                <span class="fa fa-graduation-cap"></span>
-                                <% search_result.graduations.each do |x|%>
-                                  <%= x.batch.month%> / <%= x.batch.year%>,
-                                    <%= x.programme.name%><br>
-                                <%end%>
-                              <% end %> <!--if job_privacy_option == My Batch -->
-                            <% end %><!--if job_privacy_option != Only Me -->
-                          <% end %><!--batch intersection checking -->
-                        <%elsif search_result.location_privacy_option == "My Programme"%>
-                            <% if current_user.graduations.map { |n| n.programme  } & search_result.graduations.map { |n| n.programme }%>
-                                <% if search_result.job_privacy_option != "Only Me" %>
-                                  <%if search_result.job_privacy_option == "My Batch"%>
-                                      <% search_result.jobs.each do |job|%>
-                                        <% if current_user.graduations.map { |b| b.batch} & job.graduations.map { |s| s.batch }%>
-                                          <% if u.current == "1" %>
-                                            Current <%= u.title %> at <%= u.company %><br>
-                                          <% else %>
-                                            Past <%= u.title %> at <%= u.company %><br>
-                                          <% end %>
-                                        <% end %>
-                                      <% end %>
-                                    <span class="fa fa-graduation-cap"></span>
-                                    <% search_result.graduations.each do |x|%>
-                                      <%= x.batch.month%> / <%= x.batch.year%>,
-                                        <%= x.programme.name%><br>
-                                    <%end%>
-                                  <%elsif search_result.job_privacy_option == "My Programme"%>
-                                    <% search_result.jobs.each do |u|%>
-                                      <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
-                                        Current <%= u.title %> at<%= u.company %><br>
+                                  <span class="fa fa-graduation-cap"></span>
+                                  <% search_result.graduations.each do |x|%>
+                                    <%= x.batch.month%> / <%= x.batch.year%>,
+                                      <%= x.programme.name%><br>
+                                  <%end%>
+                                <%elsif search_result.job_privacy_option == "My Programme"%>
+                                  <% search_result.jobs.each do |u|%>
+                                    <% if current_user.graduations.map { |p| p.programme  }& search_result.graduations.map { |p| p.programme  } %>
+                                      <% if u.current == "1" %>
+                                        Current<%= u.title %> at  <%= u.company %><br>
                                       <% else %>
                                         Past <%= u.title %> at <%= u.company %><br>
                                       <% end %>
                                     <% end %>
-                                    <span class="fa fa-graduation-cap"></span>
-                                    <% search_result.graduations.each do |x|%>
-                                      <%= x.batch.month%> / <%= x.batch.year%>,
+                                  <% end %><!--loop -->
+                                  <span class="fa fa-graduation-cap"></span>
+                                  <% search_result.graduations.each do |x|%>
+                                    <%= x.batch.month%> / <%= x.batch.year%>,
                                       <%= x.programme.name%><br>
-                                    <%end%>
-                                  <% else %>
+                                  <%end%>
+                                <%else%>
+                                  <% search_result.jobs.each do |u|%>
+                                    <% if u.current == "1" %>
+                                      Current <%= u.title %> at <%= u.company %><br>
+                                    <% else %>
+                                      Past <%= u.title %> at <%= u.company %><br>
+                                    <% end %>
+                                  <% end %>
+                                  <span class="fa fa-graduation-cap"></span>
+                                  <% search_result.graduations.each do |x|%>
+                                    <%= x.batch.month%> / <%= x.batch.year%>,
+                                      <%= x.programme.name%><br>
+                                  <%end%>
+                                <% end %> <!--if job_privacy_option == My Batch -->
+                              <% end %><!--if job_privacy_option != Only Me -->
+                            <% end %><!--batch intersection checking -->
+                          <%elsif search_result.location_privacy_option == "My Programme"%>
+                              <% if current_user.graduations.map { |n| n.programme  } & search_result.graduations.map { |n| n.programme }%>
+                                  <% if search_result.job_privacy_option != "Only Me" %>
+                                    <%if search_result.job_privacy_option == "My Batch"%>
+                                        <% search_result.jobs.each do |job|%>
+                                          <% if current_user.graduations.map { |b| b.batch} & job.graduations.map { |s| s.batch }%>
+                                            <% if u.current == "1" %>
+                                              Current <%= u.title %> at <%= u.company %><br>
+                                            <% else %>
+                                              Past <%= u.title %> at <%= u.company %><br>
+                                            <% end %>
+                                          <% end %>
+                                        <% end %>
+                                      <span class="fa fa-graduation-cap"></span>
+                                      <% search_result.graduations.each do |x|%>
+                                        <%= x.batch.month%> / <%= x.batch.year%>,
+                                          <%= x.programme.name%><br>
+                                      <%end%>
+                                    <%elsif search_result.job_privacy_option == "My Programme"%>
                                       <% search_result.jobs.each do |u|%>
-                                        <% if u.current == "1" %>
-                                          Current <%= u.title %> at <%= u.company %><br>
+                                        <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
+                                          Current <%= u.title %> at<%= u.company %><br>
                                         <% else %>
                                           Past <%= u.title %> at <%= u.company %><br>
                                         <% end %>
@@ -109,83 +97,101 @@
                                       <span class="fa fa-graduation-cap"></span>
                                       <% search_result.graduations.each do |x|%>
                                         <%= x.batch.month%> / <%= x.batch.year%>,
-                                          <%= x.programme.name%><br>
+                                        <%= x.programme.name%><br>
                                       <%end%>
-                                  <% end %> <!--if job_privacy_option == Everyone -->
-                                <% end %><!--if job_privacy_option != Only Me -->
-                            <% end %><!--programme intersection checking -->
-                        <%else %>
-                          <% if current_user.graduations.includes(:batch).map{|x| x.batch} & search_result.graduations.includes(:batch).map{|s| s.batch}%>
-                            <% if search_result.job_privacy_option != "Only Me" %>
-                                <%if search_result.job_privacy_option == "My Batch"%>
-                                    <% search_result.jobs.each do |u|%>
-                                      <% if current_user.graduations.map{|x| x.batch} & search_result.graduations.map { |s| s.batch }%>
-                                        <% if u.current == "1" %>
-                                          Current <%= u.title %> at <%= u.company %><br>
-                                        <% else %>
-                                          Past <%= u.title %> at <%= u.company %><br>
-                                        <% end %>
-                                      <% end %>
-                                    <% end %>
-                                    <span class="fa fa-graduation-cap"></span>
-                                    <% search_result.graduations.each do |x|%>
-                                      <%= x.batch.month%> / <%= x.batch.year%>,
-                                      <%= x.programme.name%><br>
-                                    <%end%>
-                                <%elsif search_result.job_privacy_option == "My Programme"%>
-                                    <% search_result.jobs.each do |u|%>
-                                      <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
+                                    <% else %>
+                                        <% search_result.jobs.each do |u|%>
                                           <% if u.current == "1" %>
                                             Current <%= u.title %> at <%= u.company %><br>
                                           <% else %>
                                             Past <%= u.title %> at <%= u.company %><br>
                                           <% end %>
+                                        <% end %>
+                                        <span class="fa fa-graduation-cap"></span>
+                                        <% search_result.graduations.each do |x|%>
+                                          <%= x.batch.month%> / <%= x.batch.year%>,
+                                            <%= x.programme.name%><br>
+                                        <%end%>
+                                    <% end %> <!--if job_privacy_option == Everyone -->
+                                  <% end %><!--if job_privacy_option != Only Me -->
+                              <% end %><!--programme intersection checking -->
+                          <%else %>
+                            <% if current_user.graduations.includes(:batch).map{|x| x.batch} & search_result.graduations.includes(:batch).map{|s| s.batch}%>
+                              <% if search_result.job_privacy_option != "Only Me" %>
+                                  <%if search_result.job_privacy_option == "My Batch"%>
+                                      <% search_result.jobs.each do |u|%>
+                                        <% if current_user.graduations.map{|x| x.batch} & search_result.graduations.map { |s| s.batch }%>
+                                          <% if u.current == "1" %>
+                                            Current <%= u.title %> at <%= u.company %><br>
+                                          <% else %>
+                                            Past <%= u.title %> at <%= u.company %><br>
+                                          <% end %>
+                                        <% end %>
+                                      <% end %>
+                                      <span class="fa fa-graduation-cap"></span>
+                                      <% search_result.graduations.each do |x|%>
+                                        <%= x.batch.month%> / <%= x.batch.year%>,
+                                        <%= x.programme.name%><br>
+                                      <%end%>
+                                  <%elsif search_result.job_privacy_option == "My Programme"%>
+                                      <% search_result.jobs.each do |u|%>
+                                        <% if current_user.graduations.map { |p|  p.programme} & search_result.graduations.map { |s|  s.programme} %>
+                                            <% if u.current == "1" %>
+                                              Current <%= u.title %> at <%= u.company %><br>
+                                            <% else %>
+                                              Past <%= u.title %> at <%= u.company %><br>
+                                            <% end %>
+                                        <% end %>
+                                      <% end %>
+                                      <span class="fa fa-graduation-cap"></span>
+                                      <% search_result.graduations.includes(:batch, :programme).each do |x|%>
+                                        <%= x.batch.month%> / <%= x.batch.year%>,
+                                          <%= x.programme.name%><br>
+                                      <%end%>
+                                  <% else %>
+                                    <% search_result.jobs.each do |u|%>
+                                      <% if u.current == "1" %>
+                                        Current <%= u.title %> at <%= u.company %><br>
+                                      <% else %>
+                                          Past <%= u.title %> at <%= u.company %><br>
                                       <% end %>
                                     <% end %>
                                     <span class="fa fa-graduation-cap"></span>
-                                    <% search_result.graduations.includes(:batch, :programme).each do |x|%>
+                                    <% search_result.graduations.includes(:programme).each do |x|%>
                                       <%= x.batch.month%> / <%= x.batch.year%>,
-                                        <%= x.programme.name%><br>
+                                      <%= x.programme.name%><br>
                                     <%end%>
-                                <% else %>
-                                  <% search_result.jobs.each do |u|%>
-                                    <% if u.current == "1" %>
-                                      Current <%= u.title %> at <%= u.company %><br>
-                                    <% else %>
-                                        Past <%= u.title %> at <%= u.company %><br>
-                                    <% end %>
-                                  <% end %>
-                                  <span class="fa fa-graduation-cap"></span>
-                                  <% search_result.graduations.includes(:programme).each do |x|%>
-                                    <%= x.batch.month%> / <%= x.batch.year%>,
-                                    <%= x.programme.name%><br>
-                                  <%end%>
-                                <% end %> <!--if job_privacy_option == Everyone -->
-                              <% end %><!--if job_privacy_option != Only Me -->
-                          <% end %><!--batch intersection checking -->
-                        <% end %><!--if locaiton == My Batch -->
-                      <% end %><!--if locaiton == only me -->
-                <% end %><!--curren_user id -->
-              <% end %><!--is_graudate-->
-            </div>
-            <% if search_result.is_graduate && search_result.location_privacy_option != "Only Me"%>
-              <% if search_result.id != current_user.id %>
-                <div class="col-sm-2">
-                  <%= link_to "View Profile", user_profile_view_profile_path(search_result.id), :class => "btn btn-primary btn-sm"%>
-                </div>
+                                  <% end %> <!--if job_privacy_option == Everyone -->
+                                <% end %><!--if job_privacy_option != Only Me -->
+                            <% end %><!--batch intersection checking -->
+                          <% end %><!--if locaiton == My Batch -->
+                        <% end %><!--if locaiton == only me -->
+                  <% end %><!--curren_user id -->
+                <% end %><!--is_graudate-->
+              </div>
+              <% if search_result.is_graduate && search_result.location_privacy_option != "Only Me"%>
+                <% if search_result.id != current_user.id %>
+                  <div class="col-sm-2">
+                    <%= link_to "View Profile", user_profile_view_profile_path(search_result.id), :class => "btn btn-primary btn-sm"%>
+                  </div>
+                <%end%>
               <%end%>
-            <%end%>
+            </div>
           </div>
         </div>
-      </div>
+        <%end%>
+      <% end %><!--search_result -->
+    <%else%>
+    <div style="margin-left: 70px">
+      <strong>No Record found!  </strong>
+    </div>
     <%end%>
-  <% end %><!--search_result -->
-  <%else%>
+  <%#= will_paginate @users %>
+  <% else %>
   <div style="margin-left: 70px">
     <strong>No Record found!  </strong>
   </div>
-  <%end%>
-  <%#= will_paginate @users %>
+  <% end %>
 </div>
 
 <style media="screen">

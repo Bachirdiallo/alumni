@@ -48,7 +48,7 @@ gem 'bootsy'
 gem "mini_magick"
 gem 'pg'
 #gem 'puma'
-gem 'rails_12factor'
+#gem 'rails_12factor'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
