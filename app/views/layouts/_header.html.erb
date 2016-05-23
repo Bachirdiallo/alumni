@@ -7,6 +7,12 @@
     </a>
     <br>
     <!-- End Logo -->
+    <div class="logo logo-container">
+      <span class="alumni">Alumni</span>
+      <br>
+       <span class="tag-line">Reunite & connect</span>
+    </div>
+
 
     <!-- Topbar -->
     <div class="topbar">
@@ -23,24 +29,21 @@
             </li>
 
           <%else%>
-          <li>
-            <% if controller.controller_name == "employers" %>
-              <a href="#" data-toggle="modal" data-target="#myModal" class="btn-u" style= "color: white">Login</a>
-            <%else%>
-              <%= link_to "Login", user_session_path, class: "btn-u", style: 'color: white' %>
-            <%end%>
-          </li>
+            <li>
+              <% if controller.controller_name == "employers" %>
+                <a href="#" data-toggle="modal" data-target="#myModal" class="btn-u" style= "color: white">Login</a>
+              <%else%>
+                <%= link_to "Login", user_session_path, class: "btn-u", style: 'color: white' %>
+              <%end%>
+            </li>
 
-
-
-          <li>
-            <% if controller.controller_name == "employers" %>
-              <a href="#" data-toggle="modal" data-target="#sign_up" style= "color: white"  class="btn-u">Sign Up</a>
-            <%else%>
-              <%= link_to "Sign Up",  claim_account_claim_index_path, style: 'color: white',  class: "btn-u" %>
-            <%end%>
-          </li>
-
+            <li>
+              <% if controller.controller_name == "employers" %>
+                <a href="#" data-toggle="modal" data-target="#sign_up" style= "color: white"  class="btn-u">Sign Up</a>
+              <%else%>
+                <%= link_to "Sign Up",  claim_account_claim_index_path, style: 'color: white',  class: "btn-u" %>
+              <%end%>
+            </li>
           <%end%>
         </ul>
     </div>

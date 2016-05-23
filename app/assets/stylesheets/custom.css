@@ -19,7 +19,7 @@
 .search-label {
   color: white
   }
-  
+
 .graduation-form{
   padding-top: 7px;
 }
@@ -121,4 +121,22 @@ div.da-slide h2 i {
 
 .l-size{
   font-size: 15px;
+}
+
+.tag-line{
+  font-family: 'Cedarville Cursive';
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+
+.alumni{
+  font-family: Aladin;
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 26.4px;
 }
