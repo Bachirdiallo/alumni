@@ -18,16 +18,14 @@
 
 <div class="container">
   <div class="col-md-12">
-    <div class="panel panel-primary" style="border: none; box-shadow: none;">
+    <div class="panel panel-primary">
       <div class="panel-heading" style="color: black">
-      <%#= render 'form'%>
-      <br>
-          <%= render partial: 'form' %>
-          <br><br>
+        <br>
+        <%= render partial: 'form' %>
+        <br><br>
       </div>
 
       <div class="panel-content" id="render_list">
-        <br>
         <%= render partial: 'user_list' %>
       </div>
     </div>

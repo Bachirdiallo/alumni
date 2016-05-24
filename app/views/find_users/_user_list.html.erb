@@ -182,14 +182,22 @@
         <%end%>
       <% end %><!--search_result -->
     <%else%>
-    <div style="margin-left: 70px">
-      <strong>No Record found!  </strong>
+    <div class="col-sm-12" id="list">
+      <br>
+      <div class="col-sm-5"></div>
+      <div class="col-sm-7">
+        <h1><em style="color: orange">No matching recrod!</em></h1>
+      </div>
     </div>
     <%end%>
   <%#= will_paginate @users %>
   <% else %>
-  <div style="margin-left: 70px">
-    <strong>No Record found!  </strong>
+  <div class="col-sm-12" id="list">
+    <br>
+    <div class="col-sm-5"></div>
+    <div class="col-sm-7">
+      <h1><em style="color: orange">No matching recrod!</em></h1>
+    </div>
   </div>
   <% end %>
 </div>
