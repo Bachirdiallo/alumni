@@ -9,24 +9,24 @@
           <% if current_user.is_graduate %>
             <li class='<%= "active" if controller.controller_name == "home"%>'>
               <%= link_to home_index_path, title: 'Home' do %>
-                <span class="fa fa-home fa-lg"></span>
+                <span class="fa fa-home fa-lg clr-menue"></span>
               <%end%>
             </li>
 
               <li class='<%= "active" if (controller.controller_name == "user_profiles" && controller.action_name != "privacy")%>'>
                 <%= link_to user_profiles_path, title: 'Profile' do %>
-                  <span class="fa fa-user fa-lg"></span>
+                  <span class="fa fa-user fa-lg clr-menue"></span>
                 <%end%>
               </li>
 
               <li class='<%= "active" if (controller.controller_name == "messages")%>'>
                 <%= link_to messages_path, title: 'Messages' do %>
-                  <span class="fa fa-comments fa-lg"></span>
+                  <span class="fa fa-comments fa-lg clr-menue"></span>
                 <%end%>
               </li>
               <li class='<%= "active" if controller.controller_name == "find_users"%>'>
                 <%= link_to find_users_path, title: 'Find Users' do %>
-                  <span class="fa fa-search fa-lg"></span>
+                  <span class="fa fa-search fa-lg clr-menue"></span>
                 <%end%>
               </li>
           <% else %>
@@ -35,13 +35,13 @@
       <%else%>
 
       <li class='<%= "active" if controller.controller_name == "home"%>'>
-        <%= link_to root_path do %>
-          <span class="glyphicon glyphicon-home"></span>
+        <%= link_to root_path, title: 'Home' do %>
+          <span class="glyphicon glyphicon-home clr-menue"></span>
         <%end%>
       </li>
 
-        <li class='<%= "active" if controller.controller_name == "employers"%>'>
-            <%= link_to "For employers", employers_path %>
+        <li class='<%= "active" if controller.controller_name == "employers"%> '>
+            <%= link_to "For employers", employers_path, style: 'color: white' %>
         </li>
       <%end%>
     </ul>
