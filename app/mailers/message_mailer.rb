@@ -1,9 +1,9 @@
 class MessageMailer < ApplicationMailer
 
   def notify(message)
+    @content = message
     @user = User.find message.receiver
-    mail(to: @user.email,
-    subject: message.subject,
-    body: message.body)
+    @url = "https://alumni.mmu.edu.my"
+    mail(to: @user.email)
   end
 end
