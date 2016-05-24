@@ -1,13 +1,13 @@
 
   <%= form_for @user, url: claim_path(id: @user.id) , class: 'sky-form' do |f|%>
     <div class="form-group">
-      <small style="color: red" class="pull-left">Please ensure the password is at least 8 characters in length.</small>
+
       <%= f.password_field :password, :class => 'form-control empty', placeholder: 'New password', :autocomplete => "off" %>
     </div>
 
     <div class="form-group">
       <small style="color: red" class="pull-left">Please ensure the password is at least 6 characters in length.</small>
-      <%#= f.password_field :password, :class => 'form-control empty', placeholder: 'New password', :autocomplete => "off" %>
+      <%= f.password_field :password, :class => 'form-control empty', placeholder: 'Confirm new password', :autocomplete => "off" %>
     </div>
 
     <div class="actions">

@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:student_id, :email, :password, :password_confirmation) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:student_id, :email, :password, :password_confirmation, :remember_me) }
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:student_id, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:student_id, :email, :password, :password_confirmation, :remember_me) }
   end
 
   def set_global_search_variable
