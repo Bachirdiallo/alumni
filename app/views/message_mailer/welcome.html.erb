@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Dear <%= @user.name %>,
+    </p>
+    <p>We are glad to welcome to our family. </p>
+    <p>
+      You <b>mmu alumni</b> account has been successfully created <br>
+      your username is: <%= @user.student_id %><br>
+      your password is: <%= @password %><br>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining the family and have a great day!</p>
+    <small> This message was sent via <%= @url %></small>
+  </body>
+</html>

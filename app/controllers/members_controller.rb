@@ -31,21 +31,20 @@ class MembersController < ApplicationController
     graduation = Graduation.new
     respond_to do |format|
       if @user.save
-        graduation.user_id = @user.id
-        graduation.batch_id = params[:user][:batch]
-        graduation.programme_id = params[:user][:programme]
-        graduation.campu_id = params[:user][:campus]
-        graduation.faculty_id = params[:user][:faculty]
-        graduation.save
-
         user_type= params[:user][:is_graduate]
-
-        if !user_type
+        if user_type == "false"
           @user.is_graduate = false
           @user.save
+        else
+          graduation.user_id = @user.id
+          graduation.batch_id = params[:user][:batch]
+          graduation.programme_id = params[:user][:programme]
+          graduation.campu_id = params[:user][:campus]
+          graduation.faculty_id = params[:user][:faculty]
+          graduation.save
+          password = params[:user][:password]
+          MessageMailer.welcome(@user, password).deliver_now
         end
-
-
         format.html { redirect_to members_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

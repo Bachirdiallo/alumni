@@ -6,4 +6,11 @@ class MessageMailer < ApplicationMailer
     @url = "https://alumni.mmu.edu.my"
     mail(to: @user.email)
   end
+
+  def welcome(user, password)
+    @user = user
+    @password = password
+    @url = "https://alumni.mmu.edu.my"
+    mail(to: @user.email)
+  end
 end
