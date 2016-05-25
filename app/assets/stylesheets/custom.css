@@ -163,3 +163,7 @@ div.da-slide h2 i {
   font-family: 'DINProMedium';
   font-style: normal;
 }
+
+.menu-li{
+  padding-bottom: 0px;
+}

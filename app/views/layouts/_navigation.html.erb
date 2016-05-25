@@ -1,15 +1,15 @@
 <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse bottom-nav"  role="navigation" >
   <div class="container">
     <ul class="nav navbar-nav">
-      <li class='<%= "active" if controller.controller_name == "home"%>'>
+      <li class='<%= "active" if controller.controller_name == "home"%> menu-li'>
         &nbsp;&nbsp;
       </li>
 
       <% if user_signed_in?%>
           <% if current_user.is_graduate %>
-            <li class='<%= "active" if controller.controller_name == "home"%>'>
+            <li class='<%= "active" if controller.controller_name == "home"%> menu-li'>
               <%= link_to home_index_path, title: 'Home' do %>
-                <span class="fa fa-home fa-lg clr-menue"></span>
+                <span class="fa fa-home fa-lg clr-menue menu-li"></span>
               <%end%>
             </li>
 
@@ -34,13 +34,13 @@
           <% end %>
       <%else%>
 
-      <li class='<%= "active" if controller.controller_name == "home"%>'>
+      <li class='<%= "active" if controller.controller_name == "home"%> menu-li'>
         <%= link_to root_path, title: 'Home' do %>
-          <span class="glyphicon glyphicon-home clr-menue"></span>
+          <span class="fa fa-home fa-lg clr-menue menu-li"></span>
         <%end%>
       </li>
 
-        <li class='<%= "active" if controller.controller_name == "employers"%> '>
+        <li class='<%= "active" if controller.controller_name == "employers"%>  menu-li'>
             <%= link_to "For employers", employers_path, style: 'color: white' %>
         </li>
       <%end%>
