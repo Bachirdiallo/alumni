@@ -70,6 +70,13 @@
               data: {f: {faculty: faculty, programme: programme, campus: campus, batch: batch, current_city: is_current_city}, 'city': locality, 'country': country},
               dataType: "script"
             });
+
+            $.ajax({
+              type: 'get',
+              url: "<%= map_view_find_users_path%>",
+              data: { city: locality, country: country},
+              dataType: "html"
+            });
               } else {
                 error('Google did not return any results.');
               }
