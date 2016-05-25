@@ -5,9 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #validates :student_id, :name, presence: true, allow_blank: false
-  #validates_uniqueness_of :student_id
-  #validates :id_number, presence: true, allow_blank: true
+  geocoded_by :city
+  after_validation :geocode
 
   has_many :graduations, dependent: :destroy
   has_many :jobs, dependent: :destroy
