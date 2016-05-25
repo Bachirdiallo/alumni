@@ -26,6 +26,11 @@ class FindUsersController < ApplicationController
    end
 
   def map_view
+    @users = User.where(city: params[:city], country: params[:country])
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+    #  marker.lat user.latitude
+    #  marker.lng user.longitude
+    end
   end
 
   private

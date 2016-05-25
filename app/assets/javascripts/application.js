@@ -30,3 +30,7 @@
 //= require validation.js.coffee
 //= require custom.js
 //= require js/app.js
+//= require turbolinks
+//= require underscore
+//= require gmaps/google
+//= require_tree .

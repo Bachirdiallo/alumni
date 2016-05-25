@@ -14,7 +14,30 @@
 </div>
 
 <div class="col-md-9 ">
-  <div class="container content" style="padding-left: 50px" id="user_list">
-    <div style="text-decoration:none; overflow:hidden; height:500px; width:100%; max-width:100%;"><div id="embed-map-canvas" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Multimedia+University+Persiaran+Multimedia+Cyberjaya+Selangor+Malaysia&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><a class="embed-map-html" href="https://www.treat-lice.com" id="grab-map-authorization">now</a><style>#embed-map-canvas .text-marker{max-width:none!important;background:none!important;}img{max-width:none}</style></div><script src="https://www.treat-lice.com/google-maps-authorization.js?id=6df8dbd9-79e3-7c6a-6a46-cab7dc480b7e&c=embed-map-html&u=1456061743" defer="defer" async="async"></script>
+  <div class="container content" style="padding-left: 50px">
+    <div id="map" style='width: 800px; height: 400px;'></div>
   </div>
 </div>
+
+<script type="text/javascript">
+function map(){
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+      {
+        "lat": 0,
+        "lng": 0,
+        "picture": {
+          "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+          "width":  36,
+          "height": 36
+        },
+        "infowindow": "hello!"
+      }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+
+}
+</script>
